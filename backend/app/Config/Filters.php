@@ -30,11 +30,11 @@ class Filters extends BaseFilters
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'cors'          => Cors::class,
+        'cors'          => App\Filters\Cors::class,
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'desCors' => App\Filters\Cors::class
+
     ];
 
     /**
@@ -54,7 +54,7 @@ class Filters extends BaseFilters
         'before' => [
             'forcehttps', // Force Global Secure Requests
             'pagecache',
-            'desCors'  // Web Page Caching
+            'cors'  // Web Page Caching
         ],
         'after' => [
             'pagecache',   // Web Page Caching
