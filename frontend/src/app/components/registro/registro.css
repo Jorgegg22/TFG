@@ -1,0 +1,222 @@
+:host {
+  display: block;
+  --primary: #0056b3;    /* Azul */
+  --accent: #00d1b2;     /* Turquesa/Verde  */
+  --bg-light: #f5f7fa;   /* Gris */
+  --text-main: #2d3436;
+  --white: #ffffff;
+  --primary-font: 'Times New Roman', Times, serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+
+.auth-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* --- SECCIÓN IZQUIERDA --- */
+.auth-left {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Fondo blanco liso (SIN PUNTITOS) */
+}
+
+/* Estilos del Logo (Igual que tu Login) */
+.brand-container {
+  display: flex;
+  align-items: center; 
+  gap: 4px;
+  margin-bottom: 30px;
+}
+
+.logo-link { text-decoration: none; }
+
+.logo-box {
+  background-color: var(--primary); 
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;       
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;     
+}
+
+.u-letter {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;          
+  font-size: 1.7rem;
+}
+
+.brand-text {
+  color: #1a1a1a; /* Texto oscuro para contraste en fondo blanco */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;          
+  font-size: 1.6rem;
+  letter-spacing: -1.2px;
+  margin-left: -1px;
+}
+
+/* Contenido del Formulario */
+.auth-content {
+  max-width: 400px;
+  margin: auto;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  /* Degradado azul corporativo */
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+/* Inputs (Exactamente tus estilos) */
+.input-group { margin-bottom: 15px; }
+
+.input-group label {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--bg-input); 
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #334155;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.input-group input:focus {
+  background: #ffffff;
+  border-color: var(--accent); /* Se ilumina en Turquesa */
+  box-shadow: 0 0 0 4px rgba(0, 209, 178, 0.1);
+  outline: none;
+}
+
+/* Checkbox Personalizado (Estilo limpio) */
+.terms-check { margin: 20px 0; }
+.checkbox-container { display: flex; align-items: center; cursor: pointer; font-size: 0.9rem; color: #64748b; }
+.checkbox-container input { display: none; } 
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: var(--bg-input);
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-right: 10px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+/* Checkbox activado (Azul) */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px; top: 2px;
+  width: 4px; height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checkbox-container input:checked ~ .checkmark:after { display: block; }
+
+a { color: var(--primary); font-weight: 600; text-decoration: none; }
+
+/* Botón (Negro como en tu Login) */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: #000; /* Negro */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: #1a1a1a;
+}
+
+.auth-footer { text-align: center; margin-top: 24px; font-size: 0.9rem; color: #64748b; }
+
+/* --- SECCIÓN DERECHA --- */
+.auth-right {
+  margin: 5px;
+  border-radius: 10px 0px 0px 10px;
+  flex: 1;
+  background: #e5e5e5;
+  display: flex;
+  align-items: flex-end;
+  padding: 60px;
+  
+  /* Usamos tu mismo degradado azul sobre la foto */
+  background-image: 
+    linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)),
+   url('../../../../public/img/register-image.jpg'); /* Asegúrate de cambiar la foto si quieres */
+    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Ocultar en pantallas pequeñas */
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+/* Tarjeta de cristal (Igual que Login) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 30px;
+  max-width: 450px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: white;
+  animation: slideUp 0.8s ease-out;
+}
+
+.glass-card h2 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.glass-card p { font-size: 1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

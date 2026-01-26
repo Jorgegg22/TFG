@@ -1,11 +1,12 @@
 :host {
   display: block;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --primary: #0056b3;    /* Azul */
   --accent: #00d1b2;     /* Turquesa/Verde  */
   --bg-light: #f5f7fa;   /* Gris */
   --text-main: #2d3436;
   --white: #ffffff;
+  --primary-font: 'Times New Roman', Times, serif;
+  --secondary-font: 'Montserrat', sans-serif;
 }
 
 
@@ -30,27 +31,30 @@
 
 
 
-/* El cuadrado azul de la U */
-.logo-box {
-  background-color: #0056b3; 
-  width: 36px; /* Un pelín más pequeño para el header */
-  height: 36px;
-  border-radius: 8px;       
+.logo-univibe-serif {
+  /* 1. La Caja Azul */
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3; /* Tu azul corporativo */
+  border-radius: 14px;       /* El redondeado de las esquinas */
+  
+  /* 2. Centrado de la letra */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;     
-     
+  
+  /* 3. La "U" con Serifa (Lo importante) */
+  color: #ffffff;
+  /* Usamos Times New Roman para conseguir esos "pies" o remates arriba */
+  font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold;
+  font-size: 37px; /* Tamaño grande para llenar la caja */
+  line-height: 1;  /* Evita espacios extra arriba/abajo */
+  
+  /* Un pequeño ajuste porque las fuentes con serifa a veces no se ven centradas */
+  padding-top: 4px; 
+  user-select: none; /* Para que no se pueda seleccionar como texto */
 }
-
-/* La letra U blanca */
-.u-letter {
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;          
-  font-size: 1.7rem;
-}
-
 
 .brand-text {
   color: #0056b3; /* Usamos el azul corporativo */
@@ -129,20 +133,7 @@
   align-items: center;
 }
 
-.u-letter {
-  color: white;
-  font-weight: 800;
-  font-size: 1.7rem;
-}
 
-.brand-text {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.7rem;
-  letter-spacing: -1px;
-  margin-left: -5px;
-  margin-top: 8px;
-}
 
 .hero-content {
   flex: 1;
@@ -160,6 +151,8 @@
   color: white;
   margin: 0 0 20px 0;
   letter-spacing: -3px;
+  font-family: var(--primary-font);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.479);
 }
 
 .main-subtitle {
@@ -169,7 +162,9 @@
   margin-bottom: 30px;
   line-height: 1.4;
   font-weight: 500;
+  font-family: var(--secondary-font);
 }
+
 
 .btn-pill {
   background: #ffffff;
@@ -196,6 +191,7 @@
   padding: 10px 24px;
   border-radius: 30px;
   font-weight: 600;
+  font-family: var(--secondary-font);
 }
 
 .btn-text:hover {
@@ -252,15 +248,21 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden; /* Para que el número grande no se salga */
   border-bottom: 4px solid transparent; /* Preparado para el hover */
+  height: 450px;
 }
 
 /* Efecto al pasar el ratón */
 .step-card:hover {
   transform: translateY(-10px); /* Se levanta más */
   box-shadow: 0 30px 60px rgba(0, 86, 179, 0.15);
-  border-bottom-color: #00d1b2; /* Línea turquesa abajo */
+  border-bottom-color: var(--primary); /* Línea turquesa abajo */
 }
 
+
+.step-card:hover .step-number{
+  color: var(--primary);
+
+}
 .icon-bubble {
   width: 60px;
   height: 60px;
@@ -279,12 +281,14 @@
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 12px;
+  font-family: var(--primary-font);
 }
 
 .step-card p {
   font-size: 0.95rem;
   color: #64748b;
   line-height: 1.6;
+  font-family: var(--secondary-font);
 }
 
 /* Número decorativo gigante de fondo */
@@ -294,7 +298,7 @@
   right: -10px;
   font-size: 5rem;
   font-weight: 900;
-  color: rgba(0, 86, 179, 0.03); /* Casi invisible, muy elegante */
+  color: rgba(10, 77, 148, 0.349); /* Casi invisible, muy elegante */
   pointer-events: none;
 }
 

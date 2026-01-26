@@ -1,1 +1,58 @@
-<p>registro works!</p>
+<div class="auth-container">
+  <div class="auth-left">
+    
+    <div class="brand-header">
+      <a routerLink="/home"><div class="logo-box"><p class="u-letter">U</p></div></a>
+    </div>
+
+    <div class="auth-content">
+      <h1>Crea tu cuenta</h1>
+      <p class="subtitle">Únete a la comunidad de estudiantes más exclusiva.</p>
+
+      <form>
+        <div class="input-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Ej. Alex García">
+        </div>
+
+        <div class="input-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tucorreo@universidad.edu">
+        </div>
+
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" placeholder="Mínimo 8 caracteres">
+        </div>
+
+        <div class="terms-check">
+          <label class="checkbox-container">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+            <span class="terms-text">Acepto los <a href="#">Términos</a> y la <a href="#">Política de Privacidad</a>.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">Empezar ahora</button>
+      </form>
+
+      <p class="auth-footer">
+        ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <div class="glass-card">
+      <h2>Tu próximo hogar empieza aquí.</h2>
+      <p>Miles de estudiantes ya han encontrado su sitio. Solo faltas tú.</p>
+      
+      <div class="community-avatars">
+        <div class="avatar av-1"></div>
+        <div class="avatar av-2"></div>
+        <div class="avatar av-3"></div>
+        <span>+2k estudiantes</span>
+      </div>
+    </div>
+  </div>
+</div>

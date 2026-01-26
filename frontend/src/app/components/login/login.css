@@ -1,12 +1,14 @@
 :host {
   display: block;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --primary: #0056b3;    /* Azul */
   --accent: #00d1b2;     /* Turquesa/Verde  */
   --bg-light: #f5f7fa;   /* Gris */
   --text-main: #2d3436;
   --white: #ffffff;
+  --primary-font: 'Times New Roman', Times, serif;
+  --secondary-font: 'Montserrat', sans-serif;
 }
+
 
 .login-container {
   display: flex;
