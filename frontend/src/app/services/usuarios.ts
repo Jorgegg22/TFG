@@ -7,7 +7,7 @@ import { Usuario } from '../common/usuarios-interface';
   providedIn: 'root'
 })
 export class UsuarioC {
-  private URI: string = "http://localhost/CodeIgniter/public/index.php/api/usuarios";
+  private URI: string = "http://localhost:8080/public/index.php/api/usuarios";
 
   constructor(private http: HttpClient) {
    

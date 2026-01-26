@@ -1,0 +1,467 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --primary: #0056b3;    /* Azul */
+  --accent: #00d1b2;     /* Turquesa/Verde  */
+  --bg-light: #f5f7fa;   /* Gris */
+  --text-main: #2d3436;
+  --white: #ffffff;
+}
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* El contenedor que pega los elementos */
+.brand-container {
+  display: flex;
+  align-items: center; 
+  gap: 4px; /* Muy pegado como querías */
+  transition: transform 0.2s ease;
+}
+
+
+
+/* El cuadrado azul de la U */
+.logo-box {
+  background-color: #0056b3; 
+  width: 36px; /* Un pelín más pequeño para el header */
+  height: 36px;
+  border-radius: 8px;       
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;     
+     
+}
+
+/* La letra U blanca */
+.u-letter {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;          
+  font-size: 1.7rem;
+}
+
+
+.brand-text {
+  color: #0056b3; /* Usamos el azul corporativo */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;          
+  font-size: 1.6rem;
+  letter-spacing: -1.2px; /* Letras juntas */
+  margin-left: -1px; /* Pegado extra al cuadro */
+}
+
+/* Ajuste para el Header: Asegurar que el logo no empuje los botones */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background-color: white; /* Ahora que el logo es azul, mejor fondo blanco */
+  border-bottom: 1px solid #eee;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px; 
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+
+/* Hero Section con Degradado */
+
+
+/* Barra superior */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: 
+  linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 100%),
+  url('../../../../public/img/hero-image.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 8%;
+  z-index: 10;
+  margin-top: -65px;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-box {
+  background-color: #0056b3;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-letter {
+  color: white;
+  font-weight: 800;
+  font-size: 1.7rem;
+}
+
+.brand-text {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: -1px;
+  margin-left: -5px;
+  margin-top: 8px;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+  max-width: 900px;
+}
+
+.main-title {
+  font-size: 5.5rem;
+  font-weight: 850;
+  line-height: 1;
+  color: white;
+  margin: 0 0 20px 0;
+  letter-spacing: -3px;
+}
+
+.main-subtitle {
+  font-size: 1.2rem;
+  color: #fcfcfc;
+  max-width: 450px;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.btn-pill {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-pill:hover {
+  background: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 20px;
+  cursor: pointer;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.btn-text:hover {
+  background: var(--primary);
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 20px;
+  cursor: pointer;
+  
+}
+
+.btn-dark {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: fit-content;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main-title { font-size: 3.5rem; }
+}
+
+.floating-steps-section {
+  padding: 0 8% 80px 8%; /* Padding lateral y abajo */
+  background-color: transparent; /* Transparente para que se vea el efecto */
+  position: relative;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  
+  /* EL TRUCO DEL FLOTADO */
+  margin-top: -100px; /* Sube las tarjetas hacia el Hero */
+  position: relative;
+  z-index: 20; /* Asegura que estén ENCIMA de la foto del hero */
+}
+
+.step-card {
+  flex: 1;
+  background: #ffffff;
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra potente para dar altura */
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Para que el número grande no se salga */
+  border-bottom: 4px solid transparent; /* Preparado para el hover */
+}
+
+/* Efecto al pasar el ratón */
+.step-card:hover {
+  transform: translateY(-10px); /* Se levanta más */
+  box-shadow: 0 30px 60px rgba(0, 86, 179, 0.15);
+  border-bottom-color: #00d1b2; /* Línea turquesa abajo */
+}
+
+.icon-bubble {
+  width: 60px;
+  height: 60px;
+  background-color: #f0f7ff; /* Azul muy clarito */
+  color: #0056b3;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto; /* Centrado */
+}
+
+.step-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Número decorativo gigante de fondo */
+.step-number {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(0, 86, 179, 0.03); /* Casi invisible, muy elegante */
+  pointer-events: none;
+}
+
+/* RESPONSIVE: En móvil quitamos el efecto flotante para que no rompa */
+@media (max-width: 900px) {
+  .cards-container {
+    flex-direction: column;
+    margin-top: 40px; /* En móvil ya no flotan sobre el hero, se ponen debajo */
+  }
+  
+  .floating-steps-section {
+    background-color: #f8fafc; /* Fondo gris si no están sobre la imagen */
+    padding-top: 40px;
+  }
+}
+
+
+.bento-section {
+  padding: 100px 8%;
+  background-color: #ffffff;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #1a1a1a 0%, #0056b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.minimal-features {
+  padding: 100px 8%;
+  background-color: #ffffff; /* Fondo blanco puro */
+  text-align: center;
+}
+
+.features-header {
+  max-width: 600px;
+  margin: 0 auto 70px auto;
+}
+
+.features-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.features-header p {
+  color: #64748b; /* Gris suave */
+  font-size: 1.1rem;
+}
+
+/* El Grid de 3 columnas */
+.features-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Un hover muy sutil que levanta el elemento */
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+/* EL DETALLE MODERNO: El icono */
+.icon-wrapper {
+  width: 64px;
+  height: 64px;
+  /* Fondo azul muy clarito (tu color con 10% opacidad) */
+  background-color: rgba(0, 86, 179, 0.1);
+  border-radius: 50%; /* Círculo perfecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  
+  /* El color del icono SVG será tu azul principal */
+  color: #0056b3; 
+  transition: all 0.3s ease;
+}
+
+/* Al pasar el ratón, el círculo se oscurece un poco */
+.feature-item:hover .icon-wrapper {
+  background-color: rgba(0, 86, 179, 0.2);
+}
+
+/* Hacemos los SVGs un poco más grandes */
+.icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feature-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.feature-item p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 1rem;
+  max-width: 300px; /* Evita que el texto se estire demasiado */
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .features-grid {
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+
+/* Responsive: En móvil se pone vertical */
+@media (max-width: 768px) {
+  .steps-diagram {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .connector-line {
+    /* En vertical la línea cambia de sitio */
+    width: 3px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size: 100% 20px;
+    background-image: linear-gradient(to bottom, #0056b3 50%, transparent 50%);
+  }
+}
+
+/* --- MEDIA QUERIES --- */
+@media (min-width: 768px) {
+  .steps-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .step-card {
+    flex-direction: column;
+    text-align: center;
+    flex: 1;
+    padding: 40px 20px;
+  }
+
+  .hero {
+    padding: 100px 40px;
+  }
+}

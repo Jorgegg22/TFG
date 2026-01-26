@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\UsuariosModel;
 
-class Usuarios extends ResourceController
+class UsuariosController extends ResourceController
 {
     protected $modelName = 'App\Models\UsuariosModel';
     protected $format    = 'json';

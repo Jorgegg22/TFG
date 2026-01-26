@@ -1,0 +1,217 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --primary: #0056b3;    /* Azul */
+  --accent: #00d1b2;     /* Turquesa/Verde  */
+  --bg-light: #f5f7fa;   /* Gris */
+  --text-main: #2d3436;
+  --white: #ffffff;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Sección Izquierda */
+.login-left {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center; 
+  gap: 4px; /* Muy pegado como querías */
+  transition: transform 0.2s ease;
+}
+.logo-box {
+  background-color: #0056b3; 
+  width: 36px; /* Un pelín más pequeño para el header */
+  height: 36px;
+  border-radius: 8px;       
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;     
+     
+}
+
+.logo-link{
+    text-decoration: none;
+}
+
+/* La letra U blanca */
+.u-letter {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;          
+  font-size: 1.7rem;
+}
+
+
+.brand-text {
+  color: #ffffff; /* Usamos el azul corporativo */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;          
+  font-size: 1.6rem;
+  letter-spacing: -1.2px; /* Letras juntas */
+  margin-left: -1px; /* Pegado extra al cuadro */
+}
+
+.logo-box {
+  background: #0046ad;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+
+.login-form-content {
+  max-width: 400px;
+  margin: auto;
+  width: 100%;
+}
+
+.login-form-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  
+  /* La magia del degradado en el texto */
+  background: linear-gradient(90deg, var(--primary) 0%,var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.input-group label {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: block;
+  margin-top: 10px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #f8fafc; /* No blanco puro, un gris azulado muy claro */
+  border: 2px solid transparent; /* Truco para que no baile al hacer click */
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #334155;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* Efecto al hacer clic en el input */
+.input-group input:focus {
+  background: #ffffff;
+  border-color: #00d1b2; /* Se ilumina en Turquesa */
+  box-shadow: 0 0 0 4px rgba(0, 209, 178, 0.1); /* Resplandor suave */
+  outline: none;
+}
+
+a {
+  color: #0056b3;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+
+
+
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+ margin-top: 18px;
+}
+
+/* Sección Derecha */
+.login-right {
+  margin: 5px;
+  border-radius: 10px 0px 0px 10px;
+  flex: 1;
+  background: #e5e5e5; /* Color base si no hay imagen */
+  display: flex;
+  align-items: flex-end;
+  padding: 60px;
+  background-image: 
+    linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)),
+    url("../../../../public/img/login-image.jpg");
+    
+  /* Para que ocupe todo el contenedor sin deformarse */
+  background-size: cover;
+  
+  /* Para que la imagen quede centrada */
+  background-position: center;
+  
+  background-repeat: no-repeat;
+}
+
+.right-content {
+  background: rgba(255, 255, 255, 0.15); /* Blanco muy transparente */
+  backdrop-filter: blur(12px);            /* Desenfoque del fondo (efecto cristal) */
+  -webkit-backdrop-filter: blur(12px);    /* Para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+  border-radius: 24px;
+  padding: 30px;
+  max-width: 450px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  margin-bottom: 20px; /* Separación del borde inferior */
+  
+  /* Animación suave de entrada (opcional) */
+  animation: slideUp 0.8s ease-out;
+}
+
+.right-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.right-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.signup-prompt { text-align: center; margin-top: 24px; font-size: 0.9rem; }
+.signup-prompt a { color: #0046ad; text-decoration: none; font-weight: 600; }

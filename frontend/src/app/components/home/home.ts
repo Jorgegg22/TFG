@@ -15,7 +15,8 @@ export interface Usuario {
   styleUrl: './home.css'
 })
 export class Home {
-  public alumnos: Usuario[] = [];
+  
+  alumnos: Usuario[] = [];
 
   constructor(private usuarioService: UsuarioC) {}
 
@@ -27,6 +28,9 @@ export class Home {
     this.usuarioService.getUsuarios().subscribe({
       next: (res) => {
         this.alumnos = Array.isArray(res) ? res : [res];
+        console.log(this.alumnos);
+        
+       
       },
       error: (err) => {
         console.error('Error al conectar con la API de UniVibe', err);
