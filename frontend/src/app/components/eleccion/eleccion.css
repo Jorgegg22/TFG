@@ -1,0 +1,134 @@
+:root {
+  --primary: #0056b3;
+  --primary-light: #00d1b2;
+  --text-dark: #1e272e;
+  --text-gray: #718093;
+  --white: #ffffff;
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+.user-selection {
+  background-color: var(--white); /* Fondo blanco puro */
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.selection-title {
+  font-family: var(--secondary-font);
+  font-weight: 800;
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -1px;
+}
+
+.selection-subtitle {
+  font-family: var(--primary-font);
+  color: var(--text-gray); /* El color gris que definimos antes */
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: -40px auto 50px auto; /* Margen negativo arriba para acercarlo al H2 */
+  line-height: 1.6;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.card-grid {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user-card {
+  position: relative;
+  background: var(--white);
+  width: 380px;
+  border-radius: 30px; /* Bordes muy redondeados */
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.user-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 30px 60px rgba(0, 86, 179, 0.12);
+}
+
+/* Línea de acento con degradado en la parte superior */
+.card-accent {
+  height: 12px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  width: 100%;
+}
+
+.card-content {
+  padding: 50px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  background: rgba(0, 86, 179, 0.08);
+  border-radius: 22px; /* Estilo 'Squircle' */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.icon-circle i {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.card-content h3 {
+  font-family: var(--secondary-font);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.card-content p {
+  font-family: var(--primary-font);
+  color: var(--text-gray);
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-bottom: 35px;
+}
+
+.btn-modern {
+  background-color: var(--primary);
+  color: var(--white);
+  font-family: var(--primary-font);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 15px 45px;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  width: 80%; /* Botón ancho como en la imagen */
+}
+
+.btn-modern:hover {
+  background-color: #003d82;
+  box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+  transform: scale(1.02);
+}
+
+/* Ajuste móvil */
+@media (max-width: 480px) {
+  .user-card {
+    width: 100%;
+  }
+}

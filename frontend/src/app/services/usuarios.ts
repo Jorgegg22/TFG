@@ -16,6 +16,7 @@ export class UsuarioC {
   getUsuarios(): Observable<Usuario>{
     return this.http.get<Usuario>(this.URI);
   }
+  
 
 
 

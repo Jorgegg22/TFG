@@ -53,6 +53,10 @@ require FCPATH . '../app/Config/Paths.php';
 
 $paths = new Paths();
 
+if (! defined('ENVIRONMENT')) {
+    define('ENVIRONMENT', 'development');
+}
+
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
 require $paths->systemDirectory . '/Boot.php';
 

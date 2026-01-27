@@ -1,0 +1,48 @@
+<section class="profile-section">
+    <div class="profile-container">
+        
+        <div class="profile-main-card">
+            <div class="profile-header">
+                <div class="avatar-wrapper">
+                    <img src="https://via.placeholder.com/120" alt="Foto de perfil" class="profile-img">
+                    <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
+                </div>
+                <div class="profile-intro">
+                    <h2>Nombre del Usuario</h2>
+                    <p>Estudiante de Ingeniería</p>
+                </div>
+            </div>
+
+            <div class="profile-form-grid">
+                <div class="input-group">
+                    <label>Nombre completo</label>
+                    <input type="text" placeholder="Ej. Alex García">
+                </div>
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" placeholder="alex@univibe.com">
+                </div>
+                <div class="input-group">
+                    <label>Teléfono</label>
+                    <input type="tel" placeholder="+34 600 000 000">
+                </div>
+                <div class="input-group">
+                    <label>Universidad</label>
+                    <select *ngFor="let uni of unis">
+                        <option>{{uni.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn-save">Guardar Cambios</button>
+        </div>
+
+        <aside class="profile-sidebar-card">
+            <div class="empty-state">
+                <i class="fa-solid fa-shield-halved"></i>
+                <p>Verificación de cuenta</p>
+                </div>
+        </aside>
+
+    </div>
+</section>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\UsuariosController;
+use App\Controllers\UniversidadesController;
 use CodeIgniter\Router\RouteCollection;
 
 /**
@@ -10,5 +11,5 @@ $routes->get('/', 'Home::index');
 
 
     $routes->get('api/usuarios', [UsuariosController::class,'index']);
-    $routes->get('pisos/(:num)', 'InmueblesController::show/$1');
+    $routes->get('api/universidades', [UniversidadesController::class,'universidadesLista']);
     $routes->post('match', 'MatchesController::create');

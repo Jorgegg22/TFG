@@ -1,13 +1,4 @@
-:host {
-  display: block;
-  --primary: #0056b3;    /* Azul */
-  --accent: #00d1b2;     /* Turquesa/Verde  */
-  --bg-light: #f5f7fa;   /* Gris */
-  --text-main: #2d3436;
-  --white: #ffffff;
-  --primary-font: 'Times New Roman', Times, serif;
-  --secondary-font: 'Montserrat', sans-serif;
-}
+
 
 
 * {
@@ -261,6 +252,7 @@
 
 .step-card:hover .step-number{
   color: var(--primary);
+  font-family: var(--primary);
 
 }
 .icon-bubble {
@@ -334,6 +326,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: var(--primary-font);
 }
 
 .minimal-features {
@@ -353,11 +346,14 @@
   color: #1a1a1a;
   margin-bottom: 15px;
   letter-spacing: -0.5px;
+  font-family: var(--primary-font);
 }
 
 .features-header p {
   color: #64748b; /* Gris suave */
   font-size: 1.1rem;
+    font-family: var(--secondary-font);
+  
 }
 
 /* El Grid de 3 columnas */
@@ -415,6 +411,7 @@
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 12px;
+  font-family: var(--primary-font);
 }
 
 .feature-item p {
@@ -422,6 +419,7 @@
   line-height: 1.6;
   font-size: 1rem;
   max-width: 300px; /* Evita que el texto se estire demasiado */
+  font-family: var(--secondary-font);
 }
 
 /* Responsive para móvil */
