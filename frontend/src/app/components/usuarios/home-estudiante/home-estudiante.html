@@ -1,11 +1,13 @@
-<nav class="nav-modern">
+
+<div class="wrapper-atributos">
+ <nav class="nav-modern">
   <div class="nav-content">
-    <div class="brand">UniVibe</div>
+    <div class="brand"><div class="logo-univibe-serif" routerLink="/home-estudiante">U</div></div>
     <ul class="menu">
-      <li><a href="#" class="active">Descubrir</a></li>
-      <li><a href="#">Suscripciones</a></li>
-      <li><a href="#">Solicitudes</a></li>
-      <li><a href="#">Perfil</a></li>
+      <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
+      <li><a href="#" routerLinkActive="active">Suscripciones</a></li>
+      <li><a href="#" routerLinkActive="active">Solicitudes</a></li>
+      <li><a href="#" routerLinkActive="active">Perfil</a></li>
     </ul>
     <div class="user-actions">
       <i class="fa-solid fa-bell"></i>
@@ -21,23 +23,22 @@
   
   <div class="layout-grid">
     <section class="main-card image-area">
-      <div class="price-tag">800€ / 200€ p.p</div>
-      
-      <div class="image-wrapper">
-        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200" alt="Piso moderno">
-        
-        <button class="nav-arrow left"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="nav-arrow right"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
+  <div class="price-tag">800€ / 200€ p.p</div>
+  
+  <div class="image-wrapper">
+    <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200" alt="Piso moderno">
+    
+    <button class="nav-arrow left"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="nav-arrow right"><i class="fa-solid fa-chevron-right"></i></button>
 
-      <div class="card-footer">
-        <span class="owner-label">Propietario</span>
-        <div class="quick-actions">
-          <button class="action-btn heart"><i class="fa-solid fa-heart"></i></button>
-          <button class="action-btn dismiss"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-      </div>
-    </section>
+    <div class="quick-actions floating">
+      <button class="action-btn heart"><i class="fa-solid fa-heart"></i></button>
+      <button class="action-btn dismiss"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+     <span class="owner-label">Propietario</span>
+  </div>
+
+</section>
 
     <aside class="main-card info-area">
       <div class="info-header">
@@ -73,3 +74,4 @@
   </div>
 
 </main>
+</div>

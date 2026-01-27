@@ -7,20 +7,48 @@
   --white: #ffffff;
   --primary-font: 'Plus Jakarta Sans', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
-}
-
-body {
-  background-color: var(--bg-body);
-  font-family: var(--secondary-font);
-  margin: 0;
-  color: var(--text-dark);
-  -webkit-font-smoothing: antialiased;
   
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+
 /* NAVBAR BLANCA */
+
+.logo-univibe-serif {
+  /* 1. La Caja Azul */
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3; /* Tu azul corporativo */
+  border-radius: 14px;       /* El redondeado de las esquinas */
+  
+  /* 2. Centrado de la letra */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* 3. La "U" con Serifa (Lo importante) */
+  color: #ffffff;
+  /* Usamos Times New Roman para conseguir esos "pies" o remates arriba */
+  font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold;
+  font-size: 37px; /* Tamaño grande para llenar la caja */
+  line-height: 1;  /* Evita espacios extra arriba/abajo */
+  
+  /* Un pequeño ajuste porque las fuentes con serifa a veces no se ven centradas */
+  padding-top: 4px; 
+  user-select: none; /* Para que no se pueda seleccionar como texto */
+}
+
+.logo-univibe-serif:hover{
+    cursor: pointer;
+}
 .nav-modern {
-  background: var(--white);
+  background: var(--primary);
   height: 70px;
   display: flex;
   align-items: center;
@@ -56,16 +84,20 @@ body {
 
 .menu a {
   text-decoration: none;
-  color: var(--text-dark);
+  color: var(--white);
   font-weight: 600;
   font-size: 0.95rem;
   transition: 0.3s;
 }
 
-.menu a.active, .menu a:hover {
-  color: var(--primary);
+.menu a:hover {
+  color: rgb(202, 202, 202);
 }
 
+.active-link{
+    border-bottom: 2px solid white;
+    padding-bottom: 3px;
+}
 .user-actions {
   display: flex;
   align-items: center;
@@ -84,12 +116,15 @@ body {
 .app-container {
   max-width: 100%;
   margin: 0 auto;
-  height: 100%;
+
   padding: 50px 20px;
+
   
-  background: linear-gradient(90deg, #0056b3, #1666be, #3377c2)
+overflow: hidden;
   
 }
+
+
 
 .layout-grid {
   display: flex;
@@ -109,6 +144,7 @@ body {
 .image-area {
   width: 75%; 
   position: relative;
+  
 }
 
 .image-wrapper {
@@ -144,10 +180,12 @@ body {
   top: 25px;
   left: 25px;
   background: var(--white);
+  font-family: var(--secondary-font);
+
   padding: 10px 20px;
   border-radius: 14px;
-  font-weight: 800;
-  color: var(--primary);
+  font-weight: 500;
+  color: black;
   z-index: 10;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -157,6 +195,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: transparent;
 }
 
 .owner-label {
@@ -167,9 +206,55 @@ body {
   font-weight: 700;
 }
 
-.quick-actions {
+.quick-actions.floating {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
   display: flex;
   gap: 15px;
+  z-index: 20;
+}
+
+/* Estilo mejorado para los botones sobre la imagen */
+.quick-actions.floating .action-btn {
+  width: 60px; /* Un poco más grandes para que se vean bien */
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.8); /* Blanco translúcido */
+  backdrop-filter: blur(8px); /* Efecto cristalizado */
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Colores específicos */
+.quick-actions.floating .heart {
+  color: #ff4757;
+}
+
+.quick-actions.floating .dismiss {
+  color: #2f3542;
+}
+
+/* Animación al pasar el ratón */
+.quick-actions.floating .action-btn:hover {
+  transform: scale(1.15) translateY(-5px);
+  background: white;
+}
+
+.quick-actions.floating .heart:hover {
+  background-color: #ff4757;
+  color: white;
+}
+
+.quick-actions.floating .dismiss:hover {
+  background-color: #2f3542;
+  color: white;
 }
 
 .action-btn {
