@@ -1,48 +1,67 @@
 <section class="profile-section">
-    <div class="profile-container">
-        
-        <div class="profile-main-card">
-            <div class="profile-header">
-                <div class="avatar-wrapper">
-                    <img src="https://via.placeholder.com/120" alt="Foto de perfil" class="profile-img">
-                    <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
-                </div>
-                <div class="profile-intro">
-                    <h2>Nombre del Usuario</h2>
-                    <p>Estudiante de Ingeniería</p>
-                </div>
-            </div>
-
-            <div class="profile-form-grid">
-                <div class="input-group">
-                    <label>Nombre completo</label>
-                    <input type="text" placeholder="Ej. Alex García">
-                </div>
-                <div class="input-group">
-                    <label>Correo Electrónico</label>
-                    <input type="email" placeholder="alex@univibe.com">
-                </div>
-                <div class="input-group">
-                    <label>Teléfono</label>
-                    <input type="tel" placeholder="+34 600 000 000">
-                </div>
-                <div class="input-group">
-                    <label>Universidad</label>
-                    <select *ngFor="let uni of unis">
-                        <option>{{uni.nombre}}</option>
-                    </select>
-                </div>
-            </div>
-            
-            <button class="btn-save">Guardar Cambios</button>
+  <div class="profile-container">
+    <div class="profile-main-card">
+      <div class="profile-header">
+        <div class="avatar-wrapper">
+          <img
+            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            alt="Foto de perfil"
+            class="profile-img"
+          />
+          <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
         </div>
+        <div class="profile-intro">
+          <h2>Nombre del Usuario</h2>
+          <p>Descripcion del Usuario</p>
+        </div>
+      </div>
 
-        <aside class="profile-sidebar-card">
-            <div class="empty-state">
-                <i class="fa-solid fa-shield-halved"></i>
-                <p>Verificación de cuenta</p>
-                </div>
-        </aside>
+      <div class="profile-form-grid">
+        <div class="input-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Ej. Alex García" />
+        </div>
+        <div class="input-group">
+          <label>Correo Electrónico</label>
+          <input type="email" placeholder="alex@univibe.com" />
+        </div>
+        <div class="input-group">
+          <label>Teléfono</label>
+          <input type="tel" placeholder="+34 600 000 000" />
+        </div>
+        <div class="input-group">
+          <label>Descripcion</label>
+          <input type="text" placeholder="Soy..." />
+        </div>
+        <div class="input-group">
+          <label>Elige tu universidad</label>
 
+          <select class="select-uni">
+            <option>VLC - UPV</option>
+          </select>
+        </div>
+        <div class="info-uni">
+          <div class="info-uni-icon">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="info-uni-content">
+            <h4>¿Por qué pedimos tu universidad?</h4>
+            <p>
+              Necesitamos saber dónde estudias para mostrarte los alojamientos más cercanos y
+              conectarte con otros estudiantes de tu misma facultad.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-save">Guardar Cambios</button>
     </div>
+
+    <aside class="profile-sidebar-card">
+      <div class="empty-state">
+        <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+        <p>Aqui se mostraran tus pisos cuando completes el perfil</p>
+      </div>
+    </aside>
+  </div>
 </section>

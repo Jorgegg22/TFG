@@ -1,0 +1,83 @@
+<section class="attributes-section">
+  <div class="attributes-container">
+    <h2 class="selection-title">Elección de Atributos</h2>
+    <p class="selection-subtitle">
+      Selecciona los adjetivos que mejor te describen para encontrar a tus compañeros ideales.
+    </p>
+    <i  (click)="mostrarInfo()" class="fa-solid fa-info info" ></i>
+    <div class="attributes-grid">
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="madrugador" />
+        <div class="tag-content">
+          <i class="fa-solid fa-sun"></i>
+          <span>Madrugador</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="limpio" />
+        <div class="tag-content">
+          <i class="fa-solid fa-broom"></i>
+          <span>Limpio/a</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="petfriendly" />
+        <div class="tag-content">
+          <i class="fa-solid fa-paw"></i>
+          <span>Pet Friendly</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="fumador" />
+        <div class="tag-content">
+          <i class="fa-solid fa-smoking"></i>
+          <span>Fumador/a</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="deportista" />
+        <div class="tag-content">
+          <i class="fa-solid fa-dumbbell"></i>
+          <span>Deportista</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="cocinero" />
+        <div class="tag-content">
+          <i class="fa-solid fa-utensils"></i>
+          <span>Cocinero/a</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="fiestero" />
+        <div class="tag-content">
+          <i class="fa-solid fa-music"></i>
+          <span>Fiestero/a</span>
+        </div>
+      </label>
+
+      <label class="attr-tag">
+        <input type="checkbox" name="attr" value="ordenado" />
+        <div class="tag-content">
+          <i class="fa-solid fa-box-archive"></i>
+          <span>Ordenado/a</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="action-area">
+      <button class="btn-modern">Confirmar Atributos</button>
+    </div>
+    <p class="selection-subtitle" *ngIf="textoInformativo">
+      <strong>Personaliza tu búsqueda.</strong> Los atributos que selecciones nos ayudarán a filtrar
+      posibles compañeros que compartan tu estilo de vida, asegurando una convivencia armoniosa y
+      una mejor experiencia en tu nuevo hogar.
+    </p>
+  </div>
+</section>

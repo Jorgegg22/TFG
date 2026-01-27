@@ -16,10 +16,10 @@ export class PerfilRegistro implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadUniversidades();
+    /* this.loadUniversidades(); */
   }
 
-  loadUniversidades(){
+  /* loadUniversidades(){
     this.unservice.getUniversidades().subscribe({
       next:(value) => {
 
@@ -31,6 +31,6 @@ export class PerfilRegistro implements OnInit {
         console.error(err)
       }
     })
-  }
+  } */
 
 }

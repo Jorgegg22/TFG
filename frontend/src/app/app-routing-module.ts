@@ -5,6 +5,8 @@ import { Login } from './components/login/login';
 import { Registro } from './components/registro/registro';
 import { Eleccion } from './components/eleccion/eleccion';
 import { PerfilRegistro } from './components/perfil-registro/perfil-registro';
+import { Atributos } from './components/usuarios/atributos/atributos';
+import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estudiante';
 
 const routes: Routes = [
   {
@@ -30,6 +32,13 @@ const routes: Routes = [
   {
     path:'registro-perfil',
     component: PerfilRegistro
+  },{
+    path:'atributos',
+    component: Atributos
+  },
+  {
+    path:'home-estudiante',
+    component: HomeEstudiante
   }
 
 
