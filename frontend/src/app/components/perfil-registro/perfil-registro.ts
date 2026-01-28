@@ -24,7 +24,7 @@ export class PerfilRegistro implements OnInit {
       next:(value) => {
 
         console.log(value);
-        this.unis = value;
+        this.unis = Array.isArray(value) ? value : [value];
         
       },
       error:(err) =>{
