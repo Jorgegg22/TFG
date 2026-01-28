@@ -1,0 +1,348 @@
+:host {
+  display: block;
+  --primary: #0056b3; /* Azul */
+  --accent: #00d1b2; /* Turquesa/Verde  */
+  --bg-light: #f5f7fa; /* Gris */
+  --text-main: #2d3436;
+  --white: #ffffff;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+  
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+/* NAVBAR BLANCA */
+
+.logo-univibe-serif {
+  /* 1. La Caja Azul */
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3; /* Tu azul corporativo */
+  border-radius: 14px;       /* El redondeado de las esquinas */
+  
+  /* 2. Centrado de la letra */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* 3. La "U" con Serifa (Lo importante) */
+  color: #ffffff;
+  /* Usamos Times New Roman para conseguir esos "pies" o remates arriba */
+  font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold;
+  font-size: 37px; /* Tamaño grande para llenar la caja */
+  line-height: 1;  /* Evita espacios extra arriba/abajo */
+  
+  /* Un pequeño ajuste porque las fuentes con serifa a veces no se ven centradas */
+  padding-top: 4px; 
+  user-select: none; /* Para que no se pueda seleccionar como texto */
+}
+
+.logo-univibe-serif:hover{
+    cursor: pointer;
+}
+.nav-modern {
+  background: var(--primary);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.nav-content {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.menu {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: rgb(202, 202, 202);
+}
+
+.active-link{
+    border-bottom: 2px solid white;
+    padding-bottom: 3px;
+}
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary);
+}
+
+.profile-circle img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-body);
+}
+
+/* LAYOUT 70% / 23% */
+.app-container {
+  max-width: 100%;
+  margin: 0 auto;
+
+  padding: 50px 20px;
+
+  
+overflow: hidden;
+  
+}
+
+
+
+.layout-grid {
+  display: flex;
+  gap: 3%; /* Espacio de separación del 4% */
+  align-items: flex-start;
+}
+
+.main-card {
+  background: var(--white);
+  border-radius: 22px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.212);
+  overflow: hidden;
+
+}
+
+/* CAJA DE IMAGEN: Más ancha (75%) y más alta (700px) */
+.image-area {
+  width: 75%; 
+  position: relative;
+  
+}
+
+.image-wrapper {
+  height: 650px; /* Altura aumentada */
+  position: relative;
+  
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CAJA DE INFO: El resto del ancho y misma altura */
+.info-area {
+  width: 25%; 
+  padding: 35px;
+  font-family: var(--secondary-font);
+  /* Mantenemos el height: 100% implícito por el stretch del grid */
+}
+
+/* Aseguramos que el grid las mantenga niveladas */
+.layout-grid {
+  display: flex;
+  gap: 3%; 
+  align-items: stretch; 
+    width: 95%;
+}
+
+.price-tag {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: var(--white);
+  font-family: var(--secondary-font);
+
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-weight: 500;
+  color: black;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-footer {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+}
+
+.owner-label {
+  background: var(--accent);
+  color: var(--white);
+  padding: 10px 25px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.quick-actions.floating {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  gap: 15px;
+  z-index: 20;
+}
+
+/* Estilo mejorado para los botones sobre la imagen */
+.quick-actions.floating .action-btn {
+  width: 60px; /* Un poco más grandes para que se vean bien */
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.8); /* Blanco translúcido */
+  backdrop-filter: blur(8px); /* Efecto cristalizado */
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Colores específicos */
+.quick-actions.floating .heart {
+  color: #ff4757;
+}
+
+.quick-actions.floating .dismiss {
+  color: #2f3542;
+}
+
+/* Animación al pasar el ratón */
+.quick-actions.floating .action-btn:hover {
+  transform: scale(1.15) translateY(-5px);
+  background: white;
+}
+
+.quick-actions.floating .heart:hover {
+  background-color: #ff4757;
+  color: white;
+}
+
+.quick-actions.floating .dismiss:hover {
+  background-color: #2f3542;
+  color: white;
+}
+
+.action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-body);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.action-btn.heart { color: #ff4757; }
+.action-btn.dismiss { color: #57606f; }
+.action-btn:hover { transform: scale(1.1); }
+
+/* ESTILOS DE INFO */
+.info-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--primary);
+}
+
+.underline {
+  width: 50px;
+  height: 4px;
+  background: var(--accent);
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.details-list {
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 75%;
+}
+
+.detail-item {
+  margin-bottom: 25px;
+}
+
+.detail-item small {
+  color: var(--text-soft);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.detail-item p {
+  margin: 5px 0 0 0;
+  font-size: 1.1rem;
+}
+
+.btn-primary-vibe {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary-vibe:hover {
+  background: #004494;
+  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.2);
+}
+
+/* COMPAÑEROS DOTS */
+.vibe-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dot { width: 35px; height: 35px; border-radius: 50%; }
+.dot.b-blue { background: var(--primary); }
+.dot.b-accent { background: var(--accent); }
+.dot.b-gray { background: #dcdde1; }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .layout-grid { flex-direction: column; }
+  .image-area, .info-area { width: 100%;}
+}

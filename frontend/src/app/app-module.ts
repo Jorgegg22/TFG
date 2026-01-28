@@ -9,6 +9,8 @@ import { Login } from './components/login/login';
 import { Registro } from './components/registro/registro';
 import { Eleccion } from './components/eleccion/eleccion';
 import { PerfilRegistro } from './components/perfil-registro/perfil-registro';
+import { Atributos } from './components/usuarios/atributos/atributos';
+import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estudiante';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { PerfilRegistro } from './components/perfil-registro/perfil-registro';
     Login,
     Registro,
     Eleccion,
-    PerfilRegistro
+    PerfilRegistro,
+    Atributos,
+    HomeEstudiante,
+
   ],
   imports: [
     BrowserModule,

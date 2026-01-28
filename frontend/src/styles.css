@@ -2,29 +2,28 @@
 
 :root {
   display: block;
-  --primary: #0056b3;    /* Azul */
-  --accent: #00d1b2;     /* Turquesa/Verde  */
-  --bg-light: #f5f7fa;   /* Gris */
+  --primary: #0056b3; /* Azul */
+  --accent: #00d1b2; /* Turquesa/Verde  */
+  --bg-light: #f5f7fa; /* Gris */
   --text-main: #2d3436;
   --white: #ffffff;
---primary-font: 'Plus Jakarta Sans', sans-serif;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
 }
 
-html, body {
+html,
+body {
   margin: 0 !important;
   padding: 0 !important;
   width: 100%;
   height: 100%;
 }
 
-
 app-root {
   display: block;
   margin: 0;
   padding: 0;
 }
-
 
 * {
   margin: 0;

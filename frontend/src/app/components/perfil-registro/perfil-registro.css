@@ -8,18 +8,25 @@
   --secondary-font: 'Montserrat', sans-serif;
 }
 
+body{
+    background-color:#F5F5F7 ;
+}
+
 .profile-section {
     background-color: #fcfcfc; /* Un blanco casi puro */
     padding: 30px 10px;
     min-height: 100vh;
+    
 }
 
 .profile-container {
-    border: 1px solid red;
+
     width: 90%;
     margin: 0 auto;
     display: flex;
     gap: 25px;
+    height: 850px;
+    
 }
 
 /* Tarjeta Principal (Izquierda) */
@@ -27,22 +34,102 @@
     background: var(--white);
     padding: 40px;
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-    border: 1px solid red;
+    box-shadow: 8px 10px 15px rgba(29, 2, 182, 0.137);
     width: 74%;
+
 }
 
 .profile-header {
     display: flex;
     align-items: center;
     gap: 25px;
-    margin-bottom: 40px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 30px;
+    background-color: var(--primary);
+    padding: 30px;
+    border-radius: 22px;
+    height: 150px;
+    margin-bottom: 50px;
+    color: white;
+    font-family: var(--primary-font);
 }
 
 .avatar-wrapper {
     position: relative;
+}
+
+.info-uni {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background-color: var(--info-blue);
+    border-left: 5px solid var(--info-text);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px; /* Ajusta según el espacio al lado de tu select */
+    box-shadow: 0 4px 12px rgba(0, 87, 179, 0.185);
+    animation: fadeIn 0.4s ease-out; /* Animación para cuando aparezca */
+}
+
+.info-uni-icon i {
+    font-size: 1.4rem;
+    color: var(--info-text);
+    margin-top: 2px;
+}
+
+.info-uni-content h4 {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--info-text);
+    margin: 0 0 5px 0;
+}
+
+.info-uni-content p {
+    font-family: var(--primary-font);
+    font-size: 0.9rem;
+    color: #44566c;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.select-uni {
+
+
+  /* Estilo de la caja */
+  width: 100%;
+  max-width: 300px; /* Ajusta según tu diseño */
+  padding: 12px 45px 12px 16px;
+  background-color: #f9fbff;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+
+}
+
+
+.select-uni:hover {
+  border-color: #cbd5e0;
+}
+
+.select-uni:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+}
+
+.select-uni option {
+  padding: 10px;
+  background-color: var(--white);
+  color: var(--text-dark);
 }
 
 .profile-img {
@@ -68,10 +155,12 @@
     font-size: 0.8rem;
 }
 
+
 .profile-intro h2 {
     font-family: var(--secondary-font);
     margin: 0;
     color: var(--text-dark);
+    
 }
 
 .profile-intro p {
@@ -84,6 +173,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    font-family: var(--secondary-font);
 }
 
 .input-group {
@@ -129,10 +219,17 @@
     background: var(--white);
     padding: 30px;
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    box-shadow: 10px 8px 15px rgba(29, 2, 182, 0.137);
     height: fit-content; /* Se ajusta a su contenido */
-    border: 1px dashed #d1d8e0; /* Estilo vacío/placeholder */
+
     width: 23%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    color: white;
+    font-family: var(--primary-font);
 }
 
 .empty-state {

@@ -1,0 +1,149 @@
+:root {
+    --primary: #0056b3;
+    
+    --white: #ffffff;
+    --text-dark: #1d1d1f;
+    --text-gray: #86868b;
+    --primary-font: 'Plus Jakarta Sans', sans-serif;
+    --secondary-font: 'Montserrat', sans-serif;
+}
+
+
+.attributes-section {
+    background-color:  #F5F5F7;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.attributes-container {
+    background: var(--white);
+    max-width: 800px;
+    width: 100%;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    text-align: center;
+}
+
+.info{
+    margin-bottom: 25px;
+    border: 2px solid var(--primary);
+    padding: 7px;
+    width: 35px;
+    height: 35px;
+    border-radius: 220px;
+    color: var(--primary);
+}
+
+.info:hover{
+    background-color: var(--primary);
+    cursor: pointer;
+    color: white;
+}
+
+/* Reutilizando tus estilos de título */
+.selection-title {
+    font-family: var(--secondary-font);
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.selection-subtitle {
+    font-family: var(--primary-font);
+    color: var(--text-gray);
+    margin-bottom: 40px;
+}
+
+/* Grid de Etiquetas */
+.attributes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+/* Ocultar el checkbox real */
+.attr-tag input[type="checkbox"] {
+    display: none;
+}
+
+/* Estilo de la etiqueta (Tag) */
+.tag-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--white);
+    border: 2px solid #edeff2;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--primary-font);
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag-content i {
+    color: var(--text-gray);
+    transition: color 0.3s;
+}
+
+/* EFECTO AL SELECCIONAR (ESTADO ACTIVE) */
+.attr-tag input[type="checkbox"]:checked + .tag-content {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 86, 179, 0.2);
+}
+
+.attr-tag input[type="checkbox"]:checked + .tag-content i {
+    color: var(--white);
+}
+
+/* Hover suave */
+.tag-content:hover {
+    border-color: var(--primary);
+    background: rgba(0, 86, 179, 0.02);
+}
+
+/* Botón de acción */
+.btn-modern {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 16px 40px;
+    border: none;
+    border-radius: 18px;
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.25);
+    background-color: #004494;
+}
+
+.selection-subtitle {
+    font-family: var(--primary-font);
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto 40px auto; 
+    text-wrap: balance; 
+    margin-top: 35px;
+}
+
+.selection-subtitle strong {
+    color: var(--primary); /* Resalta el inicio con tu color azul */
+    font-weight: 700;
+}
