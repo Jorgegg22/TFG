@@ -3,7 +3,7 @@
   --primary: #0056b3; /* Azul */
   --accent: #00d1b2; /* Turquesa/Verde  */
   --bg-light: #f5f7fa; /* Gris */
-  --text-main: #2d3436;
+  --text-main: #232829;
   --white: #ffffff;
   --primary-font: 'Plus Jakarta Sans', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
@@ -24,7 +24,8 @@ body {
   width: 50px;
   height: 50px;
   background-color: #0056b3; /* Tu azul corporativo */
-  border-radius: 14px;       /* El redondeado de las esquinas */
+  border-radius: 14px;  
+  border: 1px solid white;     /* El redondeado de las esquinas */
   
   /* 2. Centrado de la letra */
   display: flex;
@@ -95,8 +96,9 @@ body {
 }
 
 .active-link{
-    border-bottom: 2px solid white;
-    padding-bottom: 3px;
+    border-bottom: 5px solid white;
+    padding-bottom: 22px;
+
 }
 .user-actions {
   display: flex;
@@ -116,21 +118,37 @@ body {
 .app-container {
   max-width: 100%;
   margin: 0 auto;
-
   padding: 50px 20px;
+  overflow: hidden;
 
-  
-overflow: hidden;
   
 }
 
+.app-container::before {
+  content: "";
+  position: fixed; /* Mantiene el efecto 'fixed' que tenías, para que no haga scroll */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ancho de toda la ventana */
+  height: 100vh; /* Alto de toda la ventana */
+  z-index: -1; /* Lo envía detrás del contenido */
 
+  background-image: url('../../../../../public/img/fondo_univibe_logo.png');
 
-.layout-grid {
-  display: flex;
-  gap: 3%; /* Espacio de separación del 4% */
-  align-items: flex-start;
+  /* AJUSTE CLAVE 1: Tamaño más grande */
+  /* En lugar de 50px, probamos con un tamaño mayor para que se "esparzan" más */
+  background-size: 180px; 
+  background-repeat: repeat;
+  background-position: center;
+
+  /* AJUSTE CLAVE 2: Sutileza */
+  opacity: 0.1; /* Valor entre 0.05 y 0.2 para que sea una marca de agua muy suave */
+  
+  /* Opcional: si quieres que las U sean grises en vez de azules para que molesten menos */
+  /* filter: grayscale(100%); */
 }
+
+
 
 .main-card {
   background: var(--white);
@@ -142,26 +160,28 @@ overflow: hidden;
 
 /* CAJA DE IMAGEN: Más ancha (75%) y más alta (700px) */
 .image-area {
-  width: 75%; 
+  width: 105%; 
   position: relative;
-  
+  margin-left: 10px;
+  height: 100%;
+  overflow: hidden; /* Asegura que nada sobresalga de los bordes redondeados */
 }
 
 .image-wrapper {
-  height: 650px; /* Altura aumentada */
+  height: 100%; /* Que ocupe el 100% de .image-area (que son 700px) */
   position: relative;
-  
 }
 
 .image-wrapper img {
   width: 100%;
-  height: 100%;
+  height: 100%; /* Cambiado de 105% a 100% */
   object-fit: cover;
+  display: block; /* Elimina el espacio de reserva para descendentes de texto */
 }
 
 /* CAJA DE INFO: El resto del ancho y misma altura */
 .info-area {
-  width: 25%; 
+  width: 23%; 
   padding: 35px;
   font-family: var(--secondary-font);
   /* Mantenemos el height: 100% implícito por el stretch del grid */
@@ -170,9 +190,10 @@ overflow: hidden;
 /* Aseguramos que el grid las mantenga niveladas */
 .layout-grid {
   display: flex;
-  gap: 3%; 
-  align-items: stretch; 
+  gap: 1%;  
     width: 95%;
+    margin-left: 29px;
+    height: 700px;
 }
 
 .price-tag {
@@ -180,11 +201,11 @@ overflow: hidden;
   top: 25px;
   left: 25px;
   background: var(--white);
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
 
   padding: 10px 20px;
   border-radius: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: black;
   z-index: 10;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -199,11 +220,16 @@ overflow: hidden;
 }
 
 .owner-label {
-  background: var(--accent);
+  background: var(--primary);
   color: var(--white);
   padding: 10px 25px;
   border-radius: 12px;
   font-weight: 700;
+  position: absolute;
+  bottom: 20px;
+  font-family: var(--primary-font);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  
 }
 
 .quick-actions.floating {
@@ -276,13 +302,13 @@ overflow: hidden;
 .info-header h1 {
   font-size: 1.8rem;
   margin: 0;
-  color: var(--primary);
+  color: var(--text-main);
 }
 
 .underline {
   width: 50px;
   height: 4px;
-  background: var(--accent);
+  background: var(--primary);
   margin-top: 10px;
   border-radius: 10px;
 }
@@ -302,13 +328,14 @@ overflow: hidden;
 
 .detail-item small {
   color: var(--text-soft);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
 .detail-item p {
   margin: 5px 0 0 0;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
 }
 
 .btn-primary-vibe {

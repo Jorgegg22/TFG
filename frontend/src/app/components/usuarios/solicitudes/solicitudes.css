@@ -1,0 +1,306 @@
+:host {
+  display: block;
+  --primary: #0056b3; /* Azul */
+  --accent: #00d1b2; /* Turquesa/Verde  */
+  --bg-light: #f5f7fa; /* Gris */
+  --text-main: #232829;
+  --white: #ffffff;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+   1. NAVBAR (Header) - SE MANTIENE IGUAL
+   ========================================= */
+
+.logo-univibe-serif {
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3; 
+  border-radius: 14px;  
+  border: 1px solid white;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold;
+  font-size: 37px; 
+  line-height: 1; 
+  padding-top: 4px; 
+  user-select: none; 
+}
+
+.logo-univibe-serif:hover{
+    cursor: pointer;
+}
+
+.nav-modern {
+  background: var(--primary);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.nav-content {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.menu {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  opacity: 0.8; /* Un poco transparente por defecto */
+}
+
+.menu a:hover {
+  opacity: 1;
+}
+
+/* Estilo para el link activo (Solicitudes) */
+.active-link{
+    border-bottom: 3px solid white; /* Línea blanca abajo */
+    padding-bottom: 21px; /* Ajuste para que toque el borde del nav */
+    opacity: 1 !important;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary);
+}
+
+.profile-circle img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-body);
+}
+
+/* =========================================
+   2. APP CONTAINER - SE MANTIENE IGUAL
+   ========================================= */
+
+.app-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 50px 20px;
+  overflow: hidden;
+  position: relative; /* Necesario para el ::before */
+  min-height: 80vh;
+}
+
+/* Fondo con patrón de "U" */
+.app-container::before {
+  content: "";
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw; 
+  height: 100vh; 
+  z-index: -1; 
+
+  background-image: url('../../../../../public/img/fondo_univibe_logo.png');
+  background-size: 180px; 
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.1; 
+}
+
+/* =========================================
+   3. ESTILOS DE SOLICITUDES (NUEVO)
+   ========================================= */
+
+/* Wrapper para centrar el contenido de la carpeta */
+.solicitudes-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-family: var(--primary-font);
+}
+
+/* --- PESTAÑAS (TABS) --- */
+.tabs-header {
+  display: flex;
+  gap: 10px; /* Espacio entre pestañas */
+  padding-left: 0; 
+  margin-bottom: -1px; /* Truco visual: se solapa 1px con la tarjeta para unirla */
+  position: relative;
+  z-index: 10;
+}
+
+.tab-btn {
+  padding: 15px 40px;
+  border-radius: 16px 16px 0 0; /* Redondeado solo arriba */
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Pestaña ACTIVA: Blanca (se funde con la tarjeta) */
+.tab-btn.active {
+  background-color: var(--white);
+  color: var(--primary);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.05); /* Sombra suave arriba */
+  position: relative;
+}
+
+/* Pestaña INACTIVA: Azul (parece estar detrás) */
+.tab-btn.inactive {
+  background-color: var(--primary);
+  color: rgba(255, 255, 255, 0.7);
+  transform: translateY(2px); /* Un poco más abajo para efecto profundidad */
+}
+
+.tab-btn.inactive:hover {
+  background-color: #004494;
+  color: var(--white);
+  transform: translateY(0);
+}
+
+/* --- TARJETA PRINCIPAL (CUERPO DE LA CARPETA) --- */
+.main-card.solicitudes-card {
+  background: var(--white);
+  border-radius: 22px;
+  /* IMPORTANTE: Quitamos el borde redondeado arriba a la izquierda para conectar con la pestaña activa */
+  border-top-left-radius: 0; 
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
+  overflow: visible; /* Visible para que la flecha pueda salir si quisiéramos, o para sombras */
+  padding: 60px;
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+}
+
+/* --- GRID DE CASAS --- */
+.houses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 Columnas */
+  gap: 30px; /* Espacio entre cuadros */
+  width: 90%; /* Dejamos un 10% a la derecha para la flecha */
+}
+
+/* --- ITEM INDIVIDUAL (CASA) --- */
+.house-item {
+  background-color: var(--primary); /* Azul corporativo */
+  aspect-ratio: 1 / 1; /* Cuadrado perfecto */
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  position: relative;
+}
+
+.house-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 86, 179, 0.3);
+  background-color: #004e9f; /* Un pelín más oscuro al hover */
+}
+
+.house-name {
+  color: var(--white);
+  font-family: var(--primary-font);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* --- BOTÓN FLECHA DERECHA --- */
+.nav-arrow-next {
+  position: absolute;
+  right: 30px; /* Posicionada a la derecha absoluta de la tarjeta */
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f0f2f5; /* Gris muy claro */
+  border: none;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.nav-arrow-next:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.2);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .houses-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    width: 100%;
+  }
+  
+  .nav-arrow-next {
+    display: none; /* Ocultar flecha en pantallas medianas/pequeñas */
+  }
+  
+  .main-card.solicitudes-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .houses-grid {
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+    gap: 20px;
+  }
+  
+  .tab-btn {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+  
+  .solicitudes-wrapper {
+    margin-top: 10px;
+  }
+}

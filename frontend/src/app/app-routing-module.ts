@@ -7,6 +7,7 @@ import { Eleccion } from './components/eleccion/eleccion';
 import { PerfilRegistro } from './components/perfil-registro/perfil-registro';
 import { Atributos } from './components/usuarios/atributos/atributos';
 import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estudiante';
+import { Solicitudes } from './components/usuarios/solicitudes/solicitudes';
 
 const routes: Routes = [
   {
@@ -39,6 +40,9 @@ const routes: Routes = [
   {
     path:'home-estudiante',
     component: HomeEstudiante
+  },{
+    path:'solicitudes-estudiante',
+    component:Solicitudes
   }
 
 

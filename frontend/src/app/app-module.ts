@@ -11,6 +11,8 @@ import { Eleccion } from './components/eleccion/eleccion';
 import { PerfilRegistro } from './components/perfil-registro/perfil-registro';
 import { Atributos } from './components/usuarios/atributos/atributos';
 import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estudiante';
+import { Solicitudes } from './components/usuarios/solicitudes/solicitudes';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estud
     PerfilRegistro,
     Atributos,
     HomeEstudiante,
+    Solicitudes,
+   
 
   ],
   imports: [
