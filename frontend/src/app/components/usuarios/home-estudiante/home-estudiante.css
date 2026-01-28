@@ -368,6 +368,20 @@ body {
 .dot.b-accent { background: var(--accent); }
 .dot.b-gray { background: #dcdde1; }
 
+
+.filtros{
+  width: 93%;
+  height: 120px;
+  margin-left: 52px;
+  border-radius: 22px;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: var(--secondary-font);
+  color: white;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1000px) {
   .layout-grid { flex-direction: column; }

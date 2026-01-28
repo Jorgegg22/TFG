@@ -1,45 +1,96 @@
 :host {
   display: block;
-  --primary: #0056b3; /* Azul */
-  --accent: #00d1b2; /* Turquesa/Verde  */
-  --bg-light: #f5f7fa; /* Gris */
+  --primary: #0056b3; 
+  --accent: #00d1b2; 
+  --bg-light: #f5f7fa; 
   --text-main: #232829;
   --white: #ffffff;
   --primary-font: 'Plus Jakarta Sans', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+/* =========================================
+   1. ESTRUCTURA Y FONDO (PROTEGIDO)
+   ========================================= */
+
+.wrapper-atributos {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Elimina el scroll de la página */
+  background-color: var(--bg-light);
 }
 
+.app-container {
+  flex: 1;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  position: relative; 
+  overflow: hidden; 
+
+  
+}
+
+/* Tu fondo original con patrón de "U" */
+.app-container::before {
+  content: "";
+  position: fixed; /* Mantiene el efecto 'fixed' que tenías, para que no haga scroll */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ancho de toda la ventana */
+  height: 100vh; /* Alto de toda la ventana */
+  z-index: -1; /* Lo envía detrás del contenido */
+
+  background-image: url('../../../../../public/img/fondo_univibe_logo.png');
+
+  /* AJUSTE CLAVE 1: Tamaño más grande */
+  /* En lugar de 50px, probamos con un tamaño mayor para que se "esparzan" más */
+  background-size: 180px; 
+  background-repeat: repeat;
+  background-position: center;
+
+  /* AJUSTE CLAVE 2: Sutileza */
+  opacity: 0.1; /* Valor entre 0.05 y 0.2 para que sea una marca de agua muy suave */
+  
+  /* Opcional: si quieres que las U sean grises en vez de azules para que molesten menos */
+  /* filter: grayscale(100%); */
+}
+
+
 /* =========================================
-   1. NAVBAR (Header) - SE MANTIENE IGUAL
+   2. NAVBAR (SE MANTIENE TU ESTILO)
    ========================================= */
 
 .logo-univibe-serif {
+  /* 1. La Caja Azul */
   width: 50px;
   height: 50px;
-  background-color: #0056b3; 
+  background-color: #0056b3; /* Tu azul corporativo */
   border-radius: 14px;  
-  border: 1px solid white;    
+  border: 1px solid white;     /* El redondeado de las esquinas */
+  
+  /* 2. Centrado de la letra */
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  /* 3. La "U" con Serifa (Lo importante) */
   color: #ffffff;
+  /* Usamos Times New Roman para conseguir esos "pies" o remates arriba */
   font-family: 'Times New Roman', Times, serif; 
   font-weight: bold;
-  font-size: 37px; 
-  line-height: 1; 
+  font-size: 37px; /* Tamaño grande para llenar la caja */
+  line-height: 1;  /* Evita espacios extra arriba/abajo */
+  
+  /* Un pequeño ajuste porque las fuentes con serifa a veces no se ven centradas */
   padding-top: 4px; 
-  user-select: none; 
+  user-select: none; /* Para que no se pueda seleccionar como texto */
 }
 
 .logo-univibe-serif:hover{
     cursor: pointer;
 }
-
 .nav-modern {
   background: var(--primary);
   height: 70px;
@@ -81,20 +132,17 @@ body {
   font-weight: 600;
   font-size: 0.95rem;
   transition: 0.3s;
-  opacity: 0.8; /* Un poco transparente por defecto */
 }
 
 .menu a:hover {
-  opacity: 1;
+  color: rgb(202, 202, 202);
 }
 
-/* Estilo para el link activo (Solicitudes) */
 .active-link{
-    border-bottom: 3px solid white; /* Línea blanca abajo */
-    padding-bottom: 21px; /* Ajuste para que toque el borde del nav */
-    opacity: 1 !important;
-}
+    border-bottom: 5px solid white;
+    padding-bottom: 22px;
 
+}
 .user-actions {
   display: flex;
   align-items: center;
@@ -109,198 +157,165 @@ body {
   border: 2px solid var(--bg-body);
 }
 
-/* =========================================
-   2. APP CONTAINER - SE MANTIENE IGUAL
-   ========================================= */
-
-.app-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 50px 20px;
+/* --- LAYOUT DE DOBLE COLUMNA --- */
+.main-card.solicitudes-card.dual-column {
+  display: flex;
+  flex-direction: row;
+  padding: 0; /* Quitamos el padding general para que las columnas lleguen al borde */
+  align-items: stretch;
   overflow: hidden;
-  position: relative; /* Necesario para el ::before */
-  min-height: 80vh;
+ 
+  gap: 10px;
+  
 }
 
-/* Fondo con patrón de "U" */
-.app-container::before {
-  content: "";
-  position: fixed; 
-  top: 0;
-  left: 0;
-  width: 100vw; 
-  height: 100vh; 
-  z-index: -1; 
-
-  background-image: url('../../../../../public/img/fondo_univibe_logo.png');
-  background-size: 180px; 
-  background-repeat: repeat;
-  background-position: center;
-  opacity: 0.1; 
-}
-
-/* =========================================
-   3. ESTILOS DE SOLICITUDES (NUEVO)
-   ========================================= */
-
-/* Wrapper para centrar el contenido de la carpeta */
-.solicitudes-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  margin-top: 20px;
-  font-family: var(--primary-font);
-}
-
-/* --- PESTAÑAS (TABS) --- */
-.tabs-header {
+.solicitudes-column {
+  flex: 1;
   display: flex;
-  gap: 10px; /* Espacio entre pestañas */
-  padding-left: 0; 
-  margin-bottom: -1px; /* Truco visual: se solapa 1px con la tarjeta para unirla */
-  position: relative;
-  z-index: 10;
+  flex-direction: column;
+  padding: 40px;
+   background-color:var(--bg-light);
+   border-radius: 22px;
+   box-shadow: 
+    inset -8px -8px 4px rgba(0, 0, 0, 0.164),   /* Sombra negra profunda */ 
+    inset -1px -1px 4px rgba(0, 0, 0, 0.062);
+
+  height: 800px;
+
 }
 
-.tab-btn {
-  padding: 15px 40px;
-  border-radius: 16px 16px 0 0; /* Redondeado solo arriba */
+/* Divisor vertical minimalista */
+.vertical-divider {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.05), transparent);
+  margin: 40px 0;
+}
+
+/* Cabeceras de columna */
+.column-header {
+  margin-bottom: 25px;
+}
+
+.column-header h3 {
   font-family: var(--primary-font);
-  font-weight: 700;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Pestaña ACTIVA: Blanca (se funde con la tarjeta) */
-.tab-btn.active {
-  background-color: var(--white);
   color: var(--primary);
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.05); /* Sombra suave arriba */
-  position: relative;
-}
-
-/* Pestaña INACTIVA: Azul (parece estar detrás) */
-.tab-btn.inactive {
-  background-color: var(--primary);
-  color: rgba(255, 255, 255, 0.7);
-  transform: translateY(2px); /* Un poco más abajo para efecto profundidad */
-}
-
-.tab-btn.inactive:hover {
-  background-color: #004494;
-  color: var(--white);
-  transform: translateY(0);
-}
-
-/* --- TARJETA PRINCIPAL (CUERPO DE LA CARPETA) --- */
-.main-card.solicitudes-card {
-  background: var(--white);
-  border-radius: 22px;
-  /* IMPORTANTE: Quitamos el borde redondeado arriba a la izquierda para conectar con la pestaña activa */
-  border-top-left-radius: 0; 
-  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
-  overflow: visible; /* Visible para que la flecha pueda salir si quisiéramos, o para sombras */
-  padding: 60px;
-  min-height: 500px;
-  position: relative;
+  font-size: 1.3rem;
+  font-weight: 800;
   display: flex;
-  align-items: center; /* Centrar verticalmente */
-}
-
-/* --- GRID DE CASAS --- */
-.houses-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 Columnas */
-  gap: 30px; /* Espacio entre cuadros */
-  width: 90%; /* Dejamos un 10% a la derecha para la flecha */
-}
-
-/* --- ITEM INDIVIDUAL (CASA) --- */
-.house-item {
-  background-color: var(--primary); /* Azul corporativo */
-  aspect-ratio: 1 / 1; /* Cuadrado perfecto */
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-  position: relative;
+  gap: 12px;
 }
 
-.house-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0, 86, 179, 0.3);
-  background-color: #004e9f; /* Un pelín más oscuro al hover */
+.column-header span {
+  background: var(--primary);
+  color: var(--bg-light);
+  font-size: 0.9rem;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 600;
 }
 
-.house-name {
-  color: var(--white);
+/* Grid con scroll independiente por columna */
+.column-grid-scroll {
+ padding-right: 10px;
+  margin-top: 10px;
+  flex: 1;
+
+
+}
+
+/* Scrollbar minimalista para no romper la estética */
+.column-grid-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.column-grid-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 86, 179, 0.1);
+  border-radius: 10px;
+}
+
+/* Ajuste de carta para el formato columna */
+.house-item.mini {
+  aspect-ratio: 1 / 1; /* Cuadradas para que quepan mejor en el grid doble */
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+
+/* Título de la página */
+.section-title-modern {
+  margin-bottom: 20px;
+  width: 370px;
+  border-radius: 22px;
+  background-color: var(--primary);
+  padding: 20px;
+  
+
+}
+
+.section-title-modern h2 {
+   color: rgb(255, 255, 255); /* Resalta sobre tu fondo azul/patrón */
   font-family: var(--primary-font);
   font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 1.8rem;
 }
 
-/* --- BOTÓN FLECHA DERECHA --- */
+/* FLECHA DE NAVEGACIÓN */
 .nav-arrow-next {
   position: absolute;
-  right: 30px; /* Posicionada a la derecha absoluta de la tarjeta */
+  right: 25px;
   top: 50%;
   transform: translateY(-50%);
-  
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #f0f2f5; /* Gris muy claro */
-  border: none;
-  color: var(--text-main);
-  font-size: 1.2rem;
+  width: 55px; height: 55px; border-radius: 50%;
+  background: var(--bg-light);
+  border: none; color: var(--primary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; justify-content: center; align-items: center;
   transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .nav-arrow-next:hover {
-  background-color: var(--primary);
+  background: var(--primary);
   color: var(--white);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.2);
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  .houses-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
-    width: 100%;
-  }
-  
-  .nav-arrow-next {
-    display: none; /* Ocultar flecha en pantallas medianas/pequeñas */
-  }
-  
-  .main-card.solicitudes-card {
-    padding: 30px;
-  }
+.house-overlay{
+  width: 100%;
+  border-radius: 22px;
+  padding: 10px;
+  height: 115px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  transition: all 0.1s linear;
+  transform: translateY(0);
 }
 
-@media (max-width: 600px) {
-  .houses-grid {
-    grid-template-columns: 1fr; /* 1 columna en móvil */
-    gap: 20px;
-  }
-  
-  .tab-btn {
-    padding: 12px 25px;
-    font-size: 0.9rem;
-  }
-  
-  .solicitudes-wrapper {
-    margin-top: 10px;
-  }
+.house-overlay:hover{
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
+  transform: translateY(-10px);
+  z-index: 1000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.house-info{
+
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 22px;
+}
+
+
+.solicitud-imagen{
+  width: 110px;
+  border-radius: 10px;
 }

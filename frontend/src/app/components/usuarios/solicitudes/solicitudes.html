@@ -1,12 +1,12 @@
-<div class="wrapper-atributos">
+<div class="wrapper-solicitudes">
   <nav class="nav-modern">
     <div class="nav-content">
       <div class="brand">
         <div class="logo-univibe-serif" routerLink="/home-estudiante">U</div>
       </div>
       <ul class="menu">
-        <li><a routerLink="/home-estudiante">Descubrir</a></li>
-        <li><a routerLink="/solicitudes-estudiante" class="active-link">Solicitudes</a></li>
+        <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
+        <li><a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a></li>
         <li><a href="#">Perfil</a></li>
       </ul>
       <div class="user-actions">
@@ -19,51 +19,71 @@
     </div>
   </nav>
 
-  <main class="app-container">
-    
+  <main class="app-container no-scroll">
     <div class="solicitudes-wrapper">
       
-      <div class="tabs-header">
-        <button class="tab-btn active">Enviadas</button>
-        <button class="tab-btn inactive">Aceptadas</button>
+      <div class="section-title-modern">
+        <h2>Gestión de Solicitudes</h2>
       </div>
 
-      <section class="main-card solicitudes-card">
+      <section class="main-card solicitudes-card dual-column">
         
-        <div class="houses-grid">
-          
-          <article class="house-item">
-            <span class="house-name">CASA 1</span>
-          </article>
-          
-          <article class="house-item">
-            <span class="house-name">CASA 2</span>
-          </article>
-
-          <article class="house-item">
-            <span class="house-name">CASA 3</span>
-          </article>
-
-          <article class="house-item">
-            <span class="house-name">CASA 4</span>
-          </article>
-
-          <article class="house-item">
-            <span class="house-name">CASA 5</span>
-          </article>
-
-          <article class="house-item">
-            <span class="house-name">CASA 6</span>
-          </article>
-
+        <div class="solicitudes-column">
+          <div class="column-header">
+            <h3>Enviadas <span>6</span></h3>
+          </div>
+ 
+            <article class="house-item mini" style="background-image: url('assets/casa1.jpg')">
+              <div class="house-overlay">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
+                <div class="house-info">
+                  <span class="house-name">Casa Albaicín</span>
+                  <span class="precio">800€</span>
+                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
+                </div>
+              </div>
+            </article>
+         
         </div>
 
-        <button class="nav-arrow-next">
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
+        <div class="vertical-divider"></div>
+
+        <div class="solicitudes-column">
+          <div class="column-header">
+            <h3>Aceptadas <span>2</span></h3>
+          </div>
+
+            <article class="house-item mini" style="background-image: url('assets/casa2.jpg')">
+              <div class="house-overlay">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
+                <div class="house-info">
+                  <span class="house-name">Casa Albaicín</span>
+                  <span class="precio">800€</span>
+                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
+                </div>
+              </div>
+              <div class="house-overlay">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
+                <div class="house-info">
+                  <span class="house-name">Casa Albaicín</span>
+                  <span class="precio">800€</span>
+                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
+                </div>
+              </div>
+              <div class="house-overlay">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
+                <div class="house-info">
+                  <span class="house-name">Casa Albaicín</span>
+                  <span class="precio">800€</span>
+                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
+                </div>
+              </div>
+            </article>
+    
+        </div>
 
       </section>
-
     </div>
   </main>
+
 </div>
