@@ -10,6 +10,11 @@ import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estud
 import { Solicitudes } from './components/usuarios/solicitudes/solicitudes';
 import { Perfil } from './components/usuarios/perfil/perfil';
 import { VistaPiso } from './components/vista-piso/vista-piso';
+import { HomePropietario } from './components/propietarios/home-propietario/home-propietario';
+import { InmueblesPropietario } from './components/propietarios/inmuebles-propietario/inmuebles-propietario';
+import { Publicar } from './components/propietarios/publicar/publicar';
+import { PerfilPropietario } from './components/propietarios/perfil-propietario/perfil-propietario';
+import { VistaInmueblePropietario } from './components/propietarios/vista-inmueble-propietario/vista-inmueble-propietario';
 
 const routes: Routes = [
   {
@@ -51,6 +56,21 @@ const routes: Routes = [
   },{
     path:'piso-detalle',
     component: VistaPiso
+  },{
+    path:'home-propietario',
+    component:HomePropietario
+  },{
+    path:'inmuebles-propietario',
+    component:InmueblesPropietario
+  },{
+    path:'publicar',
+    component:Publicar
+  },{
+    path:'perfil-propietario',
+    component:PerfilPropietario
+  },{
+    path:'vista-inmueble',
+    component:VistaInmueblePropietario
   }
 
 

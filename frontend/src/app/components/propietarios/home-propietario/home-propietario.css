@@ -1,0 +1,398 @@
+:host {
+  display: block;
+  --primary: #0056b3;
+  --primary-dark: #004494;
+  --accent: #00d1b2;
+  --text-dark: #1e272e;
+  --text-gray: #718093;
+  --white: #ffffff;
+  --bg-body: #F5F5F7;
+  --border-color: #edf2f7;
+  --primary-font: 'Montserrat', sans-serif;
+  --secondary-font: 'Plus Jakarta Sans', sans-serif;
+  
+}
+
+/* =========================================
+   ESTRUCTURA GENERAL
+   ========================================= */
+
+.owner-home {
+  background-color: var(--bg-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Fondo de logos U (Marca de agua) */
+.owner-home::before {
+  content: "";
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0;
+  background-image: url('../../../../../public/assets/img/fondo_univibe_logo.png');
+  background-size: 480px; background-repeat: repeat; background-position: center; opacity: 0.08; 
+  pointer-events: none;
+}
+
+/* Navbar (Reutilizado - Aseguramos z-index alto) */
+.nav-modern {
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   1. NAVBAR (SIN CAMBIOS)
+   ========================================= */
+.nav-modern {
+  background: var(--primary);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.nav-content {
+  width: 95%; /* Un poco más ancho para alinear con el grid de abajo */
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-univibe-serif {
+  width: 50px; height: 50px; background-color: #0056b3;
+  border-radius: 14px; border: 1px solid white;    
+  display: flex; justify-content: center; align-items: center;
+  color: #ffffff; font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold; font-size: 37px; padding-top: 4px; user-select: none;
+}
+.logo-univibe-serif:hover { cursor: pointer; }
+
+.menu { display: flex; gap: 35px; list-style: none; margin: 0; }
+.menu a { text-decoration: none; color: var(--white); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+.menu a:hover { color: rgb(202, 202, 202); }
+.active-link { border-bottom: 5px solid white; padding-bottom: 22px; }
+
+.user-actions { display: flex; align-items: center; gap: 20px; color: var(--primary); }
+.profile-circle img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--bg-body); }
+
+
+/* =========================================
+   DASHBOARD SUPERIOR (Compacto)
+   ========================================= */
+
+.dashboard-container {
+  width: 95%; /* Ocupa casi todo el ancho */
+  max-width: 1600px;
+  margin: 20px auto 0 auto; /* Poco margen arriba */
+  position: relative;
+  z-index: 1;
+  flex: 1; /* Empuja el footer o la parte de abajo si fuera necesario */
+}
+
+.welcome-title {
+  font-family: var(--secondary-font);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.top-dashboard-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Columna Izq Fija (KPI), Derecha Flexible (Actividad) */
+  gap: 20px; /* Gap reducido */
+  height: 380px; /* Altura fija para que quede alineado y compacto */
+}
+
+/* --- TARJETA KPI (SOLICITUDES) --- */
+.kpi-card {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 20px;
+  padding: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 86, 179, 0.25);
+}
+
+.kpi-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-family: var(--primary-font);
+}
+
+.kpi-number {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+  font-family: var(--primary-font);
+}
+
+.kpi-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  display: block;
+  margin-bottom: 25px;
+  margin-top: 5px;
+}
+
+.btn-kpi-action {
+  background: white;
+  color: var(--primary);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-kpi-action:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.kpi-bg-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 12rem;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+/* --- TARJETA ACTIVIDAD --- */
+.activity-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.activity-card h3 {
+  margin: 0 0 20px 0;
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Sin gap, usamos bordes */
+  overflow-y: auto; /* Scroll si hay muchas */
+  flex: 1;
+  font-family: var(--secondary-font);
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.user-name {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1rem;
+  display: block;
+}
+
+.action-text {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+.action-text strong { color: var(--primary); font-weight: 600; }
+
+.activity-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+.btn-icon.accept { background: #e8f5e9; color: #2e7d32; }
+.btn-icon.accept:hover { background: #2e7d32; color: white; }
+
+.btn-icon.reject { background: #ffebee; color: #c62828; }
+.btn-icon.reject:hover { background: #c62828; color: white; }
+
+.link-profile {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.link-profile:hover { text-decoration: underline; }
+
+
+/* =========================================
+   SECCIÓN INFERIOR (MIS INMUEBLES - FULL WIDTH)
+   ========================================= */
+
+.bottom-section-full {
+  margin-top: 30px; /* Un poco de separación del bloque superior */
+  background: white;
+  width: 100%;
+  flex: 1; /* Ocupa todo el espacio restante hasta abajo */
+  padding: 25px 3%; /* Padding lateral interno, pero la caja toca los bordes de pantalla */
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  /* IMPORTANTE: Para que llegue al borde en resoluciones grandes si el grid no lo hace */
+  box-sizing: border-box;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  max-width: 1600px;
+  width: 100%;
+  margin-left: auto; margin-right: auto;
+}
+
+.section-header-row h2 {
+  font-family: var(--secondary-font);
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.btn-add-new {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+.btn-add-new:hover { background: var(--primary-dark); }
+
+.properties-scroll-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Scroll horizontal si hay muchos */
+  padding-bottom: 10px; /* Espacio para la barra de scroll */
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Tarjeta Mini de Inmueble */
+.property-card-mini {
+  min-width: 220px;
+  width: 220px;
+  height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid var(--border-color);
+}
+
+.property-card-mini:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.property-card-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info sobre la imagen (Gradiente) */
+.prop-info {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  padding: 20px 15px 15px 15px;
+  color: white;
+}
+
+.prop-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-badge.active { background: #2ecc71; color: white; }
+.status-badge.draft { background: #95a5a6; color: white; }
+.status-badge.occupied { background: #e74c3c; color: white; }
+
+/* Placeholder para añadir nuevo (opcional) */
+.add-placeholder {
+  width: 100%; height: 100%;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-weight: 700;
+  gap: 10px;
+}
+.add-placeholder i { font-size: 2rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .top-dashboard-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .kpi-card { height: 250px; }
+  .activity-card { height: auto; }
+}

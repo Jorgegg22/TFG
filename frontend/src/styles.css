@@ -31,3 +31,7 @@ app-root {
   box-sizing: border-box;
 }
 
+.active-link {
+  border-bottom: 5px solid white;
+  padding-bottom: 22px;
+}
