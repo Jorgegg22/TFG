@@ -1,111 +1,67 @@
-
-
+/* =========================================
+   VARIABLES Y RESET
+   ========================================= */
+:root {
+  --primary: #0056b3;
+  --secondary: #64748b;
+  --dark: #1a1a1a;
+  --light: #f8fafc;
+  --white: #ffffff;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
 
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
-/* Header */
-.logo-link {
+body {
+  font-family: var(--primary-font);
+  background-color: var(--white);
+  color: var(--dark);
+}
+
+a {
   text-decoration: none;
-  display: inline-block;
+  color: inherit;
 }
 
-/* El contenedor que pega los elementos */
-.brand-container {
-  display: flex;
-  align-items: center; 
-  gap: 4px; /* Muy pegado como querías */
-  transition: transform 0.2s ease;
-}
+/* =========================================
+   HEADER Y NAV
+   ========================================= */
 
-
-
-.logo-univibe-serif {
-  /* 1. La Caja Azul */
-  width: 50px;
-  height: 50px;
-  background-color: #0056b3; /* Tu azul corporativo */
-  border-radius: 14px;       /* El redondeado de las esquinas */
-  
-  /* 2. Centrado de la letra */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  /* 3. La "U" con Serifa (Lo importante) */
-  color: #ffffff;
-  /* Usamos Times New Roman para conseguir esos "pies" o remates arriba */
-  font-family: 'Times New Roman', Times, serif; 
-  font-weight: bold;
-  font-size: 37px; /* Tamaño grande para llenar la caja */
-  line-height: 1;  /* Evita espacios extra arriba/abajo */
-  
-  /* Un pequeño ajuste porque las fuentes con serifa a veces no se ven centradas */
-  padding-top: 4px; 
-  user-select: none; /* Para que no se pueda seleccionar como texto */
-}
-
-.brand-text {
-  color: #0056b3; /* Usamos el azul corporativo */
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;          
-  font-size: 1.6rem;
-  letter-spacing: -1.2px; /* Letras juntas */
-  margin-left: -1px; /* Pegado extra al cuadro */
-}
-
-/* Ajuste para el Header: Asegurar que el logo no empuje los botones */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 5%;
-  background-color: white; /* Ahora que el logo es azul, mejor fondo blanco */
-  border-bottom: 1px solid #eee;
-}
-
-.auth-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.btn {
-  padding: 10px 20px;
-  border-radius: 8px; 
-  border: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-
-
-/* Hero Section con Degradado */
-
-
-/* Barra superior */
 .hero {
   position: relative;
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* Fondo con imagen y degradado oscuro */
   background: 
-  linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 100%),
-  url('../../../../public/img/hero-image.jpg') no-repeat center center;
+    linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 100%),
+    url('../../../../public/assets/img/hero-image.jpg') no-repeat center center;
   background-size: cover;
+  overflow: hidden; /* Evita scrolls raros */
 }
 
+/* El menú se coloca SOBRE el hero de forma absoluta */
 .hero-nav {
+  position: absolute; /* CLAVE: Lo sacamos del flujo para pegarlo arriba */
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 8%;
-  z-index: 10;
-  margin-top: -65px;
+  padding: 25px 8%; /* Un poco más de aire */
+  z-index: 100; /* Aseguramos que esté por encima de todo */
+}
+
+/* LOGO */
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
 }
 
 .brand-container {
@@ -114,25 +70,82 @@
   gap: 8px;
 }
 
-.logo-box {
-  background-color: #0056b3;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
+.logo-univibe-serif {
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3; /* Azul corporativo */
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.2); /* Borde sutil para resaltar sobre fondo oscuro */
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 1;
+  padding-top: 4px;
+  user-select: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombra para que se vea bien */
 }
 
+/* BOTONES DEL NAV */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
 
+.btn-text {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 22px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1000;
+}
 
+.btn-text:hover {
+  background-color: var(--primary); 
+  transform: translateY(-4px); 
+  cursor: pointer;
+}
+
+.btn-pill {
+  background: #ffffff;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-pill:hover {
+  background: #000000; 
+  color: rgb(255, 255, 255);
+  transform: translateY(-2px);
+}
+
+/* CONTENIDO DEL HERO */
 .hero-content {
-  flex: 1;
+  flex: 1; /* Ocupa el espacio restante */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Centra verticalmente */
   padding: 0 8%;
   max-width: 900px;
+  position: relative;
+  z-index: 10;
+  margin-top: 40px; /* Compensa visualmente la barra de navegación */
 }
 
 .main-title {
@@ -143,7 +156,7 @@
   margin: 0 0 20px 0;
   letter-spacing: -3px;
   font-family: var(--primary-font);
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.479);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.48);
 }
 
 .main-subtitle {
@@ -156,64 +169,32 @@
   font-family: var(--secondary-font);
 }
 
-
-.btn-pill {
-  background: #ffffff;
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 10px 24px;
-  border-radius: 30px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn-pill:hover {
-  background: #000000;
-  color: rgb(255, 255, 255);
-}
-
-.btn-text {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-weight: 600;
-  margin-right: 20px;
-  cursor: pointer;
-  padding: 10px 24px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-family: var(--secondary-font);
-}
-
-.btn-text:hover {
-  background: var(--primary);
-  border: none;
-  color: #ffffff;
-  font-weight: 600;
-  margin-right: 20px;
-  cursor: pointer;
-  
-}
-
-.btn-dark {
-  background: var(--primary);
+.btn-explore {
+  background-color: var(--primary);
+  width: 165px;
   color: white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  width: fit-content;
+  padding: 15px;
+  border-radius: 22px;
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 15px;
+  border: 0px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .main-title { font-size: 3.5rem; }
+.btn-explore:hover {
+  background-color: #004494; /* Un azul un poco más oscuro */
+  transform: translateY(-4px); 
+  box-shadow: 0 12px 25px rgba(0, 86, 179, 0.4); 
 }
 
+/* =========================================
+   SECCIÓN 2: FLOATING STEPS
+   ========================================= */
 .floating-steps-section {
-  padding: 0 8% 80px 8%; /* Padding lateral y abajo */
-  background-color: transparent; /* Transparente para que se vea el efecto */
+  padding: 0 8% 80px 8%;
+  background-color: transparent;
   position: relative;
 }
 
@@ -221,11 +202,9 @@
   display: flex;
   justify-content: center;
   gap: 30px;
-  
-  /* EL TRUCO DEL FLOTADO */
-  margin-top: -100px; /* Sube las tarjetas hacia el Hero */
+  margin-top: -100px; /* Efecto flotante */
   position: relative;
-  z-index: 20; /* Asegura que estén ENCIMA de la foto del hero */
+  z-index: 20;
 }
 
 .step-card {
@@ -233,39 +212,40 @@
   background: #ffffff;
   padding: 35px 25px;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra potente para dar altura */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* Para que el número grande no se salga */
-  border-bottom: 4px solid transparent; /* Preparado para el hover */
+  overflow: hidden;
+  border-bottom: 4px solid transparent;
   height: 450px;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
 }
 
-/* Efecto al pasar el ratón */
 .step-card:hover {
-  transform: translateY(-10px); /* Se levanta más */
+  transform: translateY(-10px);
   box-shadow: 0 30px 60px rgba(0, 86, 179, 0.15);
-  border-bottom-color: var(--primary); /* Línea turquesa abajo */
+  border-bottom-color: var(--primary);
 }
 
-
-.step-card:hover .step-number{
+.step-card:hover .step-number {
   color: var(--primary);
-  font-family: var(--primary);
-
+  font-family: var(--primary-font);
 }
+
 .icon-bubble {
   width: 60px;
   height: 60px;
-  background-color: #f0f7ff; /* Azul muy clarito */
+  background-color: #f0f7ff;
   color: #0056b3;
   font-size: 1.8rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px auto; /* Centrado */
+  margin-bottom: 20px;
 }
 
 .step-card h3 {
@@ -283,55 +263,109 @@
   font-family: var(--secondary-font);
 }
 
-/* Número decorativo gigante de fondo */
 .step-number {
   position: absolute;
   top: -10px;
   right: -10px;
   font-size: 5rem;
   font-weight: 900;
-  color: rgba(10, 77, 148, 0.349); /* Casi invisible, muy elegante */
+  color: rgba(10, 77, 148, 0.1); 
   pointer-events: none;
-}
-
-/* RESPONSIVE: En móvil quitamos el efecto flotante para que no rompa */
-@media (max-width: 900px) {
-  .cards-container {
-    flex-direction: column;
-    margin-top: 40px; /* En móvil ya no flotan sobre el hero, se ponen debajo */
-  }
-  
-  .floating-steps-section {
-    background-color: #f8fafc; /* Fondo gris si no están sobre la imagen */
-    padding-top: 40px;
-  }
-}
-
-
-.bento-section {
-  padding: 100px 8%;
-  background-color: #ffffff;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-header h2 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, #1a1a1a 0%, #0056b3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  transition: color 0.3s ease;
   font-family: var(--primary-font);
 }
 
+/* =========================================
+   SECCIÓN 3: BENEFICIOS CON IMÁGENES (NUEVO)
+   ========================================= */
+
+.image-benefits-section {
+  padding: 100px 8%;
+  background-color: #f8faff; 
+  position: relative; /* Necesario para posicionar el ::before */
+  overflow: hidden;   /* Para que el fondo no se salga de los bordes */
+}
+
+/* El patrón de fondo */
+.image-benefits-section::before {
+  content: ""; /* OBLIGATORIO para que se renderice */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Se queda al fondo */
+  
+  /* Tu imagen */
+  background-image: url('../../../../public/assets/img/fondo_univibe_logo.png');
+  background-size: 590px; 
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.03; /* Opacidad suave */
+  pointer-events: none; /* Para que no interfiera con el ratón */
+}
+
+.benefits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Modificador para invertir el orden (texto-imagen) */
+.benefit-row.reverse {
+  flex-direction: row-reverse; 
+}
+
+.benefit-image {
+  flex: 1;
+  position: relative;
+}
+
+.benefit-image img {
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.benefit-image:hover img {
+  transform: scale(1.02);
+}
+
+.benefit-text {
+  flex: 1;
+}
+
+.benefit-text h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  font-family: var(--primary-font);
+  line-height: 1.2;
+}
+
+.benefit-text p {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.8;
+  font-family: var(--secondary-font);
+}
+
+/* =========================================
+   SECCIÓN 4: MINIMAL FEATURES
+   ========================================= */
 .minimal-features {
   padding: 100px 8%;
-  background-color: #ffffff; /* Fondo blanco puro */
+  background-color: #ffffff;
   text-align: center;
 }
 
@@ -350,13 +384,11 @@
 }
 
 .features-header p {
-  color: #64748b; /* Gris suave */
+  color: #64748b;
   font-size: 1.1rem;
-    font-family: var(--secondary-font);
-  
+  font-family: var(--secondary-font);
 }
 
-/* El Grid de 3 columnas */
 .features-grid {
   display: flex;
   justify-content: space-between;
@@ -370,7 +402,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Un hover muy sutil que levanta el elemento */
   transition: transform 0.3s ease;
 }
 
@@ -378,33 +409,24 @@
   transform: translateY(-5px);
 }
 
-/* EL DETALLE MODERNO: El icono */
 .icon-wrapper {
   width: 64px;
   height: 64px;
-  /* Fondo azul muy clarito (tu color con 10% opacidad) */
-  background-color: rgba(0, 86, 179, 0.1);
-  border-radius: 50%; /* Círculo perfecto */
+  background-color: var(--primary);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 25px;
-  
-  /* El color del icono SVG será tu azul principal */
-  color: #0056b3; 
+  color: #ffffff;
   transition: all 0.3s ease;
 }
 
-/* Al pasar el ratón, el círculo se oscurece un poco */
 .feature-item:hover .icon-wrapper {
-  background-color: rgba(0, 86, 179, 0.2);
+  background-color: rgb(255, 255, 255);
+  color: var(--primary);
 }
 
-/* Hacemos los SVGs un poco más grandes */
-.icon-wrapper svg {
-  width: 28px;
-  height: 28px;
-}
 
 .feature-item h3 {
   font-size: 1.25rem;
@@ -418,52 +440,206 @@
   color: #64748b;
   line-height: 1.6;
   font-size: 1rem;
-  max-width: 300px; /* Evita que el texto se estire demasiado */
+  max-width: 300px;
   font-family: var(--secondary-font);
 }
 
-/* Responsive para móvil */
+/* =========================================
+   SECCIÓN 5: CTA BANNER
+   ========================================= */
+.cta-banner {
+  padding: 80px 8%;
+  background-color: var(--primary);
+  text-align: center;
+  color: white;
+}
+
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  font-family: var(--primary-font);
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  font-family: var(--secondary-font);
+}
+
+.btn-white {
+  background: white;
+  color: var(--primary);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.main-footer {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 80px 8% 30px 8%;
+  font-family: var(--secondary-font);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 60px;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+}
+
+.brand-text-footer {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
+  margin-left: 10px;
+}
+
+.footer-brand p {
+  margin-top: 20px;
+  color: #888;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  max-width: 300px;
+}
+
+.footer-links {
+  min-width: 150px;
+}
+
+.footer-links h4 {
+  font-family: var(--primary-font);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+  color: #aaa;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.footer-links ul li a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary);
+}
+
+/* =========================================
+   RESPONSIVE GLOBAL
+   ========================================= */
+@media (max-width: 900px) {
+  /* Cards de pasos (Section 2) */
+  .cards-container {
+    flex-direction: column;
+    margin-top: 40px;
+    align-items: center;
+  }
+  
+  .floating-steps-section {
+    background-color: #f8fafc;
+    padding-top: 40px;
+  }
+  
+  .step-card {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  /* Sección Imágenes (Section 3 - Nuevo) */
+  .benefit-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .benefit-row.reverse {
+    flex-direction: column; /* En móvil siempre imagen arriba, texto abajo */
+  }
+}
+
 @media (max-width: 768px) {
+  .main-title { 
+    font-size: 3.5rem; 
+  }
+  
+  .hero {
+    padding-top: 100px; 
+  }
+
   .features-grid {
     flex-direction: column;
     gap: 60px;
   }
-}
-
-/* Responsive: En móvil se pone vertical */
-@media (max-width: 768px) {
-  .steps-diagram {
+  
+  .footer-container {
     flex-direction: column;
     gap: 40px;
   }
   
-  .connector-line {
-    /* En vertical la línea cambia de sitio */
-    width: 3px;
-    height: 100%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-size: 100% 20px;
-    background-image: linear-gradient(to bottom, #0056b3 50%, transparent 50%);
-  }
-}
-
-/* --- MEDIA QUERIES --- */
-@media (min-width: 768px) {
-  .steps-wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .step-card {
+  .footer-bottom {
     flex-direction: column;
+    gap: 20px;
     text-align: center;
-    flex: 1;
-    padding: 40px 20px;
-  }
-
-  .hero {
-    padding: 100px 40px;
   }
 }

@@ -1,8 +1,8 @@
 :host {
   display: block;
-  --primary: #0056b3; 
-  --accent: #00d1b2; 
-  --bg-light: #f5f7fa; 
+  --primary: #0056b3;
+  --accent: #00d1b2;
+  --bg-light: #f5f5f7;
   --text-main: #232829;
   --white: #ffffff;
   --primary-font: 'Plus Jakarta Sans', sans-serif;
@@ -10,93 +10,72 @@
 }
 
 /* =========================================
-   1. ESTRUCTURA Y FONDO (PROTEGIDO)
+   ESTRUCTURA Y FONDO
    ========================================= */
 
-.wrapper-atributos {
-  height: 100vh;
+.wrapper-solicitudes {
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Elimina el scroll de la página */
-  background-color: var(--bg-light);
 }
 
 .app-container {
   flex: 1;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 30px 20px;
-  position: relative; 
-  overflow: hidden; 
-
-  
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
 }
 
-/* Tu fondo original con patrón de "U" */
 .app-container::before {
-  content: "";
-  position: fixed; /* Mantiene el efecto 'fixed' que tenías, para que no haga scroll */
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Ancho de toda la ventana */
-  height: 100vh; /* Alto de toda la ventana */
-  z-index: -1; /* Lo envía detrás del contenido */
-
-  background-image: url('../../../../../public/img/fondo_univibe_logo.png');
-
-  /* AJUSTE CLAVE 1: Tamaño más grande */
-  /* En lugar de 50px, probamos con un tamaño mayor para que se "esparzan" más */
-  background-size: 180px; 
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('/assets/img/fondo_univibe_logo.png');
+  background-size: 380px;
   background-repeat: repeat;
   background-position: center;
-
-  /* AJUSTE CLAVE 2: Sutileza */
-  opacity: 0.1; /* Valor entre 0.05 y 0.2 para que sea una marca de agua muy suave */
-  
-  /* Opcional: si quieres que las U sean grises en vez de azules para que molesten menos */
-  /* filter: grayscale(100%); */
+  opacity: 0.1;
+  pointer-events: none;
 }
 
-
 /* =========================================
-   2. NAVBAR (SE MANTIENE TU ESTILO)
+   NAVBAR
    ========================================= */
 
 .logo-univibe-serif {
-  /* 1. La Caja Azul */
   width: 50px;
   height: 50px;
-  background-color: #0056b3; /* Tu azul corporativo */
-  border-radius: 14px;  
-  border: 1px solid white;     /* El redondeado de las esquinas */
-  
-  /* 2. Centrado de la letra */
+  background-color: #0056b3;
+  border-radius: 14px;
+  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* 3. La "U" con Serifa (Lo importante) */
   color: #ffffff;
-  /* Usamos Times New Roman para conseguir esos "pies" o remates arriba */
-  font-family: 'Times New Roman', Times, serif; 
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
-  font-size: 37px; /* Tamaño grande para llenar la caja */
-  line-height: 1;  /* Evita espacios extra arriba/abajo */
-  
-  /* Un pequeño ajuste porque las fuentes con serifa a veces no se ven centradas */
-  padding-top: 4px; 
-  user-select: none; /* Para que no se pueda seleccionar como texto */
+  font-size: 37px;
+  line-height: 1;
+  padding-top: 4px;
+  user-select: none;
 }
 
-.logo-univibe-serif:hover{
-    cursor: pointer;
+.logo-univibe-serif:hover {
+  cursor: pointer;
 }
+
 .nav-modern {
   background: var(--primary);
   height: 70px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -138,11 +117,11 @@
   color: rgb(202, 202, 202);
 }
 
-.active-link{
-    border-bottom: 5px solid white;
-    padding-bottom: 22px;
-
+.active-link {
+  border-bottom: 5px solid white;
+  padding-bottom: 22px;
 }
+
 .user-actions {
   display: flex;
   align-items: center;
@@ -154,168 +133,225 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid var(--bg-body);
+  border: 2px solid var(--white);
 }
 
-/* --- LAYOUT DE DOBLE COLUMNA --- */
-.main-card.solicitudes-card.dual-column {
-  display: flex;
-  flex-direction: row;
-  padding: 0; /* Quitamos el padding general para que las columnas lleguen al borde */
-  align-items: stretch;
-  overflow: hidden;
- 
-  gap: 10px;
-  
-}
+/* =========================================
+   CONTENIDO SOLICITUDES
+   ========================================= */
 
-.solicitudes-column {
+.solicitudes-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 40px;
-   background-color:var(--bg-light);
-   border-radius: 22px;
-   box-shadow: 
-    inset -8px -8px 4px rgba(0, 0, 0, 0.164),   /* Sombra negra profunda */ 
-    inset -1px -1px 4px rgba(0, 0, 0, 0.062);
-
-  height: 800px;
-
+  width: 100%;
 }
 
-/* Divisor vertical minimalista */
-.vertical-divider {
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.05), transparent);
-  margin: 40px 0;
-}
-
-/* Cabeceras de columna */
-.column-header {
-  margin-bottom: 25px;
-}
-
-.column-header h3 {
-  font-family: var(--primary-font);
-  color: var(--primary);
-  font-size: 1.3rem;
-  font-weight: 800;
+/* =========================================
+   CONTENEDOR DE CABECERA
+   ========================================= */
+.header-gestion {
+  margin: 20px 40px 30px 40px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
-.column-header span {
-  background: var(--primary);
-  color: var(--bg-light);
-  font-size: 0.9rem;
-  padding: 4px 12px;
-  border-radius: 8px;
-  font-weight: 600;
-}
-
-/* Grid con scroll independiente por columna */
-.column-grid-scroll {
- padding-right: 10px;
-  margin-top: 10px;
-  flex: 1;
-
-
-}
-
-/* Scrollbar minimalista para no romper la estética */
-.column-grid-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-
-.column-grid-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 86, 179, 0.1);
-  border-radius: 10px;
-}
-
-/* Ajuste de carta para el formato columna */
-.house-item.mini {
-  aspect-ratio: 1 / 1; /* Cuadradas para que quepan mejor en el grid doble */
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-
-/* Título de la página */
+/* =========================================
+   TÍTULO (MANTENIENDO TU ESTILO)
+   ========================================= */
 .section-title-modern {
-  margin-bottom: 20px;
-  width: 370px;
-  border-radius: 22px;
+  width: fit-content;
   background-color: var(--primary);
-  padding: 20px;
-  
-
+  padding: 15px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.2);
 }
 
 .section-title-modern h2 {
-   color: rgb(255, 255, 255); /* Resalta sobre tu fondo azul/patrón */
+  color: white;
+  margin: 0;
   font-family: var(--primary-font);
   font-weight: 800;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
-/* FLECHA DE NAVEGACIÓN */
-.nav-arrow-next {
-  position: absolute;
-  right: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 55px; height: 55px; border-radius: 50%;
-  background: var(--bg-light);
-  border: none; color: var(--primary);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  cursor: pointer;
-  display: flex; justify-content: center; align-items: center;
-  transition: 0.3s;
-}
-
-.nav-arrow-next:hover {
-  background: var(--primary);
-  color: var(--white);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.house-overlay{
-  width: 100%;
-  border-radius: 22px;
-  padding: 10px;
-  height: 115px;
+/* =========================================
+   BLOQUE DE INFORMACIÓN SEPARADO
+   ========================================= */
+.info-alert-modern {
   display: flex;
-  justify-content: space-around;
-  box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
-  background-color: #ffffff;
-  transition: all 0.1s linear;
-  transform: translateY(0);
-}
-
-.house-overlay:hover{
-  background-color: var(--primary);
-  color: white;
-  cursor: pointer;
-  transform: translateY(-10px);
-  z-index: 1000;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-}
-
-.house-info{
-
-  width: 70%;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-left: 5px solid var(--primary);
+  padding: 15px 25px;
+  border-radius: 12px;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 86, 179, 0.1);
+  border-left-width: 5px;
 }
 
+.info-icon {
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin-right: 18px;
+  display: flex;
+  align-items: center;
+}
 
-.solicitud-imagen{
-  width: 110px;
+.info-text p {
+  margin: 0;
+  font-family: var(--primary-font);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-text strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Efecto hover sutil */
+.info-alert-modern:hover {
+  background-color: #ffffff;
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}
+
+.main-card.solicitudes-card {
+  background-color: var(--white);
+  width: 100%;
+  min-height: 80vh;
+  padding: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.column-grid-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 25px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.house-card-modern {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--secondary-font);
+}
+
+.house-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 86, 179, 0.15);
+}
+
+/* Imagen cuadrada protagonista */
+.card-image-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.2 / 1; /* Cuadrado ligeramente apaisado */
+  overflow: hidden;
+}
+
+.card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.house-card-modern:hover .card-image-box img {
+  transform: scale(1.1);
+}
+
+.card-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 86, 179, 0.9);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   CONTENIDO Y DATOS
+   ========================================= */
+
+.card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.house-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: var(--primary-font);
+}
+
+.precio {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+
+.location {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* =========================================
+   BOTÓN DEL OJO
+   ========================================= */
+
+.view-btn {
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
+  border: none;
+  background: #f5f7fa;
+  color: var(--primary);
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1) rotate(5deg);
 }

@@ -6,14 +6,16 @@
       </div>
       <ul class="menu">
         <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
-        <li><a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a></li>
-        <li><a href="#">Perfil</a></li>
+        <li>
+          <a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a>
+        </li>
+        <li><a routerLink="/perfil">Perfil</a></li>
       </ul>
       <div class="user-actions">
         <i class="fa-solid fa-bell"></i>
         <i class="fa-solid fa-power-off"></i>
         <div class="profile-circle">
-          <img src="https://i.pravatar.cc/100" alt="User">
+          <img src="https://i.pravatar.cc/100" alt="User" />
         </div>
       </div>
     </div>
@@ -21,69 +23,143 @@
 
   <main class="app-container no-scroll">
     <div class="solicitudes-wrapper">
-      
-      <div class="section-title-modern">
-        <h2>Gestión de Solicitudes</h2>
+      <div class="header-gestion">
+        <div class="section-title-modern">
+          <h2>Gestión de Solicitudes</h2>
+        </div>
+
+        <div class="info-alert-modern">
+          <div class="info-icon">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="info-text">
+            <p>
+              Este es tu rincón personal. Aquí verás los pisos que te han flipado y a los que has
+              enviado solicitud. Mantente atento: si tienes suerte, el estado cambiará a
+              <strong>Aceptado</strong> cuando el propietario quiera conocerte.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <section class="main-card solicitudes-card dual-column">
-        
-        <div class="solicitudes-column">
-          <div class="column-header">
-            <h3>Enviadas <span>6</span></h3>
-          </div>
- 
-            <article class="house-item mini" style="background-image: url('assets/casa1.jpg')">
-              <div class="house-overlay">
-                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
-                <div class="house-info">
-                  <span class="house-name">Casa Albaicín</span>
-                  <span class="precio">800€</span>
-                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
-                </div>
+      <section class="main-card solicitudes-card full-screen-layout">
+        <div class="column-grid-scroll">
+          <article class="house-card-modern">
+            <div class="card-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                alt="Piso"
+              />
+              <div class="card-tag">Destacado</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header-info">
+                <h3 class="house-name">Casa Albaicín</h3>
+                <span class="precio">800€</span>
               </div>
-            </article>
-         
+              <div class="card-footer">
+                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
+                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="house-card-modern">
+            <div class="card-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                alt="Piso"
+              />
+              <div class="card-tag">Destacado</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header-info">
+                <h3 class="house-name">Casa Albaicín</h3>
+                <span class="precio">800€</span>
+              </div>
+              <div class="card-footer">
+                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
+                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="house-card-modern">
+            <div class="card-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                alt="Piso"
+              />
+              <div class="card-tag">Destacado</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header-info">
+                <h3 class="house-name">Casa Albaicín</h3>
+                <span class="precio">800€</span>
+              </div>
+              <div class="card-footer">
+                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
+                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="house-card-modern">
+            <div class="card-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                alt="Piso"
+              />
+              <div class="card-tag">Destacado</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header-info">
+                <h3 class="house-name">Casa Albaicín</h3>
+                <span class="precio">800€</span>
+              </div>
+              <div class="card-footer">
+                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
+                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="house-card-modern">
+            <div class="card-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                alt="Piso"
+              />
+              <div class="card-tag">Destacado</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header-info">
+                <h3 class="house-name">Casa Albaicín</h3>
+                <span class="precio">800€</span>
+              </div>
+              <div class="card-footer">
+                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
+                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="house-card-modern">
+            <div class="card-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                alt="Piso"
+              />
+              <div class="card-tag">Destacado</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header-info">
+                <h3 class="house-name">Casa Albaicín</h3>
+                <span class="precio">800€</span>
+              </div>
+              <div class="card-footer">
+                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
+                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+              </div>
+            </div>
+          </article>
         </div>
-
-        <div class="vertical-divider"></div>
-
-        <div class="solicitudes-column">
-          <div class="column-header">
-            <h3>Aceptadas <span>2</span></h3>
-          </div>
-
-            <article class="house-item mini" style="background-image: url('assets/casa2.jpg')">
-              <div class="house-overlay">
-                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
-                <div class="house-info">
-                  <span class="house-name">Casa Albaicín</span>
-                  <span class="precio">800€</span>
-                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
-                </div>
-              </div>
-              <div class="house-overlay">
-                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
-                <div class="house-info">
-                  <span class="house-name">Casa Albaicín</span>
-                  <span class="precio">800€</span>
-                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
-                </div>
-              </div>
-              <div class="house-overlay">
-                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Piso moderno amueblado" class="solicitud-imagen">
-                <div class="house-info">
-                  <span class="house-name">Casa Albaicín</span>
-                  <span class="precio">800€</span>
-                  <span class="ver"><i class="fa-regular fa-eye"></i></span>
-                </div>
-              </div>
-            </article>
-    
-        </div>
-
       </section>
     </div>
   </main>
-
 </div>

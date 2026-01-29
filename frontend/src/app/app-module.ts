@@ -12,6 +12,9 @@ import { PerfilRegistro } from './components/perfil-registro/perfil-registro';
 import { Atributos } from './components/usuarios/atributos/atributos';
 import { HomeEstudiante } from './components/usuarios/home-estudiante/home-estudiante';
 import { Solicitudes } from './components/usuarios/solicitudes/solicitudes';
+import { Perfil } from './components/usuarios/perfil/perfil';
+import { VistaPiso } from './components/vista-piso/vista-piso';
+
 
 
 @NgModule({
@@ -26,6 +29,9 @@ import { Solicitudes } from './components/usuarios/solicitudes/solicitudes';
     Atributos,
     HomeEstudiante,
     Solicitudes,
+    Perfil,
+    VistaPiso
+
    
 
   ],

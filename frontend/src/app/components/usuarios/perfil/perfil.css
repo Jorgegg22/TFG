@@ -1,0 +1,281 @@
+:host {
+  display: block;
+  --primary: #0056b3;
+  --primary-dark: #004494;
+  --accent: #00d1b2;
+  --text-dark: #1e272e;
+  --text-gray: #718093;
+  --white: #ffffff;
+  --bg-input: #f8f9fa;
+  --border-color: #edf2f7;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+/* =========================================
+   FONDO Y ESTRUCTURA
+   ========================================= */
+
+.profile-section {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 50px; 
+  
+}
+
+.app-container {
+  width: 100%;
+  padding: 13px; 
+  box-sizing: border-box;
+  position: relative;
+
+}
+
+/* Patrón de Fondo */
+.app-container::before {
+  content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+  background-image: url('../../../../../public/assets/img/fondo_univibe_logo.png');
+  background-size:440px; background-repeat: repeat; background-position: center; opacity: 0.08; 
+}
+
+/* BOTÓN VOLVER */
+.nav-header {
+  width: 100%; max-width: 1800px; margin: 0 auto 15px auto;
+}
+p{
+    font-family: var(--secondary-font);
+}
+label{
+    font-family: var(--primary-font);
+}
+
+.btn-back {
+  background: var(--primary); border: none; font-family: var(--primary-font);
+  font-size: 1rem; font-weight: 700; color: var(--bg-input);
+  cursor: pointer; display: flex; align-items: center; gap: 10px;
+  justify-content: space-around;
+  padding: 15px; border-radius: 12px; transition: all 0.2s ease;
+  width: 110px;
+  margin: 20px;
+  padding-right: 48px;
+}
+
+.btn-back i { font-size: 1.1rem; transition: transform 0.2s; }
+
+.btn-back:hover {
+  background-color: white; color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); transform: translateX(-5px);
+}
+
+/* GRID PRINCIPAL */
+.profile-container {
+  width: 100%; max-width: 1800px; margin: -30px auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 20px;
+  align-items: stretch; 
+
+
+
+}
+
+/* =========================================
+   TARJETA PRINCIPAL (IZQUIERDA)
+   ========================================= */
+
+.profile-main-card {
+  background: var(--white); padding: 0; border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.233); overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.02); min-height: 850px; 
+  display: flex; flex-direction: column;
+  margin-top: 40px;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 35px 30px; display: flex; align-items: center;
+  gap: 20px; color: white; position: relative;
+}
+
+.profile-img {
+  width: 100px; height: 100px; border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.3); object-fit: cover;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.avatar-wrapper { position: relative; }
+
+.btn-edit-photo {
+  position: absolute; bottom: 0; right: 0;
+  background: var(--accent); color: white; border: none;
+  width: 32px; height: 32px; border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.profile-intro h2 { font-family: var(--secondary-font); font-weight: 800; margin: 0; font-size: 1.8rem; }
+.profile-intro p { margin: 5px 0 10px 0; opacity: 0.9; font-size: 1rem; }
+
+.badge-verified {
+  background: rgba(255,255,255,0.2); padding: 5px 12px;
+  border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+
+.btn-edit-profile {
+  margin-left: auto; background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3); color: white;
+  padding: 10px 20px; border-radius: 12px; cursor: pointer;
+  transition: 0.3s; font-weight: 600;
+}
+.btn-edit-profile:hover { background: white; color: var(--primary); }
+
+/* Grid de Información */
+.profile-info-grid {
+  padding: 30px; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; flex-grow: 1; align-content: start; /* Alinea contenido arriba */
+}
+
+.info-group label {
+  display: block; font-size: 0.85rem; font-weight: 700;
+  color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.full-width { grid-column: 1 / -1; }
+
+/* --- CAMBIO: Data Box más finos --- */
+.data-box {
+  background: var(--bg-input); 
+  padding: 10px 15px; /* Reducido de 15px 18px */
+  border-radius: 12px;
+  display: flex; align-items: center; gap: 15px;
+  color: var(--text-dark); font-weight: 600; font-size: 0.95rem;
+  font-family: var(--primary-font); border: 1px solid transparent; 
+  height: auto; /* Quitamos height 100% para que no se estiren */
+  min-height: 45px; /* Altura mínima controlada */
+}
+
+.data-box i { color: var(--primary); font-size: 1rem; }
+.data-box p { margin: 0; }
+
+.data-box.highlight {
+  background: rgba(0, 86, 179, 0.05); border-color: rgba(0, 86, 179, 0.1); color: var(--primary);
+}
+.bio-box { align-items: flex-start; line-height: 1.5; font-weight: 500; padding-top: 12px; padding-bottom: 12px; }
+
+/* Sección Atributos */
+.attributes-section {
+  padding: 0 30px 40px 30px; margin-top: auto; 
+}
+
+.attributes-section h3 {
+  font-family: var(--secondary-font); font-size: 1.2rem;
+  color: var(--text-dark); margin-bottom: 10px;
+}
+
+.underline-small {
+  width: 40px; height: 4px; background: var(--accent);
+  border-radius: 10px; margin-bottom: 20px;
+}
+
+.tags-container { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.tag-pill {
+  padding: 6px 16px; border-radius: 25px; font-size: 0.85rem;
+  font-weight: 600; display: flex; align-items: center; gap: 8px;
+  font-family: var(--secondary-font);
+}
+.tag-pill.blue { background: #e3f2fd; color: #1565c0; }
+.tag-pill.accent { background: #e0f2f1; color: #00695c; }
+.tag-pill.green { background: #e8f5e9; color: #2e7d32; }
+.tag-pill.purple { background: #f3e5f5; color: #7b1fa2; }
+.tag-pill.gray { background: #f5f5f5; color: #616161; }
+.tag-pill.orange { background: #fff3e0; color: #ef6c00; }
+
+/* =========================================
+   COLUMNA LATERAL (PISOS)
+   ========================================= */
+
+.profile-sidebar-card {
+  background: var(--white); padding: 30px; border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.233); border: 1px solid rgba(0,0,0,0.02);
+  display: flex; flex-direction: column; height: auto; 
+  /* --- CAMBIO: Fuente Secundaria para toda la tarjeta --- */
+  font-family: var(--secondary-font);
+  margin-top: 40px;
+}
+
+.sidebar-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h3 {
+  margin: 0; color: var(--text-dark); 
+  font-family: var(--secondary-font); /* Aseguramos fuente */
+  font-size: 1.2rem; font-weight: 700;
+}
+
+.counter {
+  background: var(--primary); color: white; padding: 4px 10px;
+  border-radius: 10px; font-size: 0.85rem; font-weight: 700;
+  font-family: var(--primary-font); /* El número se ve mejor en Sans */
+}
+
+.houses-list {
+  display: flex; flex-direction: column; gap: 15px; flex-grow: 1; 
+}
+
+.mini-house-card {
+  display: flex; gap: 15px; padding: 12px; border-radius: 16px;
+  background: #fff; border: 1px solid var(--border-color);
+  transition: all 0.2s ease; cursor: pointer;
+}
+
+.mini-house-card:hover {
+  border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.mini-img-wrapper { width: 85px; height: 85px; position: relative; flex-shrink: 0; }
+
+.mini-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+
+.status-dot {
+  position: absolute; top: -3px; right: -3px; width: 14px; height: 14px;
+  background: #2ecc71; border: 2px solid white; border-radius: 50%;
+}
+
+.mini-info { display: flex; flex-direction: column; justify-content: center; flex: 1; }
+
+.mini-info h4 { 
+  margin: 0; font-size: 1.05rem; color: var(--text-dark); 
+  font-weight: 700; 
+  font-family: var(--secondary-font); /* Fuente Secundaria */
+}
+
+.mini-price { 
+  font-size: 1rem; font-weight: 700; color: var(--primary); margin-top: 4px;
+  font-family: var(--secondary-font); /* Fuente Secundaria */
+}
+
+.status-text { 
+  font-size: 0.8rem; font-weight: 600; margin-top: 5px; 
+  font-family: var(--secondary-font); /* Fuente Secundaria */
+}
+
+.accepted .status-text { color: #2ecc71; }
+.accepted { background: #f0fdf4; border-color: #bbf7d0; }
+.pending .status-text { color: #f1c40f; }
+
+.btn-view-all {
+  width: 100%; margin-top: 30px; padding: 15px; background: var(--bg-input);
+  color: var(--text-gray); border: none; border-radius: 14px;
+  font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 1rem;
+  font-family: var(--secondary-font); /* Fuente Secundaria */
+}
+.btn-view-all:hover { background: var(--border-color); color: var(--text-dark); }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .profile-container { grid-template-columns: 1fr; }
+  .profile-info-grid { grid-template-columns: 1fr; }
+  .profile-main-card { min-height: auto; } 
+}

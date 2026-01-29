@@ -5,7 +5,7 @@
   --bg-light: #f5f7fa;   /* Gris */
   --text-main: #2d3436;
   --white: #ffffff;
-  --primary-font: 'Times New Roman', Times, serif;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
 }
 
@@ -48,11 +48,23 @@
 }
 
 /* La letra U blanca */
-.u-letter {
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;          
-  font-size: 1.7rem;
+.logo-univibe-serif {
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3; /* Azul corporativo */
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.2); /* Borde sutil para resaltar sobre fondo oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 1;
+  padding-top: 4px;
+  user-select: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombra para que se vea bien */
 }
 
 
@@ -88,6 +100,7 @@
   max-width: 400px;
   margin: auto;
   width: 100%;
+  font-family: var(--secondary-font);
 }
 
 .login-form-content h1 {
@@ -100,6 +113,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: var(--primary-font);
 }
 .subtitle {
   color: #64748b;
@@ -171,7 +185,7 @@ a {
   padding: 60px;
   background-image: 
     linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)),
-    url("../../../../public/img/login-image.jpg");
+    url("../../../../public/assets/img/login-image.jpg");
     
   /* Para que ocupe todo el contenedor sin deformarse */
   background-size: cover;

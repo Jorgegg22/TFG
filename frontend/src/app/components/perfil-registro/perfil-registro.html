@@ -1,67 +1,126 @@
 <section class="profile-section">
-  <div class="profile-container">
-    <div class="profile-main-card">
-      <div class="profile-header">
-        <div class="avatar-wrapper">
-          <img
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-            alt="Foto de perfil"
-            class="profile-img"
-          />
-          <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
-        </div>
-        <div class="profile-intro">
-          <h2>Nombre del Usuario</h2>
-          <p>Descripcion del Usuario</p>
-        </div>
-      </div>
-
-      <div class="profile-form-grid">
-        <div class="input-group">
-          <label>Nombre completo</label>
-          <input type="text" placeholder="Ej. Alex García" />
-        </div>
-        <div class="input-group">
-          <label>Correo Electrónico</label>
-          <input type="email" placeholder="alex@univibe.com" />
-        </div>
-        <div class="input-group">
-          <label>Teléfono</label>
-          <input type="tel" placeholder="+34 600 000 000" />
-        </div>
-        <div class="input-group">
-          <label>Descripcion</label>
-          <input type="text" placeholder="Soy..." />
-        </div>
-        <div class="input-group">
-          <label>Elige tu universidad</label>
-
-          <select class="select-uni">
-            <option>VLC - UPV</option>
-          </select>
-        </div>
-        <div class="info-uni">
-          <div class="info-uni-icon">
-            <i class="fa-solid fa-circle-info"></i>
+  <div class="app-container">
+    
+    <div class="profile-container">
+      
+      <div class="profile-main-card">
+        
+        <div class="profile-header">
+          <div class="avatar-wrapper">
+            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Foto de perfil" class="profile-img" />
+            <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
           </div>
-          <div class="info-uni-content">
-            <h4>¿Por qué pedimos tu universidad?</h4>
-            <p>
-              Necesitamos saber dónde estudias para mostrarte los alojamientos más cercanos y
-              conectarte con otros estudiantes de tu misma facultad.
-            </p>
+          <div class="profile-intro">
+            <h2>Nuevo Usuario</h2>
+            <p>Completa tu perfil para empezar</p>
           </div>
         </div>
-      </div>
 
-      <button class="btn-save">Guardar Cambios</button>
+        <div class="profile-form-grid">
+          
+          <div class="input-group">
+            <label>Nombre Completo</label>
+            <input type="text" placeholder="Ej. Alex García" />
+          </div>
+
+          <div class="input-group">
+            <label>Correo Electrónico</label>
+            <input type="email" placeholder="alex@univibe.com" />
+          </div>
+
+          <div class="input-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" />
+          </div>
+
+          <div class="input-group">
+            <label>Grado / Carrera</label>
+            <input type="text" placeholder="Ej. Ingeniería Informática" />
+          </div>
+
+          <div class="input-group full-width">
+            <label>Descripción</label>
+            <textarea placeholder="Cuéntanos un poco sobre ti... (hobbies, manías, qué buscas)"></textarea>
+          </div>
+
+          <div class="input-group">
+            <label>Universidad</label>
+            <select class="select-uni">
+              <option value="" disabled selected>Selecciona tu universidad</option>
+              <option>Universidad de Granada (UGR)</option>
+              <option>VLC - UPV</option>
+            </select>
+          </div>
+
+          <div class="info-uni">
+            <div class="info-uni-icon">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div class="info-uni-content">
+              <h4>¿Por qué pedimos tu universidad?</h4>
+              <p>
+                Necesitamos saber dónde estudias para mostrarte los alojamientos más cercanos y
+                conectarte con compañeros de tu misma facultad.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        
+
+      </div>
+      <aside class="profile-sidebar-card blue-state">
+  
+  <div class="empty-content">
+    <div class="icon-circle">
+      <i class="fa-solid fa-house"></i>
     </div>
+    
+    <h3>Tus Solicitudes</h3>
+    
+    <p>
+      Aquí se mostrarán los pisos que solicites cuando completes tu registro y empieces a buscar.
+    </p>
+  </div>
 
-    <aside class="profile-sidebar-card">
-      <div class="empty-state">
-        <i class="fa-solid fa-house" style="color: #ffffff;"></i>
-        <p>Aqui se mostraran tus pisos cuando completes el perfil</p>
-      </div>
-    </aside>
+</aside>
+
+    <!--   <aside class="profile-sidebar-card">
+        AÑADIR IF PARA EL REGISTRO DE PERFIL PARA SI HAY PISOS O NO -->
+        <!-- <div class="sidebar-header">
+          <h3>Mis Solicitudes</h3>
+          <span class="counter">3</span>
+        </div>
+
+        <div class="houses-list">
+          <article class="mini-house-card accepted">
+            <div class="mini-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Piso">
+              <div class="status-dot"></div>
+            </div>
+            <div class="mini-info">
+              <h4>Casa Albaicín</h4>
+              <span class="mini-price">300€/mes</span>
+              <span class="status-text">Aceptado</span>
+            </div>
+          </article>
+
+          <article class="mini-house-card pending">
+            <div class="mini-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400" alt="Piso">
+            </div>
+            <div class="mini-info">
+              <h4>Loft Centro</h4>
+              <span class="mini-price">450€/mes</span>
+              <span class="status-text">Pendiente</span>
+            </div>
+          </article>
+        </div>
+        
+        <button class="btn-view-all">Ver todas</button>
+      </aside> -->
+
+    </div>
   </div>
 </section>
