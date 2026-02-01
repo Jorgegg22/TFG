@@ -9,12 +9,38 @@
   --secondary-font: 'Montserrat', sans-serif;
 }
 
+
+
+
 .user-selection {
   background-color: var(--white); /* Fondo blanco puro */
   padding: 80px 20px;
   display: flex;
   justify-content: center;
+  position: relative; 
+  overflow-y: hidden;
+  height: 910px;
 }
+
+.user-selection::before {
+  content: '';
+  position: absolute; /* Absolute para que se quede dentro de user-selection */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Se queda al fondo */
+  
+  /* Configuración de la imagen igual que tu referencia */
+  background-image: url('/assets/img/fondo_univibe_logo.png');
+  background-size: 480px; /* Tamaño del patrón */
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.06; /* Opacidad muy baja para que sea sutil */
+  pointer-events: none;
+}
+
+
 
 .selection-title {
   font-family: var(--secondary-font);
@@ -46,7 +72,7 @@
 
 .user-card {
   position: relative;
-  background: var(--white);
+  background: var(--primary);
   width: 380px;
   border-radius: 30px; /* Bordes muy redondeados */
   border: 1px solid rgba(0, 0, 0, 0.03);
@@ -78,7 +104,7 @@
 .icon-circle {
   width: 70px;
   height: 70px;
-  background: rgba(0, 86, 179, 0.08);
+  background: rgb(255, 255, 255);
   border-radius: 22px; /* Estilo 'Squircle' */
   display: flex;
   justify-content: center;
@@ -95,21 +121,21 @@
   font-family: var(--secondary-font);
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--white);
   margin-bottom: 15px;
 }
 
 .card-content p {
   font-family: var(--primary-font);
-  color: var(--text-gray);
+  color: var(--white);
   line-height: 1.6;
   font-size: 1.05rem;
   margin-bottom: 35px;
 }
 
 .btn-modern {
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: var(--white);
+  color: black;
   font-family: var(--primary-font);
   font-weight: 700;
   text-decoration: none;
@@ -121,9 +147,10 @@
 }
 
 .btn-modern:hover {
-  background-color: #003d82;
+  background-color: #ffffff;
   box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
   transform: scale(1.02);
+  color: var(--primary);
 }
 
 /* Ajuste móvil */

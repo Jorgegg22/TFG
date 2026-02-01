@@ -1,1 +1,140 @@
-<p>perfil-propietario works!</p>
+<section class="profile-section">
+  <div class="app-container">
+    <div class="profile-container">
+
+      <div class="profile-main-card">
+
+        <div class="profile-header">
+          <div class="avatar-wrapper">
+            <img src="https://i.pravatar.cc/150?img=11" alt="Avatar" class="profile-img" />
+            
+            <button class="btn-edit-photo" *ngIf="isEditing">
+              <i class="fa-solid fa-camera"></i>
+            </button>
+          </div>
+
+          <div class="profile-intro">
+            
+            <ng-container *ngIf="!isEditing">
+              <h2>Carlos Ruiz</h2>
+              <p>Propietario • Granada</p>
+              
+              
+            </ng-container>
+
+            <ng-container *ngIf="isEditing">
+              <h2>Editando Perfil</h2>
+              <p>Actualiza tu información pública</p>
+            </ng-container>
+
+          </div>
+
+          <button class="btn-edit-profile" (click)="toggleEdit()">
+            <i class="fa-solid" [class.fa-pen]="!isEditing" [class.fa-xmark]="isEditing"></i>
+            {{ isEditing ? 'Cancelar' : 'Editar' }}
+          </button>
+        </div>
+
+        <div class="profile-info-grid">
+
+          <div class="info-group">
+            <label>Nombre Completo</label>
+            
+            <div class="data-box" *ngIf="!isEditing">
+              <i class="fa-regular fa-user"></i>
+              <p>Carlos Ruiz</p>
+            </div>
+            
+            <input *ngIf="isEditing" type="text" class="data-box" value="Carlos Ruiz">
+          </div>
+
+          <div class="info-group">
+            <label>Correo Electrónico</label>
+            <div class="data-box" *ngIf="!isEditing">
+              <i class="fa-regular fa-envelope"></i>
+              <p>carlos.ruiz@email.com</p>
+            </div>
+            <input *ngIf="isEditing" type="email" class="data-box" value="carlos.ruiz@email.com">
+          </div>
+
+          <div class="info-group">
+            <label>Teléfono</label>
+            <div class="data-box" *ngIf="!isEditing">
+              <i class="fa-solid fa-phone"></i>
+              <p>+34 655 123 456</p>
+            </div>
+            <input *ngIf="isEditing" type="tel" class="data-box" value="+34 655 123 456">
+          </div>
+
+          
+
+          <div class="info-group full-width">
+            <label>Sobre mí</label>
+            
+            <div class="data-box bio-box" *ngIf="!isEditing">
+              <p>Llevo alquilando pisos a estudiantes desde hace 10 años. Me gusta que mis inquilinos se sientan cómodos y seguros.</p>
+            </div>
+            
+            <input type="text" *ngIf="isEditing" class="input-modern bio-input data-box description-box"  value="Llevo alquilando pisos a estudiantes desde hace 10 años. Me gusta que mis inquilinos se sientan cómodos y seguros.">
+          </div>
+
+        </div>
+
+        <div class="attributes-section" *ngIf="!isEditing">
+          <h3>Lo que ofrezco</h3>
+          <div class="underline-small"></div>
+          
+          <div class="tags-container">
+            <span class="tag-pill blue"><i class="fa-solid fa-check-double"></i> Respuesta Rápida</span>
+            <span class="tag-pill green"><i class="fa-solid fa-paw"></i> Mascotas OK</span>
+            <span class="tag-pill purple"><i class="fa-solid fa-wifi"></i> Internet Incluido</span>
+          </div>
+        </div>
+
+        <div class="action-footer" *ngIf="isEditing">
+          <button class="btn-back">Guardar Cambios</button>
+        </div>
+
+        <button class="btn-back" *ngIf="!isEditing" routerLink="/home-propietario">
+          <i class="fa-solid fa-arrow-left-long"></i><p>Volver</p>
+        </button>
+
+      </div>
+
+      <aside class="profile-sidebar-card">
+        <div class="sidebar-header">
+          <h3>Mis Anuncios</h3>
+          <span class="counter">2</span>
+        </div>
+
+        <div class="houses-list">
+          <article class="mini-house-card accepted">
+            <div class="mini-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Piso">
+              <div class="status-dot"></div>
+            </div>
+            <div class="mini-info">
+              <h4>Piso Centro</h4>
+              <span class="mini-price">300€/mes</span>
+              <span class="status-text">Publicado</span>
+            </div>
+          </article>
+
+          <article class="mini-house-card pending">
+            <div class="mini-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400" alt="Piso">
+            </div>
+            <div class="mini-info">
+              <h4>Loft Moderno</h4>
+              <span class="mini-price">450€/mes</span>
+              <span class="status-text">Borrador</span>
+            </div>
+          </article>
+        </div>
+        
+        <button class="btn-view-all">Gestionar mis anuncios</button>
+      </aside>
+
+    </div>
+  </div>
+</section>

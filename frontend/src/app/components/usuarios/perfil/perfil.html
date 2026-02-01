@@ -1,64 +1,96 @@
 <section class="profile-section">
   <div class="app-container">
-    
-   
     <div class="profile-container">
-      
+
       <div class="profile-main-card">
-        
+
         <div class="profile-header">
           <div class="avatar-wrapper">
             <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Foto de perfil" class="profile-img" />
-            <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
+            
+            <button class="btn-edit-photo" *ngIf="isEditing">
+              <i class="fa-solid fa-camera"></i>
+            </button>
           </div>
+
           <div class="profile-intro">
-            <h2>Alex García</h2>
-            <p>Estudiante de Ingeniería • Granada</p>
-            <div class="profile-badges">
-              
-            </div>
+            
+            <ng-container *ngIf="!isEditing">
+              <h2>Alex García</h2>
+              <p>Estudiante de Ingeniería • Granada</p>
+              <div class="profile-badges">
+                 </div>
+            </ng-container>
+
+            <ng-container *ngIf="isEditing">
+              <h2>Editando Perfil</h2>
+              <p>Actualiza tu información pública</p>
+            </ng-container>
+
           </div>
-          <button class="btn-edit-profile"><i class="fa-solid fa-pen"></i> Editar</button>
+
+          <button class="btn-edit-profile" (click)="toggleEdit()">
+            <i class="fa-solid" [class.fa-pen]="!isEditing" [class.fa-xmark]="isEditing"></i>
+            {{ isEditing ? 'Cancelar' : 'Editar' }}
+          </button>
         </div>
 
         <div class="profile-info-grid">
+
           <div class="info-group">
             <label>Correo Electrónico</label>
-            <div class="data-box">
+            <div class="data-box" *ngIf="!isEditing">
               <i class="fa-regular fa-envelope"></i>
               <p>alex@univibe.com</p>
             </div>
+            <input *ngIf="isEditing" type="email" class="input-modern" value="alex@univibe.com">
           </div>
+
           <div class="info-group">
             <label>Teléfono</label>
-            <div class="data-box">
+            <div class="data-box" *ngIf="!isEditing">
               <i class="fa-solid fa-phone"></i>
               <p>+34 600 123 456</p>
             </div>
+            <input *ngIf="isEditing" type="tel" class="input-modern" value="+34 600 123 456">
           </div>
+
           <div class="info-group full-width">
             <label>Sobre mí</label>
-            <div class="data-box bio-box">
+            <div class="data-box bio-box" *ngIf="!isEditing">
               <p>Me considero una persona tranquila pero sociable. Me gusta mantener las zonas comunes limpias y cocinar los fines de semana. Busco compañeros de piso con buen rollo.</p>
             </div>
+            <input *ngIf="isEditing" class="input-modern bio-input"  value="Me considero una persona tranquila pero sociable. Me gusta mantener las zonas comunes limpias y cocinar los fines de semana. Busco compañeros de piso con buen rollo.">
           </div>
+
           <div class="info-group">
             <label>Universidad</label>
-            <div class="data-box highlight">
+            <div class="data-box highlight" *ngIf="!isEditing">
               <i class="fa-solid fa-graduation-cap"></i>
               <p>Universidad de Granada (UGR)</p>
             </div>
+            <div class="select-wrapper" *ngIf="isEditing">
+              <i class="fa-solid fa-graduation-cap input-icon"></i>
+              <select class="input-modern with-icon">
+                <option selected>Universidad de Granada (UGR)</option>
+                <option>Universidad de Sevilla</option>
+                <option>Complutense de Madrid</option>
+              </select>
+            </div>
           </div>
-           <div class="info-group">
+
+          <div class="info-group">
             <label>Carrera / Grado</label>
-            <div class="data-box">
+            <div class="data-box" *ngIf="!isEditing">
               <i class="fa-solid fa-book"></i>
               <p>Ingeniería Informática</p>
             </div>
+            <input *ngIf="isEditing" type="text" class="input-modern" value="Ingeniería Informática">
           </div>
+
         </div>
 
-        <div class="attributes-section">
+        <div class="attributes-section" *ngIf="!isEditing">
           <h3>Vibe & Estilo de Vida</h3>
           <div class="underline-small"></div>
           <div class="tags-container">
@@ -70,54 +102,38 @@
             <span class="tag-pill orange"><i class="fa-solid fa-person-running"></i> Deportista</span>
           </div>
         </div>
-        <button class="btn-back" routerLink="/home-estudiante">
-        <i class="fa-solid fa-arrow-left-long"></i><p>Volver</p>
-      </button>
+
+        <div  *ngIf="isEditing">
+            <button class="btn-back" style="width: 230px;padding: 15px;">Guardar Cambios</button>
+        </div>
+
+        <button class="btn-back" *ngIf="!isEditing" routerLink="/home-estudiante">
+          <i class="fa-solid fa-arrow-left-long"></i>
+          <p>Volver</p>
+        </button>
+
       </div>
 
       <aside class="profile-sidebar-card">
         <div class="sidebar-header">
-          <h3>Mis Pisos</h3>
-          <span class="counter">3</span>
+            <h3>Mis Pisos</h3>
+            <span class="counter">3</span>
+          </div>
+  
+          <div class="houses-list">
+            <article class="mini-house-card accepted">
+              <div class="mini-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Piso">
+                <div class="status-dot"></div>
+              </div>
+              <div class="mini-info">
+                <h4>Casa Albaicín</h4>
+                <span class="mini-price">300€/mes</span>
+                <span class="status-text">Aceptado</span>
+              </div>
+            </article>
+            <button class="btn-view-all">Ver todas las solicitudes</button>
         </div>
-
-        <div class="houses-list">
-          <article class="mini-house-card accepted">
-            <div class="mini-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Piso">
-              <div class="status-dot"></div>
-            </div>
-            <div class="mini-info">
-              <h4>Casa Albaicín</h4>
-              <span class="mini-price">300€/mes</span>
-              <span class="status-text">Aceptado</span>
-            </div>
-          </article>
-
-          <article class="mini-house-card pending">
-            <div class="mini-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400" alt="Piso">
-            </div>
-            <div class="mini-info">
-              <h4>Loft Centro</h4>
-              <span class="mini-price">450€/mes</span>
-              <span class="status-text">Pendiente</span>
-            </div>
-          </article>
-
-          <article class="mini-house-card pending">
-            <div class="mini-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400" alt="Piso">
-            </div>
-            <div class="mini-info">
-              <h4>Piso Realejo</h4>
-              <span class="mini-price">280€/mes</span>
-              <span class="status-text">Pendiente</span>
-            </div>
-          </article>
-        </div>
-        
-        <button class="btn-view-all">Ver todas las solicitudes</button>
       </aside>
 
     </div>

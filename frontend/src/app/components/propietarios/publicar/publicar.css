@@ -1,0 +1,483 @@
+:host {
+  display: block;
+  --primary: #0056b3;
+  --accent: #00d1b2;
+  --bg-light: #f5f5f7;
+  --text-main: #232829;
+  --white: #ffffff;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+/* =========================================
+   ESTRUCTURA Y FONDO (NO TOCADO)
+   ========================================= */
+
+.wrapper-solicitudes {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  flex: 1;
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+}
+
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('/assets/img/fondo_univibe_logo.png');
+  background-size: 480px;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* =========================================
+   NAVBAR (INTACTO)
+   ========================================= */
+
+.logo-univibe-serif {
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3;
+  border-radius: 14px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 37px;
+  line-height: 1;
+  padding-top: 4px;
+  user-select: none;
+}
+
+.logo-univibe-serif:hover {
+  cursor: pointer;
+}
+
+.nav-modern {
+  background: var(--primary);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.nav-content {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.menu {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: rgb(202, 202, 202);
+}
+
+.active-link {
+  border-bottom: 5px solid white;
+  padding-bottom: 22px;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary);
+}
+
+.profile-circle img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+/* =========================================
+   CONTENEDOR DE CABECERA (GESTIÓN)
+   ========================================= */
+.header-gestion {
+  margin: 20px 40px 30px 40px;
+  display: flex;
+  gap: 15px;
+}
+
+.section-title-modern {
+  width: fit-content;
+  background-color: var(--primary);
+  padding: 15px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.2);
+}
+
+.section-title-modern h2 {
+  color: white;
+  margin: 0;
+  font-family: var(--primary-font);
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.info-alert-modern {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-left: 5px solid var(--primary);
+  padding: 15px 25px;
+  border-radius: 12px;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 86, 179, 0.1);
+  border-left-width: 5px;
+}
+
+.info-icon {
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin-right: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.info-text p {
+  margin: 0;
+  font-family: var(--primary-font);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-text strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* =========================================
+   TARJETA PRINCIPAL (LAYOUT)
+   ========================================= */
+
+.main-card {
+  background-color: var(--white);
+  width: 100%;
+  min-height: 80vh;
+  padding: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   FORMULARIO DE PUBLICACIÓN
+   ========================================= */
+
+.publish-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px; /* Izquierda flexible, Derecha fija para fotos */
+  gap: 50px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.form-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subsection-title {
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.mt-4 { margin-top: 20px; }
+
+/* INPUTS Y LABELS */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.input-group label {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  padding: 14px 18px;
+  background: #f9fbfc;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  font-family: var(--secondary-font);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.input-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.05);
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.input-row.two-cols .input-group {
+  flex: 1;
+}
+
+/* =========================================
+   ZONA DE CARGA DE FOTOS
+   ========================================= */
+
+.upload-main-area {
+  width: 100%;
+  height: 250px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-main-area:hover {
+  border-color: var(--primary);
+  background: #f0f7ff;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #94a3b8;
+}
+
+.upload-placeholder i {
+  font-size: 3rem;
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.upload-placeholder span {
+  font-weight: 600;
+  font-family: var(--primary-font);
+}
+
+/* Grid de fotos pequeñas */
+.upload-grid-mini {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.upload-box-mini {
+  aspect-ratio: 1;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.upload-box-mini:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* =========================================
+   ESTILOS PARA SELECT MÚLTIPLE (REGLAS)
+   ========================================= */
+
+/* Estilo específico para el select multiple */
+.input-group select[multiple] {
+  height: 180px; /* Altura suficiente para ver varias opciones */
+  padding: 10px;
+  overflow-y: auto;
+  background-image: none; /* Quitamos la flecha del select normal */
+  
+  /* Personalización del scrollbar (Chrome/Safari/Edge) */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) #f1f1f1;
+}
+
+.input-group select[multiple]::-webkit-scrollbar {
+  width: 6px;
+}
+.input-group select[multiple]::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Estilo de las opciones individuales */
+.input-group select[multiple] option {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover en las opciones */
+.input-group select[multiple] option:hover {
+  background-color: #eef2f6; 
+}
+
+/* Opción SELECCIONADA (Importante) */
+.input-group select[multiple] option:checked {
+  background: var(--primary) !important;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 86, 179, 0.2);
+}
+
+/* Texto de ayuda pequeño debajo */
+.helper-text {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-family: var(--secondary-font);
+}
+.helper-text i {
+  margin-right: 5px;
+  color: var(--primary);
+}
+
+/* =========================================
+   BOTONES DE ACCIÓN
+   ========================================= */
+
+.form-actions {
+  margin-top: auto; /* Empuja los botones al final */
+  display: flex;
+  gap: 15px;
+  padding-top: 20px;
+}
+
+.btn-publish {
+  flex: 2;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: var(--primary-font);
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.2);
+}
+
+.btn-publish:hover {
+  background: #004494;
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  flex: 1;
+  background: #f1f5f9;
+  color: #64748b;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: var(--primary-font);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .publish-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-right-column {
+    order: -1; /* Pone las fotos primero en móvil, opcional */
+  }
+}

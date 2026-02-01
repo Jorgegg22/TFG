@@ -1,0 +1,286 @@
+:host {
+  display: block;
+  --primary: #0056b3;
+  --primary-dark: #004494;
+  --accent: #00d1b2;
+  --text-dark: #1e272e;
+  --text-gray: #718093;
+  --white: #ffffff;
+  --bg-input: #f8f9fa;
+  --border-color: #edf2f7;
+  --danger: #ff4757;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+/* =========================================
+   WRAPPER (NO SCROLL)
+   ========================================= */
+.property-view-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.property-view-wrapper::before {
+  content: ""; 
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+  background-image: url('/assets/img/fondo_univibe_logo.png');
+  background-size: 440px; background-repeat: repeat; background-position: center; 
+  opacity: 0.08; 
+}
+
+/* =========================================
+   CARD (FIXED SIZE AS REQUESTED)
+   ========================================= */
+.property-card {
+  width: 96%;
+  height: 98vh; /* Fixed height */
+  
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0,0,0,0.02);
+  
+  padding: 30px;
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevents card expansion */
+}
+
+/* TOP BAR */
+.property-top-bar {
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.btn-back-simple {
+  background: white; border: 1px solid var(--primary); color: var(--primary);
+  padding: 8px 16px; border-radius: 10px; cursor: pointer;
+  font-family: var(--primary-font); font-weight: 700; font-size: 0.9rem;
+  display: flex; align-items: center; gap: 8px; transition: all 0.2s;
+}
+.btn-back-simple:hover { background: var(--primary); color: white; }
+
+/* =========================================
+   LAYOUT GRID
+   ========================================= */
+.property-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Left column width fixed */
+  gap: 40px;
+  height: 100%;
+  overflow: hidden; /* Important for inner scrolling */
+}
+
+/* =========================================
+   LEFT COLUMN (INFO & ACTIONS)
+   ========================================= */
+.info-column {
+  display: flex; 
+  flex-direction: column; 
+  height: 100%;
+  overflow: hidden; /* Container doesn't scroll, inner parts do */
+}
+
+/* Scrollable area for details if screen is short */
+.scrollable-info {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Custom Scrollbar */
+.scrollable-info::-webkit-scrollbar { width: 4px; }
+.scrollable-info::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+.property-header h1 {
+  font-family: var(--secondary-font); font-size: 1.8rem;
+  font-weight: 800; margin: 0 0 10px 0; color: var(--text-dark);
+}
+
+.divider { width: 100%; height: 3px; background: var(--primary); border-radius: 10px; }
+
+.details-list { display: flex; flex-direction: column; gap: 45px;margin-top: 22px; }
+
+.detail-item .label {
+  display: block; font-size: 0.8rem; font-weight: 700;
+  color: var(--text-gray); margin-bottom: 4px; text-transform: uppercase;
+  font-family: var(--primary-font);
+}
+
+.detail-item .value {
+  font-family: var(--secondary-font); color: var(--text-dark);
+  font-size: 1rem; font-weight: 600;
+}
+
+.rules-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.rule-tag {
+  padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600;
+  font-family: var(--secondary-font); background: #e3f2fd; color: #1565c0;
+  border: 1px solid rgba(21, 101, 192, 0.1);
+}
+
+.tenants-section h3 {
+  font-family: var(--secondary-font); font-size: 1rem; font-weight: 700;
+  color: var(--text-gray); margin-bottom: 10px;margin-top: 30px;
+}
+.avatars-stack{
+    display: flex;
+}
+
+.avatars-stack img {
+  width: 45px; height: 45px; border-radius: 50%; border: 2px solid white; 
+ 
+  margin-right: -10px; box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+.empty-slot {
+  width: 45px; height: 45px; border-radius: 50%; background: var(--bg-input);
+  border: 2px dashed #cbd5e1; color: #cbd5e1; display: flex; 
+  align-items: center; justify-content: center; margin-left: 5px;
+}
+
+/* OWNER ACTIONS (Fixed at bottom of left column) */
+.owner-actions {
+  margin-top: 20px; /* Spacing from content above */
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex; 
+  gap: 15px;
+  flex-shrink: 0; /* Prevents buttons from shrinking */
+}
+
+.btn-action {
+  flex: 1; padding: 12px; border-radius: 12px; border: none;
+  font-family: var(--primary-font); font-weight: 700; color: white;
+  cursor: pointer; font-size: 0.9rem; transition: transform 0.2s;
+}
+.btn-action:hover { transform: translateY(-2px); }
+.btn-action.edit { background-color: var(--primary); }
+.btn-action.delete { background-color: var(--danger); }
+
+/* =========================================
+   RIGHT COLUMN (VISUALS & LIKES)
+   ========================================= */
+.visuals-column {
+  display: flex; 
+  flex-direction: column; 
+  height: 83%;
+  gap: 10px;
+
+}
+
+/* Gallery (Takes available space minus Likes section) */
+.gallery-grid {
+  flex: 1; /* Grows to fill space */
+  display: flex; gap: 15px;
+  height: 0;
+  width: 100%;
+
+}
+
+.main-photo { flex: 2; border-radius: 15px; overflow: hidden; position: relative; }
+.main-photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo-overlay {
+  position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.7); 
+  color: white; padding: 5px 12px; border-radius: 15px; 
+  font-size: 0.8rem; font-weight: 600; font-family: var(--primary-font);
+}
+
+.side-photos { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.small-photo { flex: 1; border-radius: 12px; overflow: hidden; }
+.small-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* LIKES SECTION (Fixed height at bottom) */
+.likes-section { 
+  height: 230px; /* Fixed height to ensure it fits candidates */
+  flex-shrink: 0; /* Prevent shrinking */
+  display: flex; 
+  flex-direction: column;
+  position: relative;
+  background: #fdfdfd; /* Subtle background difference */
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 5px;
+
+}
+
+.likes-section h3 {
+  font-family: var(--secondary-font); font-size: 1.1rem; font-weight: 800;
+  margin: 0 0 10px 0; color: var(--text-dark);
+}
+
+.likes-carousel {
+  display: flex; 
+  gap: 25px; 
+  padding: 10px 5px;
+  align-items: center;
+  height: 100%;
+
+}
+
+/* Candidate Card Styling */
+.candidate-card {
+  min-width: 120px; 
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  /* Slight card effect */
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.candidate-card:hover { transform: translateY(-3px); }
+
+.candidate-img {
+  width: 70px; height: 70px; 
+  border-radius: 50%; border: 3px solid white; 
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1); overflow: hidden;
+}
+.candidate-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.candidate-name { font-family: var(--secondary-font); font-weight: 700; font-size: 0.95rem; color: var(--text-dark); }
+.view-profile-link { font-size: 0.75rem; font-weight: 600; color: var(--primary); cursor: pointer; text-decoration: none;font-family: var(--primary-font); }
+
+
+/* Buttons inside Candidate Card */
+.match-actions { display: flex; gap: 10px; margin-top: 5px; }
+.btn-match {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  display: flex; justify-content: center; align-items: center;
+  cursor: pointer; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+}
+.btn-match:hover { transform: scale(1.1); }
+.btn-match.accept { color: var(--white); background: var(--danger); } /* Heart Red/White */
+.btn-match.reject { color: var(--text-gray); background: #eee; }
+
+/* Arrows (positioned relative to carousel) */
+.scroll-indicators {
+  position: absolute; top: 50%; left: 0; right: 0;
+  display: flex; justify-content: space-between; 
+  pointer-events: none; /* Let clicks pass through */
+  padding: 0 5px;
+}
+.scroll-indicators i {
+  background: rgba(255,255,255,0.8);
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

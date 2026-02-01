@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class PerfilPropietario {
 
+isEditing: boolean = false;
+
+
+
+toggleEdit() {
+ this.isEditing = !this.isEditing
+}
+
 }

@@ -191,6 +191,98 @@ label{
 .tag-pill.orange { background: #fff3e0; color: #ef6c00; }
 
 /* =========================================
+   ESTILOS MODO EDICIÓN (INPUTS & BOTONES)
+   ========================================= */
+
+/* 1. INPUTS, SELECTS Y TEXTAREAS MODERNOS */
+.input-modern {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid #dfe6e9; /* Borde gris suave */
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-family: var(--secondary-font); /* Montserrat */
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  min-height: 45px; /* Misma altura que las cajas de datos para que no salte */
+  box-sizing: border-box;
+}
+
+/* Efecto al hacer clic (Focus) */
+.input-modern:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1); /* Anillo azul suave */
+}
+
+/* Ajuste específico para Textarea (Bio) */
+textarea.bio-input {
+  min-height: 120px;
+  resize: vertical; /* Permite estirar solo hacia abajo */
+  line-height: 1.6;
+}
+
+/* 2. SELECT CON ICONO (Para Universidad) */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary);
+  pointer-events: none; /* Para que el clic pase a través del icono */
+  font-size: 1rem;
+  z-index: 2;
+}
+
+/* Clase extra para dar espacio al icono a la izquierda */
+.with-icon {
+  padding-left: 45px; 
+}
+
+/* 3. BOTÓN GUARDAR CAMBIOS */
+.action-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end; /* Alineado a la derecha */
+}
+
+.btn-save {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 12px;
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.25);
+}
+
+.btn-save:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.35);
+}
+
+.btn-save:active {
+  transform: translateY(0);
+}
+
+
+
+/* =========================================
    COLUMNA LATERAL (PISOS)
    ========================================= */
 
