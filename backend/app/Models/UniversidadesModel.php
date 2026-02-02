@@ -10,12 +10,13 @@ class UniversidadesModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['nombre', 'siglas', 'ciudad'];
 
-    public function getUniversidades($id = null)
+    public function getUniversidades()
     {
-        if ($id === null) {
-            return $this->findAll();
-        }
+        
+    
+        return $this->findAll();
+        
 
-        return $this->find($id);
+        
     }
 }
