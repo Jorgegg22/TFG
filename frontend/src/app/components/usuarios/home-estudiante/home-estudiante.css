@@ -210,6 +210,42 @@ body {
 .action-btn.heart:hover { background-color: #ff4757; color: white; }
 .action-btn.dismiss:hover { background-color: #2f3542; color: white; }
 
+.user-actions{
+
+  position:  relative;
+  margin-right: 55px;
+}
+
+.options{
+  background-color: white;
+  color: rgb(255, 0, 0);
+  position: absolute;
+  bottom: -55px;
+  left: -15px;
+  border: 1px solid rgba(0, 0, 0, 0.275);
+  padding: 20px;
+  border-radius: 2px;
+  height: 50px;
+  font-size: 12px;
+  width: 120px;
+  box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.333);
+
+
+}
+
+.arrow-options{
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  transition:  all 0.2s linear;
+}
+
+.arrow-options:hover{
+  transform: scale(1.2);
+}
+
 /* =========================================
    5. DETALLES INFO
    ========================================= */

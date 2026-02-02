@@ -9,10 +9,13 @@
       <li><a routerLink="/perfil" routerLinkActive="active">Perfil</a></li>
     </ul>
     <div class="user-actions">
-      <i class="fa-solid fa-bell"></i>
-      <i class="fa-solid fa-power-off"></i>
       <div class="profile-circle">
         <img src="https://i.pravatar.cc/100" alt="User">
+        <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff;"  (click)="showOptions()"></i>
+      </div>
+      <div class="options" *ngIf="options">
+        <p>Cerrar Sesion</p>
+
       </div>
     </div>
   </div>

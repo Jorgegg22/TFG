@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home-estudiante',
@@ -6,6 +6,19 @@ import { Component } from '@angular/core';
   templateUrl: './home-estudiante.html',
   styleUrl: './home-estudiante.css',
 })
-export class HomeEstudiante {
+export class HomeEstudiante implements OnInit {
+
+  options:boolean = false
+  
+  ngOnInit(): void {
+    
+  }
+
+  showOptions(){
+    this.options = !this.options
+  }
+
+
+
 
 }
