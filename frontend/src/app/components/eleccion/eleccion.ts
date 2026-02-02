@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Solicitudes } from '../usuarios/solicitudes/solicitudes';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-eleccion',
@@ -7,5 +10,53 @@ import { Component } from '@angular/core';
   styleUrl: './eleccion.css',
 })
 export class Eleccion {
+  data: { rol: string; id: string } = {
+    rol: '',
+    id: '',
+  };
+  isStudent: boolean = false;
+  isOwner: boolean = false;
+  rol!: string;
+  id!: string;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
+
+  insertRol() {
+    this.id = localStorage.getItem('usuarioId') ?? '';
+
+    if (this.isStudent) {
+      this.rol = 'estudiante';
+    }
+
+    if (this.isOwner) {
+      this.rol = 'propietario';
+    }
+
+    this.data.rol = this.rol;
+    this.data.id = this.id
+
+    this.authService.chooseRol(this.data).subscribe({
+      next: (respuesta) => {
+        console.log(respuesta);
+        if(respuesta.rol === "estudiante"){
+          this.router.navigate(['/home-estudiante']);
+        }else {
+          this.router.navigate(['/home-propietario']);
+        }
+        
+      },
+    });
+  }
+
+  studenBtn() {
+    this.isStudent = !this.isStudent;
+    this.insertRol()
+  }
+  ownerBtn() {
+    this.isOwner = !this.isOwner;
+    this.insertRol()
+  }
 }

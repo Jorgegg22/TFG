@@ -13,17 +13,17 @@
       <form>
         <div class="input-group">
           <label>Email</label>
-          <input type="email" placeholder="Enter your email">
+          <input type="email" placeholder="Enter your email"  name="email" [(ngModel)]="userData.email" >
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="••••••••">
+          <input type="password" placeholder="••••••••" name="password" [(ngModel)]="userData.password">
         </div>
 
 
 
-        <button type="submit" class="btn-login">Iniciar Sesión</button>
+        <button type="submit" class="btn-login" (click)="login()" >Iniciar Sesión</button>
       </form>
 
       <p class="signup-prompt">

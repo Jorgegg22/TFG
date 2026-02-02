@@ -1,0 +1,83 @@
+CRITICAL - 2026-02-02 17:10:57 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:13:11 --> ErrorException: Attempt to read property "email" on null
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 APPPATH/Controllers/AuthController.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "email" on null', '/var/www/html/app/Controllers/AuthController.php', 42)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:13:18 --> ErrorException: Attempt to read property "email" on null
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 APPPATH/Controllers/AuthController.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "email" on null', '/var/www/html/app/Controllers/AuthController.php', 42)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:14:01 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:16:20 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:17:09 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:18:16 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:18:24 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-02 17:18:35 --> Error: Call to a member function first() on string
+[Method: POST, Route: api/auth/register]
+in APPPATH/Controllers/AuthController.php on line 42.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->registro()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

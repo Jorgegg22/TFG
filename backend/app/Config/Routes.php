@@ -6,6 +6,7 @@
 use App\Controllers\UsuariosController;
 use App\Controllers\UniversidadesController;
 use App\Controllers\InmueblesController;
+use App\Controllers\AuthController;
 
 
 //Rutas Admin
@@ -20,6 +21,12 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+
+// REGISTRO , LOGIN Y AUTENTICACIÓN
+
+    $routes->post('api/auth/register', [AuthController::class,'registro']);
+    $routes->post('api/auth/rol', [AuthController::class,'insertRol']);
+    $routes->post('api/auth/login', [AuthController::class,'checkUser']);
 
 
 // USUARIOS RUTAS

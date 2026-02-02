@@ -27,4 +27,7 @@ class UsuariosController extends ResourceController
 
         return $this->respond($usuario);
     }
+
+
+    
 }

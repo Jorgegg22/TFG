@@ -12,19 +12,22 @@
       <form>
         <div class="input-group">
           <label>Nombre completo</label>
-          <input type="text" placeholder="Ej. Alex García">
+          <input type="text" placeholder="Ej. Alex García"  name="nombre" [(ngModel)]="userData.name">
         </div>
 
         <div class="input-group">
           <label>Correo electrónico</label>
-          <input type="email" placeholder="tucorreo@universidad.edu">
+          <input type="email" placeholder="tucorreo@universidad.edu"  name="email"  [(ngModel)]="userData.email" >
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="Mínimo 8 caracteres">
+          <input type="password" placeholder="Mínimo 8 caracteres" name="password"   [(ngModel)]="userData.password">
         </div>
-
+        <div class="input-group">
+          <label>Repetir Contraseña</label>
+          <input type="password" placeholder="Mínimo 8 caracteres"  name="password_repeat"   [(ngModel)]="userData.password_repeat">
+        </div>
         <div class="terms-check">
           <label class="checkbox-container">
             <input type="checkbox" required>
@@ -33,7 +36,7 @@
           </label>
         </div>
 
-        <button type="submit" class="btn-primary">Empezar ahora</button>
+        <button type="submit" class="btn-primary" (click)="registro()" >Empezar ahora</button>
       </form>
 
       <p class="auth-footer">

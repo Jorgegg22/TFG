@@ -26,10 +26,10 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => 'bbdd',
-        'database'     => 'univibe',
+        'hostname'     => 'db', /* db docker */
+        'username'     => 'univibe', /* univibe docker */
+        'password'     => 'password', /* password docker */
+        'database'     => 'univibe_db', /* univibe_db docker */
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

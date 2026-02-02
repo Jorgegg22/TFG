@@ -2,6 +2,8 @@ import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
+import { FormsModule } from '@angular/forms';
+ // Rutas
 import { App } from './app';
 import { Home } from './components/home/home';
 import { Footer } from './components/footer/footer';
@@ -47,7 +49,8 @@ import { VistaInmueblePropietario } from './components/propietarios/vista-inmueb
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
