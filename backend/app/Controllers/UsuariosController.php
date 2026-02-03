@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\UsuariosModel;
+use App\Models\AtributosModel;
 
 class UsuariosController extends ResourceController
 {
@@ -26,6 +27,21 @@ class UsuariosController extends ResourceController
         }
 
         return $this->respond($usuario);
+    }
+
+    public function getAtributos(){
+        
+    $atributosModel = new AtributosModel();
+    $atributos = $atributosModel -> getAtributos();
+    return $this-> respond($atributos); 
+        
+
+    }
+
+    public function setAtributos(){
+        $data = $this->request->getJson();
+
+        
     }
 
 

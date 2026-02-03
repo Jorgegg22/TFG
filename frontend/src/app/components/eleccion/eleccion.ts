@@ -42,7 +42,7 @@ export class Eleccion {
       next: (respuesta) => {
         console.log(respuesta);
         if(respuesta.rol === "estudiante"){
-          this.router.navigate(['/home-estudiante']);
+          this.router.navigate(['/atributos']);
         }else {
           this.router.navigate(['/home-propietario']);
         }

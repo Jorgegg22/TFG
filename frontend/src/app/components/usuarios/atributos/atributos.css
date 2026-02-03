@@ -50,6 +50,14 @@
     box-shadow: 0 13px 25px rgba(0, 0, 0, 0.199);
     text-align: center;
     z-index: 1000;
+    margin-top: -25px;
+}
+
+.limit{
+    color: red;
+    font-family: var(--primary-font);
+    margin-bottom: 25px;
+    font-weight: 500;
 }
 
 .info{
