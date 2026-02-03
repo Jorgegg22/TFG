@@ -1,5 +1,5 @@
 import { Component , OnInit } from '@angular/core';
-import { UsuarioC } from '../../services/usuarios';
+import { UsuarioService } from '../../services/usuarios-service';
 
 export interface Usuario {
   id?: number;
@@ -18,7 +18,7 @@ export class Home {
   
   alumnos: Usuario[] = [];
 
-  constructor(private usuarioService: UsuarioC) {}
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
     this.obtenerAlumnos();

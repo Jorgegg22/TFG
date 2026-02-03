@@ -30,12 +30,31 @@ class UsuariosController extends ResourceController
         return $this->respond($usuario);
     }
 
+
+    public function  getUsuarioById(){
+    $userId = $this->request->getJson();
+
+    $usuarioModel = new UsuariosModel();
+
+    $usuario = $usuarioModel->getUsuarios($userId);
+
+    return $this->respondCreated([
+        'status'  => 'success',
+        'mensaje' => 'Usuario obtenido correctamente',
+        'data' => $usuario
+        
+    ]);
+
+
+
+    }
+
     public function getAtributos(){
         
     $atributosModel = new AtributosModel();
     $atributos = $atributosModel -> getAtributos();
     return $this-> respond($atributos); 
-        
+    
 
     }
 

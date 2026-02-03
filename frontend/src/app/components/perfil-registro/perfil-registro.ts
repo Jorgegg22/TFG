@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { UniversidadesS } from '../../services/universidades';
 import { Universidad } from '../../common/universidades-interface';
+import { UsuarioService } from '../../services/usuarios-service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-perfil-registro',
@@ -9,28 +11,54 @@ import { Universidad } from '../../common/universidades-interface';
   styleUrl: './perfil-registro.css',
 })
 export class PerfilRegistro implements OnInit {
+  unis: Universidad[] = [];
+  userId!: string | null;
+  userName!: string;
+  userEmail!: string;
+  userPhone: any;
+  userCareer: any;
+  userDescription: any;
 
-  unis:Universidad[] =[]
-
-  constructor(private unservice: UniversidadesS) {
-  }
+  constructor(
+    private uniService: UniversidadesS,
+    private userService: UsuarioService,
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone,
+  ) {}
 
   ngOnInit(): void {
-    /* this.loadUniversidades(); */
+    this.userId = localStorage.getItem('usuarioId');
+    this.getDatos();
+
+    this.loadUniversidades();
   }
 
-  /* loadUniversidades(){
-    this.unservice.getUniversidades().subscribe({
-      next:(value) => {
-
-        console.log(value);
-        this.unis = Array.isArray(value) ? value : [value];
-        
+  loadUniversidades() {
+    this.uniService.getUniversidades().subscribe({
+      next: (respuesta) => {
+        console.log(respuesta);
+        this.unis = respuesta
       },
-      error:(err) =>{
-        console.error(err)
-      }
-    })
-  } */
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
 
+  getDatos() {
+    this.userService.getUsuarioById(this.userId).subscribe({
+      next: (respuesta) => {
+        console.log(respuesta);
+        this.userName = respuesta.data.nombre;
+
+        this.userEmail = respuesta.data.email;
+        console.log(this.userName + this.userEmail);
+
+        console.log('¿Estoy en la Zona de Angular?', NgZone.isInAngularZone());
+      },
+      error(err) {
+        console.error('Error');
+      },
+    });
+  }
 }

@@ -13,8 +13,8 @@ export class UniversidadesS {
    
   }
 
-  getUniversidades(): Observable<Universidad>{
-    return this.http.get<Universidad>(this.URI);
+  getUniversidades(): Observable<Universidad[]>{
+    return this.http.get<Universidad []>(this.URI);
   }
   
 

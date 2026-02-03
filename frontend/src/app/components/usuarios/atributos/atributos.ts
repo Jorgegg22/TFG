@@ -42,7 +42,7 @@ export class Atributos implements OnInit {
       next: (respuesta) => {
         this.atributos = respuesta;
         console.log(this.atributos);
-        this.cdr.detectChanges();
+     this.cdr.detectChanges();   
       },
       error: (err) => console.error('Error', err),
     });
@@ -51,7 +51,7 @@ export class Atributos implements OnInit {
   sendAtributos() {
     this.atrService.sendAtributos(this.data).subscribe({
       next: (respuesta) => {
-        this.router.navigate(["/home-estudiante"])
+        this.router.navigate(["/registro-perfil"])
       },
       error: (err) => console.error('Error', err),
     });

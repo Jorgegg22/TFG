@@ -1,4 +1,4 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule, provideBrowserGlobalErrorListeners ,provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing-module';
@@ -57,6 +57,7 @@ import { VistaInmueblePropietario } from './components/propietarios/vista-inmueb
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection()
   ],
   bootstrap: [App]
 })

@@ -1,54 +1,55 @@
 <section class="profile-section">
   <div class="app-container">
-    
+
     <div class="profile-container">
-      
+
       <div class="profile-main-card">
-        
+
         <div class="profile-header">
           <div class="avatar-wrapper">
             <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Foto de perfil" class="profile-img" />
             <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
           </div>
           <div class="profile-intro">
-            <h2>Nuevo Usuario</h2>
+            <h2>{{userName}}</h2>
             <p>Completa tu perfil para empezar</p>
           </div>
         </div>
 
         <div class="profile-form-grid">
-          
+
           <div class="input-group">
             <label>Nombre Completo</label>
-            <input type="text" placeholder="Ej. Alex García" />
+            <p class="p-userInfo">{{userName}}</p>
           </div>
 
           <div class="input-group">
             <label>Correo Electrónico</label>
-            <input type="email" placeholder="alex@univibe.com" />
+            <p class="p-userInfo">{{userEmail}}</p>
           </div>
+
 
           <div class="input-group">
             <label>Teléfono</label>
-            <input type="tel" placeholder="+34 600 000 000" />
+            <input type="tel" placeholder="+34 600 000 000" [(ngModel)]="userPhone" />
           </div>
 
           <div class="input-group">
             <label>Grado / Carrera</label>
-            <input type="text" placeholder="Ej. Ingeniería Informática" />
+            <input type="text" placeholder="Ej. Ingeniería Informática" [(ngModel)]="userCareer" />
           </div>
 
           <div class="input-group full-width">
             <label>Descripción</label>
-            <textarea placeholder="Cuéntanos un poco sobre ti... (hobbies, manías, qué buscas)"></textarea>
+            <textarea placeholder="Cuéntanos un poco sobre ti... (hobbies, manías, qué buscas)"
+              [(ngModel)]="userDescription"></textarea>
           </div>
 
           <div class="input-group">
             <label>Universidad</label>
             <select class="select-uni">
               <option value="" disabled selected>Selecciona tu universidad</option>
-              <option>Universidad de Granada (UGR)</option>
-              <option>VLC - UPV</option>
+              <option *ngFor="let uni of unis" value="{{uni.id}}"> {{uni.siglas}} -  {{uni.nombre}}</option>
             </select>
           </div>
 
@@ -64,31 +65,32 @@
               </p>
             </div>
           </div>
+          <button class="complete-profile"  >Completar Perfil</button>
 
         </div>
 
-        
+
 
       </div>
       <aside class="profile-sidebar-card blue-state">
-  
-  <div class="empty-content">
-    <div class="icon-circle">
-      <i class="fa-solid fa-house"></i>
-    </div>
-    
-    <h3>Tus Solicitudes</h3>
-    
-    <p>
-      Aquí se mostrarán los pisos que solicites cuando completes tu registro y empieces a buscar.
-    </p>
-  </div>
 
-</aside>
+        <div class="empty-content">
+          <div class="icon-circle">
+            <i class="fa-solid fa-house"></i>
+          </div>
 
-    <!--   <aside class="profile-sidebar-card">
+          <h3>Tus Solicitudes</h3>
+
+          <p>
+            Aquí se mostrarán los pisos que solicites cuando completes tu registro y empieces a buscar.
+          </p>
+        </div>
+
+      </aside>
+
+      <!--   <aside class="profile-sidebar-card">
         AÑADIR IF PARA EL REGISTRO DE PERFIL PARA SI HAY PISOS O NO -->
-        <!-- <div class="sidebar-header">
+      <!-- <div class="sidebar-header">
           <h3>Mis Solicitudes</h3>
           <span class="counter">3</span>
         </div>

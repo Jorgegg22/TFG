@@ -31,6 +31,7 @@ $routes->get('/', 'Home::index');
 
 // USUARIOS RUTAS
     $routes->get('api/usuarios', [UsuariosController::class,'index']);
+    $routes->post('api/usuarios/usuario', [UsuariosController::class,'getUsuarioById']);
     $routes->get('api/atributos', [UsuariosController::class,'getAtributos']);
     $routes->post('api/atributos/send', [UsuariosController::class,'setAtributos']);
 

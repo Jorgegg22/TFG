@@ -24,6 +24,11 @@ class UsuariosModel extends Model
             return $sql;
         }
 
+        $sql = $this->select('usuarios.*');
+        $sql = $this-> where('usuarios.id',$id);
+        $sql = $this->first();
+        return $sql;
+
        
     }
 

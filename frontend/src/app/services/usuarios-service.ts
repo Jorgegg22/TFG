@@ -6,8 +6,8 @@ import { Usuario } from '../common/usuarios-interface';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioC {
-  private URI: string = "http://localhost:8080/public/index.php/api/usuarios";
+export class UsuarioService {
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";
 
   constructor(private http: HttpClient) {
    
@@ -15,6 +15,10 @@ export class UsuarioC {
 
   getUsuarios(): Observable<Usuario>{
     return this.http.get<Usuario>(this.URI);
+  }
+
+  getUsuarioById(id:any): Observable<any>{
+    return this.http.post(`${this.URI}usuario`,id)
   }
   
 
