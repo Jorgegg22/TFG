@@ -1,0 +1,50 @@
+CRITICAL - 2026-02-03 10:40:30 --> ErrorException: Undefined variable $data
+[Method: POST, Route: api/atributos/send]
+in APPPATH/Controllers/UsuariosController.php on line 50.
+ 1 APPPATH/Controllers/UsuariosController.php(50): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->setAtributos()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-03 10:42:04 --> ErrorException: Undefined variable $data
+[Method: POST, Route: api/atributos/send]
+in APPPATH/Controllers/UsuariosController.php on line 50.
+ 1 APPPATH/Controllers/UsuariosController.php(50): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->setAtributos()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-03 10:44:34 --> ErrorException: Undefined variable $data
+[Method: POST, Route: api/atributos/send]
+in APPPATH/Controllers/UsuariosController.php on line 50.
+ 1 APPPATH/Controllers/UsuariosController.php(50): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->setAtributos()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-03 10:46:06 --> ErrorException: Undefined variable $data
+[Method: POST, Route: api/atributos/send]
+in APPPATH/Controllers/UsuariosController.php on line 51.
+ 1 APPPATH/Controllers/UsuariosController.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->setAtributos()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-03 10:47:09 --> ErrorException: Undefined variable $data
+[Method: POST, Route: api/atributos/send]
+in APPPATH/Controllers/UsuariosController.php on line 51.
+ 1 APPPATH/Controllers/UsuariosController.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->setAtributos()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()

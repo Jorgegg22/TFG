@@ -19,7 +19,7 @@ export class AtributoService {
   
 
   sendAtributos(atributosData:any):Observable<any>{
-    return this.http.post<any>(`${this.URI}/send`,atributosData)
+    return this.http.post(`${this.URI}/send`,atributosData)
   }
 
 

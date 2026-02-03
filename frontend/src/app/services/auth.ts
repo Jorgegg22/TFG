@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private URI: string = "http://localhost:8080/public/index.php/api/auth/";
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/auth/";
 
   constructor(private http: HttpClient) {
    

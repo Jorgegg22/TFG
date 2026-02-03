@@ -32,7 +32,7 @@ $routes->get('/', 'Home::index');
 // USUARIOS RUTAS
     $routes->get('api/usuarios', [UsuariosController::class,'index']);
     $routes->get('api/atributos', [UsuariosController::class,'getAtributos']);
-    $routes->get('api/atributos/send', [UsuariosController::class,'setAtributos']);
+    $routes->post('api/atributos/send', [UsuariosController::class,'setAtributos']);
 
 
 //UNIVERSIDADES RUTAS    

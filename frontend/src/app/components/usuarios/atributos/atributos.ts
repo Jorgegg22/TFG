@@ -28,14 +28,13 @@ export class Atributos implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.data.userId = localStorage.getItem('id');
-    // if (!this.data.userId) {
-    //   this.router.navigate(['/login']);
-    // } else {
-    //   this.loadAtributos();
-    // }
+    this.data.userId = localStorage.getItem('usuarioId');
+    if (!this.data.userId) {
+      this.router.navigate(['/login']);
+    } else {
+      this.loadAtributos();
+    }
 
-    this.loadAtributos();
   }
 
   loadAtributos() {

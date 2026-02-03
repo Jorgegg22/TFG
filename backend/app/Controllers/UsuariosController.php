@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\UsuariosModel;
 use App\Models\AtributosModel;
+use App\Models\AtributosUserModel;
 
 class UsuariosController extends ResourceController
 {
@@ -39,7 +40,36 @@ class UsuariosController extends ResourceController
     }
 
     public function setAtributos(){
-        $data = $this->request->getJson();
+        $userData = $this->request->getJson();
+        
+        
+        $atributosUserModel = new AtributosUserModel();
+        if(!$userData){
+            return $this->failNotFound('No se han seleccionado atributos');
+        }
+        $userId = $userData->userId;
+        $atributosArray = $userData->atributosSelected;
+
+        foreach($atributosArray as $atributoId){
+            $data = [
+                'usuario_id' => $userId,
+                'atributo_id' => $atributoId
+            ];
+
+            $atributosUserModel -> insert($data);
+            
+        }
+
+        return $this->respondCreated([
+        'status'  => 'success',
+        'mensaje' => 'Atributos insertados correctamente'
+    ]);
+
+
+
+        
+
+
 
         
     }
