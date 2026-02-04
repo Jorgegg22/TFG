@@ -35,8 +35,10 @@ export class Login {
         if (respuesta.rol === 'estudiante') {
           
           this.router.navigate(['/home-estudiante']);
-        } else {
+        } else if(respuesta.rol === "propietario"){
           this.router.navigate(['/home-propietario']);
+        }else{
+          //windowlocationadmin
         }
       },
     });
