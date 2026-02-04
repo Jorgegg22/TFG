@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { UniversidadesS } from '../../services/universidades';
+import { UniversidadService } from '../../services/universidades';
 import { Universidad } from '../../common/universidades-interface';
+import { Carrera } from '../../common/carreras-interface';
 import { UsuarioService } from '../../services/usuarios-service';
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -12,15 +13,17 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class PerfilRegistro implements OnInit {
   unis: Universidad[] = [];
+  carreras: Carrera[] = [];
   userId!: string | null;
   userName!: string;
   userEmail!: string;
   userPhone: any;
   userCareer: any;
   userDescription: any;
+userUni: any;
 
   constructor(
-    private uniService: UniversidadesS,
+    private uniService: UniversidadService,
     private userService: UsuarioService,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone,
@@ -31,6 +34,7 @@ export class PerfilRegistro implements OnInit {
     this.getDatos();
 
     this.loadUniversidades();
+    this.loadCarreras();
   }
 
   loadUniversidades() {
@@ -43,6 +47,20 @@ export class PerfilRegistro implements OnInit {
         console.error(err);
       },
     });
+  }
+
+
+  loadCarreras(){
+    this.uniService.getCarreras().subscribe({
+      next: (respuesta) => {
+        console.log(respuesta);
+        this.carreras = respuesta
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+
   }
 
   getDatos() {
@@ -64,6 +82,6 @@ export class PerfilRegistro implements OnInit {
 
 
   postDatos(){
-    
+
   }
 }
