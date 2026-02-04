@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\UniversidadesModel;
+use App\Models\CarrerasModel;
 
 class UniversidadesController extends ResourceController
 {
@@ -27,4 +28,13 @@ class UniversidadesController extends ResourceController
 
         return $this->respond($usuario);
     }
+
+    public function carrerasLista(){
+
+        $model = new CarrerasModel();
+
+        $carreras = $model->getCarreras();
+        return $this->respond($carreras);
+    }
+
 }

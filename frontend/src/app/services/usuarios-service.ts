@@ -20,9 +20,11 @@ export class UsuarioService {
   getUsuarioById(id:any): Observable<any>{
     return this.http.post(`${this.URI}usuario`,id)
   }
-  
 
 
+  postDatosPerfi(userdata:any):Observable<any>{
+    return this.http.post(`${this.URI}guardarDatos`,userdata)
+  }
 
 }
 

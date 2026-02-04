@@ -61,4 +61,9 @@ export class PerfilRegistro implements OnInit {
       },
     });
   }
+
+
+  postDatos(){
+    
+  }
 }

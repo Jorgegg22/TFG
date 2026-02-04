@@ -84,14 +84,25 @@ class UsuariosController extends ResourceController
         'mensaje' => 'Atributos insertados correctamente'
     ]);
 
-
-
-        
-
-
-
-        
     }
+
+
+    public function complete(){
+        $userData = $this->request->getJson();
+        $model = new UsuariosModel();
+        if(!$userData){
+            return $this->failNotFound('No se han seleccionado atributos');
+        }
+
+        // $data = {
+        //     'universidad_id' => $userData->id_uni,
+
+        // }
+
+    }
+
+
+        
 
 
     

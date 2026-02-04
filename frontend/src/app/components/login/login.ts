@@ -25,10 +25,12 @@ export class Login {
     this.authService.checkUser(this.userData).subscribe({
       next: (respuesta) => {
         console.log(respuesta);
-        this.sessionData.id = respuesta.id;
-        this.sessionData.nombre = respuesta.nombre;
-        this.sessionData.email = respuesta.email;
-        this.sessionData.rol = respuesta.rol;
+        this.sessionData = {
+        id: respuesta.id,
+        nombre: respuesta.nombre,
+        email: respuesta.email,
+        rol: respuesta.rol
+      };
         localStorage.setItem('sesion',JSON.stringify(this.sessionData));
         if (respuesta.rol === 'estudiante') {
           
