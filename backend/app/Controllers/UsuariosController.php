@@ -90,14 +90,26 @@ class UsuariosController extends ResourceController
     public function complete(){
         $userData = $this->request->getJson();
         $model = new UsuariosModel();
+        $userId = $userData -> userId;
         if(!$userData){
-            return $this->failNotFound('No se han seleccionado atributos');
+            return $this->failNotFound('No se ha recibido informacion');
         }
 
-        // $data = {
-        //     'universidad_id' => $userData->id_uni,
+        $data = [
+            'telefono' => $userData -> userPhone,
+            'id_carrera' => $userData -> userCareer,
+            'descripcion' => $userData -> userDescription,
+            'universidad_id' => $userData -> userUni 
+        ];
 
-        // }
+        $model->update($userId,$data);
+
+          return $this->respondCreated([
+        'status'  => 'success',
+        'mensaje' => 'Perfil completado correctamente'
+    ]);
+
+        
 
     }
 

@@ -7,7 +7,7 @@ import { Usuario } from '../common/usuarios-interface';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";
+  private URI: string = "http://localhost:8080/public/api/usuarios/";
 
   constructor(private http: HttpClient) {
    

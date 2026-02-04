@@ -15,7 +15,18 @@ class InmueblesController extends ResourceController
 
         $inmuebles = $this->model->getInmuebles();
         return $this->respond($inmuebles);
+
+      
     }
+    public function inmueblesListaAleatoria()
+    {
+
+        $inmueblesAleatorios = $this->model->getInmueblesAleatorios();
+        return $this->respond($inmueblesAleatorios);
+
+      
+    }
+
 
     public function show($id = null)
     {

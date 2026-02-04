@@ -7,7 +7,7 @@ import { Atributo } from '../common/atributos-interface';
   providedIn: 'root'
 })
 export class AtributoService {
-  private URI: string = "http://localhost/univibe/backend/public/index.php/api/atributos";
+  private URI: string = "http://localhost:8080/public/api/atributos";
 
   constructor(private http: HttpClient) {
    

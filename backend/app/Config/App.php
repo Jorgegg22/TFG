@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost/univibe/backend/public/';  /* 'http://localhost:8080/public/' docker  http://localhost/univibe/backend/public/ xampp */
+    public string $baseURL = 'http://localhost:8080/public/';  /* 'http://localhost:8080/public/' docker  http://localhost/univibe/backend/public/ xampp */
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

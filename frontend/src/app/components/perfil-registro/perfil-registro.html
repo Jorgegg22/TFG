@@ -31,28 +31,28 @@
 
           <div class="input-group">
             <label>Teléfono</label>
-            <input type="tel" placeholder="+34 600 000 000" [(ngModel)]="userPhone" />
+            <input type="text" placeholder="+34 600 000 000" [(ngModel)]="userData.userPhone" />
           </div>
 
           <div class="input-group">
             <label>Grado / Carrera</label>
-             <select class="select-uni" [(ngModel)]="userCareer">
+             <select class="select-uni" [(ngModel)]="userData.userCareer">
               <option value="" disabled selected>Selecciona tu carrera</option>
-              <option *ngFor="let car of carreras" value="{{car.id}}"> {{car.nombre}} </option>
+              <option *ngFor="let car of carreras" [value]="car.id"> {{car.nombre}} </option>
             </select>
           </div>
 
           <div class="input-group full-width">
             <label>Descripción</label>
             <textarea placeholder="Cuéntanos un poco sobre ti... (hobbies, manías, qué buscas)"
-              [(ngModel)]="userDescription"></textarea>
+              [(ngModel)]="userData.userDescription"></textarea>
           </div>
 
           <div class="input-group">
             <label>Universidad</label>
-            <select class="select-uni" [(ngModel)]="userUni">
+            <select class="select-uni" [(ngModel)]="userData.userUni">
               <option value="" disabled selected>Selecciona tu universidad</option>
-              <option *ngFor="let uni of unis" value="{{uni.id}}"> {{uni.siglas}} -  {{uni.nombre}}</option>
+              <option *ngFor="let uni of unis" [value]="uni.id"> {{uni.siglas}} -  {{uni.nombre}}</option>
             </select>
           </div>
 
@@ -68,7 +68,7 @@
               </p>
             </div>
           </div>
-          <button class="complete-profile"  >Completar Perfil</button>
+          <button class="complete-profile"  (click)="postDatos()" >Completar Perfil</button>
 
         </div>
 

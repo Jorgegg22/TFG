@@ -8,7 +8,7 @@ import { Carrera } from '../common/carreras-interface';
   providedIn: 'root'
 })
 export class UniversidadService {
-  private URI: string = "http://localhost/univibe/backend/public/index.php/api/";
+  private URI: string = "http://localhost:8080/public/api/";
 
   constructor(private http: HttpClient) {
    

@@ -4,6 +4,7 @@ import { Universidad } from '../../common/universidades-interface';
 import { Carrera } from '../../common/carreras-interface';
 import { UsuarioService } from '../../services/usuarios-service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-registro',
@@ -14,25 +15,34 @@ import { ChangeDetectorRef } from '@angular/core';
 export class PerfilRegistro implements OnInit {
   unis: Universidad[] = [];
   carreras: Carrera[] = [];
-  userId!: string | null;
+  userIdLocal!: string | null;
   userName!: string;
   userEmail!: string;
-  userPhone: any;
-  userCareer: any;
-  userDescription: any;
-userUni: any;
+  userData: {
+    userId: string | null;
+    userPhone: string;
+    userCareer: string;
+    userDescription: string;
+    userUni: string;
+  } = {
+    userId: '',
+    userPhone: '',
+    userCareer: '',
+    userDescription: '',
+    userUni: '',
+  };
 
   constructor(
     private uniService: UniversidadService,
     private userService: UsuarioService,
     private cdr: ChangeDetectorRef,
-    private ngZone: NgZone,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('usuarioId');
+    this.userIdLocal = localStorage.getItem('usuarioId');
+    this.userData.userId = this.userIdLocal;
     this.getDatos();
-
     this.loadUniversidades();
     this.loadCarreras();
   }
@@ -41,7 +51,7 @@ userUni: any;
     this.uniService.getUniversidades().subscribe({
       next: (respuesta) => {
         console.log(respuesta);
-        this.unis = respuesta
+        this.unis = respuesta;
       },
       error: (err) => {
         console.error(err);
@@ -49,22 +59,20 @@ userUni: any;
     });
   }
 
-
-  loadCarreras(){
+  loadCarreras() {
     this.uniService.getCarreras().subscribe({
       next: (respuesta) => {
         console.log(respuesta);
-        this.carreras = respuesta
+        this.carreras = respuesta;
       },
       error: (err) => {
         console.error(err);
       },
     });
-
   }
 
   getDatos() {
-    this.userService.getUsuarioById(this.userId).subscribe({
+    this.userService.getUsuarioById(this.userIdLocal).subscribe({
       next: (respuesta) => {
         console.log(respuesta);
         this.userName = respuesta.data.nombre;
@@ -80,8 +88,17 @@ userUni: any;
     });
   }
 
-
-  postDatos(){
-
+  postDatos() {
+    console.log(this.userData);
+    
+    this.userService.postDatosPerfi(this.userData).subscribe({
+      next: (respuesta) => {
+        console.log(respuesta);
+        this.router.navigate(['/home-estudiante']);
+      },
+      error(err) {
+        console.error('Error');
+      },
+    });
   }
 }

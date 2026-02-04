@@ -26,7 +26,7 @@
   <div class="layout-grid">
     <section class="main-card image-area">
       <!-- ANIMACION IZQUIERDA CUANDO LIKE Y DERECHA CON DISLIKE -->
-  <div class="price-tag">800€ / 200€ p.p</div>
+  <div class="price-tag">{{inmuebles.precio}} €</div>
   
   <div class="image-wrapper">
     <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200" alt="Piso moderno">
@@ -35,10 +35,13 @@
     <button class="nav-arrow right"><i class="fa-solid fa-chevron-right"></i></button>
 
     <div class="quick-actions floating">
-      <button class="action-btn heart"><i class="fa-solid fa-heart"></i></button>
-      <button class="action-btn dismiss"><i class="fa-solid fa-xmark"></i></button>
+      <button class="action-btn heart" (click)="nextHouseLike()" ><i class="fa-solid fa-heart"></i></button>
+      <button class="action-btn dismiss"  (click)="nextHouseDislike()" ><i class="fa-solid fa-xmark"></i></button>
     </div>
-     <span class="owner-label">Propietario</span>
+    <div *ngIf="inmuebles">
+      <span class="owner-label">{{inmuebles.nombre_propietario}}</span>
+    </div>
+     
   </div>
 
 </section>
@@ -46,25 +49,31 @@
     <aside class="main-card info-area">
     
 
-      <div class="info-header">
-        <h1>Título Piso</h1>
+      <div class="info-header" *ngIf="inmuebles">
+        <h1>{{inmuebles.titulo}}</h1>
         <div class="underline"></div>
       </div>
 
       <div class="details-list">
         <div class="detail-item">
         <h3>LOCALIZACIÓN</h3>
-          <p>Centro, Granada</p>
+          <p>{{inmuebles.direccion}}</p>
         </div>
 
         <div class="detail-item">
-          <h3>CARACTERÍSTICAS</h3>
-          <p>3 habitaciones, 2 baños</p>
+          <h3>DESCRIPCION</h3>
+          <p>{{inmuebles.descripcion}}</p>
         </div>
+        <div class="detail-item">
+          <h3>CERCA DE</h3>
+          <p>{{inmuebles.nombre_universidad}}</p>
+        </div>
+        
         <div class="detail-item">
           <h3>NORMAS</h3>
           <p>Prohibido fumar</p>
         </div>
+        
 
         <div class="detail-item">
           <h3>COMPAÑEROS</h3>
