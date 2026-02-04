@@ -12,6 +12,7 @@ use App\Controllers\AuthController;
 //Rutas Admin
 use App\Controllers\InmueblesControllerA;
 use App\Controllers\UniversidadesControllerA;
+use App\Controllers\Admin\AdminController;
 
 
 use CodeIgniter\Router\RouteCollection;
@@ -48,7 +49,7 @@ $routes->get('/', 'Home::index');
 
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
-    $routes->get('admin/index', 'Dashboard::index'); 
+    $routes->get('/', [AdminController::class,'index' ]); 
     $routes->get('admin/usuarios', 'Users::index');         
 });
 

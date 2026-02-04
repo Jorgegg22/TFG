@@ -38,7 +38,7 @@ export class Login {
         } else if(respuesta.rol === "propietario"){
           this.router.navigate(['/home-propietario']);
         }else{
-          //windowlocationadmin
+          window.location.href = 'http://localhost:8080/public/admin/'
         }
       },
     });
