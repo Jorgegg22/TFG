@@ -355,3 +355,72 @@
   color: white;
   transform: scale(1.1) rotate(5deg);
 }
+
+
+/* =========================================
+   PAGINACIÓN
+   ========================================= */
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Afecta tanto a enlaces (a) como a botones (button) */
+.pagination a, 
+.pagination button {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  
+  /* Reset específico para botones */
+  cursor: pointer;
+  font-family: inherit; /* Para que el botón herede la fuente */
+}
+
+/* Efecto Hover */
+.pagination a:hover:not(.active), 
+.pagination button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+  transform: translateY(-1px);
+}
+
+/* Página activa */
+.pagination .pag-number.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Botones deshabilitados (si usas el atributo disabled en el HTML) */
+.pagination button:disabled {
+  color: #ccc;
+  border-color: #eee;
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.pagination .pag-dots {
+  color: #777;
+  padding: 0 5px;
+  font-weight: bold;
+} 

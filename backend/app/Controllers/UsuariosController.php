@@ -121,6 +121,10 @@ class UsuariosController extends ResourceController
             'inmuebles' => $solicitudesInmuebles
         ];
 
+             if(empty($data)){
+            return $this->respondCreated(['status' => 'failed', 'mensaje' =>'lista vacia' ]);
+        }
+
            return $this->respondCreated([
         'status'  => 'success',
         'mensaje' => 'Solcitudes traides correctamente',
@@ -139,6 +143,8 @@ class UsuariosController extends ResourceController
         $data = [
             'perfi' => $userProfile
         ];
+
+   
 
            return $this->respondCreated([
         'status'  => 'success',

@@ -8,8 +8,8 @@ import { Carrera } from '../common/carreras-interface';
   providedIn: 'root'
 })
 export class UniversidadService {
-  private URI: string = "http://localhost/univibe/backend/public/index.php/api/"; // http://localhost/univibe/backend/public/index.php/api/ xampp - http://localhost:8080/public/api/ docker
-
+ /*  private URI: string = "http://localhost/univibe/backend/public/index.php/api/"; */ //XAMPP
+  private URI: string = "http://localhost:8080/public/api/"; //DOCKER
   constructor(private http: HttpClient) {
    
   }
