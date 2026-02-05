@@ -7,7 +7,7 @@ import { Usuario } from '../common/usuarios-interface';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private URI: string = "http://localhost:8080/public/api/usuarios/";
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/"; // http://localhost/univibe/backend/public/index.php/api/usuarios/ xampp - http://localhost:8080/public/api/usuarios/" docker
 
   constructor(private http: HttpClient) {
    
@@ -26,5 +26,13 @@ export class UsuarioService {
     return this.http.post(`${this.URI}guardarDatos`,userdata)
   }
 
+
+  getSolicitudesUsuario(userdata:any):Observable<any>{
+    return this.http.post(`${this.URI}solicitudes`,userdata);
+  }
+
+  getPerfilUsuario(userId:any):Observable<any>{
+    return this.http.get(`${this.URI}perfil/` + userId)
+  }
 }
 

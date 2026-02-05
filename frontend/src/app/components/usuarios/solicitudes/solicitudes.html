@@ -1,25 +1,5 @@
 <div class="wrapper-solicitudes">
-  <nav class="nav-modern">
-    <div class="nav-content">
-      <div class="brand">
-        <div class="logo-univibe-serif" routerLink="/home-estudiante">U</div>
-      </div>
-      <ul class="menu">
-        <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
-        <li>
-          <a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a>
-        </li>
-        <li><a routerLink="/perfil">Perfil</a></li>
-      </ul>
-      <div class="user-actions">
-        <i class="fa-solid fa-bell"></i>
-        <i class="fa-solid fa-power-off"></i>
-        <div class="profile-circle">
-          <img src="https://i.pravatar.cc/100" alt="User" />
-        </div>
-      </div>
-    </div>
-  </nav>
+  <app-header></app-header>
 
   <main class="app-container no-scroll">
     <div class="solicitudes-wrapper">
@@ -44,120 +24,26 @@
 
       <section class="main-card solicitudes-card full-screen-layout">
         <div class="column-grid-scroll">
-          <article class="house-card-modern">
+          <article class="house-card-modern" *ngFor="let inm of inmuebles">
             <div class="card-image-box">
               <img
                 src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
                 alt="Piso"
               />
-              <div class="card-tag">Destacado</div>
+              <div class="card-tag">{{inm.estado}}</div>
             </div>
             <div class="card-body">
               <div class="card-header-info">
-                <h3 class="house-name">Casa Albaicín</h3>
-                <span class="precio">800€</span>
+                <h3 class="house-name">{{inm.titulo}}</h3>
+                <span class="precio">{{inm.precio}}€</span>
               </div>
               <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
-                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
+                <span class="location"><i class="fa-solid fa-location-dot"></i> {{inm.direccion}}</span>
+                <button class="view-btn" routerLink="/piso-detalle" ><i class="fa-regular fa-eye"></i></button>
               </div>
             </div>
           </article>
-          <article class="house-card-modern">
-            <div class="card-image-box">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-                alt="Piso"
-              />
-              <div class="card-tag">Destacado</div>
-            </div>
-            <div class="card-body">
-              <div class="card-header-info">
-                <h3 class="house-name">Casa Albaicín</h3>
-                <span class="precio">800€</span>
-              </div>
-              <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
-                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
-              </div>
-            </div>
-          </article>
-          <article class="house-card-modern">
-            <div class="card-image-box">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-                alt="Piso"
-              />
-              <div class="card-tag">Destacado</div>
-            </div>
-            <div class="card-body">
-              <div class="card-header-info">
-                <h3 class="house-name">Casa Albaicín</h3>
-                <span class="precio">800€</span>
-              </div>
-              <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
-                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
-              </div>
-            </div>
-          </article>
-          <article class="house-card-modern">
-            <div class="card-image-box">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-                alt="Piso"
-              />
-              <div class="card-tag">Destacado</div>
-            </div>
-            <div class="card-body">
-              <div class="card-header-info">
-                <h3 class="house-name">Casa Albaicín</h3>
-                <span class="precio">800€</span>
-              </div>
-              <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
-                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
-              </div>
-            </div>
-          </article>
-          <article class="house-card-modern">
-            <div class="card-image-box">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-                alt="Piso"
-              />
-              <div class="card-tag">Destacado</div>
-            </div>
-            <div class="card-body">
-              <div class="card-header-info">
-                <h3 class="house-name">Casa Albaicín</h3>
-                <span class="precio">800€</span>
-              </div>
-              <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
-                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
-              </div>
-            </div>
-          </article>
-          <article class="house-card-modern">
-            <div class="card-image-box">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-                alt="Piso"
-              />
-              <div class="card-tag">Destacado</div>
-            </div>
-            <div class="card-body">
-              <div class="card-header-info">
-                <h3 class="house-name">Casa Albaicín</h3>
-                <span class="precio">800€</span>
-              </div>
-              <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> Granada</span>
-                <button class="view-btn"><i class="fa-regular fa-eye"></i></button>
-              </div>
-            </div>
-          </article>
+          
         </div>
       </section>
     </div>

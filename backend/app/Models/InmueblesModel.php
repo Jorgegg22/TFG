@@ -21,12 +21,12 @@ class InmueblesModel extends Model
     public function getInmuebles($id = null)
     {
         // --- 1. SELECCIÓN DE CAMPOS (SELECT) ---
-        $this->select('inmuebles.*'); // Todos los datos del piso
+        $this->select('inmuebles.*'); 
         $this->select('u_prop.nombre as nombre_propietario');
         $this->select('universidades.nombre as nombre_universidad');
         // Datos del match (si existen)
         $this->select('matches.estudiante_id');
-        $this->select('u_est.nombre as nombre_estudiante,u_est.foto_perfil as foto_perfil');
+        $this->select('u_est.nombre as nombre_estudiante');
 
         // --- 2. UNIONES DE TABLAS (JOINS) ---
 
@@ -45,6 +45,8 @@ class InmueblesModel extends Model
         $this->join('usuarios as u_est', 'u_est.id = matches.estudiante_id', 'left');
 
         // --- 3. DEVUELVE UNO O TODOS ---
+                $this->orderBy('RAND()');
+
 
         // Si pasaste un ID, devuelve solo ese piso
         if ($id != null) {
@@ -63,7 +65,7 @@ class InmueblesModel extends Model
         $this->select('universidades.nombre as nombre_universidad');
         $this->select('u_est.id as est_id');
         $this->select('u_est.nombre as est_nombre');
-        $this->select('u_est.foto_perfil as est_foto');
+        // $this->select('u_est.foto_perfil as est_foto');
 
         $this->join('usuarios as u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
         $this->join('universidades', 'universidades.id = inmuebles.universidad_id', 'left');

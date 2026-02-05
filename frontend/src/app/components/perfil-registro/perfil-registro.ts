@@ -93,10 +93,13 @@ export class PerfilRegistro implements OnInit {
     
     this.userService.postDatosPerfi(this.userData).subscribe({
       next: (respuesta) => {
+        console.log("Va")
         console.log(respuesta);
         this.router.navigate(['/home-estudiante']);
       },
       error(err) {
+        console.log("No va");
+        
         console.error('Error');
       },
     });

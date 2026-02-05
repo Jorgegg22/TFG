@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private URI: string = "http://localhost:8080/public/api/auth/";
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/auth/"; // http://localhost/univibe/backend/public/index.php/api/auth/ xampp - http://localhost:8080/public/api/auth/ docker
 
   constructor(private http: HttpClient) {
    

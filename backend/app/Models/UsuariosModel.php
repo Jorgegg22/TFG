@@ -32,6 +32,18 @@ class UsuariosModel extends Model
        
     }
 
+
+
+    public function getSolicitudesUsuario($id = null){
+        $sql = $this->select('usuarios.* ,inm.* , sol.*');
+        $sql = $this-> join('solicitudes AS sol', 'sol.estudiante_id = usuarios.id', 'left');
+        $sql = $this-> join('inmuebles AS inm', 'inm.id = sol.inmueble_id', 'left');
+
+        $sql = $this-> where('usuarios.id',$id);
+        $sql = $this->findAll();
+        return $sql;
+    }
+
    
 
 }

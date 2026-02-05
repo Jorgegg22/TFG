@@ -1,0 +1,20 @@
+<nav class="nav-modern">
+  <div class="nav-content">
+    <div class="brand"><div class="logo-univibe-serif" routerLink="/home-estudiante">U</div></div>
+    <ul class="menu">
+      <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
+      <li><a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a></li>
+      <li><a [routerLink]="'/perfil/' + userId" routerLinkActive="active-link">Perfil</a></li>
+    </ul>
+    <div class="user-actions">
+      <div class="profile-circle">
+        <img src="https://i.pravatar.cc/100" alt="User">
+        <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff;" ></i>
+      </div>
+      <div class="options">
+        <p>Cerrar Sesion</p>
+
+      </div>
+    </div>
+  </div>
+</nav>

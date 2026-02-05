@@ -51,7 +51,7 @@ const routes: Routes = [
     path:'solicitudes-estudiante',
     component:Solicitudes
   },{
-    path:'perfil',
+    path:'perfil/:id',
     component:Perfil
   },{
     path:'piso-detalle',

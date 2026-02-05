@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  --primary: #0056b3; 
+  --accent: #00d1b2; 
+  --bg-light: #f5f7fa; 
+  --text-main: #232829;
+  --white: #ffffff;
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+
+.nav-modern {
+  background: var(--primary);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.nav-content {
+  width: 95%; /* Un poco más ancho para alinear con el grid de abajo */
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-univibe-serif {
+  width: 50px; height: 50px; background-color: #0056b3;
+  border-radius: 14px; border: 1px solid white;    
+  display: flex; justify-content: center; align-items: center;
+  color: #ffffff; font-family: 'Times New Roman', Times, serif; 
+  font-weight: bold; font-size: 37px; padding-top: 4px; user-select: none;
+}
+.logo-univibe-serif:hover { cursor: pointer; }
+
+.menu { display: flex; gap: 35px; list-style: none; margin: 0; }
+.menu a { text-decoration: none; color: var(--white); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+.menu a:hover { color: rgb(202, 202, 202); }
+.active-link { border-bottom: 5px solid white; padding-bottom: 22px; }
+
+.user-actions { display: flex; align-items: center; gap: 20px; color: var(--primary); }
+.profile-circle img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--bg-body); }

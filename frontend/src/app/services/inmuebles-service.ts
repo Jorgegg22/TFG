@@ -7,7 +7,7 @@ import { Inmueble } from '../common/inmuebles-interface';
   providedIn: 'root'
 })
 export class InmuebleService {
-  private URI: string = "http://localhost:8080/public/api/inmuebles/";
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/inmuebles/"; // http://localhost/univibe/backend/public/index.php/api/inmuebles/ xampp - http://localhost:8080/public/api/auth/ docker
 
   constructor(private http: HttpClient) {
    

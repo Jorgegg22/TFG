@@ -109,7 +109,45 @@ class UsuariosController extends ResourceController
         'mensaje' => 'Perfil completado correctamente'
     ]);
 
-        
+    }
+
+    public function solicitudesUsuario(){
+        $userData = $this->request->getJson();
+        $userId = $userData -> userId;
+        $model = new UsuariosModel();
+        $solicitudesInmuebles = $model -> getSolicitudesUsuario($userId);
+
+        $data = [
+            'inmuebles' => $solicitudesInmuebles
+        ];
+
+           return $this->respondCreated([
+        'status'  => 'success',
+        'mensaje' => 'Solcitudes traides correctamente',
+        'data' => $data
+    ]);
+
+
+    }
+
+    public function getPerfilUsuario($id = null){
+
+        $userId = $id;
+        $model = new UsuariosModel();
+        $userProfile = $model -> getUsuarios($userId);
+
+        $data = [
+            'perfi' => $userProfile
+        ];
+
+           return $this->respondCreated([
+        'status'  => 'success',
+        'mensaje' => 'Solcitudes traides correctamente',
+        'data' => $data
+           ]);
+
+
+
 
     }
 

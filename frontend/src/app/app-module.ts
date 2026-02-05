@@ -22,6 +22,7 @@ import { Publicar } from './components/propietarios/publicar/publicar';
 import { PerfilPropietario } from './components/propietarios/perfil-propietario/perfil-propietario';
 import { HomePropietario } from './components/propietarios/home-propietario/home-propietario';
 import { VistaInmueblePropietario } from './components/propietarios/vista-inmueble-propietario/vista-inmueble-propietario';
+import { Header } from './components/header/header';
 
 
 
@@ -43,7 +44,8 @@ import { VistaInmueblePropietario } from './components/propietarios/vista-inmueb
     Publicar,
     PerfilPropietario,
     HomePropietario,
-    VistaInmueblePropietario
+    VistaInmueblePropietario,
+    Header
 
    
 
