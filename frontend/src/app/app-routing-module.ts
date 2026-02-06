@@ -54,7 +54,7 @@ const routes: Routes = [
     path:'perfil/:id',
     component:Perfil
   },{
-    path:'piso-detalle',
+    path:'piso-detalle/:id',
     component: VistaPiso
   },{
     path:'home-propietario',

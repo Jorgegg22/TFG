@@ -122,3 +122,23 @@ in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
 12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
 13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-06 11:46:48 --> Error: Class "App\Models\SolicitudesModel" not found
+[Method: GET, Route: api/inmuebles/inmuebleDetalle/2]
+in APPPATH/Models/InmueblesModel.php on line 104.
+ 1 APPPATH/Controllers/InmueblesController.php(40): App\Models\InmueblesModel->getInmuebleDetalle()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-06 11:51:25 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: api/inmuebles/inmuebleDetalle/2]
+in APPPATH/Models/InmueblesModel.php on line 116.
+ 1 APPPATH/Controllers/InmueblesController.php(41): App\Models\InmueblesModel->getInmuebleDetalle()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()

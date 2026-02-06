@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\InmueblesModel;
 
+
 class InmueblesController extends ResourceController
 {
     protected $modelName = 'App\Models\InmueblesModel';
@@ -12,30 +13,41 @@ class InmueblesController extends ResourceController
 
     public function inmueblesLista()
     {
-
-        $inmuebles = $this->model->getInmuebles();
+            
+        $modelInmueble = new InmueblesModel();
+        $inmuebles = $modelInmueble->getInmuebles();
         return $this->respond($inmuebles);
 
       
     }
     public function inmueblesListaAleatoria()
     {
-
-        $inmueblesAleatorios = $this->model->getInmueblesAleatorios();
+            
+        $modelInmueble = new InmueblesModel();
+        $inmueblesAleatorios = $modelInmueble->getInmueblesAleatorios();
         return $this->respond($inmueblesAleatorios);
 
       
     }
 
-
-    public function show($id = null)
-    {
-        $usuario = $this->model->getUsuarios($id);
+    public function inmuebleDetalle($id = null){
         
-        if (!$usuario) {
-            return $this->failNotFound('Usuario no encontrado');
+        $modelInmueble = new InmueblesModel();
+
+        if(!$id){
+            return $this->respond("No se ha encontrado un piso con ese id");
         }
 
-        return $this->respond($usuario);
+        $inmueble = $modelInmueble->getInmuebleDetalle($id);
+
+        return $this->respond($inmueble);
+
+
+
+
     }
+
+
+
+
 }

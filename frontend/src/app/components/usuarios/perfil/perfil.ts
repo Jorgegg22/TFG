@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioPerfil, InfoPerfil } from '../../../common/usuarioPerfil-interface';
 import { UsuarioService } from '../../../services/usuarios-service';
 import { ActivatedRoute } from '@angular/router';
+import { NavigationService } from '../../../services/navigation-service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,14 +18,27 @@ export class Perfil  implements OnInit{
   isEditing: boolean = false;
   info!:InfoPerfil
   perfil!:UsuarioPerfil
+  previousUrl!:string | null;
 
   constructor(
     private userService: UsuarioService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private navigationService:NavigationService,
+    private router:Router
 
   ) {}
   
   ngOnInit(): void {
+     const prevPage = this.navigationService.previousUrl;
+
+  if (prevPage !== this.router.url) {
+    this.previousUrl = prevPage;
+  } else {
+    this.previousUrl = '/home-estudiante';
+  }
+
+  console.log('Previous URL:', this.previousUrl);
+    
     this.loadPerfil();
   }
 
@@ -52,6 +67,8 @@ export class Perfil  implements OnInit{
     });
 
   }
+
+
 
 
 

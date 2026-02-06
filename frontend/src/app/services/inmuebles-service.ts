@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inmueble } from '../common/inmuebles-interface';
+import { InmuebleDetalle } from '../common/pisoDetalle-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class InmuebleService {
     return this.http.get<Inmueble[]>(`${this.URI}listaAleatoria`);
   }
 
+
+  getInmueble(id:string): Observable<InmuebleDetalle>{
+    return this.http.get<InmuebleDetalle>(`${this.URI}/inmuebleDetalle/` + id)
+  }
 
 
 

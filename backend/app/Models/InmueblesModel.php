@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\InmueblesModel;
+use App\Models\Solici;
 use CodeIgniter\Model;
 
 class InmueblesModel extends Model
@@ -47,12 +49,6 @@ class InmueblesModel extends Model
         // --- 3. DEVUELVE UNO O TODOS ---
                 $this->orderBy('RAND()');
 
-
-        // Si pasaste un ID, devuelve solo ese piso
-        if ($id != null) {
-            return $this->find($id);
-        }
-
         // Si NO pasaste ID, devuelve TODOS los pisos
         return $this->findAll();
     }
@@ -84,5 +80,62 @@ class InmueblesModel extends Model
             ->join('usuarios', 'usuarios.id = inmuebles.propietario_id')
             ->join('universidades', 'universidades.id = inmuebles.universidad_id')
             ->findAll();
+    }
+
+
+
+    public function getInmuebleDetalle($id = null)
+{
+    // Seleccionamo inmueble con el id,traemos el propietario y la universidad
+    $this->select('inmuebles.*'); 
+    $this->select('u_prop.nombre as nombre_propietario');
+    $this->select('universidades.nombre as nombre_universidad');
+
+    $this->join('usuarios as u_prop', 
+                'u_prop.id = inmuebles.propietario_id', 
+                'left');
+
+    $this->join('universidades', 
+                'universidades.id = inmuebles.universidad_id', 
+                'left');
+
+    $inmueble = $this->find($id);
+
+     $db = \Config\Database::connect();
+
+    // Traemos las solicitudes,con el nombre de los usuarios que han solicitado ese piso
+    
+
+    $solicitudes = $db->table('solicitudes')
+        ->select('solicitudes.*')
+        ->select('u_sol.nombre as nombre_solicitante')
+        ->join('usuarios as u_sol', 
+               'u_sol.id = solicitudes.estudiante_id', 
+               'left')
+        ->where('solicitudes.inmueble_id', $id)
+             ->get()
+        ->getResultArray();
+
+
+    // Traemos los mathes,con el nombre de los usuarios que han hecho match con ese piso 
+
+    $matches = $db->table('matches')
+        ->select('matches.*')
+        ->select('u_est.nombre as nombre_estudiante')
+        ->join('usuarios as u_est', 
+               'u_est.id = matches.estudiante_id', 
+               'left')
+        ->where('matches.inmueble_id', $id)
+             ->get()
+        ->getResultArray();
+
+
+    //Unimos el array de inmueble con los arrays de solicitudes y matches.
+    $inmueble['solicitudes'] = $solicitudes;
+    $inmueble['matches'] = $matches;
+
+    return $inmueble;
+
+
     }
 }

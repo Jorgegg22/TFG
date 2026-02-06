@@ -108,7 +108,7 @@
             <button class="btn-back" style="width: 230px;padding: 15px;">Guardar Cambios</button>
           </div>
 
-          <button class="btn-back" *ngIf="!isEditing" routerLink="/home-estudiante">
+          <button class="btn-back" *ngIf="!isEditing" [routerLink]="previousUrl">
             <i class="fa-solid fa-arrow-left-long"></i>
             <p>Volver</p>
           </button>

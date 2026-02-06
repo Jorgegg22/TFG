@@ -36,7 +36,7 @@
               </div>
               <div class="card-footer">
                 <span class="location"><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span>
-                <button class="view-btn" routerLink="/piso-detalle">
+                <button class="view-btn" routerLink="/piso-detalle"  [routerLink]='"/piso-detalle/" + inm.inmueble_id'>
                   <i class="fa-regular fa-eye"></i>
                 </button>
               </div>
