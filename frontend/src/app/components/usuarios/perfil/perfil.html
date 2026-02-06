@@ -3,10 +3,13 @@
     <div class="profile-container">
       <div *ngIf="perfil">
         <div class="profile-main-card">
-
           <div class="profile-header">
             <div class="avatar-wrapper">
-              <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Foto de perfil" class="profile-img" />
+              <img
+                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                alt="Foto de perfil"
+                class="profile-img"
+              />
 
               <button class="btn-edit-photo" *ngIf="isEditing">
                 <i class="fa-solid fa-camera"></i>
@@ -14,19 +17,16 @@
             </div>
 
             <div class="profile-intro">
-
               <ng-container *ngIf="!isEditing">
-                <h2>{{perfil.nombre}}</h2>
-                <p>{{perfil.descripcion}}</p>
-                <div class="profile-badges">
-                </div>
+                <h2>{{ perfil.nombre }}</h2>
+
+                <div class="profile-badges"></div>
               </ng-container>
 
               <ng-container *ngIf="isEditing">
                 <h2>Editando Perfil</h2>
                 <p>Actualiza tu información pública</p>
               </ng-container>
-
             </div>
 
             <button class="btn-edit-profile" (click)="toggleEdit()">
@@ -36,39 +36,29 @@
           </div>
 
           <div class="profile-info-grid">
-
             <div class="info-group">
               <label>Correo Electrónico</label>
               <div class="data-box" *ngIf="!isEditing">
                 <i class="fa-regular fa-envelope"></i>
-                <p>{{perfil.email}}</p>
+                <p>{{ perfil.email }}</p>
               </div>
-              <input *ngIf="isEditing" type="email" class="input-modern" value="alex@univibe.com">
+              <input *ngIf="isEditing" type="email" class="input-modern" value="alex@univibe.com" />
             </div>
 
             <div class="info-group">
               <label>Teléfono</label>
               <div class="data-box" *ngIf="!isEditing">
                 <i class="fa-solid fa-phone"></i>
-                <p>{{perfil.telefono}}</p>
+                <p>{{ perfil.telefono }}</p>
               </div>
-              <input *ngIf="isEditing" type="tel" class="input-modern" value="+34 600 123 456">
+              <input *ngIf="isEditing" type="tel" class="input-modern" value="+34 600 123 456" />
             </div>
-
-            <div class="info-group full-width">
-           
-              <div class="data-box bio-box" *ngIf="isEditing">
-                  <input *ngIf="isEditing" class="input-modern bio-input"
-                value="Me considero una persona tranquila pero sociable. Me gusta mantener las zonas comunes limpias y cocinar los fines de semana. Busco compañeros de piso con buen rollo.">
-            </div>
-              </div>
-            
 
             <div class="info-group">
               <label>Universidad</label>
               <div class="data-box highlight" *ngIf="!isEditing">
                 <i class="fa-solid fa-graduation-cap"></i>
-                <p>{{perfil.nombre_universidad}}</p>
+                <p>{{ perfil.nombre_universidad }}</p>
               </div>
               <div class="select-wrapper" *ngIf="isEditing">
                 <i class="fa-solid fa-graduation-cap input-icon"></i>
@@ -84,11 +74,29 @@
               <label>Carrera / Grado</label>
               <div class="data-box" *ngIf="!isEditing">
                 <i class="fa-solid fa-book"></i>
-                <p>{{perfil.nombre_carrera}}</p>
+                <p>{{ perfil.nombre_carrera }}</p>
               </div>
-              <input *ngIf="isEditing" type="text" class="input-modern" value="Ingeniería Informática">
+              <input
+                *ngIf="isEditing"
+                type="text"
+                class="input-modern"
+                value="Ingeniería Informática"
+              />
             </div>
+            <div class="info-group full-width">
+              <label>Sobre Mí</label>
+              <div class="info-group" *ngIf="!isEditing">
+                <p class="data-box">{{ perfil.descripcion }}</p>
+              </div>
 
+              <div class="data-box bio-box" *ngIf="isEditing">
+                <input
+                  *ngIf="isEditing"
+                  class="input-modern bio-input"
+                  value="Me considero una persona tranquila pero sociable. Me gusta mantener las zonas comunes limpias y cocinar los fines de semana. Busco compañeros de piso con buen rollo."
+                />
+              </div>
+            </div>
           </div>
 
           <div class="attributes-section" *ngIf="!isEditing">
@@ -100,46 +108,46 @@
               <span class="tag-pill green"><i class="fa-solid fa-carrot"></i> Vegetariano</span>
               <span class="tag-pill purple"><i class="fa-solid fa-moon"></i> Nocturno</span>
               <span class="tag-pill gray"><i class="fa-solid fa-gamepad"></i> Gamer</span>
-              <span class="tag-pill orange"><i class="fa-solid fa-person-running"></i> Deportista</span>
+              <span class="tag-pill orange"
+                ><i class="fa-solid fa-person-running"></i> Deportista</span
+              >
             </div>
           </div>
 
           <div *ngIf="isEditing">
-            <button class="btn-back" style="width: 230px;padding: 15px;">Guardar Cambios</button>
+            <button class="btn-back" style="width: 230px; padding: 15px">Guardar Cambios</button>
           </div>
 
           <button class="btn-back" *ngIf="!isEditing" [routerLink]="previousUrl">
             <i class="fa-solid fa-arrow-left-long"></i>
             <p>Volver</p>
           </button>
-
+        </div>
+      </div>
+      <aside class="profile-sidebar-card">
+        <div class="sidebar-header">
+          <h3>Mis Pisos</h3>
+          <span class="counter">3</span>
         </div>
 
-       
-      </div>
-       <aside class="profile-sidebar-card">
-          <div class="sidebar-header">
-            <h3>Mis Pisos</h3>
-            <span class="counter">3</span>
-          </div>
-
-          <div class="houses-list">
-            <article class="mini-house-card accepted">
-              <div class="mini-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Piso">
-                <div class="status-dot"></div>
-              </div>
-              <div class="mini-info">
-                <h4>Casa Albaicín</h4>
-                <span class="mini-price">300€/mes</span>
-                <span class="status-text">Aceptado</span>
-              </div>
-            </article>
-            <button class="btn-view-all">Ver todas las solicitudes</button>
-          </div>
-        </aside>
-
-
+        <div class="houses-list">
+          <article class="mini-house-card accepted">
+            <div class="mini-img-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400"
+                alt="Piso"
+              />
+              <div class="status-dot"></div>
+            </div>
+            <div class="mini-info">
+              <h4>Casa Albaicín</h4>
+              <span class="mini-price">300€/mes</span>
+              <span class="status-text">Aceptado</span>
+            </div>
+          </article>
+          <button class="btn-view-all">Ver todas las solicitudes</button>
+        </div>
+      </aside>
     </div>
   </div>
 </section>

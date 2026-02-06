@@ -23,6 +23,7 @@
       </div>
 
       <section class="main-card solicitudes-card full-screen-layout">
+        <p *ngIf="!inmuebles">Cargando tus solicitudes...</p>
         <div class="column-grid-scroll">
           <article class="house-card-modern" *ngFor="let inm of inmuebles">
             <div class="card-image-box">
@@ -45,7 +46,7 @@
         </div>
 
         <div class="pagination">
-          <button class="pag-btn prev" [disabled]="currentPage === 1">
+          <button class="pag-btn prev" [disabled]="currentPage === 1"  (click)="prevPage()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
@@ -53,18 +54,18 @@
             Anterior
           </button>
 
-          <a href="#" class="pag-number active">{{currentPage}}</a>
-          <div *ngIf="totalPages > 1">
-          <a href="#" class="pag-number">{{currentPage + 1}}</a>
+          <button  class="pag-number active"   (click)="goToPage(currentPage)"  >{{currentPage}}</button>
+          <div *ngIf="totalPages > 1" style="display: flex;gap: 5px; " >
+          <button  class="pag-number"  *ngIf="currentPage !== totalPages" (click)="goToPage(currentPage+1)" >{{currentPage + 1}}</button>
           <span class="pag-dots">...</span>
 
-          <a href="#" class="pag-number">{{totalPages}}</a>
+          <button class="pag-number" *ngIf="currentPage !== totalPages"  (click)="goToPage(totalPages)">{{totalPages}}</button>
           </div>
 
 
 
 
-        <button class="pag-btn next" [disabled]="currentPage === totalPages">
+        <button class="pag-btn next" [disabled]="currentPage === totalPages"  (click)="nextPage()">
           Siguiente
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd"

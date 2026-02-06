@@ -9,6 +9,10 @@ export interface InmuebleDetalle {
     created_at: string;
     universidad_id: string;
     nombre_propietario: string;
+    habitaciones:string;
+    metros:string;
+    n_personas:string;
+    banios:string;
     nombre_universidad: string;
     solicitudes: Solicitud[];
     matches: Match[];

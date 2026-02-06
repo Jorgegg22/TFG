@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\InmueblesModel;
-use App\Models\Solici;
 use CodeIgniter\Model;
 
 class InmueblesModel extends Model

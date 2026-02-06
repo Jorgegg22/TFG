@@ -12,7 +12,12 @@ export class Header implements OnInit {
   options:boolean = false
   
   ngOnInit(): void {
-    this.userId = localStorage.getItem("usuarioId")
+    const datosSesion = localStorage.getItem('sesion');
+
+if (datosSesion) {
+  const sesionObj = JSON.parse(datosSesion);
+  this.userId = sesionObj.id;
+}
   }
 
 
