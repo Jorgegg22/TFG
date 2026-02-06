@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioPerfil,InfoPerfil } from '../../../common/usuarioPerfil-interface';
+import { UsuarioPerfil, InfoPerfil } from '../../../common/usuarioPerfil-interface';
 import { UsuarioService } from '../../../services/usuarios-service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-perfil',
@@ -10,27 +12,37 @@ import { UsuarioService } from '../../../services/usuarios-service';
 })
 export class Perfil  implements OnInit{
 
-  id!:string  | null 
+  id!:string
   isEditing: boolean = false;
   info!:InfoPerfil
   perfil!:UsuarioPerfil
 
-  constructor(private userService: UsuarioService) {}
+  constructor(
+    private userService: UsuarioService,
+    private activatedRoute:ActivatedRoute
+
+  ) {}
   
   ngOnInit(): void {
-    this.id = localStorage.getItem("usuarioId");
     this.loadPerfil();
   }
 
 
 
   loadPerfil(){
+    this.id = this.activatedRoute.snapshot.params['id'];
+    console.log(this.id);
+    
     this.userService.getPerfilUsuario(this.id).subscribe({
       next: (respuesta) => {
         console.log("Hay perfil");
-        this.info = respuesta;
+        console.log(respuesta);
+        this.info = respuesta
         this.perfil = this.info.data.perfil
-        console.log(this.perfil);
+      
+        
+        
+        
         
         
         

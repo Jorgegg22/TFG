@@ -9,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class Header implements OnInit {
 
   userId!:string | null
+  options:boolean = false
   
   ngOnInit(): void {
     this.userId = localStorage.getItem("usuarioId")
+  }
+
+
+  showOptions(){
+    this.options = !this.options
   }
 
 }

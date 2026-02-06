@@ -9,9 +9,10 @@
     <div class="user-actions">
       <div class="profile-circle">
         <img src="https://i.pravatar.cc/100" alt="User">
-        <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff;" ></i>
+
       </div>
-      <div class="options">
+              <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff;" (click)="showOptions()"  ></i>
+      <div class="options" *ngIf="options">
         <p>Cerrar Sesion</p>
 
       </div>

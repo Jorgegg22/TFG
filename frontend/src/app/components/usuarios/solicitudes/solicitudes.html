@@ -26,10 +26,7 @@
         <div class="column-grid-scroll">
           <article class="house-card-modern" *ngFor="let inm of inmuebles">
             <div class="card-image-box">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-                alt="Piso"
-              />
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800" alt="Piso" />
               <div class="card-tag">{{ inm.estado }}</div>
             </div>
             <div class="card-body">
@@ -38,9 +35,7 @@
                 <span class="precio">{{ inm.precio }}€</span>
               </div>
               <div class="card-footer">
-                <span class="location"
-                  ><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span
-                >
+                <span class="location"><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span>
                 <button class="view-btn" routerLink="/piso-detalle">
                   <i class="fa-regular fa-eye"></i>
                 </button>
@@ -50,28 +45,34 @@
         </div>
 
         <div class="pagination">
-  <button class="pag-btn prev" [disabled]="currentPage === 1">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-    </svg>
-    Anterior
-  </button>
+          <button class="pag-btn prev" [disabled]="currentPage === 1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+            </svg>
+            Anterior
+          </button>
 
-  <a href="#" class="pag-number active">{{currentPage}}</a>
-  <a href="#" class="pag-number">{{currentPage + 1}}</a>
+          <a href="#" class="pag-number active">{{currentPage}}</a>
+          <div *ngIf="totalPages > 1">
+          <a href="#" class="pag-number">{{currentPage + 1}}</a>
+          <span class="pag-dots">...</span>
 
-  <span class="pag-dots">...</span>
+          <a href="#" class="pag-number">{{totalPages}}</a>
+          </div>
 
-  <a href="#" class="pag-number">{{totalPages}}</a>
 
-  <button class="pag-btn next"  [disabled]="currentPage === totalPages">
-    Siguiente
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-    </svg>
-  </button>
-</div>
-      </section>
+
+
+        <button class="pag-btn next" [disabled]="currentPage === totalPages">
+          Siguiente
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </button>
     </div>
-  </main>
+    </section>
+</div>
+</main>
 </div>

@@ -141,7 +141,7 @@ class UsuariosController extends ResourceController
         $userProfile = $model -> getUsuarios($userId);
 
         $data = [
-            'perfi' => $userProfile
+            'perfil' => $userProfile
         ];
 
    

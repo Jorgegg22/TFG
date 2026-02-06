@@ -24,8 +24,10 @@ class UsuariosModel extends Model
             return $sql;
         }
 
-        $sql = $this->select('usuarios.*');
+        $sql = $this->select('usuarios.*, carreras.nombre  AS nombre_carrera ,universidades.nombre AS nombre_universidad');
         $sql = $this-> where('usuarios.id',$id);
+        $sql = $this-> join('carreras', 'carreras.id=usuarios.id_carrera', 'left');
+        $sql = $this-> join('universidades', 'universidades.id=usuarios.universidad_id', 'left');
         $sql = $this->first();
         return $sql;
 
