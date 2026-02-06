@@ -83,7 +83,8 @@
                 value="Ingeniería Informática"
               />
             </div>
-            <div class="info-group full-width">
+            <div class="separator"></div>
+            <div class="info-group full-width desc-info">
               <label>Sobre Mí</label>
               <div class="info-group" *ngIf="!isEditing">
                 <p class="data-box">{{ perfil.descripcion }}</p>
@@ -97,20 +98,37 @@
                 />
               </div>
             </div>
-          </div>
+            <div class="social-section">
+              <label class="section-title">ENCUENTRAME</label>
 
-          <div class="attributes-section" *ngIf="!isEditing">
-            <h3>Vibe & Estilo de Vida</h3>
-            <div class="underline-small"></div>
-            <div class="tags-container">
-              <span class="tag-pill blue"><i class="fa-solid fa-smoking-ban"></i> No fumador</span>
-              <span class="tag-pill accent"><i class="fa-solid fa-paw"></i> Pet friendly</span>
-              <span class="tag-pill green"><i class="fa-solid fa-carrot"></i> Vegetariano</span>
-              <span class="tag-pill purple"><i class="fa-solid fa-moon"></i> Nocturno</span>
-              <span class="tag-pill gray"><i class="fa-solid fa-gamepad"></i> Gamer</span>
-              <span class="tag-pill orange"
-                ><i class="fa-solid fa-person-running"></i> Deportista</span
-              >
+              <div class="social-bento-grid">
+                <a href="#" class="bento-item instagram">
+                  <div class="bento-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                  </div>
+                  <div class="bento-info">
+                    <span class="bento-label">Instagram</span>
+                  </div>
+                </a>
+
+                <a href="#" class="bento-item spotify">
+                  <div class="bento-icon">
+                    <i class="fa-brands fa-spotify"></i>
+                  </div>
+                  <div class="bento-info">
+                    <span class="bento-label">Spotify</span>
+                  </div>
+                </a>
+
+                <a href="#" class="bento-item twitter">
+                  <div class="bento-icon">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </div>
+                  <div class="bento-info">
+                    <span class="bento-label">Twitter / X</span>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -126,26 +144,14 @@
       </div>
       <aside class="profile-sidebar-card">
         <div class="sidebar-header">
-          <h3>Mis Pisos</h3>
-          <span class="counter">3</span>
+          <h3>Vibe & Estilo de Vida</h3>
+          <span class="counter">{{ atributosUsuario.length }}</span>
         </div>
 
-        <div class="houses-list">
-          <article class="mini-house-card accepted">
-            <div class="mini-img-wrapper">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400"
-                alt="Piso"
-              />
-              <div class="status-dot"></div>
-            </div>
-            <div class="mini-info">
-              <h4>Casa Albaicín</h4>
-              <span class="mini-price">300€/mes</span>
-              <span class="status-text">Aceptado</span>
-            </div>
-          </article>
-          <button class="btn-view-all">Ver todas las solicitudes</button>
+        <div class="attributes-container" *ngIf="atributosUsuarioObject">
+          <span class="attribute-pill" *ngFor="let atr of atributosUsuarioObject">
+            <i class="material-symbols-outlined">{{ atr.icono }}</i> {{ atr.nombre }}
+          </span>
         </div>
       </aside>
     </div>

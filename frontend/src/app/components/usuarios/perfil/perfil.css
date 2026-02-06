@@ -171,25 +171,167 @@ label{
   color: var(--text-dark); margin-bottom: 10px;
 }
 
-.underline-small {
-  width: 40px; height: 4px; background: var(--accent);
-  border-radius: 10px; margin-bottom: 20px;
+
+
+.separator {
+  height: 1px;
+  border: none;
+  background: linear-gradient(
+    to right, 
+    transparent, 
+    var(--primary-dark), 
+    transparent
+  );
+  width: 200%;
+  margin: 20px 0;
+  opacity: 0.4; /* Muy sutil */
+
 }
 
-.tags-container { display: flex; flex-wrap: wrap; gap: 10px; }
-
-.tag-pill {
-  padding: 6px 16px; border-radius: 25px; font-size: 0.85rem;
-  font-weight: 600; display: flex; align-items: center; gap: 8px;
-  font-family: var(--secondary-font);
+.desc-info{
+  margin-top: 25px;
 }
-.tag-pill.blue { background: #e3f2fd; color: #1565c0; }
-.tag-pill.accent { background: #e0f2f1; color: #00695c; }
-.tag-pill.green { background: #e8f5e9; color: #2e7d32; }
-.tag-pill.purple { background: #f3e5f5; color: #7b1fa2; }
-.tag-pill.gray { background: #f5f5f5; color: #616161; }
-.tag-pill.orange { background: #fff3e0; color: #ef6c00; }
 
+.social-section {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.section-title {
+   display: block; font-size: 0.85rem; font-weight: 700;
+  color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+.social-bento-grid {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.bento-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.bento-icon {
+  width: 42px;
+  height: 42px;
+  background: #f8fafc;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  color: #475569;
+  transition: all 0.3s ease;
+}
+
+.bento-icon span {
+  font-size: 1.4rem;
+}
+
+.bento-info {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primary-font);
+}
+
+.bento-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #1e293b;
+
+}
+
+.bento-user {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Hover Effects Específicos */
+.bento-item:hover {
+  transform: scale(1.02) translateX(5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.bento-item:hover .bento-icon {
+  background: var(--primary);
+  color: white;
+  transform: rotate(-10deg);
+}
+
+/* --- INSTAGRAM: Fondo con gradiente radial suave --- */
+.instagram:hover {
+  background: radial-gradient(circle at top right, #fdf2f8, #fff);
+  border-color: #d62976;
+  box-shadow: 0 10px 25px rgba(214, 41, 118, 0.1);
+}
+
+.instagram:hover .bento-icon {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+}
+
+.instagram:hover .bento-user {
+  background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- SPOTIFY: Verde Vibrante y Fondo Oscuro --- */
+.spotify:hover {
+  border-color: #1DB954;
+  box-shadow: 0 10px 25px rgba(29, 185, 84, 0.15);
+}
+
+.spotify:hover .bento-icon {
+  background: #1DB954;
+  color: white;
+}
+
+.spotify:hover .bento-user {
+  color: #1DB954;
+  font-weight: 700;
+}
+
+/* Para que el texto "Spotify" no se pierda en el fondo oscuro */
+.spotify:hover .bento-label, .bento-user {
+  color: #ffffff;
+}
+
+/* --- TWITTER / X: Fondo gris oscuro / negro suave --- */
+.twitter:hover {
+  background: #f8fafc; /* Gris neutro muy claro */
+  border-color: #000000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.twitter:hover .bento-icon {
+  background: #000000;
+  color: white;
+}
+
+.twitter:hover .bento-user {
+  color: #000000;
+}
+
+/* --- Mejora de Micro-interacción --- */
+.bento-item:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.bento-item:hover .bento-label {
+  color: var(--text-dark); /* Mantiene el nombre de la red legible */
+  opacity: 0.9;
+}
 /* =========================================
    ESTILOS MODO EDICIÓN (INPUTS & BOTONES)
    ========================================= */
@@ -283,7 +425,7 @@ textarea.bio-input {
 
 
 /* =========================================
-   COLUMNA LATERAL (PISOS)
+   COLUMNA LATERAL 
    ========================================= */
 
 .profile-sidebar-card {
@@ -312,58 +454,45 @@ textarea.bio-input {
   font-family: var(--primary-font); /* El número se ve mejor en Sans */
 }
 
-.houses-list {
-  display: flex; flex-direction: column; gap: 15px; flex-grow: 1; 
+.attributes-container {
+  display: flex;
+  flex-direction: column; /* Cambia de fila a columna */
+  gap: 12px;              /* Espacio más amplio entre píldoras */
+  padding: 10px 0;
 }
 
-.mini-house-card {
-  display: flex; gap: 15px; padding: 12px; border-radius: 16px;
-  background: #fff; border: 1px solid var(--border-color);
-  transition: all 0.2s ease; cursor: pointer;
+.attribute-pill {
+  display: flex;          /* Cambiado de inline-flex a flex */
+  align-items: center;
+  gap: 15px;              /* Más espacio entre icono y texto */
+  padding: 14px 20px;     /* Padding más grande para que se vea "robusta" */
+  background: var(--bg-input); 
+  border: 1px solid var(--border-color);
+  border-radius: 16px;    /* Radio un poco más cuadrado para estilo moderno */
+  font-family: var(--secondary-font);
+  font-size: 1.05rem;     /* Fuente un poco más grande */
+  font-weight: 700;       /* Texto más negrita */
+  color: var(--text-dark);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;            /* Asegura que ocupen todo el ancho disponible */
+  box-sizing: border-box;
 }
 
-.mini-house-card:hover {
-  border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+.attribute-pill i {
+  font-size: 1.4rem;      /* Icono más grande y visible */
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;            /* Ancho fijo para que los textos queden alineados */
 }
 
-.mini-img-wrapper { width: 85px; height: 85px; position: relative; flex-shrink: 0; }
-
-.mini-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
-
-.status-dot {
-  position: absolute; top: -3px; right: -3px; width: 14px; height: 14px;
-  background: #2ecc71; border: 2px solid white; border-radius: 50%;
+.attribute-pill:hover {
+  background: white;
+  border-color: var(--primary);
+  transform: translateX(5px); /* Efecto de desplazamiento hacia la derecha */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
-
-.mini-info { display: flex; flex-direction: column; justify-content: center; flex: 1; }
-
-.mini-info h4 { 
-  margin: 0; font-size: 1.05rem; color: var(--text-dark); 
-  font-weight: 700; 
-  font-family: var(--secondary-font); /* Fuente Secundaria */
-}
-
-.mini-price { 
-  font-size: 1rem; font-weight: 700; color: var(--primary); margin-top: 4px;
-  font-family: var(--secondary-font); /* Fuente Secundaria */
-}
-
-.status-text { 
-  font-size: 0.8rem; font-weight: 600; margin-top: 5px; 
-  font-family: var(--secondary-font); /* Fuente Secundaria */
-}
-
-.accepted .status-text { color: #2ecc71; }
-.accepted { background: #f0fdf4; border-color: #bbf7d0; }
-.pending .status-text { color: #f1c40f; }
-
-.btn-view-all {
-  width: 100%; margin-top: 30px; padding: 15px; background: var(--bg-input);
-  color: var(--text-gray); border: none; border-radius: 14px;
-  font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 1rem;
-  font-family: var(--secondary-font); /* Fuente Secundaria */
-}
-.btn-view-all:hover { background: var(--border-color); color: var(--text-dark); }
 
 /* Responsive */
 @media (max-width: 1000px) {

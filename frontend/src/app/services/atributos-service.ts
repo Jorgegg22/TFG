@@ -22,6 +22,8 @@ export class AtributoService {
     return this.http.post(`${this.URI}/send`,atributosData)
   }
 
+  
+
 
 
 }
