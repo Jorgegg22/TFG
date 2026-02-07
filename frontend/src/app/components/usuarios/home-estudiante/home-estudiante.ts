@@ -17,7 +17,8 @@ export class HomeEstudiante implements OnInit {
   index: number = 0;
   index2: number = 0;
   index3: number = 0;
-  $idCasaLike!:string
+  $idCasaLike!: number;
+  idsInteractuados: number[] = [];
 
   constructor(private imbService: InmuebleService) {}
 
@@ -30,9 +31,9 @@ export class HomeEstudiante implements OnInit {
   getInmuebles() {
     this.imbService.getInmueblesFiltrados().subscribe({
       next: (respuesta) => {
-        console.log("Filtro Todo");
+        console.log('Filtro Todo');
         this.infoFiltrada = respuesta;
-        console.log(this.infoFiltrada[this.index]);
+        console.log(this.infoFiltrada);
         this.loadInmueble();
       },
       error: (err) => console.error('Error', err),
@@ -42,10 +43,10 @@ export class HomeEstudiante implements OnInit {
   getInmueblesFiltradoUni() {
     this.imbService.getInmueblesFiltradoUniversidad().subscribe({
       next: (respuesta) => {
-        console.log("Filtro Uni");
-        
+        console.log('Filtro Uni');
+
         this.infoFiltradaUni = respuesta;
-        console.log(this.infoFiltradaUni[this.index2]);
+        console.log(this.infoFiltradaUni);
         this.loadInmueble();
       },
     });
@@ -54,9 +55,9 @@ export class HomeEstudiante implements OnInit {
   getInmueblesAleatorios() {
     this.imbService.getInmueblesAleatorios().subscribe({
       next: (respuesta) => {
-              console.log("Sin filtro");
+        console.log('Sin filtro');
         this.infoAleatoria = respuesta;
-        console.log(this.infoAleatoria[this.index3]);
+        console.log(this.infoAleatoria);
         this.loadInmueble();
       },
       error: (err) => console.error('Error', err),
@@ -65,16 +66,42 @@ export class HomeEstudiante implements OnInit {
 
   loadInmueble() {
     if (this.index < this.infoFiltrada.length) {
-      console.log("Empieza Filtro por Todo");
-      this.inmuebles = this.infoFiltrada[this.index];
+      console.log('Empieza Filtro por Todo');
+      if (this.idsInteractuados.includes(this.infoFiltrada[this.index]['id'])) {
+        this.index++;
+        this.loadInmueble();
+      } else {
+        this.inmuebles = this.infoFiltrada[this.index];
+      }
     } else if (this.index2 < this.infoFiltradaUni.length) {
-      console.log("Empieza Filtro por Universidad");
-      
-      this.inmuebles = this.infoFiltradaUni[this.index2];
+      console.log('Empieza Filtro por Universidad');
+      if (this.idsInteractuados.includes(this.infoFiltradaUni[this.index2]['id'])) {
+        this.index2++;
+        this.loadInmueble();
+      } else {
+        this.inmuebles = this.infoFiltradaUni[this.index2];
+      }
     } else if (this.index3 < this.infoAleatoria.length) {
-      console.log("Empieza lista sin Filtro");
-      this.inmuebles = this.infoAleatoria[this.index3];
+      console.log('Empieza lista sin Filtro');
+      if (this.idsInteractuados.includes(this.infoAleatoria[this.index3]['id'])) {
+        this.index3++;
+        this.loadInmueble();
+      } else {
+        this.inmuebles = this.infoAleatoria[this.index3];
+      }
+    } else {
+      console.log('No quedan más casas por mostrar');
     }
+  }
+
+  postSolicitud($id:number){
+    this.imbService.postSolicitud($id).subscribe({
+      next:(respuesta) =>{
+              console.log(respuesta)
+      }
+
+      
+    })
   }
 
   showOptions() {
@@ -83,13 +110,20 @@ export class HomeEstudiante implements OnInit {
 
   nextHouseLike() {
     if (this.index < this.infoFiltrada.length) {
+      this.$idCasaLike = this.infoFiltrada[this.index]['id'];
       this.index++;
     } else if (this.index2 < this.infoFiltradaUni.length) {
+      this.$idCasaLike = this.infoFiltradaUni[this.index2]['id'];
       this.index2++;
     } else {
+      this.$idCasaLike = this.infoAleatoria[this.index3]['id'];
       this.index3++;
     }
 
+    console.log(this.$idCasaLike);
+    this.idsInteractuados.push(this.$idCasaLike);
+    
+    this.postSolicitud(this.$idCasaLike);
     this.loadInmueble();
   }
 

@@ -50,4 +50,20 @@ export class InmuebleService {
   getInmueble(id: string): Observable<InmuebleDetalle> {
     return this.http.get<InmuebleDetalle>(`${this.URI}/inmuebleDetalle/` + id);
   }
+
+
+  postSolicitud(houseId:number){
+        //Cogemos la sesion
+    const sesionStr = localStorage.getItem('sesion');
+    //Convertimos en objeto sesionStr,para acceder al token
+    const sesionObj = JSON.parse(sesionStr || '{}');
+    const token = sesionObj.token;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(token),
+      }),
+    };
+    return this.http.post(`${this.URI}/postSolicitud` ,  {houseId: houseId},httpOptions);
+  }
 }

@@ -33,7 +33,6 @@ export class PerfilRegistro implements OnInit {
   constructor(
     private uniService: UniversidadService,
     private userService: UsuarioService,
-    private cdr: ChangeDetectorRef,
     private router: Router,
   ) {}
 
@@ -73,9 +72,6 @@ export class PerfilRegistro implements OnInit {
         console.log(respuesta);
         this.userName = respuesta.data.nombre;
         this.userEmail = respuesta.data.email;
-        console.log(this.userName + this.userEmail);
-
-        console.log('¿Estoy en la Zona de Angular?', NgZone.isInAngularZone());
       },
       error(err) {
         console.error('Error');

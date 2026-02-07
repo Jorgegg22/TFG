@@ -23,7 +23,7 @@ class InmueblesModel extends Model
         $this->select('inmuebles.*');
         $this->select('u_prop.nombre as nombre_propietario');
         $this->select('universidades.nombre as nombre_universidad');
- 
+
         //PROPIETARIO
         $this->join('usuarios AS u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
         //UNIVERSIDAD CERCA DEL PISO
@@ -46,7 +46,7 @@ class InmueblesModel extends Model
         // UNIVERSIDAD USUARIO = INMUEBLE UNIVERSIDAD
         $this->where('inmuebles.universidad_id = u_filtro.universidad_id');
 
-        $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int)$id . ")", null, false);
+        $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int) $id . ")", null, false);
 
         // NO REPETIDOS
         $this->distinct();
@@ -58,32 +58,32 @@ class InmueblesModel extends Model
 
 
     public function getInmueblesFiltradoUni($id)
-{
+    {
 
-    $id = (int)$id;
+        $id = (int) $id;
 
-    $this->select('inmuebles.*');
-    $this->select('u_prop.nombre as nombre_propietario');
-    $this->select('universidades.nombre as nombre_universidad');
+        $this->select('inmuebles.*');
+        $this->select('u_prop.nombre as nombre_propietario');
+        $this->select('universidades.nombre as nombre_universidad');
 
-    // Joins básicos
-    $this->join('usuarios AS u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
-    $this->join('universidades', 'universidades.id = inmuebles.universidad_id', 'left');
+        // Joins básicos
+        $this->join('usuarios AS u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
+        $this->join('universidades', 'universidades.id = inmuebles.universidad_id', 'left');
 
-    // Definimos u_filtro uniendo la tabla usuarios con el ID que recibimos
-    $this->join('usuarios AS u_filtro', 'u_filtro.id = ' . $id);
+        // Definimos u_filtro uniendo la tabla usuarios con el ID que recibimos
+        $this->join('usuarios AS u_filtro', 'u_filtro.id = ' . $id);
 
-    // Ahora ya podemos comparar las universidades
-    $this->where('inmuebles.universidad_id = u_filtro.universidad_id');
+        // Ahora ya podemos comparar las universidades
+        $this->where('inmuebles.universidad_id = u_filtro.universidad_id');
 
-    // Excluimos los inmuebles a los que el usuario ya ha reaccionado (Like/Dislike)
-   $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int)$id . ")", null, false);
+        // Excluimos los inmuebles a los que el usuario ya ha reaccionado (Like/Dislike)
+        $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int) $id . ")", null, false);
 
-    $this->distinct();
-    $this->orderBy('RAND()');
+        $this->distinct();
+        $this->orderBy('RAND()');
 
-    return $this->findAll();
-}
+        return $this->findAll();
+    }
 
     public function getInmueblesAleatorios()
     {

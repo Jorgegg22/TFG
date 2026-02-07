@@ -828,3 +828,32 @@ ORDER BY RAND()', [...], false)
 12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
 13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 19:00:33 --> ErrorException: Attempt to read property "id" on int
+[Method: POST, Route: api/inmuebles/postSolicitud]
+in APPPATH/Controllers/InmueblesController.php on line 104.
+ 1 APPPATH/Controllers/InmueblesController.php(104): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', '/var/www/html/app/Controllers/InmueblesController.php', 104)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->postSolicitud()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 19:01:24 --> ErrorException: Attempt to read property "houseId" on int
+[Method: POST, Route: api/inmuebles/postSolicitud]
+in APPPATH/Controllers/InmueblesController.php on line 104.
+ 1 APPPATH/Controllers/InmueblesController.php(104): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "houseId" on int', '/var/www/html/app/Controllers/InmueblesController.php', 104)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->postSolicitud()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 19:02:33 --> Error: Call to undefined function App\Controllers\now()
+[Method: POST, Route: api/inmuebles/postSolicitud]
+in APPPATH/Controllers/InmueblesController.php on line 111.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->postSolicitud()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

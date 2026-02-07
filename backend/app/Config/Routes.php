@@ -33,7 +33,7 @@ $routes->get('/', 'Home::index');
 
 // USUARIOS RUTAS
     $routes->get('api/usuarios', [UsuariosController::class,'index']);
-    $routes->post('api/usuarios/usuario', [UsuariosController::class,'getUsuarioById']);
+    $routes->post('api/usuarios/usuario', [UsuariosController::class,'getUsuarioByToken']);
     $routes->post('api/usuarios/guardarDatos', [UsuariosController::class,'complete']);
     $routes->get('api/atributos', [UsuariosController::class,'getAtributos']);
     $routes->post('api/atributos/send', [UsuariosController::class,'setAtributos']);
@@ -52,6 +52,7 @@ $routes->get('/', 'Home::index');
     $routes->get('api/inmuebles/listaUni', [InmueblesController::class, 'inmueblesFiltradoUniversidad']);
     $routes->get('api/inmuebles/listaAleatoria', [InmueblesController::class, 'inmueblesListaAleatoria']);
     $routes->get('api/inmuebles/inmuebleDetalle/(:num)' , [InmueblesController::class, 'inmuebleDetalle']);
+    $routes->post('api/inmuebles/postSolicitud', [InmueblesController::class, 'postSolicitud']);
 
 
 

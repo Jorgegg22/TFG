@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\InmueblesModel;
 use App\Models\UsuariosModel;
+use App\Models\SolicitudesModel;
 
 class InmueblesController extends ResourceController
 {
@@ -48,7 +49,7 @@ class InmueblesController extends ResourceController
 
         $modelInmueble = new InmueblesModel();
         $inmueblesUni = $modelInmueble->getInmueblesFiltradoUni($idUsuarioSesion);
-       
+
         return $this->respond($inmueblesUni);
     }
     public function inmueblesListaAleatoria()
@@ -75,6 +76,44 @@ class InmueblesController extends ResourceController
         return $this->respond($inmueble);
 
 
+
+
+    }
+
+    public function postSolicitud()
+    {
+
+        $data = $this->request->getJSON();
+
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
+        $usuarioModel = new UsuariosModel();
+
+        if (!$token) {
+            return $this->respond("No hay token");
+        }
+
+        $usuarioSesion = $usuarioModel->where('token', $token)
+            ->first();
+
+        if (!$usuarioSesion) {
+            return $this->respond("No hay sesion");
+        }
+        ;
+
+        $idUsuario = $usuarioSesion['id'];
+        $casaLike = $data->houseId;
+
+        $solicitudModel = new SolicitudesModel();
+
+        $data = [
+            'estudiante_id' => $idUsuario,
+            'inmueble_id' => $casaLike,
+      
+        ];
+
+
+        $solicitudModel->insert($data);
+        return $this->respond("Solicitud insertadad correctamente");
 
 
     }
