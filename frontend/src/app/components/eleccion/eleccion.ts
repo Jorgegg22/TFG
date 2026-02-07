@@ -9,9 +9,8 @@ import { AuthService } from '../../services/auth';
   styleUrl: './eleccion.css',
 })
 export class Eleccion {
-  data: { rol: string; id: string } = {
+  data: { rol: string } = {
     rol: '',
-    id: '',
   };
   isStudent: boolean = false;
   isOwner: boolean = false;
@@ -24,8 +23,6 @@ export class Eleccion {
   ) {}
 
   insertRol() {
-    this.id = localStorage.getItem('usuarioId') ?? '';
-
     if (this.isStudent) {
       this.rol = 'estudiante';
     }
@@ -35,27 +32,25 @@ export class Eleccion {
     }
 
     this.data.rol = this.rol;
-    this.data.id = this.id
 
     this.authService.chooseRol(this.data).subscribe({
       next: (respuesta) => {
         console.log(respuesta);
-        if(respuesta.rol === "estudiante"){
+        if (respuesta.rol === 'estudiante') {
           this.router.navigate(['/atributos']);
-        }else {
+        } else {
           this.router.navigate(['/home-propietario']);
         }
-        
       },
     });
   }
 
   studenBtn() {
     this.isStudent = !this.isStudent;
-    this.insertRol()
+    this.insertRol();
   }
   ownerBtn() {
     this.isOwner = !this.isOwner;
-    this.insertRol()
+    this.insertRol();
   }
 }

@@ -46,38 +46,51 @@ class AuthController extends ResourceController
 
 
 
+        $token = bin2hex(random_bytes(32));
+
         $data = [
             'nombre' => $userData->name,
             'email' => $userData->email,
             'password' => password_hash($userData->password, PASSWORD_BCRYPT),
+            'token' => $token,
+            'token_expira' => date('Y-m-d H:i:s', strtotime('+2 hours'))
         ];
 
 
-        // Insertamos data y cogemos el id del usuario recien registrado
-        $usuarioModel->insert($data);
-        $newId = $usuarioModel->getInsertID();
-        return $this->respondCreated(['status' => 'success', 'mensaje' => 'Usuario creado correctamente', 'id' => $newId]);
 
+        $usuarioModel->insert($data);
+        return $this->respondCreated([
+            'status' => 'success',
+            'nombre' => $userData->name,
+            'token' => $token
+        ]);
     }
 
     public function insertRol()
     {
+        $token = $this->request->getServer('HTTP_X_API_TOKEN');
         $userData = $this->request->getJSON();
+
+        if (!$token) {
+            return $this->failUnauthorized('No se proporcionó token');
+        }
+
         $usuarioModel = new UsuariosModel();
-        $id  = $userData->id;
+        $usuario = $usuarioModel->where('token', $token)->first();
+        if (!$usuario) {
+            return $this->failNotFound('Usuario no encontrado o sesión inválida');
+        }
+
         $data = [
             'rol' => $userData->rol
-        ]; 
+        ];
 
-        if (!$id) {
-            return $this->fail('ID no proporcionado', 400);
-        }
-        
-       $usuarioModel -> update($id,$data);
-       return $this->respond([
+        $usuarioModel->update($usuario['id'], $data);
+
+        return $this->respond([
             'status' => 'success',
             'message' => 'Rol guardado correctamente',
-            'rol' => $userData -> rol
+            'rol' => $userData->rol
         ]);
     }
 
@@ -96,22 +109,44 @@ class AuthController extends ResourceController
         $verify = password_verify($userData->password, $usuario['password']);
 
         if (!$verify) {
-        return $this->fail('Contraseña incorrecta', 401);
-    }
-    
-      
-        
-    
-       return $this->respond([
+            return $this->fail('Contraseña incorrecta', 401);
+        }
+
+
+        $token = bin2hex(random_bytes(32));
+
+        $usuarioModel->update($usuario['id'], [
+            'token' => $token,
+            'token_expira' => date('Y-m-d H:i:s', strtotime('+2 hours'))
+        ]);
+
+
+
+        return $this->respond([
             'status' => 'success',
             'message' => 'Rol guardado correctamente',
-            'id' => $usuario['id'],
+            'token' => $token,
             'nombre' => $usuario['nombre'],
-            'email' => $usuario['email'],
-            'rol' => $usuario['rol']             
+            'rol' => $usuario['rol']
         ]);
     }
-    
+
+    public function logout()
+    {
+        $token = $this->request->getServer('HTTP_X_API_TOKEN');
+        $usuarioModel = new UsuariosModel();
+        $usuario = $usuarioModel->where('token', $token)->first();
+
+        if ($usuario) {
+            $usuarioModel->update($usuario['id'], [
+                'token' => null,
+                'token_expira' => null
+            ]);
+        }
+
+        return $this->respond(['status' => 'success', 'mensaje' => 'Sesión cerrada en servidor']);
+    }
+
 
 
 

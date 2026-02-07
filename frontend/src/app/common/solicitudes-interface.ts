@@ -17,7 +17,6 @@ export interface Inmueble {
     id_carrera: string;
     password: string;
     rol: string;
-    created_at: string;
     universidad_id: string;
     titulo: string;
     direccion: string;
@@ -26,7 +25,7 @@ export interface Inmueble {
     propietario_id: string;
     estudiante_id: string;
     inmueble_id: string;
-    estado: string;
+    estado_solicitud: string;
     mensaje_presentacion: string;
     fecha_solicitud: string;
     fecha_respuesta: null | string; 

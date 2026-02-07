@@ -11,11 +11,9 @@ import { InmuebleAleatorio } from '../../../common/inmueblesAleatorios-interface
 })
 export class HomeEstudiante implements OnInit {
   options: boolean = false;
-  userIdLocal = false;
   infoFiltrada: Inmueble[] = [];
   infoAleatoria: InmuebleAleatorio[] = [];
   inmuebles!: Inmueble;
-
   index: number = 0;
   index2: number = 0;
 

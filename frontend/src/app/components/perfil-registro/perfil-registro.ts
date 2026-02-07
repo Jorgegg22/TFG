@@ -19,13 +19,11 @@ export class PerfilRegistro implements OnInit {
   userName!: string;
   userEmail!: string;
   userData: {
-    userId: string | null;
     userPhone: string;
     userCareer: string;
     userDescription: string;
     userUni: string;
   } = {
-    userId: '',
     userPhone: '',
     userCareer: '',
     userDescription: '',
@@ -40,8 +38,6 @@ export class PerfilRegistro implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userIdLocal = localStorage.getItem('usuarioId');
-    this.userData.userId = this.userIdLocal;
     this.getDatos();
     this.loadUniversidades();
     this.loadCarreras();
@@ -72,11 +68,10 @@ export class PerfilRegistro implements OnInit {
   }
 
   getDatos() {
-    this.userService.getUsuarioById(this.userIdLocal).subscribe({
+    this.userService.getUsuarioByToken().subscribe({
       next: (respuesta) => {
         console.log(respuesta);
         this.userName = respuesta.data.nombre;
-
         this.userEmail = respuesta.data.email;
         console.log(this.userName + this.userEmail);
 
@@ -90,16 +85,16 @@ export class PerfilRegistro implements OnInit {
 
   postDatos() {
     console.log(this.userData);
-    
+
     this.userService.postDatosPerfi(this.userData).subscribe({
       next: (respuesta) => {
-        console.log("Va")
+        console.log('Va');
         console.log(respuesta);
         this.router.navigate(['/home-estudiante']);
       },
       error(err) {
-        console.log("No va");
-        
+        console.log('No va');
+
         console.error('Error');
       },
     });

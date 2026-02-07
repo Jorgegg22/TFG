@@ -50,7 +50,14 @@ const routes: Routes = [
   },{
     path:'solicitudes-estudiante',
     component:Solicitudes
-  },{
+
+  },
+  {
+     path: 'mi-perfil', 
+     component: Perfil 
+  },
+  
+  {
     path:'perfil/:id',
     component:Perfil
   },{

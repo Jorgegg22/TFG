@@ -24,20 +24,14 @@ export class Solicitudes implements OnInit {
   finalSlice!: number;
 
   ngOnInit(): void {
-    const sesionGuardada = localStorage.getItem('sesion');
-
-    if (sesionGuardada) {
-      const usuarioObj = JSON.parse(sesionGuardada);
-
-      this.userData.userId = usuarioObj.id;
-    }
+    
     this.loadSolicitudes();
   }
 
   constructor(private userService: UsuarioService) {}
 
   loadSolicitudes() {
-    this.userService.getSolicitudesUsuario(this.userData).subscribe({
+    this.userService.getSolicitudesUsuario().subscribe({
       next: (respuesta) => {
         console.log(respuesta);
         this.info = respuesta;

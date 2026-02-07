@@ -1,8 +1,8 @@
 <section class="profile-section">
   <div class="app-container">
     <div class="profile-container">
-      <div *ngIf="perfil">
-        <div class="profile-main-card">
+ 
+        <div class="profile-main-card" *ngIf="perfil">
           <div class="profile-header">
             <div class="avatar-wrapper">
               <img
@@ -141,19 +141,19 @@
             <p>Volver</p>
           </button>
         </div>
-      </div>
-      <aside class="profile-sidebar-card">
-        <div class="sidebar-header">
-          <h3>Vibe & Estilo de Vida</h3>
-          <span class="counter">{{ atributosUsuario.length }}</span>
-        </div>
+        <aside class="profile-sidebar-card">
+          <div class="sidebar-header">
+            <h3>Vibe & Estilo de Vida</h3>
+            <span class="counter">{{ atributosUsuario.length }}</span>
+          </div>
 
-        <div class="attributes-container" *ngIf="atributosUsuarioObject">
-          <span class="attribute-pill" *ngFor="let atr of atributosUsuarioObject">
-            <i class="material-symbols-outlined">{{ atr.icono }}</i> {{ atr.nombre }}
-          </span>
-        </div>
-      </aside>
+          <div class="attributes-container" *ngIf="atributosUsuarioObject">
+            <span class="attribute-pill" *ngFor="let atr of atributosUsuarioObject">
+              <i class="material-symbols-outlined">{{ atr.icono }}</i> {{ atr.nombre }}
+            </span>
+          </div>
+        </aside>
+      </div>
     </div>
-  </div>
+
 </section>

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuario } from '../common/usuarios-interface';
 import { InfoPerfil } from '../common/usuarioPerfil-interface';
+import { Solicitud } from '../common/pisoDetalle-interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  /* private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/"; */   // XAMPP
-   private URI: string = 'http://localhost:8080/public/api/usuarios/'; //DOCKER
+  /* private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/"; */ // XAMPP
+  private URI: string = 'http://localhost:8080/public/api/usuarios/'; //DOCKER
 
   constructor(private http: HttpClient) {}
 
@@ -17,19 +18,44 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.URI);
   }
 
-  getUsuarioById(id: any): Observable<any> {
-    return this.http.post(`${this.URI}usuario`, id);
+  getUsuarioByToken(): Observable<any> {
+    return this.http.get(`${this.URI}usuario`);
   }
 
   postDatosPerfi(userdata: any): Observable<any> {
     return this.http.post(`${this.URI}guardarDatos`, userdata);
   }
 
-  getSolicitudesUsuario(userdata: any): Observable<any> {
-    return this.http.post(`${this.URI}solicitudes`, userdata);
-  }
+ getSolicitudesUsuario(): Observable<any> {
+  const sesionStr = localStorage.getItem('sesion');
+  const sesionObj = JSON.parse(sesionStr || '{}');
 
-  getPerfilUsuario(userId: string): Observable<InfoPerfil> {
-    return this.http.get<InfoPerfil>(`${this.URI}perfil/` + userId);
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'X-API-TOKEN': String(sesionObj.token || ''),
+    }),
+  };
+
+  return this.http.get<any>(`${this.URI}solicitudes`, httpOptions);
+}
+
+  getPerfilUsuario(userId?: string): Observable<InfoPerfil> {
+    //Cogemos la sesion
+    const sesionStr = localStorage.getItem('sesion');
+    //Convertimos en objeto sesionStr,para acceder al token
+    const sesionObj = JSON.parse(sesionStr || '{}');
+    const token = sesionObj.token;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(token),
+      }),
+    };
+
+    if (!userId) {
+      return this.http.get<InfoPerfil>(`${this.URI}perfil`, httpOptions);
+    } else {
+      return this.http.get<InfoPerfil>(`${this.URI}perfil/` + userId, httpOptions);
+    }
   }
 }

@@ -14,9 +14,9 @@ import { flush } from '@angular/core/testing';
 export class Atributos implements OnInit {
   atributos: Atributo[] = [];
 
-  data: { userId: string | null; atributosSelected: string[] } = {
-    userId: '',
-    atributosSelected: [],
+  data: {  atributosSelected: string[] } = {
+
+    atributosSelected: []
   };
 
   textoInformativo: boolean = false;
@@ -28,8 +28,8 @@ export class Atributos implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data.userId = localStorage.getItem('usuarioId');
-    if (!this.data.userId) {
+    const sesion = localStorage.getItem('sesion');
+    if (!sesion) {
       this.router.navigate(['/login']);
     } else {
       this.loadAtributos();
@@ -41,8 +41,7 @@ export class Atributos implements OnInit {
     this.atrService.getAtributos().subscribe({
       next: (respuesta) => {
         this.atributos = respuesta;
-        console.log(this.atributos);
-     this.cdr.detectChanges();   
+        console.log(this.atributos);  
       },
       error: (err) => console.error('Error', err),
     });

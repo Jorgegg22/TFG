@@ -10,7 +10,7 @@ use App\Models\AtributosUserModel;
 class UsuariosController extends ResourceController
 {
     protected $modelName = 'App\Models\UsuariosModel';
-    protected $format    = 'json';
+    protected $format = 'json';
 
     public function index()
     {
@@ -22,7 +22,7 @@ class UsuariosController extends ResourceController
     public function show($id = null)
     {
         $usuario = $this->model->getUsuarios($id);
-        
+
         if (!$usuario) {
             return $this->failNotFound('Usuario no encontrado');
         }
@@ -31,135 +31,202 @@ class UsuariosController extends ResourceController
     }
 
 
-    public function  getUsuarioById(){
-    $userId = $this->request->getJson();
+    public function getUsuarioByToken()
+    {
+        $token = $this->request->getServer('HTTP_X_API_TOKEN');
 
-    $usuarioModel = new UsuariosModel();
-
-    $usuario = $usuarioModel->getUsuarios($userId);
-
-    return $this->respondCreated([
-        'status'  => 'success',
-        'mensaje' => 'Usuario obtenido correctamente',
-        'data' => $usuario
-        
-    ]);
-
-
-
-    }
-
-    public function getAtributos(){
-        
-    $atributosModel = new AtributosModel();
-    $atributos = $atributosModel -> getAtributos();
-    return $this-> respond($atributos); 
-    
-
-    }
-
-    public function setAtributos(){
-        $userData = $this->request->getJson();
-        
-        
-        $atributosUserModel = new AtributosUserModel();
-        if(!$userData){
-            return $this->failNotFound('No se han seleccionado atributos');
+        if (!$token) {
+            return $this->failUnauthorized('No se proporcionó token');
         }
-        $userId = $userData->userId;
+
+        $usuarioModel = new UsuariosModel();
+
+
+        $usuarioSesion = $usuarioModel->where('token', $token)
+            ->where('token_expira >', date('Y-m-d H:i:s'))
+            ->first();
+
+        if (!$usuarioSesion) {
+            return $this->failUnauthorized('Sesión inválida o expirada');
+        }
+
+        $usuarioData = $usuarioModel->find($usuarioSesion['id']);
+
+        unset($usuarioData['password']);
+        unset($usuarioData['token']);
+
+        return $this->respond([
+            'status' => 'success',
+            'mensaje' => 'Usuario obtenido correctamente',
+            'data' => $usuarioData
+        ]);
+    }
+
+    public function getAtributos()
+    {
+
+        $atributosModel = new AtributosModel();
+        $atributos = $atributosModel->getAtributos();
+        return $this->respond($atributos);
+
+
+    }
+
+    public function setAtributos()
+    {
+        $token = $this->request->getServer('HTTP_X_API_TOKEN');
+        $userData = $this->request->getJSON();
+
+
+
+
+        if (!$userData || empty($userData->atributosSelected)) {
+            return $this->fail('No se han seleccionado atributos', 400);
+        }
+        $usuarioModel = new UsuariosModel();
+        $usuario = $usuarioModel->where('token', $token)
+            ->where('token_expira >', date('Y-m-d H:i:s'))
+            ->first();
+
+        if (!$usuario) {
+            return $this->failUnauthorized('Sesión inválida o expirada');
+        }
+
+        $atributosUserModel = new AtributosUserModel();
+        $userId = $usuario['id'];
         $atributosArray = $userData->atributosSelected;
 
-        foreach($atributosArray as $atributoId){
+        foreach ($atributosArray as $atributoId) {
             $data = [
                 'usuario_id' => $userId,
                 'atributo_id' => $atributoId
             ];
 
-            $atributosUserModel -> insert($data);
-            
+            $atributosUserModel->insert($data);
+
         }
 
         return $this->respondCreated([
-        'status'  => 'success',
-        'mensaje' => 'Atributos insertados correctamente'
-    ]);
+            'status' => 'success',
+            'mensaje' => 'Atributos insertados correctamente'
+        ]);
 
     }
 
 
-    public function complete(){
+    public function complete()
+    {
         $userData = $this->request->getJson();
         $model = new UsuariosModel();
-        $userId = $userData -> userId;
-        if(!$userData){
+        $userId = $userData->userId;
+        if (!$userData) {
             return $this->failNotFound('No se ha recibido informacion');
         }
 
         $data = [
-            'telefono' => $userData -> userPhone,
-            'id_carrera' => $userData -> userCareer,
-            'descripcion' => $userData -> userDescription,
-            'universidad_id' => $userData -> userUni 
+            'telefono' => $userData->userPhone,
+            'id_carrera' => $userData->userCareer,
+            'descripcion' => $userData->userDescription,
+            'universidad_id' => $userData->userUni
         ];
 
-        $model->update($userId,$data);
+        $model->update($userId, $data);
 
-          return $this->respondCreated([
-        'status'  => 'success',
-        'mensaje' => 'Perfil completado correctamente'
-    ]);
+        return $this->respondCreated([
+            'status' => 'success',
+            'mensaje' => 'Perfil completado correctamente'
+        ]);
 
     }
 
-    public function solicitudesUsuario(){
-        $userData = $this->request->getJson();
-        $userId = $userData -> userId;
+    public function solicitudesUsuario()
+    {
+
+
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
         $model = new UsuariosModel();
-        $solicitudesInmuebles = $model -> getSolicitudesUsuario($userId);
+        $sesionActiva = $model->where('token', $token)
+            ->first();
+
+        if (!$sesionActiva) {
+            return $this->failUnauthorized('Sesión inválida o expirada');
+        }
+
+
+
+        $userId = $sesionActiva['id'];
+
+        if (!$userId) {
+            return $this->failUnauthorized('No hay id');
+        }
+        $solicitudesInmuebles = $model->getSolicitudesUsuario($userId);
 
         $data = [
             'inmuebles' => $solicitudesInmuebles
         ];
 
-             if(empty($data)){
-            return $this->respondCreated(['status' => 'failed', 'mensaje' =>'lista vacia' ]);
-        }
-
-           return $this->respondCreated([
-        'status'  => 'success',
-        'mensaje' => 'Solcitudes traides correctamente',
-        'data' => $data
-    ]);
-
-
-    }
-
-    public function getPerfilUsuario($id = null){
-
-        $userId = $id;
-        $model = new UsuariosModel();
-        $userProfile = $model -> getUsuarios($userId);
-
         $data = [
-            'perfil' => $userProfile
+            'inmuebles' => $solicitudesInmuebles
         ];
 
-   
+        if (empty($data)) {
+            return $this->respondCreated(['status' => 'failed', 'mensaje' => 'lista vacia']);
+        }
 
-           return $this->respondCreated([
-        'status'  => 'success',
-        'mensaje' => 'Solcitudes traides correctamente',
-        'data' => $data
-           ]);
-
-
+        return $this->respondCreated([
+            'status' => 'success',
+            'mensaje' => 'Solcitudes traides correctamente',
+            'data' => $data
+        ]);
 
 
     }
 
+    public function getPerfilUsuario($id = null)
+    {
 
-        
+
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
+        $model = new UsuariosModel();
 
 
-    
+
+        $sesionActiva = $model->where('token', $token)
+            ->first();
+
+        if (!$sesionActiva) {
+            return $this->failUnauthorized('Debes estar logueado para ver perfiles');
+        }
+
+
+
+        // Comprobar si es mi perfil,y luego poner targetId para saber que id acceder para coger Info
+        //Booleano comprobando si soy yo,si soy yo coge el id de sesionActiva
+        if ($id !== null && $id !== '') {
+
+            $targetId = $id;
+        } else {
+            $targetId = $sesionActiva['id'];
+        }
+
+        $userProfile = $model->getUsuarios($targetId);
+
+        if (!$userProfile) {
+            return $this->failNotFound('Usuario no encontrado');
+        }
+
+
+
+
+        return $this->respond([
+            'status' => 'success',
+            'data' => ['perfil' => $userProfile]
+        ]);
+    }
+
+
+
+
+
+
 }

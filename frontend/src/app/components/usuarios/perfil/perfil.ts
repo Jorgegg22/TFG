@@ -19,7 +19,7 @@ export class Perfil implements OnInit {
   previousUrl!: string | null;
   atributosUsuario: string[] = [];
   atributosUsuarioAll: [] = [];
-  atributosUsuarioObject: {nombre:string,icono:string}[] = [];
+  atributosUsuarioObject: { nombre: string; icono: string }[] = [];
 
   constructor(
     private userService: UsuarioService,
@@ -43,36 +43,30 @@ export class Perfil implements OnInit {
   }
 
   loadPerfil() {
-    this.id = this.activatedRoute.snapshot.params['id'];
-    console.log('hola');
+  this.id = this.activatedRoute.snapshot.params['id'];
 
-    console.log(this.id);
-
-    this.userService.getPerfilUsuario(this.id).subscribe({
-      next: (respuesta) => {
-        console.log('Hay perfil');
-        console.log(respuesta);
-        this.info = respuesta;
-        this.perfil = this.info.data.perfil;
+  this.userService.getPerfilUsuario(this.id).subscribe({
+    next: (respuesta) => {
+      this.info = respuesta;
+      this.perfil = this.info.data.perfil;
+      
+      this.atributosUsuarioObject = [];
+      if (this.perfil.atributos_usuario) {
         this.atributosUsuario = this.perfil.atributos_usuario.split(';');
-        console.log(this.atributosUsuario);
         this.atributosUsuario.forEach((element) => {
-          const nombreA = element.split('|')[0];
-          const iconoA = element.split('|')[1];
-          const atributoSplit = {
-            nombre:nombreA,
-            icono:iconoA
+          const partes = element.split('|');
+          if (partes.length === 2) {
+            this.atributosUsuarioObject.push({
+              nombre: partes[0],
+              icono: partes[1]
+            });
           }
-        this.atributosUsuarioObject.push(atributoSplit)
         });
-        console.log(this.atributosUsuarioObject);
-     
-        
-        
-      },
-      error: (err) => console.error('Error', err),
-    });
-  }
+      }
+    },
+    error: (err) => console.error('Error al cargar perfil', err)
+  });
+}
 
   toggleEdit() {
     this.isEditing = !this.isEditing;

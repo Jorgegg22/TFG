@@ -1,0 +1,296 @@
+CRITICAL - 2026-02-07 09:25:59 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: api/auth/login]
+in SYSTEMPATH/BaseModel.php on line 993.
+ 1 SYSTEMPATH/BaseModel.php(993): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH/Controllers/AuthController.php(107): CodeIgniter\Model->update('10', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 09:26:01 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: api/auth/login]
+in SYSTEMPATH/BaseModel.php on line 993.
+ 1 SYSTEMPATH/BaseModel.php(993): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH/Controllers/AuthController.php(107): CodeIgniter\Model->update('10', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 10:12:44 --> ErrorException: Cannot use empty array elements in arrays
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 196.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-02-07 10:13:41 --> ErrorException: Cannot use empty array elements in arrays
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 196.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-02-07 10:13:52 --> ErrorException: Cannot use empty array elements in arrays
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 196.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-02-07 10:15:35 --> ErrorException: Cannot use empty array elements in arrays
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 196.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-02-07 10:18:11 --> ErrorException: Cannot use empty array elements in arrays
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 196.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-02-07 10:19:29 --> ErrorException: Cannot use empty array elements in arrays
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 196.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-02-07 10:41:44 --> ErrorException: Undefined property: stdClass::$userId
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 145.
+ 1 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$userId', '/var/www/html/app/Controllers/UsuariosController.php', 145)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 10:41:47 --> ErrorException: Undefined property: stdClass::$userId
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 145.
+ 1 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$userId', '/var/www/html/app/Controllers/UsuariosController.php', 145)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:00:27 --> ErrorException: Undefined property: stdClass::$userId
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 145.
+ 1 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$userId', '/var/www/html/app/Controllers/UsuariosController.php', 145)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:00:39 --> ErrorException: Undefined property: stdClass::$userId
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 145.
+ 1 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$userId', '/var/www/html/app/Controllers/UsuariosController.php', 145)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:03:58 --> ErrorException: Undefined property: stdClass::$userId
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 145.
+ 1 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$userId', '/var/www/html/app/Controllers/UsuariosController.php', 145)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:09:10 --> ErrorException: Undefined variable $id
+[Method: POST, Route: api/usuarios/solicitudes]
+in APPPATH/Controllers/UsuariosController.php on line 153.
+ 1 APPPATH/Controllers/UsuariosController.php(153): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', '/var/www/html/app/Controllers/UsuariosController.php', 153)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-07 11:22:41 --> mysqli_sql_exception: Unknown column 'sol.created_at' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `sol`.`i...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sol`.`i...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sol`.`i...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`i...', Array, false)
+#4 /var/www/html/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 /var/www/html/app/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+#7 /var/www/html/app/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-07 11:22:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'field list'
+[Method: GET, Route: api/usuarios/solicitudes]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
+ 2 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:22:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
+ 4 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:22:41 --> [Caused by] mysqli_sql_exception: Unknown column 'sol.created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-07 11:22:48 --> mysqli_sql_exception: Unknown column 'sol.created_at' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `sol`.`i...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sol`.`i...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sol`.`i...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`i...', Array, false)
+#4 /var/www/html/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 /var/www/html/app/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+#7 /var/www/html/app/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-07 11:22:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'field list'
+[Method: GET, Route: api/usuarios/solicitudes]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
+ 2 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:22:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
+ 4 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 11:22:48 --> [Caused by] mysqli_sql_exception: Unknown column 'sol.created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = \'10\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sol`.`id` AS `solicitud_id`, `sol`.`estado` AS `estado_solicitud`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usuarios`.`nombre` AS `nombre_estudiante`
+FROM `usuarios`
+JOIN `solicitudes` AS `sol` ON `sol`.`estudiante_id` = `usuarios`.`id`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH/Models/UsuariosModel.php(65): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH/Controllers/UsuariosController.php(162): App\Models\UsuariosModel->getSolicitudesUsuario('10')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

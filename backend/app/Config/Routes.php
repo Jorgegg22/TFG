@@ -23,11 +23,12 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 
-// REGISTRO , LOGIN Y AUTENTICACIÓN
+// REGISTRO , LOGIN ,AUTENTICACIÓN Y LOGOUT
 
     $routes->post('api/auth/register', [AuthController::class,'registro']);
     $routes->post('api/auth/rol', [AuthController::class,'insertRol']);
     $routes->post('api/auth/login', [AuthController::class,'checkUser']);
+    $routes->get('api/auth/logout', [AuthController::class,'logout']);
 
 
 // USUARIOS RUTAS
@@ -36,8 +37,9 @@ $routes->get('/', 'Home::index');
     $routes->post('api/usuarios/guardarDatos', [UsuariosController::class,'complete']);
     $routes->get('api/atributos', [UsuariosController::class,'getAtributos']);
     $routes->post('api/atributos/send', [UsuariosController::class,'setAtributos']);
-    $routes->post('api/usuarios/solicitudes' , [UsuariosController::class, 'solicitudesUsuario']);
-    $routes->get('api/usuarios/perfil/(:num)' , [UsuariosController::class, 'getPerfilUsuario']);
+    $routes->get('api/usuarios/solicitudes' , [UsuariosController::class, 'solicitudesUsuario']);
+    $routes->get('api/usuarios/perfil', [UsuariosController::class, 'getPerfilUsuario']); // Para el perfil propio
+    $routes->get('api/usuarios/perfil/(:num)' , [UsuariosController::class, 'getPerfilUsuario/$1']);
 
 
 

@@ -14,7 +14,7 @@ export class Login {
     password: '',
   };
 
-  sessionData!: {id:string;nombre: string;email:string,rol:string}
+  sessionData!: { nombre: string; token: string };
 
   constructor(
     private authService: AuthService,
@@ -26,19 +26,16 @@ export class Login {
       next: (respuesta) => {
         console.log(respuesta);
         this.sessionData = {
-        id: respuesta.id,
-        nombre: respuesta.nombre,
-        email: respuesta.email,
-        rol: respuesta.rol
-      };
-        localStorage.setItem('sesion',JSON.stringify(this.sessionData));
+          nombre: respuesta.nombre,
+          token: respuesta.token,
+        };
+        localStorage.setItem('sesion', JSON.stringify(this.sessionData));
         if (respuesta.rol === 'estudiante') {
-          
           this.router.navigate(['/home-estudiante']);
-        } else if(respuesta.rol === "propietario"){
+        } else if (respuesta.rol === 'propietario') {
           this.router.navigate(['/home-propietario']);
-        }else{
-          window.location.href = 'http://localhost:8080/public/admin/'
+        } else {
+          window.location.href = 'http://localhost:8080/public/admin/';
         }
       },
     });
