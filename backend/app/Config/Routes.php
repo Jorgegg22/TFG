@@ -49,6 +49,7 @@ $routes->get('/', 'Home::index');
 
 //INMUEBLES RUTAS    
     $routes->get('api/inmuebles/lista', [InmueblesController::class, 'inmueblesLista']);
+    $routes->get('api/inmuebles/listaUni', [InmueblesController::class, 'inmueblesFiltradoUniversidad']);
     $routes->get('api/inmuebles/listaAleatoria', [InmueblesController::class, 'inmueblesListaAleatoria']);
     $routes->get('api/inmuebles/inmuebleDetalle/(:num)' , [InmueblesController::class, 'inmuebleDetalle']);
 

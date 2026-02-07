@@ -1,16 +1,17 @@
 export interface Inmueble {
-  id: string;
+  id: number;
   titulo: string;
   descripcion: string;
   direccion: string | null;
-  precio: string;
+  precio: number;
   imagen_principal: string | null;
-  propietario_id: string;
+  propietario_id: number;
   created_at: string;
-  universidad_id: string;
+  universidad_id: number;
   nombre_propietario: string;
   nombre_universidad: string;
-  estudiante_id: string | null;
-  nombre_estudiante: string | null;
-  foto_perfil: string | null;
+  metros: number;
+  habitaciones: number;
+  banios: number;
+  n_personas: number;
 }

@@ -18,38 +18,72 @@ class InmueblesModel extends Model
         'imagen_principal'
     ];
 
-    public function getInmuebles($id = null)
+    public function getInmueblesFiltrados($id)
     {
-        // --- 1. SELECCIÓN DE CAMPOS (SELECT) ---
-        $this->select('inmuebles.*'); 
+        $this->select('inmuebles.*');
         $this->select('u_prop.nombre as nombre_propietario');
         $this->select('universidades.nombre as nombre_universidad');
-        // Datos del match (si existen)
-        $this->select('matches.estudiante_id');
-        $this->select('u_est.nombre as nombre_estudiante');
-
-        // --- 2. UNIONES DE TABLAS (JOINS) ---
-
-        // A. Unimos con Usuarios para saber el PROPIETARIO
-        // Usamos 'left' por seguridad, aunque todo piso debería tener dueño.
-        $this->join('usuarios as u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
-
-        // B. Unimos con Universidades
+ 
+        //PROPIETARIO
+        $this->join('usuarios AS u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
+        //UNIVERSIDAD CERCA DEL PISO
         $this->join('universidades', 'universidades.id = inmuebles.universidad_id', 'left');
 
-        // C. Unimos con Matches (CRÍTICO: USAR LEFT JOIN)
-        // Usamos LEFT JOIN para que si el piso NO tiene match, SALGA IGUAL en la lista (con campos null).
-        $this->join('matches', 'matches.inmueble_id = inmuebles.id', 'left');
+        // --- GUÍA DEL FILTRADO ---
 
-        // D. Unimos con Usuarios otra vez para saber el ESTUDIANTE del match
-        $this->join('usuarios as u_est', 'u_est.id = matches.estudiante_id', 'left');
+        // INMUEBLE ID IGUAL A INMUEBLE_ID EN TABLA INMUEBLE_ATRIBUTOS
+        $this->join('inmueble_atributos AS ia', 'ia.inmueble_id = inmuebles.id');
 
-        // --- 3. DEVUELVE UNO O TODOS ---
-                $this->orderBy('RAND()');
+        // INMUEBLES QUE TIENEN LOS MISMOS ATRIBUTOS QUE EL USUARIO
+        $this->join('usuario_atributos AS ua', 'ua.atributo_id = ia.atributo_id');
 
-        // Si NO pasaste ID, devuelve TODOS los pisos
+        // ID DEL USUARIO = A USUARIO_ID DE INMUEBLE
+        $this->join('usuarios AS u_filtro', 'u_filtro.id = ua.usuario_id');
+
+        // ID DEL USUARIO
+        $this->where('u_filtro.id', $id);
+
+        // UNIVERSIDAD USUARIO = INMUEBLE UNIVERSIDAD
+        $this->where('inmuebles.universidad_id = u_filtro.universidad_id');
+
+        $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int)$id . ")", null, false);
+
+        // NO REPETIDOS
+        $this->distinct();
+
+        $this->orderBy('RAND()');
+
         return $this->findAll();
     }
+
+
+    public function getInmueblesFiltradoUni($id)
+{
+
+    $id = (int)$id;
+
+    $this->select('inmuebles.*');
+    $this->select('u_prop.nombre as nombre_propietario');
+    $this->select('universidades.nombre as nombre_universidad');
+
+    // Joins básicos
+    $this->join('usuarios AS u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
+    $this->join('universidades', 'universidades.id = inmuebles.universidad_id', 'left');
+
+    // Definimos u_filtro uniendo la tabla usuarios con el ID que recibimos
+    $this->join('usuarios AS u_filtro', 'u_filtro.id = ' . $id);
+
+    // Ahora ya podemos comparar las universidades
+    $this->where('inmuebles.universidad_id = u_filtro.universidad_id');
+
+    // Excluimos los inmuebles a los que el usuario ya ha reaccionado (Like/Dislike)
+   $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int)$id . ")", null, false);
+
+    $this->distinct();
+    $this->orderBy('RAND()');
+
+    return $this->findAll();
+}
 
     public function getInmueblesAleatorios()
     {
@@ -83,56 +117,64 @@ class InmueblesModel extends Model
 
 
     public function getInmuebleDetalle($id = null)
-{
-    // Seleccionamo inmueble con el id,traemos el propietario y la universidad
-    $this->select('inmuebles.*'); 
-    $this->select('u_prop.nombre as nombre_propietario');
-    $this->select('universidades.nombre as nombre_universidad');
+    {
+        // Seleccionamo inmueble con el id,traemos el propietario y la universidad
+        $this->select('inmuebles.*');
+        $this->select('u_prop.nombre as nombre_propietario');
+        $this->select('universidades.nombre as nombre_universidad');
 
-    $this->join('usuarios as u_prop', 
-                'u_prop.id = inmuebles.propietario_id', 
-                'left');
+        $this->join(
+            'usuarios as u_prop',
+            'u_prop.id = inmuebles.propietario_id',
+            'left'
+        );
 
-    $this->join('universidades', 
-                'universidades.id = inmuebles.universidad_id', 
-                'left');
+        $this->join(
+            'universidades',
+            'universidades.id = inmuebles.universidad_id',
+            'left'
+        );
 
-    $inmueble = $this->find($id);
+        $inmueble = $this->find($id);
 
-     $db = \Config\Database::connect();
+        $db = \Config\Database::connect();
 
-    // Traemos las solicitudes,con el nombre de los usuarios que han solicitado ese piso
-    
-
-    $solicitudes = $db->table('solicitudes')
-        ->select('solicitudes.*')
-        ->select('u_sol.nombre as nombre_solicitante')
-        ->join('usuarios as u_sol', 
-               'u_sol.id = solicitudes.estudiante_id', 
-               'left')
-        ->where('solicitudes.inmueble_id', $id)
-             ->get()
-        ->getResultArray();
+        // Traemos las solicitudes,con el nombre de los usuarios que han solicitado ese piso
 
 
-    // Traemos los mathes,con el nombre de los usuarios que han hecho match con ese piso 
+        $solicitudes = $db->table('solicitudes')
+            ->select('solicitudes.*')
+            ->select('u_sol.nombre as nombre_solicitante')
+            ->join(
+                'usuarios as u_sol',
+                'u_sol.id = solicitudes.estudiante_id',
+                'left'
+            )
+            ->where('solicitudes.inmueble_id', $id)
+            ->get()
+            ->getResultArray();
 
-    $matches = $db->table('matches')
-        ->select('matches.*')
-        ->select('u_est.nombre as nombre_estudiante')
-        ->join('usuarios as u_est', 
-               'u_est.id = matches.estudiante_id', 
-               'left')
-        ->where('matches.inmueble_id', $id)
-             ->get()
-        ->getResultArray();
+
+        // Traemos los mathes,con el nombre de los usuarios que han hecho match con ese piso 
+
+        $matches = $db->table('matches')
+            ->select('matches.*')
+            ->select('u_est.nombre as nombre_estudiante')
+            ->join(
+                'usuarios as u_est',
+                'u_est.id = matches.estudiante_id',
+                'left'
+            )
+            ->where('matches.inmueble_id', $id)
+            ->get()
+            ->getResultArray();
 
 
-    //Unimos el array de inmueble con los arrays de solicitudes y matches.
-    $inmueble['solicitudes'] = $solicitudes;
-    $inmueble['matches'] = $matches;
+        //Unimos el array de inmueble con los arrays de solicitudes y matches.
+        $inmueble['solicitudes'] = $solicitudes;
+        $inmueble['matches'] = $matches;
 
-    return $inmueble;
+        return $inmueble;
 
 
     }

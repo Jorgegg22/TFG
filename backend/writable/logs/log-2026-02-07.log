@@ -294,3 +294,537 @@ WHERE `usuarios`.`id` = :usuarios.id:', [...], false)
 12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
 13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:50:31 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:50:33 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:51:07 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:51:17 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:51:32 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:51:35 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:51:39 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:51:46 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:52:00 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:52:10 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:52:16 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:52:18 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:52:31 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:53:16 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\InmueblesModel::getInmuebles
+[Method: GET, Route: api/inmuebles/lista]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/InmueblesController.php(26): CodeIgniter\Model->__call('getInmuebles', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-07 16:53:45 --> mysqli_sql_exception: Unknown column 'u_est.nombre' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT DISTINCT...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 /var/www/html/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 /var/www/html/app/Models/InmueblesModel.php(56): CodeIgniter\BaseModel->findAll()
+#7 /var/www/html/app/Controllers/InmueblesController.php(26): App\Models\InmueblesModel->getInmueblesFiltrados('1')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-07 16:53:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_est.nombre' in 'field list'
+[Method: GET, Route: api/inmuebles/lista]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 2 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH/Models/InmueblesModel.php(56): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH/Controllers/InmueblesController.php(26): App\Models\InmueblesModel->getInmueblesFiltrados('1')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:53:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_est.nombre' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 4 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH/Models/InmueblesModel.php(56): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH/Controllers/InmueblesController.php(26): App\Models\InmueblesModel->getInmueblesFiltrados('1')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:53:45 --> [Caused by] mysqli_sql_exception: Unknown column 'u_est.nombre' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+JOIN `inmueble_atributos` AS `ia` ON `ia`.`inmueble_id` = `inmuebles`.`id`
+JOIN `usuario_atributos` AS `ua` ON `ua`.`atributo_id` = `ia`.`atributo_id`
+JOIN `usuarios` AS `u_filtro` ON `u_filtro`.`id` = `ua`.`usuario_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 5 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH/Models/InmueblesModel.php(56): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH/Controllers/InmueblesController.php(26): App\Models\InmueblesModel->getInmueblesFiltrados('1')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:59:20 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaUni]
+in APPPATH/Controllers/InmueblesController.php on line 42.
+ 1 APPPATH/Controllers/InmueblesController.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 42)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:59:26 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaUni]
+in APPPATH/Controllers/InmueblesController.php on line 42.
+ 1 APPPATH/Controllers/InmueblesController.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 42)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:59:37 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaUni]
+in APPPATH/Controllers/InmueblesController.php on line 42.
+ 1 APPPATH/Controllers/InmueblesController.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 42)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:59:38 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaUni]
+in APPPATH/Controllers/InmueblesController.php on line 42.
+ 1 APPPATH/Controllers/InmueblesController.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 42)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-07 16:59:59 --> mysqli_sql_exception: Unknown column 'u_est.nombre' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT DISTINCT...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 /var/www/html/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 /var/www/html/app/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+#7 /var/www/html/app/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-07 16:59:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_est.nombre' in 'field list'
+[Method: GET, Route: api/inmuebles/listaUni]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 2 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:59:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_est.nombre' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 4 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 16:59:59 --> [Caused by] mysqli_sql_exception: Unknown column 'u_est.nombre' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`, `u_est`.`nombre` as `nombre_estudiante`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 5 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-07 17:00:09 --> mysqli_sql_exception: Unknown column 'u_filtro.id' in 'where clause' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT DISTINCT...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 /var/www/html/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 /var/www/html/app/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+#7 /var/www/html/app/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-07 17:00:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_filtro.id' in 'where clause'
+[Method: GET, Route: api/inmuebles/listaUni]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 2 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 17:00:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_filtro.id' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 4 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-07 17:00:09 --> [Caused by] mysqli_sql_exception: Unknown column 'u_filtro.id' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = \'1\'
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `inmuebles`.*, `u_prop`.`nombre` as `nombre_propietario`, `universidades`.`nombre` as `nombre_universidad`
+FROM `inmuebles`
+LEFT JOIN `usuarios` AS `u_prop` ON `u_prop`.`id` = `inmuebles`.`propietario_id`
+LEFT JOIN `universidades` ON `universidades`.`id` = `inmuebles`.`universidad_id`
+WHERE `u_filtro`.`id` = :u_filtro.id:
+AND `inmuebles`.`universidad_id` = `u_filtro`.`universidad_id`
+ORDER BY RAND()', [...], false)
+ 5 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH/Models/InmueblesModel.php(79): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH/Controllers/InmueblesController.php(44): App\Models\InmueblesModel->getInmueblesFiltradoUni('1')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
