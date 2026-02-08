@@ -20,6 +20,7 @@ export class Perfil implements OnInit {
   atributosUsuario: string[] = [];
   atributosUsuarioAll: [] = [];
   atributosUsuarioObject: { nombre: string; icono: string }[] = [];
+  loading:boolean = true;
 
   constructor(
     private userService: UsuarioService,
@@ -40,6 +41,7 @@ export class Perfil implements OnInit {
     console.log('Previous URL:', this.previousUrl);
 
     this.loadPerfil();
+ 
   }
 
   loadPerfil() {
@@ -63,6 +65,7 @@ export class Perfil implements OnInit {
           }
         });
       }
+      this.loading = false
     },
     error: (err) => console.error('Error al cargar perfil', err)
   });

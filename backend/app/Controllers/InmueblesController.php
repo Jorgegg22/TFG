@@ -41,10 +41,7 @@ class InmueblesController extends ResourceController
             ->first();
 
 
-        if (!$usuarioSesion) {
-            // Si entra aquí, el problema es que el Token que envía Angular no es válido
-            return $this->failUnauthorized('Usuario no encontrado con ese Token');
-        }
+
         $idUsuarioSesion = $usuarioSesion['id'];
 
         $modelInmueble = new InmueblesModel();
@@ -56,7 +53,15 @@ class InmueblesController extends ResourceController
     {
 
         $modelInmueble = new InmueblesModel();
-        $inmueblesAleatorios = $modelInmueble->getInmueblesAleatorios();
+
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
+        $usuarioModel = new UsuariosModel();
+
+        $usuarioSesion = $usuarioModel->where('token', $token)
+            ->first();
+
+        $idUsuarioSesion = $usuarioSesion['id'];
+        $inmueblesAleatorios = $modelInmueble->getInmueblesAleatorios($idUsuarioSesion);
         return $this->respond($inmueblesAleatorios);
 
 
@@ -108,7 +113,7 @@ class InmueblesController extends ResourceController
         $data = [
             'estudiante_id' => $idUsuario,
             'inmueble_id' => $casaLike,
-      
+
         ];
 
 

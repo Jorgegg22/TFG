@@ -33,7 +33,7 @@ $routes->get('/', 'Home::index');
 
 // USUARIOS RUTAS
     $routes->get('api/usuarios', [UsuariosController::class,'index']);
-    $routes->post('api/usuarios/usuario', [UsuariosController::class,'getUsuarioByToken']);
+    $routes->get('api/usuarios/usuario', [UsuariosController::class,'getUsuarioByToken']);
     $routes->post('api/usuarios/guardarDatos', [UsuariosController::class,'complete']);
     $routes->get('api/atributos', [UsuariosController::class,'getAtributos']);
     $routes->post('api/atributos/send', [UsuariosController::class,'setAtributos']);

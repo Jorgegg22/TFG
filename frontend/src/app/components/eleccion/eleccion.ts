@@ -15,7 +15,6 @@ export class Eleccion {
   isStudent: boolean = false;
   isOwner: boolean = false;
   rol!: string;
-  id!: string;
 
   constructor(
     private authService: AuthService,

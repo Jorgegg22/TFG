@@ -23,57 +23,114 @@
       </div>
 
       <section class="main-card solicitudes-card full-screen-layout">
-        <p *ngIf="!inmuebles">Cargando tus solicitudes...</p>
-        <div class="column-grid-scroll">
-          <article class="house-card-modern" *ngFor="let inm of inmuebles">
-            <div class="card-image-box">
-              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800" alt="Piso" />
-              <div class="card-tag">{{ inm.estado_solicitud }}</div>
-            </div>
-            <div class="card-body">
-              <div class="card-header-info">
-                <h3 class="house-name">{{ inm.titulo }}</h3>
-                <span class="precio">{{ inm.precio }}€</span>
+        <div *ngIf="loading" class="loader"></div>
+        <ng-container *ngIf="!loading">
+          <div class="column-grid-scroll" *ngIf="!noInfo; else elseBlock">
+            <article class="house-card-modern" *ngFor="let inm of inmuebles">
+              <div class="card-image-box">
+                <img
+                  src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+                  alt="Piso"
+                />
+                <div class="card-tag">{{ inm.estado_solicitud }}</div>
               </div>
-              <div class="card-footer">
-                <span class="location"><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span>
-                <button class="view-btn" routerLink="/piso-detalle"  [routerLink]='"/piso-detalle/" + inm.inmueble_id'>
-                  <i class="fa-regular fa-eye"></i>
-                </button>
+              <div class="card-body">
+                <div class="card-header-info">
+                  <h3 class="house-name">{{ inm.titulo }}</h3>
+                  <span class="precio">{{ inm.precio }}€</span>
+                </div>
+                <div class="card-footer">
+                  <span class="location"
+                    ><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span
+                  >
+                  <button
+                    class="view-btn"
+                    routerLink="/piso-detalle"
+                    [routerLink]="'/piso-detalle/' + inm.inmueble_id"
+                  >
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="pagination">
-          <button class="pag-btn prev" [disabled]="currentPage === 1"  (click)="prevPage()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-            </svg>
-            Anterior
-          </button>
-
-          <button  class="pag-number active"   (click)="goToPage(currentPage)"  >{{currentPage}}</button>
-          <div *ngIf="totalPages > 1" style="display: flex;gap: 5px; " >
-          <button  class="pag-number"  *ngIf="currentPage !== totalPages" (click)="goToPage(currentPage+1)" >{{currentPage + 1}}</button>
-          <span class="pag-dots">...</span>
-
-          <button class="pag-number" *ngIf="currentPage !== totalPages"  (click)="goToPage(totalPages)">{{totalPages}}</button>
+            </article>
           </div>
+          <div class="pagination" *ngIf="!noInfo">
+            <button class="pag-btn prev" [disabled]="currentPage === 1" (click)="prevPage()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                />
+              </svg>
+              Anterior
+            </button>
 
+            <button class="pag-number active" (click)="goToPage(currentPage)">
+              {{ currentPage }}
+            </button>
+            <div *ngIf="totalPages > 1" style="display: flex; gap: 5px">
+              <button
+                class="pag-number"
+                *ngIf="currentPage !== totalPages"
+                (click)="goToPage(currentPage + 1)"
+              >
+                {{ currentPage + 1 }}
+              </button>
+              <span class="pag-dots">...</span>
 
+              <button
+                class="pag-number"
+                *ngIf="currentPage !== totalPages"
+                (click)="goToPage(totalPages)"
+              >
+                {{ totalPages }}
+              </button>
+            </div>
 
+            <button
+              class="pag-btn next"
+              [disabled]="currentPage === totalPages"
+              (click)="nextPage()"
+            >
+              Siguiente
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </button>
+          </div>
+        </ng-container>
 
-        <button class="pag-btn next" [disabled]="currentPage === totalPages"  (click)="nextPage()">
-          Siguiente
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </button>
+        <ng-template #elseBlock>
+          <div class="no-info-container solicitudes-empty">
+            <img src="/assets/img/sad-house.png" alt="Sin solicitudes" class="sad-img" />
+            <div class="info-text">
+              <h2 class="gradient-text">¡Vaya!</h2>
+              <p class="main-message">
+                Aún no has enviado ninguna solicitud. ¡No te quedes sin tu piso ideal!
+              </p>
+              <p class="sub-message">
+                Explora las casas disponibles y dale al corazón para que aparezcan aquí.
+              </p>
+              <button class="btn-primary" routerLink="/home-estudiante">Explorar pisos</button>
+            </div>
+          </div>
+        </ng-template>
+      </section>
     </div>
-    </section>
-</div>
-</main>
+  </main>
 </div>

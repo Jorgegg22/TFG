@@ -74,7 +74,7 @@ body {
 .app-container::before {
   content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
   z-index: -1; background-image: url('../../../../../public/assets/img/fondo_univibe_logo.png');
-  background-size: 180px; background-repeat: repeat; opacity: 0.1;
+  background-size: 480px; background-repeat: repeat; opacity: 0.1;
 }
 
 /* =========================================
@@ -178,8 +178,14 @@ body {
   padding: 10px 25px; border-radius: 12px; font-weight: 700;
   position: absolute; bottom: 20px; left: 20px;
   font-family: var(--primary-font); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
-
+.owner-label:hover {
+  transform: translateY(-5px);
+  background: #2563eb; 
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .nav-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.3); border: 1px solid rgba(255,255,255,0.5);
@@ -249,23 +255,260 @@ body {
 /* =========================================
    5. DETALLES INFO
    ========================================= */
-.info-header h1 { font-size: 1.8rem; margin: 0; color: var(--text-main); }
-.underline { width: 50px; height: 4px; background: var(--primary); margin: 10px 0 20px 0; border-radius: 10px; }
-
-.details-list {
-  flex: 1; display: flex; flex-direction: column; 
-  gap: 20px; margin-top: 20px;
-  justify-content: space-around;
+.modern-info {
+  padding: 30px;
+  background: #ffffff;
 }
 
-.detail-item h3 { font-size: 0.8rem; color: var(--primary); margin-bottom: 5px; letter-spacing: 1px; }
-.detail-item p { margin: 0; font-size: 1rem; color: var(--text-main); font-weight: 500; }
+/* Fila de iconos rápidos */
+.quick-stats {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f5f9;
+  padding: 15px 20px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+}
 
-.vibe-dots { display: flex; gap: 10px; margin-top: 5px; }
-.dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.dot.b-blue { background: var(--primary); }
-.dot.b-accent { background: var(--accent); }
-.dot.b-gray { background: #dcdde1; }
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #475569;
+}
+
+.stat-item i {
+  font-size: 1.2rem;
+  color: #3b82f6; /* El azul de tu navbar */
+}
+
+.stat-item span {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Grid de detalles */
+.details-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50%;
+}
+
+.detail-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.detail-card:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+}
+
+.detail-card.full-width {
+  grid-column: span 2;
+}
+
+.icon-box {
+  color: #3b82f6;
+  font-size: 1rem;
+  padding-top: 2px;
+}
+
+.content h3 {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.content p {
+  font-size: 0.9rem;
+  color: #1e293b;
+  font-weight: 500;
+  margin: 0;
+}
+
+.alert-card {
+  background: #f0f9ff; /* Un azul muy clarito */
+  border-radius: 14px;
+  padding: 15px !important;
+  border: 1px solid #e0f2fe;
+}
+
+.alert-content {
+  margin-top: 78px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.alert-content i {
+  font-size: 1.4rem;
+  color: var(--primary); /* Azul informativo */
+}
+
+.alert-content h3 {
+  margin: 0 0 2px 0 !important;
+  color: var(--primary) !important;
+  font-size: 0.7rem !important;
+}
+
+.alert-content p {
+  font-size: 0.8rem !important;
+  color: var(--text-main)!important;
+  line-height: 1.3 !important;
+  font-weight: 400 !important;
+}
+
+/* Estilo del título */
+.info-header h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.title-divider {
+  width: 40px;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 10px;
+  margin: 12px 0 20px 0;
+}
+
+
+
+.no-info-container {
+  max-width: 80%;
+  margin: 80px auto;
+  padding: 40px 30px;
+  text-align: center;
+  display: flex;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  justify-content: space-evenly;
+
+  border-radius: 22px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.327);
+  height: 80%;
+  animation: fadeIn 0.6s ease;
+  border: 3px solid  green;
+}
+
+
+
+
+.no-info-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 32px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 20px 40px -2px #0057b388;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.sad-img {
+  width: 300px;
+  height: auto;
+  animation: float 4s ease-in-out infinite;
+}
+
+.info-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.gradient-text {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.main-message {
+  font-size: 19px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-family: var(--secondary-font);
+
+}
+
+.sub-message {
+  font-size: 15px;
+  color: #94a3b8;
+  font-style: italic;
+  max-width: 350px;
+  font-family: var(--primary-font);
+  font-weight: 500;
+}
+
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  animation: l14 4s infinite;
+  position: absolute;
+  left: 50%;
+  top: 48%;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  border: 8px solid;
+  border-radius: 50%;
+  border-color: var(--accent) var(--accent) #0000 #0000;
+  mix-blend-mode: darken;
+  animation: l14 1s infinite linear;
+}
+.loader::after {
+  border-color: #0000 #0000 var(--primary) var(--primary);
+  animation-direction: reverse;
+}
+@keyframes l14{ 
+  100%{transform: rotate(1turn)}
+}
+
+
+
+@media (max-width: 850px) {
+  .no-info-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    gap: 30px;
+    width: 90%;
+  }
+  .info-text {
+    align-items: center;
+    text-align: center;
+  }
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 1100px) {

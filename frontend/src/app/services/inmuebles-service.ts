@@ -24,7 +24,7 @@ export class InmuebleService {
         'X-API-TOKEN': String(token),
       }),
     };
-    return this.http.get<Inmueble[]>(`${this.URI}lista`,httpOptions);
+    return this.http.get<Inmueble[]>(`${this.URI}lista`, httpOptions);
   }
 
   getInmueblesFiltradoUniversidad() {
@@ -40,20 +40,11 @@ export class InmuebleService {
       }),
     };
 
-    return this.http.get<Inmueble[]>(`${this.URI}listaUni`,httpOptions);
+    return this.http.get<Inmueble[]>(`${this.URI}listaUni`, httpOptions);
   }
 
   getInmueblesAleatorios(): Observable<Inmueble[]> {
-    return this.http.get<Inmueble[]>(`${this.URI}listaAleatoria`);
-  }
-
-  getInmueble(id: string): Observable<InmuebleDetalle> {
-    return this.http.get<InmuebleDetalle>(`${this.URI}/inmuebleDetalle/` + id);
-  }
-
-
-  postSolicitud(houseId:number){
-        //Cogemos la sesion
+    //Cogemos la sesion
     const sesionStr = localStorage.getItem('sesion');
     //Convertimos en objeto sesionStr,para acceder al token
     const sesionObj = JSON.parse(sesionStr || '{}');
@@ -64,6 +55,25 @@ export class InmuebleService {
         'X-API-TOKEN': String(token),
       }),
     };
-    return this.http.post(`${this.URI}/postSolicitud` ,  {houseId: houseId},httpOptions);
+    return this.http.get<Inmueble[]>(`${this.URI}listaAleatoria`,httpOptions);
+  }
+
+  getInmueble(id: string): Observable<InmuebleDetalle> {
+    return this.http.get<InmuebleDetalle>(`${this.URI}/inmuebleDetalle/` + id);
+  }
+
+  postSolicitud(houseId: number) {
+    //Cogemos la sesion
+    const sesionStr = localStorage.getItem('sesion');
+    //Convertimos en objeto sesionStr,para acceder al token
+    const sesionObj = JSON.parse(sesionStr || '{}');
+    const token = sesionObj.token;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(token),
+      }),
+    };
+    return this.http.post(`${this.URI}/postSolicitud`, { houseId: houseId }, httpOptions);
   }
 }

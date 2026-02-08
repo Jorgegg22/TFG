@@ -284,15 +284,16 @@
 
 
 /* =========================================
-   COLUMNA LATERAL (PISOS)
+   COLUMNA LATERAL 
    ========================================= */
 
 .profile-sidebar-card {
   background: var(--white); padding: 30px; border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04); border: 1px solid rgba(0,0,0,0.02);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.233); border: 1px solid rgba(0,0,0,0.02);
   display: flex; flex-direction: column; height: auto; 
+  /* --- CAMBIO: Fuente Secundaria para toda la tarjeta --- */
   font-family: var(--secondary-font);
-  border: 1px solid red;
+  margin-top: 0px;
 }
 
 .sidebar-header {
@@ -301,52 +302,56 @@
 }
 
 .sidebar-header h3 {
-  margin: 0; color: var(--text-dark); font-family: var(--secondary-font);
+  margin: 0; color: var(--text-dark); 
+  font-family: var(--secondary-font); /* Aseguramos fuente */
   font-size: 1.2rem; font-weight: 700;
 }
 
 .counter {
   background: var(--primary); color: white; padding: 4px 10px;
   border-radius: 10px; font-size: 0.85rem; font-weight: 700;
-  font-family: var(--primary-font); 
+  font-family: var(--primary-font); /* El número se ve mejor en Sans */
 }
 
-.houses-list { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
-
-.mini-house-card {
-  display: flex; gap: 15px; padding: 12px; border-radius: 16px;
-  background: #fff; border: 1px solid var(--border-color);
-  transition: all 0.2s ease; cursor: pointer;
-}
-.mini-house-card:hover {
-  border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+.attributes-container {
+  display: flex;
+  flex-direction: column; /* Cambia de fila a columna */
+  gap: 12px;              /* Espacio más amplio entre píldoras */
+  padding: 10px 0;
 }
 
-.mini-img-wrapper { width: 85px; height: 85px; position: relative; flex-shrink: 0; }
-.mini-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
-
-.status-dot {
-  position: absolute; top: -3px; right: -3px; width: 14px; height: 14px;
-  background: #2ecc71; border: 2px solid white; border-radius: 50%;
-}
-
-.mini-info { display: flex; flex-direction: column; justify-content: center; flex: 1; }
-
-.mini-info h4 { margin: 0; font-size: 1.05rem; color: var(--text-dark); font-weight: 700; font-family: var(--secondary-font); }
-.mini-price { font-size: 1rem; font-weight: 700; color: var(--primary); margin-top: 4px; font-family: var(--secondary-font); }
-.status-text { font-size: 0.8rem; font-weight: 600; margin-top: 5px; font-family: var(--secondary-font); }
-
-.accepted .status-text { color: #2ecc71; }
-.accepted { background: #f0fdf4; border-color: #bbf7d0; }
-.pending .status-text { color: #f1c40f; }
-
-.btn-view-all {
-  width: 100%; margin-top: 30px; padding: 15px; background: var(--bg-input);
-  color: var(--text-gray); border: none; border-radius: 14px;
-  font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 1rem;
+.attribute-pill {
+  display: flex;          /* Cambiado de inline-flex a flex */
+  align-items: center;
+  gap: 15px;              /* Más espacio entre icono y texto */
+  padding: 14px 20px;     /* Padding más grande para que se vea "robusta" */
+  background: var(--bg-input); 
+  border: 1px solid var(--border-color);
+  border-radius: 16px;    /* Radio un poco más cuadrado para estilo moderno */
   font-family: var(--secondary-font);
+  font-size: 1.05rem;     /* Fuente un poco más grande */
+  font-weight: 700;       /* Texto más negrita */
+  color: var(--text-dark);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;            /* Asegura que ocupen todo el ancho disponible */
+  box-sizing: border-box;
 }
-.btn-view-all:hover { background: var(--border-color); color: var(--text-dark); }
+
+.attribute-pill i {
+  font-size: 1.4rem;      /* Icono más grande y visible */
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;            /* Ancho fijo para que los textos queden alineados */
+}
+
+.attribute-pill:hover {
+  background: white;
+  border-color: var(--primary);
+  transform: translateX(5px); /* Efecto de desplazamiento hacia la derecha */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
 
 /* Responsive */
 @media (max-width: 1000px) {

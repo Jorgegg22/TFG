@@ -424,3 +424,93 @@
   padding: 0 5px;
   font-weight: bold;
 } 
+
+.solicitudes-empty {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* O el fondo que prefieras */
+  box-shadow: none;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* El botón que añadimos en el HTML */
+.btn-primary {
+  margin-top: 25px;
+  padding: 12px 24px;
+  background: #0056b3;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+}
+
+
+.sad-img{
+  width: 250px;
+}
+
+.gradient-text {
+  /* Tamaño y grosor impactante */
+  font-size: 48px;
+  font-weight: 800;
+
+  font-family: var(--secondary-font);
+  /* El truco del degradado en texto */
+  background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Ajustes finos */
+  margin-bottom: 15px;
+  letter-spacing: -1.5px; /* Hace que se vea más moderno */
+  display: inline-block;
+  
+  /* Animación suave al aparecer */
+  animation: slideUp 0.6s ease-out;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  animation: l14 4s infinite;
+  position: absolute;
+  left: 50%;
+  top: 48%;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  border: 8px solid;
+  border-radius: 50%;
+  border-color: var(--accent) var(--accent) #0000 #0000;
+  mix-blend-mode: darken;
+  animation: l14 1s infinite linear;
+}
+.loader::after {
+  border-color: #0000 #0000 var(--primary) var(--primary);
+  animation-direction: reverse;
+}
+@keyframes l14{ 
+  100%{transform: rotate(1turn)}
+}

@@ -22,9 +22,10 @@ export class Solicitudes implements OnInit {
   currentPage: number = 1;
   initialSlice!: number;
   finalSlice!: number;
+  noInfo: boolean = false;
+  loading:boolean = true
 
   ngOnInit(): void {
-    
     this.loadSolicitudes();
   }
 
@@ -36,10 +37,16 @@ export class Solicitudes implements OnInit {
         console.log(respuesta);
         this.info = respuesta;
         this.allInmuebles = this.info.data.inmuebles;
-        this.inmuebles = this.info.data.inmuebles;
-        this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
-        console.log(this.inmuebles);
-        this.pagination();
+        if (this.allInmuebles.length === 0) {
+          this.noInfo = true;
+        } else {
+          this.noInfo = false
+          this.inmuebles = this.info.data.inmuebles;
+          this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
+          console.log(this.inmuebles);
+          this.pagination();
+        }
+        this.loading = false
       },
       error: (err) => console.error('Error', err),
     });
@@ -58,18 +65,15 @@ export class Solicitudes implements OnInit {
     }
   }
 
-
-  prevPage(){
-    if(this.currentPage > 1){
+  prevPage() {
+    if (this.currentPage > 1) {
       this.currentPage--;
       this.pagination();
     }
   }
 
-
-  goToPage(page:number){
+  goToPage(page: number) {
     this.currentPage = page;
     this.pagination();
-
   }
 }

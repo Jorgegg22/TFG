@@ -17,8 +17,17 @@ export class VistaPiso implements OnInit {
   solicitudes: Solicitud[] = [];
   matches: Match[] = [];
   previousUrl!:string | null;
+  edit:boolean = false;
+  loading:boolean = true
+  sesionNombre!:string;
+  
 
   ngOnInit(): void {
+    const sesionData = localStorage.getItem("sesion");
+    if(sesionData){
+      const data = JSON.parse(sesionData);
+      this.sesionNombre = data
+    }
     const prevPage = this.navigationService.previousUrl;
 
     if (prevPage !== this.router.url) {
@@ -49,6 +58,13 @@ export class VistaPiso implements OnInit {
         console.log(this.info);
         console.log(this.solicitudes);
         console.log(this.matches);
+
+        if(this.info.nombre_propietario === this.sesionNombre){
+          this.edit = true
+        }
+
+        this.loading = false
+
       },
     });
   }

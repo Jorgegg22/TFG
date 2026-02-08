@@ -19,6 +19,9 @@ export class HomeEstudiante implements OnInit {
   index3: number = 0;
   $idCasaLike!: number;
   idsInteractuados: number[] = [];
+  noInfo: boolean = false;
+  loading: boolean = true;
+  datosCargados: number = 0;
 
   constructor(private imbService: InmuebleService) {}
 
@@ -26,6 +29,19 @@ export class HomeEstudiante implements OnInit {
     this.getInmuebles();
     this.getInmueblesFiltradoUni();
     this.getInmueblesAleatorios();
+
+    setTimeout(() => {
+      this.loading = false;
+      this.loadInmueble();
+    }, 500);
+  }
+
+  cargados() {
+    this.datosCargados++;
+    if (this.datosCargados === 3) {
+      this.loading = false;
+      this.loadInmueble();
+    }
   }
 
   getInmuebles() {
@@ -34,7 +50,7 @@ export class HomeEstudiante implements OnInit {
         console.log('Filtro Todo');
         this.infoFiltrada = respuesta;
         console.log(this.infoFiltrada);
-        this.loadInmueble();
+        this.cargados()
       },
       error: (err) => console.error('Error', err),
     });
@@ -47,7 +63,7 @@ export class HomeEstudiante implements OnInit {
 
         this.infoFiltradaUni = respuesta;
         console.log(this.infoFiltradaUni);
-        this.loadInmueble();
+        this.cargados()
       },
     });
   }
@@ -58,7 +74,7 @@ export class HomeEstudiante implements OnInit {
         console.log('Sin filtro');
         this.infoAleatoria = respuesta;
         console.log(this.infoAleatoria);
-        this.loadInmueble();
+        this.cargados()
       },
       error: (err) => console.error('Error', err),
     });
@@ -91,17 +107,16 @@ export class HomeEstudiante implements OnInit {
       }
     } else {
       console.log('No quedan más casas por mostrar');
+      this.noInfo = true;
     }
   }
 
-  postSolicitud($id:number){
+  postSolicitud($id: number) {
     this.imbService.postSolicitud($id).subscribe({
-      next:(respuesta) =>{
-              console.log(respuesta)
-      }
-
-      
-    })
+      next: (respuesta) => {
+        console.log(respuesta);
+      },
+    });
   }
 
   showOptions() {
@@ -122,7 +137,7 @@ export class HomeEstudiante implements OnInit {
 
     console.log(this.$idCasaLike);
     this.idsInteractuados.push(this.$idCasaLike);
-    
+
     this.postSolicitud(this.$idCasaLike);
     this.loadInmueble();
   }

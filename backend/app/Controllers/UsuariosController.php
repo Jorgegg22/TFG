@@ -33,7 +33,7 @@ class UsuariosController extends ResourceController
 
     public function getUsuarioByToken()
     {
-        $token = $this->request->getServer('HTTP_X_API_TOKEN');
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
 
         if (!$token) {
             return $this->failUnauthorized('No se proporcionó token');
@@ -41,16 +41,18 @@ class UsuariosController extends ResourceController
 
         $usuarioModel = new UsuariosModel();
 
-
         $usuarioSesion = $usuarioModel->where('token', $token)
-            ->where('token_expira >', date('Y-m-d H:i:s'))
+
             ->first();
 
         if (!$usuarioSesion) {
             return $this->failUnauthorized('Sesión inválida o expirada');
         }
+        $usuarioData = $usuarioModel->getUsuarios($usuarioSesion['id']);
 
-        $usuarioData = $usuarioModel->find($usuarioSesion['id']);
+
+
+
 
         unset($usuarioData['password']);
         unset($usuarioData['token']);
@@ -58,7 +60,8 @@ class UsuariosController extends ResourceController
         return $this->respond([
             'status' => 'success',
             'mensaje' => 'Usuario obtenido correctamente',
-            'data' => $usuarioData
+            'data' => $usuarioData,
+
         ]);
     }
 
@@ -74,18 +77,17 @@ class UsuariosController extends ResourceController
 
     public function setAtributos()
     {
-        $token = $this->request->getServer('HTTP_X_API_TOKEN');
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
         $userData = $this->request->getJSON();
 
 
 
 
-        if (!$userData || empty($userData->atributosSelected)) {
+        if (!$userData) {
             return $this->fail('No se han seleccionado atributos', 400);
         }
         $usuarioModel = new UsuariosModel();
         $usuario = $usuarioModel->where('token', $token)
-            ->where('token_expira >', date('Y-m-d H:i:s'))
             ->first();
 
         if (!$usuario) {
@@ -116,12 +118,18 @@ class UsuariosController extends ResourceController
 
     public function complete()
     {
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
         $userData = $this->request->getJson();
-        $model = new UsuariosModel();
-        $userId = $userData->userId;
+        $usuarioModel = new UsuariosModel();
+       
         if (!$userData) {
             return $this->failNotFound('No se ha recibido informacion');
         }
+
+        $usuario = $usuarioModel->where('token', $token)
+            ->first();
+
+        $userId = $usuario['id'];
 
         $data = [
             'telefono' => $userData->userPhone,
@@ -130,7 +138,7 @@ class UsuariosController extends ResourceController
             'universidad_id' => $userData->userUni
         ];
 
-        $model->update($userId, $data);
+        $usuarioModel->update($userId, $data);
 
         return $this->respondCreated([
             'status' => 'success',

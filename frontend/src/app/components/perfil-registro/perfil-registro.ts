@@ -5,6 +5,8 @@ import { Carrera } from '../../common/carreras-interface';
 import { UsuarioService } from '../../services/usuarios-service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../../common/usuarios-interface';
+import { Perfil } from '../usuarios/perfil/perfil';
 
 @Component({
   selector: 'app-perfil-registro',
@@ -15,7 +17,11 @@ import { Router } from '@angular/router';
 export class PerfilRegistro implements OnInit {
   unis: Universidad[] = [];
   carreras: Carrera[] = [];
+  atributosString!: string
+  atributosUsuario: string[] = [];
+  atributosUsuarioObject: { nombre: string; icono: string }[] = [];
   userIdLocal!: string | null;
+  perfil!:Usuario
   userName!: string;
   userEmail!: string;
   userData: {
@@ -70,8 +76,24 @@ export class PerfilRegistro implements OnInit {
     this.userService.getUsuarioByToken().subscribe({
       next: (respuesta) => {
         console.log(respuesta);
-        this.userName = respuesta.data.nombre;
-        this.userEmail = respuesta.data.email;
+        this.perfil = respuesta
+        this.userName = this.perfil.data.nombre
+        this.userEmail = this.perfil.data.email
+       this.atributosString = this.perfil.data.atributos_usuario
+
+        this.atributosUsuarioObject = [];
+        if (this.atributosString) {
+          this.atributosUsuario = this.atributosString.split(';');
+          this.atributosUsuario.forEach((element) => {
+            const partes = element.split('|');
+            if (partes.length === 2) {
+              this.atributosUsuarioObject.push({
+                nombre: partes[0],
+                icono: partes[1],
+              });
+            }
+          });
+        }
       },
       error(err) {
         console.error('Error');

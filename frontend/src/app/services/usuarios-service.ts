@@ -18,26 +18,42 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.URI);
   }
 
-  getUsuarioByToken(): Observable<any> {
-    return this.http.get(`${this.URI}usuario`);
+  getUsuarioByToken(): Observable<Usuario> {
+    const sesionStr = localStorage.getItem('sesion');
+    const sesionObj = JSON.parse(sesionStr || '{}');
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(sesionObj.token || ''),
+      }),
+    };
+    return this.http.get<Usuario>(`${this.URI}usuario`, httpOptions);
   }
 
   postDatosPerfi(userdata: any): Observable<any> {
-    return this.http.post(`${this.URI}guardarDatos`, userdata);
+    const sesionStr = localStorage.getItem('sesion');
+    const sesionObj = JSON.parse(sesionStr || '{}');
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(sesionObj.token || ''),
+      }),
+    };
+    return this.http.post(`${this.URI}guardarDatos`, userdata,httpOptions);
   }
 
- getSolicitudesUsuario(): Observable<any> {
-  const sesionStr = localStorage.getItem('sesion');
-  const sesionObj = JSON.parse(sesionStr || '{}');
+  getSolicitudesUsuario(): Observable<any> {
+    const sesionStr = localStorage.getItem('sesion');
+    const sesionObj = JSON.parse(sesionStr || '{}');
 
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'X-API-TOKEN': String(sesionObj.token || ''),
-    }),
-  };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(sesionObj.token || ''),
+      }),
+    };
 
-  return this.http.get<any>(`${this.URI}solicitudes`, httpOptions);
-}
+    return this.http.get<any>(`${this.URI}solicitudes`, httpOptions);
+  }
 
   getPerfilUsuario(userId?: string): Observable<InfoPerfil> {
     //Cogemos la sesion

@@ -85,7 +85,7 @@ class InmueblesModel extends Model
         return $this->findAll();
     }
 
-    public function getInmueblesAleatorios()
+    public function getInmueblesAleatorios($id)
     {
         // Copiamos la misma lógica de selects y joins
         $this->select('inmuebles.*');
@@ -99,6 +99,8 @@ class InmueblesModel extends Model
         $this->join('universidades', 'universidades.id = inmuebles.universidad_id', 'left');
         $this->join('matches', 'matches.inmueble_id = inmuebles.id', 'left');
         $this->join('usuarios as u_est', 'u_est.id = matches.estudiante_id', 'left');
+        // Excluimos los inmuebles a los que el usuario ya ha reaccionado (Like/Dislike)
+        $this->where("inmuebles.id NOT IN (SELECT inmueble_id FROM solicitudes WHERE estudiante_id = " . (int) $id . ")", null, false);
 
         // LA CLAVE: Ordenar por RAND()
         $this->orderBy('RAND()');

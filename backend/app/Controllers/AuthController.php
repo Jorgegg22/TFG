@@ -68,7 +68,7 @@ class AuthController extends ResourceController
 
     public function insertRol()
     {
-        $token = $this->request->getServer('HTTP_X_API_TOKEN');
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
         $userData = $this->request->getJSON();
 
         if (!$token) {

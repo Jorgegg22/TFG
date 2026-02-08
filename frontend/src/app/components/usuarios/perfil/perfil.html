@@ -1,8 +1,10 @@
 <section class="profile-section">
   <div class="app-container">
-    <div class="profile-container">
- 
-        <div class="profile-main-card" *ngIf="perfil">
+    <div *ngIf="loading" class="loader"></div>
+
+    <ng-container *ngIf="!loading">
+      <div class="profile-container" *ngIf="perfil">
+        <div class="profile-main-card">
           <div class="profile-header">
             <div class="avatar-wrapper">
               <img
@@ -153,7 +155,7 @@
             </span>
           </div>
         </aside>
-      </div>
-    </div>
-
+      </div></ng-container
+    >
+  </div>
 </section>

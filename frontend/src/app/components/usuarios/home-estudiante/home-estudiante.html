@@ -1,73 +1,111 @@
-
 <div class="wrapper-atributos">
- <app-header></app-header>
+  <app-header></app-header>
 
-<main class="app-container">
-  
-  <div class="layout-grid">
-    <section class="main-card image-area">
-      <!-- ANIMACION IZQUIERDA CUANDO LIKE Y DERECHA CON DISLIKE -->
-  <div class="price-tag">{{inmuebles.precio}} €</div>
-  
-  <div class="image-wrapper">
-    <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200" alt="Piso moderno">
-    
-    <button class="nav-arrow left"><i class="fa-solid fa-chevron-left"></i></button>
-    <button class="nav-arrow right"><i class="fa-solid fa-chevron-right"></i></button>
+  <main class="app-container">
+    <div *ngIf="loading" class="loader"></div>
 
-    <div class="quick-actions floating">
-      <button class="action-btn heart" (click)="nextHouseLike()"   ><i class="fa-solid fa-heart"></i></button>
-      <button class="action-btn dismiss"  (click)="nextHouseDislike()" ><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div *ngIf="inmuebles">
-      <span class="owner-label">{{inmuebles.nombre_propietario}}</span>
-    </div>
-     
-  </div>
+    <ng-container *ngIf="!loading">
+      <div class="layout-grid" *ngIf="!noInfo; else elseBlock">
+        <section class="main-card image-area">
+          <div class="price-tag">{{ inmuebles.precio }} €</div>
 
-</section>
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200"
+              alt="Piso moderno"
+            />
 
-    <aside class="main-card info-area">
-    
+            <button class="nav-arrow left"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="nav-arrow right"><i class="fa-solid fa-chevron-right"></i></button>
 
-      <div class="info-header" *ngIf="inmuebles">
-        <h1>{{inmuebles.titulo}}</h1>
-        <div class="underline"></div>
+            <div class="quick-actions floating">
+              <button class="action-btn heart" (click)="nextHouseLike()">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <button class="action-btn dismiss" (click)="nextHouseDislike()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div *ngIf="inmuebles">
+              <span class="owner-label"  [routerLink]="'/perfil/' + inmuebles.propietario_id">{{ inmuebles.nombre_propietario }}</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="main-card info-area modern-info">
+          <div class="info-header" *ngIf="inmuebles">
+            <h1>{{ inmuebles.titulo }}</h1>
+            <div class="title-divider"></div>
+          </div>
+          <span class="category-badge" style="margin-top: 20px">Características</span>
+          <div class="quick-stats">
+            <div class="stat-item">
+              <i class="fa-solid fa-bed"></i>
+              <span>{{ inmuebles.habitaciones }} hab.</span>
+            </div>
+            <div class="stat-item">
+              <i class="fa-solid fa-bath"></i>
+              <span>{{ inmuebles.banios }} baños</span>
+            </div>
+            <div class="stat-item">
+              <i class="fa-solid fa-users"></i>
+              <span>Máx. {{ inmuebles.n_personas }}</span>
+            </div>
+          </div>
+          <span class="category-badge">Información</span>
+          <div class="details-grid">
+            <div class="detail-card">
+              <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="content">
+                <h3>LOCALIZACIÓN</h3>
+                <p>{{ inmuebles.direccion }}</p>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="content">
+                <h3>CERCA DE</h3>
+                <p>{{ inmuebles.nombre_universidad }}</p>
+              </div>
+            </div>
+
+            <div class="detail-card full-width">
+              <div class="icon-box"><i class="fa-solid fa-align-left"></i></div>
+              <div class="content">
+                <h3>DESCRIPCIÓN</h3>
+                <p>{{ inmuebles.descripcion }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="detail-item tip-card">
+            <div class="alert-content">
+              <i class="fa-solid fa-lightbulb"></i>
+              <div>
+                <h3>RECOMENDACIÓN</h3>
+                <p>¡Dale a 'Like' para guardar este piso en tus solicitudes y no perderlo!</p>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
 
-      <div class="details-list">
-        <div class="detail-item">
-        <h3>LOCALIZACIÓN</h3>
-          <p>{{inmuebles.direccion}}</p>
-        </div>
+      <ng-template #elseBlock>
+        <div class="no-info-container">
+          <img src="/assets/img/sad-house.png" alt="Sin resultados" class="sad-img" />
 
-        <div class="detail-item">
-          <h3>DESCRIPCION</h3>
-          <p>{{inmuebles.descripcion}}</p>
-        </div>
-        <div class="detail-item">
-          <h3>CERCA DE</h3>
-          <p>{{inmuebles.nombre_universidad}}</p>
-        </div>
-        
-        <div class="detail-item">
-          <h3>NORMAS</h3>
-          <p>Prohibido fumar</p>
-        </div>
-        
-
-        <div class="detail-item">
-          <h3>COMPAÑEROS</h3>
-          <div class="vibe-dots">
-            <span class="dot b-blue"></span>
-            <span class="dot b-accent"></span>
-            <span class="dot b-gray"></span>
+          <div class="info-text">
+            <h2 class="gradient-text">Oops...</h2>
+            <p class="main-message">
+              Parece que ya has visto todas las casas disponibles por ahora. ¡Vuelve más tarde para
+              descubrir nuevos pisos!
+            </p>
+            <p class="sub-message">
+              Esta casita se ha puesto triste porque no tiene más amigas que enseñarte.
+            </p>
           </div>
         </div>
-      </div>
-    </aside>
-  </div>
-
-</main>
-
+      </ng-template>
+    </ng-container>
+  </main>
 </div>
