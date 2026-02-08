@@ -142,3 +142,17 @@ in APPPATH/Controllers/UsuariosController.php on line 123.
  5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-08 18:57:37 --> ErrorException: Undefined variable $entidad
+[Method: GET, Route: admin/usuarios]
+in APPPATH/Views/panel/usuarios/gestionUsuarios.php on line 5.
+ 1 APPPATH/Views/panel/usuarios/gestionUsuarios.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $entidad', '/var/www/html/app/Views/panel/usuarios/gestionUsuarios.php', 5)
+ 2 SYSTEMPATH/View/View.php(226): include('/var/www/html/app/Views/panel/usuarios/gestionUsuarios.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render('panel/usuarios/gestionUsuarios', [], true)
+ 5 APPPATH/Controllers/Admin/UsuariosControllerA.php(17): view('panel/usuarios/gestionUsuarios', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UsuariosControllerA->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\UsuariosControllerA))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,30 +1,36 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
-use CodeIgniter\RESTful\ResourceController;
-use App\Models\InmueblesModel;
+use App\Controllers\BaseController;
+use App\Models\InmueblesModel; // Asumiendo que crearás este modelo
 
-class InmueblesControllerA extends ResourceController
+class InmueblesControllerA extends BaseController
 {
-    protected $modelName = 'App\Models\InmueblesModel';
-    protected $format    = 'json';
+    
 
-    public function inmueblesLista()
+    public function index()
     {
-
-        $inmuebles = $this->model->getInmuebles();
-        return $this->respond($inmuebles);
+        // Lógica para listar
     }
 
-    public function show($id = null)
+    public function crear()
     {
-        $usuario = $this->model->getUsuarios($id);
-        
-        if (!$usuario) {
-            return $this->failNotFound('Usuario no encontrado');
-        }
+        // Lógica para mostrar formulario vacío
+    }
 
-        return $this->respond($usuario);
+    public function editar($id = null)
+    {
+        // Lógica para buscar registro y mostrar formulario relleno
+    }
+
+    public function guardar()
+    {
+        // Lógica para insertar o actualizar (POST)
+    }
+
+    public function borrar($id = null)
+    {
+        // Lógica para eliminar registro
     }
 }

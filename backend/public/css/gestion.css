@@ -1,0 +1,137 @@
+/* --- Títulos y Contenedor --- */
+.container-fluid h1 {
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #1a1a1a !important;
+}
+
+/* --- Card Minimalista --- */
+.card {
+  border-radius: 20px !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03) !important;
+}
+
+.card-header {
+  border-bottom: 1px solid #f8f9fc !important;
+}
+
+/* --- Estilos de Filtros y Buscador --- */
+.custom-select-modern {
+  border-radius: 12px;
+  border: 1px solid #eef0f7;
+  background-color: #fcfdfe;
+  font-size: 0.85rem;
+  height: 42px;
+  color: #6e707e;
+  transition: all 0.3s;
+}
+
+.search-group {
+  width: 250px;
+}
+
+.search-input {
+  border-radius: 12px 0 0 12px !important;
+  border: 1px solid #eef0f7;
+  border-right: none;
+  background-color: #fcfdfe;
+  font-size: 0.85rem;
+  height: 42px;
+}
+
+.search-group .input-group-text {
+  border-radius: 0 12px 12px 0 !important;
+  border: 1px solid #eef0f7;
+  background-color: #fcfdfe;
+}
+
+.custom-select-modern:focus,
+.search-input:focus {
+  border-color: #4e73df;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+/* --- Tabla Moderna --- */
+.table thead th {
+  background-color: #fbfcfe;
+  border: none !important;
+  color: #b7b9cc;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1.25rem !important;
+}
+
+.table tbody td {
+  border-top: 1px solid #f8f9fc !important;
+  padding: 1.25rem !important;
+  vertical-align: middle !important;
+  color: #5a5c69;
+  font-size: 0.9rem;
+}
+
+.table tbody tr:hover {
+  background-color: #fbfcfe;
+}
+
+/* --- Botones de Acción --- */
+.btn-circle.btn-sm {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px !important; /* Estilo Squircle */
+  transition: all 0.3s ease;
+  border: none !important;
+}
+
+.btn-warning {
+  background-color: #fff4e5 !important;
+  color: #ffa800 !important;
+}
+
+.btn-warning:hover {
+  background-color: #ffa800 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: #fff0f0 !important;
+  color: #f64e60 !important;
+}
+
+.btn-danger:hover {
+  background-color: #f64e60 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* --- Paginación Moderna --- */
+.pagination .page-link {
+  border: none;
+  border-radius: 8px !important;
+  margin: 0 3px;
+  color: #6e707e;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #4e73df;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);
+}
+
+.pagination .page-link:hover {
+  background-color: #f1f3f9;
+}
+
+/* --- Scrollbar --- */
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #eef0f7;
+  border-radius: 10px;
+}

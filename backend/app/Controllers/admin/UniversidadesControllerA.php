@@ -1,30 +1,36 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
-use CodeIgniter\RESTful\ResourceController;
-use App\Models\UniversidadesModel;
+use App\Controllers\BaseController;
+use App\Models\UniversidadesModel; // Asumiendo que crearás este modelo
 
-class UniversidadesControllerA extends ResourceController
+class UniversidadesControllerA extends BaseController
 {
-    protected $modelName = 'App\Models\UniversidadesModel';
-    protected $format    = 'json';
+  
 
-    public function universidadesLista()
+    public function index()
     {
-
-        $universidades = $this->model->getUniversidades();
-        return $this->respond($universidades);
+        // Lógica para listar
     }
 
-    public function show($id = null)
+    public function crear()
     {
-        $usuario = $this->model->getUsuarios($id);
-        
-        if (!$usuario) {
-            return $this->failNotFound('Usuario no encontrado');
-        }
+        // Lógica para mostrar formulario vacío
+    }
 
-        return $this->respond($usuario);
+    public function editar($id = null)
+    {
+        // Lógica para buscar registro y mostrar formulario relleno
+    }
+
+    public function guardar()
+    {
+        // Lógica para insertar o actualizar (POST)
+    }
+
+    public function borrar($id = null)
+    {
+        // Lógica para eliminar registro
     }
 }

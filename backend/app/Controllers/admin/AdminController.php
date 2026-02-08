@@ -10,6 +10,8 @@ class AdminController extends BaseController
         // if (!session()->get('is_admin')) { return redirect()->to('/login'); }
 
         // Esto busca el archivo en: app/Views/panel/index.php
-        return view('panel/index');
+        return view('panel/templates/header').
+        view('panel/index').
+        view('panel/templates/footer');
     }
 }
