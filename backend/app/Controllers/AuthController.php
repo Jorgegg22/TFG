@@ -137,15 +137,20 @@ class AuthController extends ResourceController
         $usuarioModel = new UsuariosModel();
         $usuario = $usuarioModel->where('token', $token)->first();
 
-        if ($usuario) {
-            $usuarioModel->update($usuario['id'], [
-                'token' => null,
-                'token_expira' => null
-            ]);
+       if ($usuario) {
+        $rol = $usuario['rol'];
+
+        $usuarioModel->update($usuario['id'], [
+            'token' => null
+        ]);
+
+        if ($rol === "admin") {
+            return redirect()->to('http://localhost:4200/login');
         }
+    }
 
         $this->respond(['status' => 'success', 'mensaje' => 'Sesión cerrada en servidor']);
-        return redirect()->to('http://localhost:4200/login');
+       
         
     }
 

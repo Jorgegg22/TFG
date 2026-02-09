@@ -227,6 +227,7 @@ a { color: var(--primary); font-weight: 600; text-decoration: none; }
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   color: white;
   animation: slideUp 0.8s ease-out;
+  font-family: var(--primary-font);
 }
 
 .glass-card h2 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }

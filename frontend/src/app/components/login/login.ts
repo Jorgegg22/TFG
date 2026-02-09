@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login implements OnInit {
   userData: { email: string; password: string } = {
     email: '',
     password: '',
@@ -20,6 +20,10 @@ export class Login {
     private authService: AuthService,
     private router: Router,
   ) {}
+
+  ngOnInit(): void {
+    localStorage.removeItem('sesion')
+  }
 
   login() {
     this.authService.checkUser(this.userData).subscribe({

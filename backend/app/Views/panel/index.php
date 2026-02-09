@@ -14,7 +14,9 @@
             </div>
             <div class="stat-text">
                 <span class="label">Usuarios Activos</span>
-                <h2 class="value">1,240</h2>
+                <?php if ($usuarios): ?>
+                    <h2 class="value"><?= count($usuarios) ?></h2>
+                <?php endif;?>
             </div>
             <div class="stat-chart-mini">
                 <div class="mini-bar" style="height: 40%"></div>
@@ -29,7 +31,9 @@
             </div>
             <div class="stat-text">
                 <span class="label">Pisos Publicados</span>
-                <h2 class="value">456</h2>
+                <?php if ($inmuebles): ?>
+                    <h2 class="value"><?= count($inmuebles) ?></h2>
+                <?php endif; ?>
             </div>
 
         </div>
@@ -40,7 +44,9 @@
             </div>
             <div class="stat-text">
                 <span class="label">Matches Totales</span>
-                <h2 class="value">89</h2>
+                <?php if ($matches): ?>
+                    <h2 class="value"><?= count($matches) ?></h2>
+                <?php endif; ?>
             </div>
         </div>
     </section>
