@@ -8,8 +8,8 @@ import { InmuebleDetalle } from '../common/pisoDetalle-interface';
   providedIn: 'root',
 })
 export class InmuebleService {
-  /* private URI: string = "http://localhost/univibe/backend/public/index.php/api/inmuebles/"; */ //XAMPP
-  private URI: string = 'http://localhost:8080/public/api/inmuebles/'; //DOCKER
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/inmuebles/"; //XAMPP
+  //private URI: string = 'http://localhost:8080/public/api/inmuebles/'; //DOCKER
   constructor(private http: HttpClient) {}
 
   getInmueblesFiltrados(): Observable<Inmueble[]> {

@@ -2,7 +2,8 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Gestión de Usuarios</h1>
-        <a href="<?= base_url('admin/usuarios/crear') ?>" class="btn btn-sm btn-primary shadow-sm px-3 py-2 rounded-pill">
+        <a href="<?= base_url('admin/usuarios/crear') ?>"
+            class="btn btn-sm btn-primary shadow-sm px-3 py-2 rounded-pill">
             <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Nuevo Registro
         </a>
     </div>
@@ -13,6 +14,7 @@
                 <div class="col-md-6">
                     <h6 class="m-0 font-weight-bold text-primary">Listado Usuarios</h6>
                 </div>
+
                 <div class="col-md-6 d-flex justify-content-end mt-3 mt-md-0">
                     <div class="filter-group d-flex align-items-center">
                         <select class="form-control custom-select-modern mr-2" id="filterSelect">
@@ -21,7 +23,8 @@
                             <option value="2">Dato 2</option>
                         </select>
                         <div class="input-group search-group">
-                            <input type="text" class="form-control search-input" placeholder="Buscar..." id="tableSearch">
+                            <input type="text" class="form-control search-input" placeholder="Buscar..."
+                                id="tableSearch">
                             <div class="input-group-append">
                                 <span class="input-group-text bg-transparent border-left-0">
                                     <i class="fas fa-search text-gray-400"></i>
@@ -32,34 +35,43 @@
                 </div>
             </div>
         </div>
-
+        <?php if(!empty($usuarios)):?>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table mb-0" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Dato 1</th>
-                            <th>Dato 2</th>
-                            <th>Dato 3</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($usuarios as $us):?>
                         <tr>
-                            <td>1</td>
-                            <td>Ejemplo A</td>
-                            <td>Ejemplo B</td>
-                            <td>Ejemplo C</td>
+                            <td><?= $us['id']?></td>
+                            <td><?= $us['nombre']?></td>
+                            <td><?= $us['email']?></td>
+                            <td><?= $us['rol']?></td>
+
                             <td class="text-center">
+                                <?php if($us['rol'] !== "admin"  ):?>
                                 <a href="#" class="btn btn-warning btn-circle btn-sm shadow-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <button class="btn btn-danger btn-circle btn-sm btn-borrar shadow-sm" data-id="1">
                                     <i class="fas fa-trash"></i>
                                 </button>
+                                <?php else: ?>
+                                <p style="color:black;">Usuario protegido</p>
+                                <?php endif ;?>
                             </td>
+
                         </tr>
+                        <?php endforeach; ?>
+
                     </tbody>
                 </table>
             </div>
@@ -79,6 +91,10 @@
                 </ul>
             </nav>
         </div>
+        <?php else:?>
+        <div></div>
+
+        <?php endif;?>
     </div>
 
 </div>

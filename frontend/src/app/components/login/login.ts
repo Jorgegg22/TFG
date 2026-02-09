@@ -35,7 +35,8 @@ export class Login {
         } else if (respuesta.rol === 'propietario') {
           this.router.navigate(['/home-propietario']);
         } else {
-          window.location.href = 'http://localhost:8080/public/admin/';
+          window.location.href = 'http://localhost/univibe/backend/public/admin/index';
+          //window.location.href = 'http://localhost:8080/public/admin/'; //DOCKER
         }
       },
     });

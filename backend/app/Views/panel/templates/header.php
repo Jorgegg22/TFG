@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link href="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <script src="<?= base_url('vendor/jquery/jquery-3.7.1.js') ?>"></script>
+    <script src="<?= base_url('vendor/js/miJs.js') ?>"></script>
 </head>
 
 <body id="page-top">
@@ -84,20 +86,25 @@
             <div class="sidebar-heading">Configuración</div>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTablas"
-                    aria-expanded="true" aria-controls="collapseTablas">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tablas Maestras</span>
+                <a class="nav-link" href="<?= base_url('admin/universidades') ?>">
+                    <i class="fa-solid fa-building-columns" ></i>
+                    <span>Universidades</span>
                 </a>
-                <div id="collapseTablas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Datos del Sistema:</h6>
-                        <a class="collapse-item" href="<?= base_url('admin/universidades') ?>">Universidades</a>
-                        <a class="collapse-item" href="<?= base_url('admin/carreras') ?>">Carreras</a>
-                        <a class="collapse-item" href="<?= base_url('admin/atributos') ?>">Atributos</a>
-                    </div>
-                </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/carreras') ?>">
+                    <i class="fas fa-fw fa-graduation-cap" ></i>
+                    <span>Carreras</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/atributos') ?>">
+                    <i class="fas fa-fw fa-tags" ></i>
+                    <span>Atributos</span>
+                </a>
+            </li>
+            
+        
 
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -1,0 +1,169 @@
+CRITICAL - 2026-02-09 07:45:23 --> ParseError: syntax error, unexpected token "endforeach", expecting "elseif" or "else" or "endif"
+[Method: GET, Route: admin/usuarios]
+in APPPATH/Views/panel/usuarios/gestionUsuarios.php on line 67.
+ 1 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UsuariosControllerA.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UsuariosControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 07:46:18 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: admin/usuarios]
+in APPPATH/Views/panel/usuarios/gestionUsuarios.php on line 93.
+ 1 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UsuariosControllerA.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UsuariosControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 07:48:24 --> ParseError: syntax error, unexpected token "endforeach"
+[Method: GET, Route: admin/usuarios]
+in APPPATH/Views/panel/usuarios/gestionUsuarios.php on line 71.
+ 1 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UsuariosControllerA.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UsuariosControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 08:26:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "panel/usuarios/gestionUniversidades.php"
+[Method: GET, Route: admin/universidades]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UniversidadesControllerA.php(23): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UniversidadesControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 08:26:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "panel/usuarios/gestionUniversidades.php"
+[Method: GET, Route: admin/universidades]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UniversidadesControllerA.php(23): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UniversidadesControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 08:26:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "panel/usuarios/gestionUniversidades.php"
+[Method: GET, Route: admin/universidades]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UniversidadesControllerA.php(23): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UniversidadesControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 08:26:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "panel/usuarios/gestionUniversidades.php"
+[Method: GET, Route: admin/universidades]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Admin/UniversidadesControllerA.php(23): view()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\UniversidadesControllerA->index()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 08:36:07 --> ErrorException: Undefined variable $entidad
+[Method: GET, Route: admin/inmuebles]
+in APPPATH/Views/panel/inmuebles/gestionInmuebles.php on line 5.
+ 1 APPPATH/Views/panel/inmuebles/gestionInmuebles.php(5): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(226): include('/var/www/html/univibe/backend/app/Views/panel/inmuebles/gestionInmuebles.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 4 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Admin/InmueblesControllerA.php(23): view()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\InmueblesControllerA->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 08:54:24 --> ErrorException: Undefined variable $entidad
+[Method: GET, Route: admin/carreras]
+in APPPATH/Views/panel/carreras/gestionCarreras.php on line 5.
+ 1 APPPATH/Views/panel/carreras/gestionCarreras.php(5): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(226): include('/var/www/html/univibe/backend/app/Views/panel/carreras/gestionCarreras.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 4 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Admin/CarrerasControllerA.php(22): view()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\CarrerasControllerA->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 09:03:51 --> Error: Class "App\Controllers\Admin\ArtibutosModel" not found
+[Method: GET, Route: admin/atributos]
+in APPPATH/Controllers/Admin/AtributosControllerA.php on line 14.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\AtributosControllerA->index()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 09:04:24 --> ErrorException: Undefined variable $inmuebles
+[Method: GET, Route: admin/atributos]
+in APPPATH/Views/panel/atributos/gestionAtributos.php on line 29.
+ 1 APPPATH/Views/panel/atributos/gestionAtributos.php(29): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(226): include('/var/www/html/univibe/backend/app/Views/panel/atributos/gestionAtributos.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 4 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Admin/AtributosControllerA.php(23): view()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\AtributosControllerA->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 09:05:15 --> ErrorException: Undefined array key "titulo"
+[Method: GET, Route: admin/atributos]
+in APPPATH/Views/panel/atributos/gestionAtributos.php on line 32.
+ 1 APPPATH/Views/panel/atributos/gestionAtributos.php(32): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(226): include('/var/www/html/univibe/backend/app/Views/panel/atributos/gestionAtributos.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():223}()
+ 4 SYSTEMPATH/Common.php(1199): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Admin/AtributosControllerA.php(23): view()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\AtributosControllerA->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 09:10:25 --> ErrorException: Undefined variable $inmuebles
+[Method: GET, Route: admin/inmuebles/borrar/1]
+in APPPATH/Controllers/Admin/InmueblesControllerA.php on line 45.
+ 1 APPPATH/Controllers/Admin/InmueblesControllerA.php(45): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\InmueblesControllerA->borrar()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-09 09:10:48 --> TypeError: view(): Argument #2 ($data) must be of type array, string given, called in /var/www/html/univibe/backend/app/Controllers/Admin/InmueblesControllerA.php on line 49
+[Method: GET, Route: admin/inmuebles/borrar/1]
+in SYSTEMPATH/Common.php on line 1187.
+ 1 APPPATH/Controllers/Admin/InmueblesControllerA.php(49): view()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Admin\InmueblesControllerA->borrar()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()

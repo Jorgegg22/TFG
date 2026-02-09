@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Gestión de Atributos</h1>
+        <h1 class="h3 mb-0 text-gray-800">Gestión de Universidades</h1>
         <a href="<?= base_url('panel/crear') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i> Nuevo Registro
         </a>
@@ -9,9 +9,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Listado Atributos - <?= count($atributos) ?></h6>
+            <h6 class="m-0 font-weight-bold text-primary">Listado Oficial</h6>
         </div>
-        <?php if(!empty($atributos)):?>
+        <?php if(!empty($universidades)):?>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table mb-0" id="dataTable" width="100%" cellspacing="0">
@@ -19,17 +19,18 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Nombre Icono</th>
+                            <th>Siglas</th>
+                            <th>Ciudad</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($atributos as $atr):?>
+                        <?php foreach($universidades as $uni):?>
                         <tr>
-                            <td><?= $atr['id']?></td>
-                            <td><?= $atr['nombre']?></td>
-                            <td><?= $atr['icono']?></td>
-            
+                            <td><?= $uni['id']?></td>
+                            <td><?= $uni['nombre']?></td>
+                            <td><?= $uni['siglas']?></td>
+                            <td><?= $uni['ciudad']?></td>
 
                             <td class="text-center">
                             
@@ -67,7 +68,7 @@
         <?php else:?>
         <div></div>
 
-        <?php endif;?><div class="card-body">
+        <?php endif;?>
     </div>
 
 </div>

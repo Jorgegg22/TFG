@@ -11,7 +11,16 @@ class InmueblesControllerA extends BaseController
 
     public function index()
     {
-        // Lógica para listar
+        $inmueblesModel = new InmueblesModel();
+
+        $inmuebles = $inmueblesModel-> getInmuebles();
+     
+        $data = [
+            'inmuebles' => $inmuebles
+        ];
+
+        return view('panel/templates/header').
+        view('panel/inmuebles/gestionInmuebles',$data);
     }
 
     public function crear()
@@ -31,6 +40,16 @@ class InmueblesControllerA extends BaseController
 
     public function borrar($id = null)
     {
-        // Lógica para eliminar registro
-    }
+
+        $inmueblesModel = new InmueblesModel();
+        $inmueblesModel -> delete($id);
+
+
+        return view('panel/templates/header').
+        view('panel/inmuebles/gestionInmuebles',[
+            'mensaje' => 'Inmueble borrado Correctamente'
+        ]);
+    
+    
+   }
 }

@@ -59,8 +59,8 @@ $routes->post('api/inmuebles/postSolicitud', [InmueblesController::class, 'postS
 
 
 
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
-    $routes->get('/', [AdminController::class, 'index']); 
+$routes->group('admin',      function ($routes) {
+    $routes->get('index', [AdminController::class, 'index']); 
 
     // USUARIOS
     $routes->get('usuarios', [UsuariosControllerA::class, 'index']);

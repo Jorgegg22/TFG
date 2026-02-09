@@ -18,6 +18,17 @@ class InmueblesModel extends Model
         'imagen_principal'
     ];
 
+
+    public function getInmuebles($id = null){
+        if($id === null){
+            $this->select('inmuebles.*');
+            $this->select('u_prop.nombre as nombre_propietario');
+            $this->join('usuarios AS u_prop' , 'u_prop.id = inmuebles.propietario_id', 'left');
+            return $this->findAll();
+        };
+
+    }
+
     public function getInmueblesFiltrados($id)
     {
         $this->select('inmuebles.*');
@@ -31,7 +42,7 @@ class InmueblesModel extends Model
 
         // --- GUÍA DEL FILTRADO ---
 
-        // INMUEBLE ID IGUAL A INMUEBLE_ID EN TABLA INMUEBLE_ATRIBUTOS
+        // INMUEBLE ID IGUAL A INMUEBLE_ID EN TABLA INMUEBLE_ATRIBUTOS,COMPRUEBO LOS INMUEBLES QUE EXISTEN EN INMUEBLE_ATRIBUTOS
         $this->join('inmueble_atributos AS ia', 'ia.inmueble_id = inmuebles.id');
 
         // INMUEBLES QUE TIENEN LOS MISMOS ATRIBUTOS QUE EL USUARIO
