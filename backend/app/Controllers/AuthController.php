@@ -144,7 +144,9 @@ class AuthController extends ResourceController
             ]);
         }
 
-        return $this->respond(['status' => 'success', 'mensaje' => 'Sesión cerrada en servidor']);
+        $this->respond(['status' => 'success', 'mensaje' => 'Sesión cerrada en servidor']);
+        return redirect()->to('http://localhost:4200/login');
+        
     }
 
 
