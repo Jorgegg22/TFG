@@ -31,7 +31,7 @@
                 <span class="label">Pisos Publicados</span>
                 <h2 class="value">456</h2>
             </div>
-            <div class="stat-badge positive">+5 hoy</div>
+
         </div>
 
         <div class="glass-card stat-item">

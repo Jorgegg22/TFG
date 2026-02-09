@@ -19,13 +19,13 @@ class InmueblesModel extends Model
     ];
 
 
-    public function getInmuebles($id = null){
-        if($id === null){
+    public function getInmuebles(){
+   
             $this->select('inmuebles.*');
             $this->select('u_prop.nombre as nombre_propietario');
             $this->join('usuarios AS u_prop' , 'u_prop.id = inmuebles.propietario_id', 'left');
             return $this->findAll();
-        };
+       
 
     }
 

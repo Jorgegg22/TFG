@@ -15,15 +15,14 @@ class CarrerasModel extends Model
      * @return array|null
      */
 
-    public function getCarreras()
-    {
-
-        $sql = $this->select('carreras.*');
-        $sql = $this->findAll();
-        return $sql;
-
-       
+    public function getCarreras($id = null)
+{
+    if ($id === null) {
+        return $this->findAll();
     }
+
+    return $this->find($id);
+}
 
    
 

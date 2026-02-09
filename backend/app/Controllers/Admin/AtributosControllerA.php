@@ -20,18 +20,31 @@ class AtributosControllerA extends BaseController
         ];
 
         return view('panel/templates/header').
-        view('panel/atributos/gestionAtributos',$data);
+        view('panel/atributos/gestionAtributos',$data).
+        view('panel/templates/footer');
     }
 
 
     public function crear()
     {
-        // Lógica para mostrar formulario vacío
+        return view('panel/templates/header').
+        view('panel/atributos/formAtributos').
+        view('panel/templates/footer');
     }
 
     public function editar($id = null)
     {
-        // Lógica para buscar registro y mostrar formulario relleno
+        $atributosModel = new AtributosModel();
+
+        $atributos = $atributosModel-> getAtributos($id);
+
+        $data = [
+            'atributos' => $atributos
+        ];
+
+        return view('panel/templates/header').
+        view('panel/usuarios/formAtributos',$data).
+        view('panel/templates/footer');
     }
 
     public function guardar()
@@ -46,10 +59,11 @@ class AtributosControllerA extends BaseController
         $atributosModel -> delete($id);
 
 
-        return view('panel/templates/header').
-        view('panel/atributos/gestionAtributos',[
-            'mensaje' => 'Atributo borrado Correctamente'
-        ]);
+
+
+        $mensaje =  'Atributo borrado Correctamente';
+    
+        return redirect()->to(base_url('admin/atributos'))->with('mensaje', $mensaje);
     
     
    }

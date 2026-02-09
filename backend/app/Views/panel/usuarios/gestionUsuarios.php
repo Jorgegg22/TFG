@@ -2,17 +2,32 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Gestión de Usuarios</h1>
+        <?php if (session()->getFlashdata('mensaje')): ?>
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert"
+            style="border-left: 5px solid #1cc88a !important;">
+            <div class="d-flex align-items-center">
+                <div class="mr-3">
+                    <i class="fas fa-check-circle fa-2x text-success"></i>
+                </div>
+                <div>
+                    <h5 class="alert-heading mb-1 font-weight-bold">¡Operación Exitosa!</h5>
+                    <p class="mb-0"><?= session()->getFlashdata('mensaje') ?></p>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
         <a href="<?= base_url('admin/usuarios/crear') ?>"
             class="btn btn-sm btn-primary shadow-sm px-3 py-2 rounded-pill">
             <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Nuevo Registro
         </a>
+
     </div>
 
     <div class="card shadow mb-4 border-0">
         <div class="card-header py-4 bg-white">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h6 class="m-0 font-weight-bold text-primary">Listado Usuarios</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Listado Usuarios - <?= count($usuarios) ?></h6>
                 </div>
 
                 <div class="col-md-6 d-flex justify-content-end mt-3 mt-md-0">
@@ -35,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <?php if(!empty($usuarios)):?>
+        <?php if (!empty($usuarios)): ?>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table mb-0" id="dataTable" width="100%" cellspacing="0">
@@ -49,24 +64,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($usuarios as $us):?>
+                        <?php foreach ($usuarios as $us): ?>
                         <tr>
-                            <td><?= $us['id']?></td>
-                            <td><?= $us['nombre']?></td>
-                            <td><?= $us['email']?></td>
-                            <td><?= $us['rol']?></td>
+                            <td><?= $us['id'] ?></td>
+                            <td><?= $us['nombre'] ?></td>
+                            <td><?= $us['email'] ?></td>
+                            <td><?= $us['rol'] ?></td>
 
                             <td class="text-center">
-                                <?php if($us['rol'] !== "admin"  ):?>
-                                <a href="#" class="btn btn-warning btn-circle btn-sm shadow-sm">
+                                <?php if ($us['rol'] !== "admin"): ?>
+                                <a href="<?= base_url("admin/usuarios/editar/" . esc($us['id'])) ?>" class="btn btn-warning btn-circle btn-sm shadow-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button class="btn btn-danger btn-circle btn-sm btn-borrar shadow-sm" data-id="1">
+                                <a href="<?= base_url("admin/usuarios/borrar/" . esc($us['id'])) ?>"
+                                    class="btn btn-danger btn-circle btn-sm btn-borrar shadow-sm" data-id="1"
+                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                                     <i class="fas fa-trash"></i>
-                                </button>
+                                </a>
                                 <?php else: ?>
                                 <p style="color:black;">Usuario protegido</p>
-                                <?php endif ;?>
+                                <?php endif; ?>
                             </td>
 
                         </tr>
@@ -91,10 +108,10 @@
                 </ul>
             </nav>
         </div>
-        <?php else:?>
+        <?php else: ?>
         <div></div>
 
-        <?php endif;?>
+        <?php endif; ?>
     </div>
 
 </div>

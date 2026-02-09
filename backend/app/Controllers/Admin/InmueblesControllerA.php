@@ -3,7 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\InmueblesModel; // Asumiendo que crearás este modelo
+use App\Models\InmueblesModel; 
+use App\Models\UniversidadesModel; 
 
 class InmueblesControllerA extends BaseController
 {
@@ -20,22 +21,44 @@ class InmueblesControllerA extends BaseController
         ];
 
         return view('panel/templates/header').
-        view('panel/inmuebles/gestionInmuebles',$data);
+        view('panel/inmuebles/gestionInmuebles',$data).
+        view('panel/templates/footer');
     }
 
     public function crear()
     {
-        // Lógica para mostrar formulario vacío
+
+        $uniModel = new UniversidadesModel();
+
+        $data = [
+            'universidades' => $uniModel -> getUniversidades()
+        ];
+
+        return view('panel/templates/header').
+        view('panel/inmuebles/formInmueble',$data).
+        view('panel/templates/footer');
     }
 
     public function editar($id = null)
-    {
-        // Lógica para buscar registro y mostrar formulario relleno
-    }
+{
+    $inmueblesModel = new InmueblesModel();
+    $uniModel = new UniversidadesModel();
+
+    $inmueble = $inmueblesModel->find($id);
+
+    $data = [
+        'inmueble'      => $inmueble,
+        'universidades' => $uniModel->getUniversidades()
+    ];
+
+    return view('panel/templates/header') .
+           view('panel/inmuebles/formInmueble', $data) .
+           view('panel/templates/footer');
+}
 
     public function guardar()
     {
-        // Lógica para insertar o actualizar (POST)
+        
     }
 
     public function borrar($id = null)
@@ -45,11 +68,10 @@ class InmueblesControllerA extends BaseController
         $inmueblesModel -> delete($id);
 
 
-        return view('panel/templates/header').
-        view('panel/inmuebles/gestionInmuebles',[
-            'mensaje' => 'Inmueble borrado Correctamente'
-        ]);
+     
     
+        $mensaje = 'Inmueble borrado Correctamente';
     
+        return redirect()->to(base_url('admin/inmuebles'))->with('mensaje', $mensaje);
    }
 }

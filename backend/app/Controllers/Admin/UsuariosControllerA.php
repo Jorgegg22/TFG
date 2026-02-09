@@ -3,7 +3,9 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\UsuariosModel; 
+use App\Models\UsuariosModel;
+use App\Models\UniversidadesModel; 
+use App\Models\CarrerasModel;  
 
 class UsuariosControllerA extends BaseController
 {
@@ -22,23 +24,111 @@ class UsuariosControllerA extends BaseController
         ];
 
         return view('panel/templates/header').
-        view('panel/usuarios/gestionUsuarios',$data);
+        view('panel/usuarios/gestionUsuarios',$data).
+        view('panel/templates/footer');
     }
 
     public function crear()
     {
-        // Lógica para mostrar formulario vacío
+
+        $uniModel = new UniversidadesModel();
+        $carrerasModel = new CarrerasModel();
+
+        $data = [
+            'universidades' => $uniModel->getUniversidades(),
+            'carreras'      => $carrerasModel->getCarreras()
+        ];
+
+        return view('panel/templates/header').
+        view('panel/usuarios/formUsuario',$data).
+        view('panel/templates/footer');
     }
 
     public function editar($id = null)
-    {
-        // Lógica para buscar registro y mostrar formulario relleno
-    }
+{
+    $usuariosModel = new UsuariosModel();
+    $uniModel = new UniversidadesModel();
+    $carrerasModel = new CarrerasModel();
+
+    $usuario =  $usuariosModel->getUsuarios($id);
+
+    $data = [
+        'usuario'       => $usuario,
+        'universidades' => $uniModel->getUniversidades(),
+        'carreras'      => $carrerasModel->getCarreras()
+    ];
+
+
+
+    return view('panel/templates/header') .
+           view('panel/usuarios/formUsuario', $data) .
+           view('panel/templates/footer');
+}
 
     public function guardar()
     {
-        // Lógica para insertar o actualizar (POST)
+        $usuariosModel = new UsuariosModel();
+        $id = $this->request->getPost('id');
+
+        $reglas = [
+            'nombre' => "required|min_length[3]|max_length[100]|is_unique[usuarios.nombre,id,{$id}]",
+            //CORREO UNICO EXCEPTO EN EL ID DEL USUARIO
+            'email'  => "required|valid_email|is_unique[usuarios.email,id,{$id}]",
+            'rol'    => 'required|in_list[admin,estudiante,propietario]',
+            'universidad_id' => 'required|numeric',
+            'id_carreara'    => 'required|numeric',
+            'descripcion'    => 'required|min_length[10]|max_length[500]',
+            'foto_perfil'    => 'required',
+            'telefono' => 'required|min_length[9]|max_length[9]'
+        ];
+
+
+        // SI NO HAY ID ES QUE SE CREA USUARIO,VALIDAMOS CONTRASÑEA
+        if(!$id){
+            $reglas['password'] = 'required|min_length[8]';
+        }else {
+            if(!empty($this->request->getPost('password'))) {
+                $reglas['password'] = 'min_length[8]';
+            }
+        }
+
+        if (!$this->validate($reglas)) {
+            return redirect()->back()->withInput()->with('errores', $this->validator->getErrors());}
+
+        $datos = [
+        'nombre'         => $this->request->getPost('nombre'),
+        'email'          => $this->request->getPost('email'),
+        'telefono'       => $this->request->getPost('telefono'),
+        'rol'            => $this->request->getPost('rol'),
+        'foto_perfil'    => $this->request->getPost('foto_perfil'),
+        'universidad_id' => $this->request->getPost('universidad_id'),
+        'id_carreara'    => $this->request->getPost('id_carreara'),
+        'descripcion'    => $this->request->getPost('descripcion'),
+        'link_instagram' => $this->request->getPost('link_instagram'),
+        'link_x'         => $this->request->getPost('link_x'),
+        'link_spotify'   => $this->request->getPost('link_spotify'),
+    ];
+
+        $password = $this->request->getPost('password');
+
+
+        if (!empty($password)) {
+            $datos['password'] = password_hash($password, PASSWORD_BCRYPT);
+        }
+
+        if ($id) {
+        $usuariosModel->update($id, $datos);
+        $mensaje = 'Usuario actualizado correctamente.';
+    } else {
+        $usuariosModel->insert($datos);
+        $mensaje = 'Usuario creado con éxito.';
     }
+        return redirect()->to(base_url('admin/usuarios'))->with('mensaje', $mensaje);
+
+
+    }
+
+  
 
    
     public function borrar($id = null)
@@ -52,18 +142,14 @@ class UsuariosControllerA extends BaseController
 
 
         if($rol === "estudiante"){
-             return view('panel/templates/header').
-        view('panel/usuarios/gestionUsuarios',[
-            'mensaje' => 'Usuario(estudiante) borrado Correctamente. También se han eliminado sus solicitudes y matches asociados.'
-        ]);
+            $mensaje = 'Usuario(estudiante) borrado Correctamente. También se han eliminado sus solicitudes y matches asociados.';
+        
         }else{
-                  return view('panel/templates/header').
-        view('panel/usuarios/gestionUsuarios',[
-            'mensaje' => 'Usuario(propietario) Correctamente. También se han eliminado inmuebles ,las solicitudes y los matches asociados a sus inmuebles.'
-        ]);
+            $mensaje =  'Usuario(propietario) borrado Correctamente. También se han eliminado inmuebles, solicitudes y matches asociados.';
+
         }
        
-    
+        return redirect()->to(base_url('admin/usuarios'))->with('mensaje', $mensaje);
     
    }
 }

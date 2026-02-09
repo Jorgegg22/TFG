@@ -2,14 +2,48 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Gestión de Carreras</h1>
-        <a href="<?= base_url('panel/crear') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+         <?php if (session()->getFlashdata('mensaje')): ?>
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert"
+            style="border-left: 5px solid #1cc88a !important;">
+            <div class="d-flex align-items-center">
+                <div class="mr-3">
+                    <i class="fas fa-check-circle fa-2x text-success"></i>
+                </div>
+                <div>
+                    <h5 class="alert-heading mb-1 font-weight-bold">¡Operación Exitosa!</h5>
+                    <p class="mb-0"><?= session()->getFlashdata('mensaje') ?></p>
+                </div>
+            </div>
+          
+        </div>
+        <?php endif; ?>
+        <a href="<?= base_url('admin/carreras/crear') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i> Nuevo Registro
         </a>
+  
     </div>
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Listado Carreras - <?= count($carreras) ?></h6>
+        <div class="card-header py-4 bg-white">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h6 class="m-0 font-weight-bold text-primary">Listado Carreras - <?= count($carreras) ?></h6>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-end mt-3 mt-md-0">
+                    <div class="filter-group d-flex align-items-center">
+                        <div class="input-group search-group">
+                            <input type="text" class="form-control search-input" placeholder="Buscar..."
+                                id="tableSearch">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent border-left-0">
+                                    <i class="fas fa-search text-gray-400"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php if(!empty($carreras)):?>
         <div class="card-body p-0">
@@ -19,7 +53,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                
+
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -28,17 +62,19 @@
                         <tr>
                             <td><?= $carr['id']?></td>
                             <td><?= $carr['nombre']?></td>
-           
+
 
                             <td class="text-center">
-                            
-                                <a href="#" class="btn btn-warning btn-circle btn-sm shadow-sm">
+
+                                <a href="<?= base_url("admin/carreras/editar/" . esc($carr['id'])) ?>" class="btn btn-warning btn-circle btn-sm shadow-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button class="btn btn-danger btn-circle btn-sm btn-borrar shadow-sm" data-id="1">
+                                <a href="<?= base_url("admin/carreras/borrar/" . esc($carr['id'])) ?>"
+                                    class="btn btn-danger btn-circle btn-sm btn-borrar shadow-sm" data-id="1"
+                                    onclick="return confirm('¿Estás seguro de que deseas eliminar esta carrera?');">
                                     <i class="fas fa-trash"></i>
-                                </button>
-                            
+                                </a>
+
                             </td>
 
                         </tr>
@@ -67,6 +103,6 @@
         <div></div>
 
         <?php endif;?><div class="card-body">
-    </div>
+        </div>
 
-</div>
+    </div>

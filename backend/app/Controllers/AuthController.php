@@ -53,7 +53,7 @@ class AuthController extends ResourceController
             'email' => $userData->email,
             'password' => password_hash($userData->password, PASSWORD_BCRYPT),
             'token' => $token,
-            'token_expira' => date('Y-m-d H:i:s', strtotime('+2 hours'))
+       
         ];
 
 
@@ -117,7 +117,7 @@ class AuthController extends ResourceController
 
         $usuarioModel->update($usuario['id'], [
             'token' => $token,
-            'token_expira' => date('Y-m-d H:i:s', strtotime('+2 hours'))
+  
         ]);
 
 

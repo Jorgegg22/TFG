@@ -16,13 +16,13 @@
         rel="stylesheet">
 
     <link href="<?= base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
-     <link href="<?= base_url('css/gestion.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('css/gestion.css') ?>" rel="stylesheet">
     <link href="<?= base_url('css/index.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link href="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
-    <script src="<?= base_url('vendor/jquery/jquery-3.7.1.js') ?>"></script>
-    <script src="<?= base_url('vendor/js/miJs.js') ?>"></script>
+
+
 </head>
 
 <body id="page-top">
@@ -32,14 +32,14 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #0056b3;">
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/') ?>">
-              
+
                 <div class="sidebar-brand-text mx-3">UniVibe Admin</div>
             </a>
 
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/') ?>">
+                <a class="nav-link" href="<?= base_url('admin/index') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Resumen General</span>
                 </a>
@@ -87,29 +87,29 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/universidades') ?>">
-                    <i class="fa-solid fa-building-columns" ></i>
+                    <i class="fa-solid fa-building-columns"></i>
                     <span>Universidades</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/carreras') ?>">
-                    <i class="fas fa-fw fa-graduation-cap" ></i>
+                    <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>Carreras</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/atributos') ?>">
-                    <i class="fas fa-fw fa-tags" ></i>
+                    <i class="fas fa-fw fa-tags"></i>
                     <span>Atributos</span>
                 </a>
             </li>
-            
-        
+
+
 
             <hr class="sidebar-divider d-none d-md-block">
 
             <div class="text-center d-none d-md-inline">
-               <a href="<?= base_url("api/auth/logout")?>" class="btn btn-danger">Cerrar Sesión</a>
+                <a href="<?= base_url("api/auth/logout") ?>" class="btn btn-danger">Cerrar Sesión</a>
             </div>
 
         </ul>
@@ -138,7 +138,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                
+
                                 <img class="img-profile rounded-circle"
                                     src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_profile.svg"
                                     alt="Perfil">

@@ -19,16 +19,29 @@ class CarrerasControllerA extends BaseController
         ];
 
         return view('panel/templates/header').
-        view('panel/carreras/gestionCarreras',$data);
+        view('panel/carreras/gestionCarreras',$data).
+        view('panel/templates/footer');
     }
     public function crear()
     {
-        // Lógica para mostrar formulario vacío
+        return view('panel/templates/header').
+        view('panel/carreras/formCarrera').
+        view('panel/templates/footer');
     }
 
     public function editar($id = null)
     {
-        // Lógica para buscar registro y mostrar formulario relleno
+        $carrerasModel = new CarrerasModel();
+
+        $carreras = $carrerasModel-> getCarreras($id);
+
+        $data = [
+            'carrera' => $carreras
+        ];
+
+        return view('panel/templates/header').
+        view('panel/carreras/formCarrera',$data).
+        view('panel/templates/footer');
     }
 
     public function guardar()
@@ -43,10 +56,10 @@ class CarrerasControllerA extends BaseController
         $carrerasModel -> delete($id);
 
 
-        return view('panel/templates/header').
-        view('panel/carreras/gestionCarreras',[
-            'mensaje' => 'Carrera borrada Correctamente'
-        ]);
+
+        $mensaje = 'Carrera borrada Correctamente';
+    
+        return redirect()->to(base_url('admin/carreras'))->with('mensaje', $mensaje);
     
     
    }
