@@ -46,6 +46,8 @@ class AuthController extends ResourceController
 
 
 
+
+
         $token = bin2hex(random_bytes(32));
 
         $data = [
@@ -133,9 +135,14 @@ class AuthController extends ResourceController
 
     public function logout()
     {
-        $token = $this->request->getServer('HTTP_X_API_TOKEN');
+       
+        $token = $this->request->getServer('HTTP_X_API_TOKEN') ?? session()->get('token');
         $usuarioModel = new UsuariosModel();
+
+       
+
         $usuario = $usuarioModel->where('token', $token)->first();
+        
 
        if ($usuario) {
         $rol = $usuario['rol'];
@@ -143,6 +150,8 @@ class AuthController extends ResourceController
         $usuarioModel->update($usuario['id'], [
             'token' => null
         ]);
+
+        
 
         if ($rol === "admin") {
             return redirect()->to('http://localhost:4200/login');

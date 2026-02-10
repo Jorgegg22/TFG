@@ -9,21 +9,47 @@ use App\Models\MatchesModel;
 
 class AdminController extends BaseController
 {
-    public function index()
-    {
- 
-        $usuariosModel = new UsuariosModel();
-        $inmueblesModel = new InmueblesModel();
-        $matchesModel = new MatchesModel();
+   public function index()
+{
+    $tokenSesion = $this->request->getGet("tkn");
 
-        $data = [
-            'usuarios' => $usuariosModel->findAll(),
-            'inmuebles' => $inmueblesModel->getInmuebles(),
-            'matches' => $matchesModel->findAll()
-        ];
+    $usuariosModel   = new UsuariosModel();
+    $inmueblesModel  = new InmueblesModel();
+    $matchesModel    = new MatchesModel();
 
-        return view('panel/templates/header').
-        view('panel/index',$data).
-        view('panel/templates/footer');
+    // Buscar usuario por token (ajusta el campo si es distinto)
+    $usuario = $usuariosModel
+        ->where('token', $tokenSesion)
+        ->first();
+
+    
+    if (!$usuario) {
+        return redirect()->to('http://localhost:4200/login');
     }
+
+    // Guardar sesión correctamente
+    session()->set([
+        'id'     => $usuario['id'],
+        'nombre' => $usuario['nombre'],
+        'rol'    => $usuario['rol'],
+        'logged' => true,
+        'token' => $usuario['token']
+    ]);
+
+  
+    if ($usuario['rol'] !== 'admin') {
+        return redirect()->to('http://localhost:4200/login');
+    }
+
+
+    $data = [
+        'usuarios'  => $usuariosModel->findAll(),
+        'inmuebles' => $inmueblesModel->getInmuebles(),
+        'matches'   => $matchesModel->findAll()
+    ];
+
+    return view('panel/templates/header')
+        . view('panel/index', $data)
+        . view('panel/templates/footer');
+}
 }

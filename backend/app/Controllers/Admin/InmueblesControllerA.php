@@ -58,7 +58,50 @@ class InmueblesControllerA extends BaseController
 
     public function guardar()
     {
+        $inmueblesModel = new InmueblesModel();
+        $id = $this->request->getPost('id');
+
+        $reglas = [
+            'titulo' => "required|",
+            'direccion' => "required|min_length[3]|max_length[100]|is_unique[inmuebles.titulo,id,{$id}]",
+            'descripcion' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            'precio' => "required|numeric",
+            'metros' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            'habitaciones' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            'banios' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            'n_personas' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            'universidad_id' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            'imagen' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+
         
+        ];
+
+
+        if (!$this->validate($reglas)) {
+            return redirect()->back()->withInput()->with('errores', $this->validator->getErrors());}
+
+        $datos = [
+        'nombre'         => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+        '' => $this->request->getPost('nombre'),
+    ];
+
+  
+
+        if ($id) {
+        $inmueblesModel->update($id, $datos);
+        $mensaje = 'Inmueble actualizado correctamente.';
+    } else {
+        $inmueblesModel->insert($datos);
+        $mensaje = 'Inmuebke creado con éxito.';
+    }
+        return redirect()->to(base_url('admin/carreras'))->with('mensaje', $mensaje);
     }
 
     public function borrar($id = null)

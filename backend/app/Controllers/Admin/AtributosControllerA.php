@@ -43,13 +43,39 @@ class AtributosControllerA extends BaseController
         ];
 
         return view('panel/templates/header').
-        view('panel/usuarios/formAtributos',$data).
+        view('panel/atributos/formAtributos',$data).
         view('panel/templates/footer');
     }
 
     public function guardar()
     {
-        // Lógica para insertar o actualizar (POST)
+        $atributosModel = new AtributosModel();
+        $id = $this->request->getPost('id');
+
+        $reglas = [
+            'nombre' => "required|is_unique[atributos.nombre,id,{$id}]",
+            'icono' => "required"
+        
+        ];
+
+
+        if (!$this->validate($reglas)) {
+            return redirect()->back()->withInput()->with('errores', $this->validator->getErrors());}
+
+        $datos = [
+        'nombre' => $this->request->getPost('nombre'),
+        'icono' => $this->request->getPost('icono')
+    
+            ];
+
+        if ($id) {
+        $atributosModel->update($id, $datos);
+        $mensaje = 'Usuario actualizado correctamente.';
+    } else {
+        $atributosModel->insert($datos);
+        $mensaje = 'Carrera creada con éxito.';
+    }
+        return redirect()->to(base_url('admin/atributos'))->with('mensaje', $mensaje);
     }
 
     public function borrar($id = null)

@@ -46,7 +46,33 @@ class CarrerasControllerA extends BaseController
 
     public function guardar()
     {
-        // Lógica para insertar o actualizar (POST)
+        $carrerasModel = new CarrerasModel();
+        $id = $this->request->getPost('id');
+
+        $reglas = [
+            'nombre' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+
+        
+        ];
+
+
+        if (!$this->validate($reglas)) {
+            return redirect()->back()->withInput()->with('errores', $this->validator->getErrors());}
+
+        $datos = [
+        'nombre'         => $this->request->getPost('nombre'),
+    ];
+
+  
+
+        if ($id) {
+        $carrerasModel->update($id, $datos);
+        $mensaje = 'Carrera actualizada correctamente.';
+    } else {
+        $carrerasModel->insert($datos);
+        $mensaje = 'Carrera creada con éxito.';
+    }
+        return redirect()->to(base_url('admin/carreras'))->with('mensaje', $mensaje);
     }
 
     public function borrar($id = null)

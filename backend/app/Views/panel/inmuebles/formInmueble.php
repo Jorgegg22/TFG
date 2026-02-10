@@ -94,7 +94,7 @@
                             <label for="<?= $foto ?>" class="form-label font-weight-bold small <?= $foto == 'imagen_principal' ? 'text-success' : 'text-gray-600' ?>">
                                 <?= $foto == 'imagen_principal' ? '<i class="fas fa-star mr-1"></i> Principal' : 'Secundaria ' . $index ?>
                             </label>
-                            <input type="file" class="form-control-file" id="<?= $foto ?>" name="<?= $foto ?>" accept="image/*">
+                            <input type="file" class="form-control-file" id="<?= $foto ?>" name="imagen" value=<?= $inmueble[$foto] ?> accept="image/*">
                             
                             <?php if(isset($inmueble) && !empty($inmueble[$foto])): ?>
                                 <img src="<?= base_url('uploads/' . $inmueble[$foto]) ?>" class="img-preview-edit d-block mx-auto">

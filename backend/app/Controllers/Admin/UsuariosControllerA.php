@@ -118,12 +118,12 @@ class UsuariosControllerA extends BaseController
 
         if ($id) {
         $usuariosModel->update($id, $datos);
-        $mensaje = 'Usuario actualizado correctamente.';
+        $mensaje = 'Atributo actualizado correctamente.';
     } else {
         $usuariosModel->insert($datos);
-        $mensaje = 'Usuario creado con éxito.';
+        $mensaje = 'Atributo creado con éxito.';
     }
-        return redirect()->to(base_url('admin/usuarios'))->with('mensaje', $mensaje);
+        return redirect()->to(base_url('admin/atributos'))->with('mensaje', $mensaje);
 
 
     }

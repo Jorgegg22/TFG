@@ -54,6 +54,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Nombre Icono</th>
+                            <th>Icono</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -63,6 +64,11 @@
                             <td><?= $atr['id']?></td>
                             <td><?= $atr['nombre']?></td>
                             <td><?= $atr['icono']?></td>
+                            <td>
+                                <span class="material-symbols-outlined">
+                                <?= $atr['icono']?>
+                                 </span>
+                            </td>
 
 
                             <td class="text-center">
