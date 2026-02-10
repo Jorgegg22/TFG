@@ -99,11 +99,11 @@ class InmueblesControllerA extends BaseController
         'descripcion' => $this->request->getPost('descripcion'),
         'direccion' => $this->request->getPost('direccion'),
         'precio' => $this->request->getPost('precio'),
-        'imagen_principal' => $this->request->getPost('imagen_principal'),
-        'imagen1' => $this->request->getPost('imagen1'),
-        'imagen2' => $this->request->getPost('imagen2'),
-        'imagen3' => $this->request->getPost('imagen3'),
-        'imagen4' => $this->request->getPost('imagen4'),
+        // 'imagen_principal' => $this->request->getPost('imagen_principal'),
+        // 'imagen1' => $this->request->getPost('imagen1'),
+        // 'imagen2' => $this->request->getPost('imagen2'),
+        // 'imagen3' => $this->request->getPost('imagen3'),
+        // 'imagen4' => $this->request->getPost('imagen4'),
         'propietario_id' => $this->request->getPost('propietario_id'),
         'universidad_id' => $this->request->getPost('universidad_id'),
         'metros' => $this->request->getPost('metros'),
@@ -113,8 +113,39 @@ class InmueblesControllerA extends BaseController
     ];
 
   
+        //Imagen principal
+        $rutaCarpeta = FCPATH . 'uploads/inmuebles/';
+        $imgPrincipal = $this->request->getFile('imagen_principal');
+        
+        if($imgPrincipal){
 
-        if ($id) {
+                if($id){
+                    $viejo = $inmueblesModel->find($id);
+                    if ($viejo && !empty($viejo['foto_perfil'])) {
+                        $rutaVieja = $rutaCarpeta . $viejo['foto_perfil'];
+                        if (file_exists($rutaVieja)) {
+                            unlink($rutaVieja);
+                    }
+        }
+                }
+                $rutaCompletaImagen = $rutaCarpeta . $img->getName();  
+                if ( $img->isValid() && !$img->hasMoved()) {
+            
+                    if(file_exists($rutaCompletaImagen)){
+                        $nombreFinal = $img->getRandomName();
+                    }else{
+                        $nombreFinal = $img->getName();
+                    }
+                  
+                    $img->move($rutaCarpeta, $nombreFinal);
+                    $datos['foto_perfil'] = $nombreFinal;
+
+            }       
+            
+        }
+
+
+    if ($id) {
         $inmueblesModel->update($id, $datos);
         $mensaje = 'Inmueble actualizado correctamente.';
     } else {

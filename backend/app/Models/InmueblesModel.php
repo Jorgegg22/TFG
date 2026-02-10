@@ -15,7 +15,16 @@ class InmueblesModel extends Model
         'precio',
         'universidad_id',
         'propietario_id',
-        'imagen_principal'
+        'imagen_principal',
+        'imagen1',
+        'imagen2',
+        'imagen3',
+        'imagen4',
+        'metros',
+        'habitaciones',
+        'banios',
+        'n_personas',
+
     ];
 
 
