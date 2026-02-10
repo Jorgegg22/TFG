@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # ------------------------------------------------
@@ -38,7 +38,7 @@ services:
   # 3. BACKEND (CodeIgniter 4)
   # ------------------------------------------------
   backend:
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: univibe-backend
@@ -48,9 +48,17 @@ services:
       # Sincroniza tu código
       - ./backend:/var/www/html
       # ¡IMPORTANTE! Sincroniza las fotos subidas para no perderlas
-      - ./uploads_data:/var/www/html/public/uploads
+      - ./backend/public/uploads:/var/www/html/public/uploads
     links:
       - db
     environment:
-      CI_ENVIRONMENT: development
-    command: sh -c "chown -R www-data:www-data /var/www/html/writable && apache2-foreground"
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+      - CI_ENVIRONMENT=development
+    command:
+      - sh
+      - -c
+      - |
+        sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
+        sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+        chown -R www-data:www-data /var/www/html/writable /var/www/html/public/uploads
+        apache2-foreground

@@ -55,7 +55,7 @@ class AuthController extends ResourceController
             'email' => $userData->email,
             'password' => password_hash($userData->password, PASSWORD_BCRYPT),
             'token' => $token,
-       
+
         ];
 
 
@@ -119,7 +119,7 @@ class AuthController extends ResourceController
 
         $usuarioModel->update($usuario['id'], [
             'token' => $token,
-  
+
         ]);
 
 
@@ -135,32 +135,35 @@ class AuthController extends ResourceController
 
     public function logout()
     {
-       
+
         $token = $this->request->getServer('HTTP_X_API_TOKEN') ?? session()->get('token');
         $usuarioModel = new UsuariosModel();
 
-       
+
 
         $usuario = $usuarioModel->where('token', $token)->first();
-        
 
-       if ($usuario) {
-        $rol = $usuario['rol'];
 
-        $usuarioModel->update($usuario['id'], [
-            'token' => null
-        ]);
 
-        
+        if ($usuario) {
+            $rol = $usuario['rol'];
 
-        if ($rol === "admin") {
-            return redirect()->to('http://localhost:4200/login');
+            $usuarioModel->update($usuario['id'], [
+                'token' => null
+            ]);
+
+
+            session()->destroy();
+
+
+            if ($rol === "admin") {
+                return redirect()->to('http://localhost:4200/login');
+            }
         }
-    }
 
         $this->respond(['status' => 'success', 'mensaje' => 'Sesión cerrada en servidor']);
-       
-        
+
+
     }
 
 

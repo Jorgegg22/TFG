@@ -93,7 +93,7 @@ class UsuariosControllerA extends BaseController
                 $reglas['password'] = 'min_length[8]';
                 
             }
-            $reglas['foto_perfil'] = 'permit_empty|is_image[foto_perfil]|max_size[foto_perfil,2048]|mime_in[foto_perfil,image/jpg,image/jpeg,image/png]' ;
+            $reglas['foto_perfil'] = 'is_image[foto_perfil]|max_size[foto_perfil,2048]|mime_in[foto_perfil,image/jpg,image/jpeg,image/png]' ;
         }
 
         // SI HAY ID EDITA LA IMAGEN QUE EXISTE
@@ -116,10 +116,10 @@ class UsuariosControllerA extends BaseController
             'link_spotify'   => $this->request->getPost('link_spotify'),
     ];
         
-        $rutaCarpeta = FCPATH . 'uploads/perfiles/';
+        $rutaCarpeta = FCPATH . 'uploads' . DIRECTORY_SEPARATOR . 'perfiles' . DIRECTORY_SEPARATOR;
         $img = $this->request->getFile('foto_perfil');
         
-        if($img){
+        if($img && $img->isValid() && !$img->hasMoved()){
 
                 if($id){
                     $viejo = $usuariosModel->find($id);

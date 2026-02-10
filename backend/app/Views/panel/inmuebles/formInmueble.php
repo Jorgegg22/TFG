@@ -58,7 +58,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="titulo" class="form-label font-weight-bold">Título del Inmueble</label>
                         <input type="text" class="form-control" id="titulo" name="titulo"
-                            value="<?= $inmueble['titulo'] ?? '' ?>" placeholder="Ej: Piso luminoso..." >
+                            value="<?= $inmueble['titulo'] ?? '' ?>" placeholder="Ej: Piso luminoso...">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="direccion" class="form-label font-weight-bold">Dirección</label>
@@ -103,52 +103,50 @@
                     </div>
                 </div>
 
-               <div class="row">
+                <div class="row">
 
-    <!-- PROPIETARIOS -->
-    <div class="col-md-6 mb-3">
-        <label for="propietario_id" class="form-label font-weight-bold">
-            Propietarios
-        </label>
+                    <!-- PROPIETARIOS -->
+                    <div class="col-md-6 mb-3">
+                        <label for="propietario_id" class="form-label font-weight-bold">
+                            Propietarios
+                        </label>
 
-        <select class="form-control" id="propietario_id" name="propietario_id">
-            <option value="" disabled
-                <?= !isset($inmueble) ? 'selected' : '' ?>>
-                Propietario del inmueble
-            </option>
+                        <select class="form-control" id="propietario_id" name="propietario_id">
+                            <option value="" disabled <?= !isset($inmueble) ? 'selected' : '' ?>>
+                                Propietario del inmueble
+                            </option>
 
-            <?php foreach($propietarios as $prop): ?>
-                <option value="<?= $prop['id'] ?>"
-                    <?= (isset($inmueble) && $inmueble['propietario_id'] == $prop['id']) ? 'selected' : '' ?>>
-                    <?= $prop['nombre'] ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
+                            <?php foreach($propietarios as $prop): ?>
+                            <option value="<?= $prop['id'] ?>"
+                                <?= (isset($inmueble) && $inmueble['propietario_id'] == $prop['id']) ? 'selected' : '' ?>>
+                                <?= $prop['nombre'] ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
 
-    <!-- UNIVERSIDADES -->
-    <div class="col-md-6 mb-3">
-        <label for="universidad_id" class="form-label font-weight-bold">
-            Universidad Cercana
-        </label>
+                    <!-- UNIVERSIDADES -->
+                    <div class="col-md-6 mb-3">
+                        <label for="universidad_id" class="form-label font-weight-bold">
+                            Universidad Cercana
+                        </label>
 
-        <select class="form-control" id="universidad_id" name="universidad_id">
-            <option value="" disabled
-                <?= !isset($inmueble) ? 'selected' : '' ?>>
-                Seleccione una universidad...
-            </option>
+                        <select class="form-control" id="universidad_id" name="universidad_id">
+                            <option value="" disabled <?= !isset($inmueble) ? 'selected' : '' ?>>
+                                Seleccione una universidad...
+                            </option>
 
-            <?php foreach($universidades as $uni): ?>
-                <option value="<?= $uni['id'] ?>"
-                    <?= (isset($inmueble) && $inmueble['universidad_id'] == $uni['id']) ? 'selected' : '' ?>>
-                    <?= $uni['nombre'] ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
+                            <?php foreach($universidades as $uni): ?>
+                            <option value="<?= $uni['id'] ?>"
+                                <?= (isset($inmueble) && $inmueble['universidad_id'] == $uni['id']) ? 'selected' : '' ?>>
+                                <?= $uni['nombre'] ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
-</div>
+                </div>
 
 
                 <hr>
@@ -156,46 +154,62 @@
                 </h6>
 
                 <div class="row">
-                    <?php 
-                    $fotos = ['imagen_principal', 'imagen1', 'imagen2', 'imagen3', 'imagen4'];
-                    foreach($fotos as $index => $foto): 
-                    ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="file-select-custom text-center">
-                            <label for="<?= $foto ?>"
-                                class="form-label font-weight-bold small <?= $foto == 'imagen_principal' ? 'text-success' : 'text-gray-600' ?>">
-                                <?= $foto == 'imagen_principal' ? '<i class="fas fa-star mr-1"></i> Principal' : 'Secundaria ' . $index ?>
-                            </label>
-                            <input type="file" class="form-control-file" id="<?= $foto ?>" name="<?= $foto ?>"
-                                value=<?= $inmueble[$foto] ?? '' ?> accept="image/*">
-
-                            <?php if(isset($inmueble) && !empty($inmueble[$foto])): ?>
-                            <img src="<?= base_url('uploads/' . $inmueble[$foto]) ?>"
-                                class="img-preview-edit d-block mx-auto">
-                            <small class="text-muted d-block mt-1">Archivo actual</small>
-                            <?php endif; ?>
-                        </div>
+                    <div class="col-md-4 mb-4 text-center">
+                        <label class="text-success font-weight-bold">Principal</label>
+                        <input type="file" name="imagen_principal" class="form-control-file mb-2">
+                        <?php if(!empty($inmueble['imagen_principal'])): ?>
+                        <img src="<?= base_url('uploads/inmuebles_fotos/' . $inmueble['imagen_principal']) ?>"
+                            class="img-thumbnail" style="height: 150px;">
+                        <?php endif; ?>
                     </div>
-                    <?php endforeach; ?>
 
-                    <div class="col-md-4 mb-4 d-flex align-items-center">
-                        <div class="p-3 bg-light border-left-info shadow-sm w-100"
-                            style="border-left: 5px solid #36b9cc; border-radius: 5px;">
-                            <div class="d-flex align-items-center small text-muted">
-                                <i class="fas fa-info-circle text-info mr-2"></i>
-                                <span>JPG/PNG máx. 2MB. Al subir una nueva, se reemplaza la anterior.</span>
-                            </div>
-                        </div>
+                    <div class="col-md-4 mb-4 text-center">
+                        <label>Imagen 1</label>
+                        <input type="file" name="imagen1" class="form-control-file mb-2">
+                        <?php if(!empty($inmueble['imagen1'])): ?>
+                        <img src="<?= base_url('uploads/inmuebles_fotos/' . $inmueble['imagen1']) ?>" class="img-thumbnail"
+                            style="height: 150px;">
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-md-4 mb-4 text-center">
+                        <label>Imagen 2</label>
+                        <input type="file" name="imagen2" class="form-control-file mb-2">
+                        <?php if(!empty($inmueble['imagen2'])): ?>
+                        <img src="<?= base_url('uploads/inmuebles_fotos/' . $inmueble['imagen2']) ?>" class="img-thumbnail"
+                            style="height: 150px;">
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-md-4 mb-4 text-center">
+                        <label>Imagen 3</label>
+                        <input type="file" name="imagen3" class="form-control-file mb-2">
+                        <?php if(!empty($inmueble['imagen3'])): ?>
+                        <img src="<?= base_url('uploads/inmuebles_fotos/' . $inmueble['imagen3']) ?>" class="img-thumbnail"
+                            style="height: 150px;">
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-md-4 mb-4 text-center">
+                        <label>Imagen 4</label>
+                        <input type="file" name="imagen4" class="form-control-file mb-2">
+                        <?php if(!empty($inmueble['imagen4'])): ?>
+                        <img src="<?= base_url('uploads/inmuebles_fotos/' . $inmueble['imagen4']) ?>" class="img-thumbnail"
+                            style="height: 150px;">
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <hr>
+
                 <div class="text-right">
                     <button type="button" class="btn btn-light btn-reset">Limpiar</button>
                     <button type="submit" class="btn btn-primary px-4">
-                        <i class="fas fa-save mr-1"></i> <?= isset($inmueble) ? 'Actualizar' : 'Guardar' ?> Registro
+                        <i class="fas fa-save mr-1"></i>
+                        <?= isset($inmueble) ? 'Actualizar' : 'Guardar' ?> Registro
                     </button>
                 </div>
+
             </form>
         </div>
     </div>

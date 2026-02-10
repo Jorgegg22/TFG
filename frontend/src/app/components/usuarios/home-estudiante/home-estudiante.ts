@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { InmuebleService } from '../../../services/inmuebles-service';
 import { Inmueble } from '../../../common/inmuebles-interface';
 
@@ -7,6 +8,46 @@ import { Inmueble } from '../../../common/inmuebles-interface';
   standalone: false,
   templateUrl: './home-estudiante.html',
   styleUrl: './home-estudiante.css',
+  animations: [
+    trigger('swipeAnimacion', [
+      // Estado cuando pulsas el Corazón (Derecha/Match)
+      state(
+        'derecha',
+        style({
+          transform: 'translateX(200%) rotate(30deg)',
+          opacity: 0,
+        }),
+      ),
+      // Estado cuando pulsas la X (Izquierda/Rechazo)
+      state(
+        'izquierda',
+        style({
+          transform: 'translateX(-200%) rotate(-30deg)',
+          opacity: 0,
+        }),
+      ),
+      // Transiciones: de cualquier estado (*) a los lados
+      transition('* => derecha', [animate('0.8s ease-out')]),
+      transition('* => izquierda', [animate('0.8s ease-out')]),
+
+      // * significa estado
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }), // Empieza invisible y un poco más pequeño
+        animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })), // Aparece suavemente
+      ]),
+    ]),
+
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
+      ]),
+      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+      transition('* => derecha, * => izquierda', [
+        animate('1.8s ease-in', style({ opacity: 0, transform: 'translateY(-50px)' })),
+      ]),
+    ]),
+  ],
 })
 export class HomeEstudiante implements OnInit {
   options: boolean = false;
@@ -22,6 +63,10 @@ export class HomeEstudiante implements OnInit {
   noInfo: boolean = false;
   loading: boolean = true;
   datosCargados: number = 0;
+
+  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  estadoAnimacion: string | null = null;
+  mostrandoCard: boolean = true;
 
   constructor(private imbService: InmuebleService) {}
 
@@ -50,7 +95,7 @@ export class HomeEstudiante implements OnInit {
         console.log('Filtro Todo');
         this.infoFiltrada = respuesta;
         console.log(this.infoFiltrada);
-        this.cargados()
+        this.cargados();
       },
       error: (err) => console.error('Error', err),
     });
@@ -63,7 +108,7 @@ export class HomeEstudiante implements OnInit {
 
         this.infoFiltradaUni = respuesta;
         console.log(this.infoFiltradaUni);
-        this.cargados()
+        this.cargados();
       },
     });
   }
@@ -74,7 +119,7 @@ export class HomeEstudiante implements OnInit {
         console.log('Sin filtro');
         this.infoAleatoria = respuesta;
         console.log(this.infoAleatoria);
-        this.cargados()
+        this.cargados();
       },
       error: (err) => console.error('Error', err),
     });
@@ -152,5 +197,21 @@ export class HomeEstudiante implements OnInit {
     }
 
     this.loadInmueble();
+  }
+
+  iniciarAnimacion(direccion: 'izquierda' | 'derecha') {
+    this.estadoAnimacion = direccion;
+    setTimeout(() => {
+      this.mostrandoCard = false;
+      if (direccion === 'derecha') {
+        this.nextHouseLike();
+      } else {
+        this.nextHouseDislike();
+      }
+      setTimeout(() => {
+        this.estadoAnimacion = null; // Reseteamos posición
+        this.mostrandoCard = true; // 3. Creamos la tarjeta nueva (dispara :enter)
+      }, 50);
+    }, 1200);
   }
 }

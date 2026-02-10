@@ -28,14 +28,18 @@ class InmueblesModel extends Model
     ];
 
 
-    public function getInmuebles(){
-   
-            $this->select('inmuebles.*');
-            $this->select('u_prop.nombre as nombre_propietario');
-            $this->join('usuarios AS u_prop' , 'u_prop.id = inmuebles.propietario_id', 'left');
-            return $this->findAll();
-       
+    public function getInmuebles($id = null)
+    {
+        $this->select('inmuebles.*');
+        $this->select('u_prop.nombre as nombre_propietario');
+        $this->join('usuarios AS u_prop', 'u_prop.id = inmuebles.propietario_id', 'left');
 
+        if ($id) {
+            $this->where('inmuebles.id', $id);
+            return $this->first();
+        }
+
+        return $this->findAll();
     }
 
     public function getInmueblesFiltrados($id)
