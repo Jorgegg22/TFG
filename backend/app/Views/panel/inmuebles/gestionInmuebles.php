@@ -14,7 +14,7 @@
                     <p class="mb-0"><?= session()->getFlashdata('mensaje') ?></p>
                 </div>
             </div>
-          >
+          
         </div>
         <?php endif; ?>
         <a href="<?= base_url('admin/inmuebles/crear') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">

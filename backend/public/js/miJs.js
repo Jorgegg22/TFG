@@ -14,7 +14,7 @@ $(document).ready(function () {
                 $(this).remove();
       
             });
-        }, 2500); // 5 segundos
+        }, 5500); 
     }
 
     let form = $(".form-reset")[0];

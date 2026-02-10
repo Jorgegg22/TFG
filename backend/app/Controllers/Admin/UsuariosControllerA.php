@@ -78,36 +78,79 @@ class UsuariosControllerA extends BaseController
             'universidad_id' => 'required|numeric',
             'id_carreara'    => 'required|numeric',
             'descripcion'    => 'required|min_length[10]|max_length[500]',
-            'foto_perfil'    => 'required',
             'telefono' => 'required|min_length[9]|max_length[9]'
         ];
 
 
+
         // SI NO HAY ID ES QUE SE CREA USUARIO,VALIDAMOS CONTRASÑEA
+        
         if(!$id){
             $reglas['password'] = 'required|min_length[8]';
+            $reglas['foto_perfil'] = 'required|uploaded[foto_perfil]|is_image[foto_perfil]|max_size[foto_perfil,2048]|mime_in[foto_perfil,image/jpg,image/jpeg,image/png]';
         }else {
             if(!empty($this->request->getPost('password'))) {
                 $reglas['password'] = 'min_length[8]';
+                
             }
+            $reglas['foto_perfil'] = 'permit_empty|is_image[foto_perfil]|max_size[foto_perfil,2048]|mime_in[foto_perfil,image/jpg,image/jpeg,image/png]' ;
         }
+
+        // SI HAY ID EDITA LA IMAGEN QUE EXISTE
+     
 
         if (!$this->validate($reglas)) {
             return redirect()->back()->withInput()->with('errores', $this->validator->getErrors());}
 
-        $datos = [
-        'nombre'         => $this->request->getPost('nombre'),
-        'email'          => $this->request->getPost('email'),
-        'telefono'       => $this->request->getPost('telefono'),
-        'rol'            => $this->request->getPost('rol'),
-        'foto_perfil'    => $this->request->getPost('foto_perfil'),
-        'universidad_id' => $this->request->getPost('universidad_id'),
-        'id_carreara'    => $this->request->getPost('id_carreara'),
-        'descripcion'    => $this->request->getPost('descripcion'),
-        'link_instagram' => $this->request->getPost('link_instagram'),
-        'link_x'         => $this->request->getPost('link_x'),
-        'link_spotify'   => $this->request->getPost('link_spotify'),
+
+         $datos = [
+            'nombre'         => $this->request->getPost('nombre'),
+            'email'          => $this->request->getPost('email'),
+            'telefono'       => $this->request->getPost('telefono'),
+            'rol'            => $this->request->getPost('rol'),
+            'universidad_id' => $this->request->getPost('universidad_id'),
+            'id_carreara'    => $this->request->getPost('id_carreara'),
+            'descripcion'    => $this->request->getPost('descripcion'),
+            'link_instagram' => $this->request->getPost('link_instagram'),
+            'link_x'         => $this->request->getPost('link_x'),
+            'link_spotify'   => $this->request->getPost('link_spotify'),
     ];
+        
+        $rutaCarpeta = FCPATH . 'uploads/perfiles/';
+        $img = $this->request->getFile('foto_perfil');
+        
+        if($img){
+
+                if($id){
+                    $viejo = $usuariosModel->find($id);
+                    if ($viejo && !empty($viejo['foto_perfil'])) {
+                        $rutaVieja = $rutaCarpeta . $viejo['foto_perfil'];
+                        if (file_exists($rutaVieja)) {
+                            unlink($rutaVieja);
+                    }
+        }
+                }
+                $rutaCompletaImagen = $rutaCarpeta . $img->getName();  
+                if ( $img->isValid() && !$img->hasMoved()) {
+            
+                    if(file_exists($rutaCompletaImagen)){
+                        $nombreFinal = $img->getRandomName();
+                    }else{
+                        $nombreFinal = $img->getName();
+                    }
+                  
+                    $img->move($rutaCarpeta, $nombreFinal);
+                    $datos['foto_perfil'] = $nombreFinal;
+
+            }       
+            
+        }
+
+       
+
+
+
+       
 
         $password = $this->request->getPost('password');
 
@@ -116,14 +159,16 @@ class UsuariosControllerA extends BaseController
             $datos['password'] = password_hash($password, PASSWORD_BCRYPT);
         }
 
+
+
         if ($id) {
         $usuariosModel->update($id, $datos);
-        $mensaje = 'Atributo actualizado correctamente.';
+        $mensaje = 'Usuario actualizado correctamente.';
     } else {
         $usuariosModel->insert($datos);
-        $mensaje = 'Atributo creado con éxito.';
+        $mensaje = 'Usuario creado con éxito.';
     }
-        return redirect()->to(base_url('admin/atributos'))->with('mensaje', $mensaje);
+        return redirect()->to(base_url('admin/usuarios'))->with('mensaje', $mensaje);
 
 
     }

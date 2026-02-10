@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\InmueblesModel; 
 use App\Models\UniversidadesModel; 
+use App\Models\UsuariosModel; 
 
 class InmueblesControllerA extends BaseController
 {
@@ -29,9 +30,13 @@ class InmueblesControllerA extends BaseController
     {
 
         $uniModel = new UniversidadesModel();
+        $usuarioModel = new UsuariosModel();
+
+        
 
         $data = [
-            'universidades' => $uniModel -> getUniversidades()
+            'universidades' => $uniModel -> getUniversidades(),
+            'propietarios' => $usuarioModel->where('rol','propietario')->findAll()
         ];
 
         return view('panel/templates/header').
@@ -43,12 +48,17 @@ class InmueblesControllerA extends BaseController
 {
     $inmueblesModel = new InmueblesModel();
     $uniModel = new UniversidadesModel();
+    $usuarioModel = new UsuariosModel();
+
 
     $inmueble = $inmueblesModel->find($id);
+    
+    
 
     $data = [
         'inmueble'      => $inmueble,
-        'universidades' => $uniModel->getUniversidades()
+        'universidades' => $uniModel->getUniversidades(),
+        'propietarios' => $usuarioModel->where('rol','propietario')->findAll()
     ];
 
     return view('panel/templates/header') .
@@ -66,13 +76,17 @@ class InmueblesControllerA extends BaseController
             'direccion' => "required|min_length[3]|max_length[100]|is_unique[inmuebles.titulo,id,{$id}]",
             'descripcion' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
             'precio' => "required|numeric",
-            'metros' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
-            'habitaciones' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
-            'banios' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
-            'n_personas' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
-            'universidad_id' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
-            'imagen' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
-
+            'metros' => "required|",
+            'habitaciones' => "required|",
+            'banios' => "required|",
+            'n_personas' => "required|",
+            'universidad_id' => "required|",
+            'propietario_id' => "required",
+            // 'imagen_principal' => "required|min_length[3]|max_length[100]|is_unique[carreras.nombre,id,{$id}]",
+            // 'imagen1' => "required|",
+            // 'imagen2' => "required|",
+            // 'imagen3' => "required|",
+            // 'imagen4' => "required|",
         
         ];
 
@@ -81,15 +95,21 @@ class InmueblesControllerA extends BaseController
             return redirect()->back()->withInput()->with('errores', $this->validator->getErrors());}
 
         $datos = [
-        'nombre'         => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
-        '' => $this->request->getPost('nombre'),
+        'titulo'         => $this->request->getPost('titulo'),
+        'descripcion' => $this->request->getPost('descripcion'),
+        'direccion' => $this->request->getPost('direccion'),
+        'precio' => $this->request->getPost('precio'),
+        'imagen_principal' => $this->request->getPost('imagen_principal'),
+        'imagen1' => $this->request->getPost('imagen1'),
+        'imagen2' => $this->request->getPost('imagen2'),
+        'imagen3' => $this->request->getPost('imagen3'),
+        'imagen4' => $this->request->getPost('imagen4'),
+        'propietario_id' => $this->request->getPost('propietario_id'),
+        'universidad_id' => $this->request->getPost('universidad_id'),
+        'metros' => $this->request->getPost('metros'),
+        'habitaciones' => $this->request->getPost('habitaciones'),
+        'banios' => $this->request->getPost('banios'),
+        'n_personas' => $this->request->getPost('n_personas'),
     ];
 
   
@@ -99,9 +119,9 @@ class InmueblesControllerA extends BaseController
         $mensaje = 'Inmueble actualizado correctamente.';
     } else {
         $inmueblesModel->insert($datos);
-        $mensaje = 'Inmuebke creado con éxito.';
+        $mensaje = 'Inmueble creado con éxito.';
     }
-        return redirect()->to(base_url('admin/carreras'))->with('mensaje', $mensaje);
+        return redirect()->to(base_url('admin/inmuebles'))->with('mensaje', $mensaje);
     }
 
     public function borrar($id = null)

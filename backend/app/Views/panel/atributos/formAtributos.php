@@ -8,6 +8,15 @@
     </div>
 
     <div class="card shadow mb-4">
+        <?php if(session('errores')): ?>
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                <?php foreach(session('errores') as $error): ?>
+                <li><?= esc($error) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php endif; ?>
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Formulario de Registro</h6>
         </div>
