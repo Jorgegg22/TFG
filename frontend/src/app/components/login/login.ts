@@ -15,6 +15,7 @@ export class Login implements OnInit {
   };
 
   sessionData!: { nombre: string; token: string };
+  permitirIniciarSesion: boolean = false
 
   constructor(
     private authService: AuthService,
@@ -24,6 +25,17 @@ export class Login implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('sesion')
   }
+
+
+  permitirBtnIniciarSesion(){
+    const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(this.userData.password.length !== 0 && emailRegex.test(this.userData.email)){
+      this.permitirIniciarSesion = true;
+    }else{
+      this.permitirIniciarSesion = false;
+    }
+  }
+
 
   login() {
     this.authService.checkUser(this.userData).subscribe({

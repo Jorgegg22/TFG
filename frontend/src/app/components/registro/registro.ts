@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -16,18 +16,26 @@ export class Registro {
     password: '',
     password_repeat: '',
   };
-  value:number = 0
+  value: number = 0;
+  //Control validez campos
   emailNoValido!: boolean;
-  estadoContraseña!:string;
+  passwordValido: boolean = false;
+  repeatValido: boolean = false;
+  nombreValido: boolean = false;
+  condicionValido: boolean = false;
+  condiciones: boolean = false;
 
-
-  todoComprobado: boolean = false;
-  falloRegistro: [] = [];
+  //Control inputs estados
+  estadoPassword: string = '';
+  estadoPasswordRepeat: number = 0;
+  permitirRegistro: boolean = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
+
+  
 
   comprobacionEmail() {
     //Comprobaciones datos
@@ -41,37 +49,86 @@ export class Registro {
         this.emailNoValido = true;
       }
     }
+    this.permitirBtnRegistro();
   }
 
   comprobacionPassword() {
-    const regexNormal:RegExp = /^[A-Za-z\d]{8,}$/;
-    const regexMedio:RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    const regexFuerte:RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/
+    const regexNormal: RegExp = /^[A-Za-z\d]{6,}$/;
+    const regexMedio: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const regexFuerte: RegExp =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
 
-    if(regexNormal.test(this.userData.password)){
-      this.value = 33;
-      this.estadoContraseña = "Flojo"
-    }else if(regexMedio.test(this.userData.password)){
-      this.value = 66;
-      this.estadoContraseña = "Medio"
-    }else if(regexFuerte.test(this.userData.password)){
+    if (regexFuerte.test(this.userData.password)) {
       this.value = 100;
-      this.estadoContraseña = "Fuerte"
+      this.estadoPassword = 'Fuerte';
+      this.passwordValido = true;
+    } else if (regexMedio.test(this.userData.password)) {
+      this.value = 66;
+      this.estadoPassword = 'Intermedia';
+      this.passwordValido = false;
+    } else if (regexNormal.test(this.userData.password)) {
+      this.value = 33;
+      this.estadoPassword = 'Debil';
+      this.passwordValido = false;
+    } else {
+      this.value = 0;
+      this.estadoPassword = '';
+      this.passwordValido = false;
+    }
+    if (this.userData.password.length !== 0 && this.userData.password_repeat.length !== 0) {
+      if (
+        this.userData.password_repeat === this.userData.password &&
+        this.userData.password_repeat.length > 0
+      ) {
+        this.estadoPasswordRepeat = 1; // Coinciden
+        this.repeatValido = true;
+      } else if (
+        this.userData.password.length === 0 ||
+        this.userData.password_repeat !== this.userData.password
+      ) {
+        this.estadoPasswordRepeat = 2; // No coinciden
+        this.repeatValido = false;
+      }
+    }else{
+      this.estadoPasswordRepeat = 0
+    }
+
+    this.permitirBtnRegistro();
+  }
+
+  comprobacionCondiciones(valor: boolean) {
+    this.condicionValido = valor;
+    this.permitirBtnRegistro(); // Recuerda llamar a tu validador general
+  }
+
+  permitirBtnRegistro() {
+    if (
+      this.repeatValido &&
+      this.passwordValido &&
+      !this.emailNoValido &&
+      this.userData.name.trim().length > 2 &&
+      this.condicionValido
+    ) {
+      this.permitirRegistro = true;
+    } else {
+      this.permitirRegistro = false;
     }
   }
 
   registro() {
-    this.authService.register(this.userData).subscribe({
-      next: (respuesta) => {
-        const sessionData = {
-          nombre: respuesta.nombre,
-          token: respuesta.token,
-        };
+    if (this.permitirRegistro) {
+      this.authService.register(this.userData).subscribe({
+        next: (respuesta) => {
+          const sessionData = {
+            nombre: respuesta.nombre,
+            token: respuesta.token,
+          };
 
-        localStorage.setItem('sesion', JSON.stringify(sessionData));
+          localStorage.setItem('sesion', JSON.stringify(sessionData));
 
-        this.router.navigate(['/eleccion']);
-      },
-    });
+          this.router.navigate(['/eleccion']);
+        },
+      });
+    }
   }
 }

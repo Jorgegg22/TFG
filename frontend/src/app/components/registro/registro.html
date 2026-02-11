@@ -12,13 +12,13 @@
       <form>
         <div class="input-group">
           <label>Nombre completo</label>
-          <input type="text" placeholder="Ej. Alex García" name="nombre" [(ngModel)]="userData.name">
+          <input type="text" placeholder="Ej. Alex García" name="nombre" [(ngModel)]="userData.name" (change)="permitirBtnRegistro()">
         </div>
 
         <div class="input-group">
           <label>Correo electrónico</label>
           <input type="email" placeholder="tucorreo@universidad.edu" name="email" [(ngModel)]="userData.email"
-            (change)="comprobacionEmail()">
+            (input)="comprobacionEmail()">
           <div *ngIf="userData.email.length >= 1">
             <p class="p-email" *ngIf="emailNoValido; else ElseBlock">
               Email no válido
@@ -36,26 +36,46 @@
         <div class="input-group">
           <label>Contraseña</label>
           <input type="password" placeholder="Mínimo 8 caracteres" name="password" [(ngModel)]="userData.password"
-            (change)="comprobacionPassword()">
-          <mat-progress-bar mode="determinate" value="{{value}}"
-            style="margin-top: 10px;color: red;"></mat-progress-bar>
+            (input)="comprobacionPassword()">
+          <mat-progress-bar mode="determinate" [value]="value" [ngClass]="estadoPassword"
+            style="margin-top: 10px;margin-left: 10px;">
+          </mat-progress-bar>
+          <div *ngIf="estadoPassword!== ''">
+            <p class="password-state">
+              Fuerza contraseña: {{ estadoPassword }}
+            </p>
+
+            <ul class="password-requisitos">
+              <li>Mínimo 8 caracteres</li>
+              <li>Una mayúscula y un número</li>
+            </ul>
+          </div>
 
         </div>
         <div class="input-group">
           <label>Repetir Contraseña</label>
           <input type="password" placeholder="Mínimo 8 caracteres" name="password_repeat"
-            [(ngModel)]="userData.password_repeat">
+            [(ngModel)]="userData.password_repeat" (input)="comprobacionPassword()">
+          <div *ngIf="estadoPasswordRepeat !== 0">
+            <p class="coincide" *ngIf="estadoPasswordRepeat === 1;else elsePassword">
+              Las contaseñas coinciden
+            </p>
+            <ng-template #elsePassword>
+              <p class="no-coincide">Las contraseñas no coinciden</p>
+            </ng-template>
+          </div>
         </div>
         <div class="terms-check">
           <label class="checkbox-container">
-            <input type="checkbox" required>
+            <input type="checkbox" (change)="comprobacionCondiciones($any($event.target).checked)">
             <span class="checkmark"></span>
             <span class="terms-text">Acepto los <a href="#">Términos</a> y la <a href="#">Política de
                 Privacidad</a>.</span>
           </label>
         </div>
 
-        <button type="submit" class="btn-primary" (click)="registro()">Empezar ahora</button>
+        <button type="submit" class="btn-primary" [disabled]="!permitirRegistro" (click)="registro()">Empezar
+          ahora</button>
       </form>
 
       <p class="auth-footer">
