@@ -1,6 +1,6 @@
 <div class="auth-container">
   <div class="auth-left">
-    
+
     <div class="brand-header">
       <div class="logo-univibe-serif" routerLink="/home">U</div>
     </div>
@@ -12,31 +12,50 @@
       <form>
         <div class="input-group">
           <label>Nombre completo</label>
-          <input type="text" placeholder="Ej. Alex García"  name="nombre" [(ngModel)]="userData.name">
+          <input type="text" placeholder="Ej. Alex García" name="nombre" [(ngModel)]="userData.name">
         </div>
 
         <div class="input-group">
           <label>Correo electrónico</label>
-          <input type="email" placeholder="tucorreo@universidad.edu"  name="email"  [(ngModel)]="userData.email" >
+          <input type="email" placeholder="tucorreo@universidad.edu" name="email" [(ngModel)]="userData.email"
+            (change)="comprobacionEmail()">
+          <div *ngIf="userData.email.length >= 1">
+            <p class="p-email" *ngIf="emailNoValido; else ElseBlock">
+              Email no válido
+            </p>
+
+            <ng-template #ElseBlock>
+              <p class="p-email-valid">
+                Email válido
+              </p>
+            </ng-template>
+          </div>
+
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="Mínimo 8 caracteres" name="password"   [(ngModel)]="userData.password">
+          <input type="password" placeholder="Mínimo 8 caracteres" name="password" [(ngModel)]="userData.password"
+            (change)="comprobacionPassword()">
+          <mat-progress-bar mode="determinate" value="{{value}}"
+            style="margin-top: 10px;color: red;"></mat-progress-bar>
+
         </div>
         <div class="input-group">
           <label>Repetir Contraseña</label>
-          <input type="password" placeholder="Mínimo 8 caracteres"  name="password_repeat"   [(ngModel)]="userData.password_repeat">
+          <input type="password" placeholder="Mínimo 8 caracteres" name="password_repeat"
+            [(ngModel)]="userData.password_repeat">
         </div>
         <div class="terms-check">
           <label class="checkbox-container">
             <input type="checkbox" required>
             <span class="checkmark"></span>
-            <span class="terms-text">Acepto los <a href="#">Términos</a> y la <a href="#">Política de Privacidad</a>.</span>
+            <span class="terms-text">Acepto los <a href="#">Términos</a> y la <a href="#">Política de
+                Privacidad</a>.</span>
           </label>
         </div>
 
-        <button type="submit" class="btn-primary" (click)="registro()" >Empezar ahora</button>
+        <button type="submit" class="btn-primary" (click)="registro()">Empezar ahora</button>
       </form>
 
       <p class="auth-footer">
@@ -49,7 +68,7 @@
     <div class="glass-card">
       <h2>Tu próximo hogar empieza aquí.</h2>
       <p>Miles de estudiantes ya han encontrado su sitio. Solo faltas tú.</p>
-      
+
       <div class="community-avatars">
         <div class="avatar av-1"></div>
         <div class="avatar av-2"></div>

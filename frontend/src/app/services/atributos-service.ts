@@ -7,8 +7,8 @@ import { Atributo } from '../common/atributos-interface';
   providedIn: 'root'
 })
 export class AtributoService {
-  //private URI: string = "http://localhost/univibe/backend/public/index.php/api/atributos";  //XAMPP
-  private URI: string = "http://localhost:8080/api/atributos"; //DOCKER
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/atributos";  //XAMPP
+  //private URI: string = "http://localhost:8080/api/atributos"; //DOCKER
   constructor(private http: HttpClient) {
    
   }

@@ -26,7 +26,7 @@
         <div *ngIf="loading" class="loader"></div>
         <ng-container *ngIf="!loading">
           <div class="column-grid-scroll" *ngIf="!noInfo; else elseBlock">
-            <article class="house-card-modern" *ngFor="let inm of inmuebles">
+            <article class="house-card-modern" *ngFor="let inm of inmuebles" [@enterInfo]>
               <div class="card-image-box">
                 <img
                   src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"

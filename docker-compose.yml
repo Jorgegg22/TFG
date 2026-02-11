@@ -45,9 +45,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      # Sincroniza tu código
       - ./backend:/var/www/html
-      # ¡IMPORTANTE! Sincroniza las fotos subidas para no perderlas
+
       - ./backend/public/uploads:/var/www/html/public/uploads
     links:
       - db

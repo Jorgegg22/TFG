@@ -10,7 +10,7 @@ import { Inmueble } from '../../../common/inmuebles-interface';
   styleUrl: './home-estudiante.css',
   animations: [
     trigger('swipeAnimacion', [
-      // Estado cuando pulsas el Corazón (Derecha/Match)
+      // Animaciones Like/Dislike
       state(
         'derecha',
         style({
@@ -18,7 +18,7 @@ import { Inmueble } from '../../../common/inmuebles-interface';
           opacity: 0,
         }),
       ),
-      // Estado cuando pulsas la X (Izquierda/Rechazo)
+   
       state(
         'izquierda',
         style({
@@ -26,25 +26,25 @@ import { Inmueble } from '../../../common/inmuebles-interface';
           opacity: 0,
         }),
       ),
-      // Transiciones: de cualquier estado (*) a los lados
+      // Transiciones de los dos estados
       transition('* => derecha', [animate('0.8s ease-out')]),
       transition('* => izquierda', [animate('0.8s ease-out')]),
 
       // * significa estado
       transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.95)' }), // Empieza invisible y un poco más pequeño
-        animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })), // Aparece suavemente
+        style({ opacity: 0, transform: 'scale(0.95)' }), 
+        animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })), 
       ]),
     ]),
 
     trigger('enterInfo', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
-        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
+        style({ opacity: 0, transform: 'translateY(20px)' }), 
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), 
       ]),
-      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+      // Salida
       transition('* => derecha, * => izquierda', [
-        animate('1.8s ease-in', style({ opacity: 0, transform: 'translateY(-50px)' })),
+        animate('1.8s ease-in', style({ opacity: 0, transform: 'translateY(-400px)' })),
       ]),
     ]),
   ],
