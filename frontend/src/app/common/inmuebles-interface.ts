@@ -4,11 +4,11 @@ export interface Inmueble {
   descripcion: string;
   direccion: string | null;
   precio: number;
-  imagen_principal: string | null;
-  imagen1:string | null;
-  imagen2:string | null;
-  imagen3:string | null;
-  imagen4:string | null;
+  imagen_principal: string
+  imagen1:string
+  imagen2:string 
+  imagen3:string 
+  imagen4:string 
   propietario_id: number;
   created_at: string;
   universidad_id: number;

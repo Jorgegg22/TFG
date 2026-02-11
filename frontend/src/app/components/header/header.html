@@ -7,8 +7,8 @@
       <li><a routerLink="/mi-perfil" routerLinkActive="active-link">Perfil</a></li>
     </ul>
     <div class="user-actions">
-      <div class="profile-circle">
-        <img [src]="urlImagenes + this.perfil.foto_perfil" alt="User">
+      <div class="profile-circle" *ngIf="perfil.foto_perfil">
+        <img   [src]="urlImagenes + perfil.foto_perfil" alt="User">
 
       </div>
               <i class="fa-solid fa-angle-up arrow-options" style="color: #ffffff;" (click)="showOptions()"  *ngIf="!options" ></i>

@@ -18,7 +18,7 @@ import { Inmueble } from '../../../common/inmuebles-interface';
           opacity: 0,
         }),
       ),
-   
+
       state(
         'izquierda',
         style({
@@ -32,19 +32,35 @@ import { Inmueble } from '../../../common/inmuebles-interface';
 
       // * significa estado
       transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.95)' }), 
-        animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })), 
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })),
       ]),
     ]),
 
     trigger('enterInfo', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }), 
-        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), 
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
       // Salida
       transition('* => derecha, * => izquierda', [
         animate('1.8s ease-in', style({ opacity: 0, transform: 'translateY(-400px)' })),
+      ]),
+    ]),
+    trigger('imageAnimation', [
+      // ACTUA DEPENDIENDO DEL INDEX QUE SE LE ASOCIA EN @IMAGEANIMATION
+      //IZQUIERDA -> CENTRO
+
+      //cubic-bezier( n1 => tiempo que tarda en hacer el movimiento,n2 => velocidad (de entrada) , n3 => tiempo,n4 => velocidad (de llegada) )
+      transition(':increment', [
+        style({ transform: 'translateX(-100%)', opacity: 0 }), 
+        animate('500ms cubic-bezier(0.35, 1, 0.25, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
+      ]),
+
+      //DERECHA -> CENTRO
+      transition(':decrement', [
+        style({ transform: 'translateX(100%)', opacity: 0 }), 
+        animate('500ms cubic-bezier(0.35, 1, 0.25, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
       ]),
     ]),
   ],
@@ -58,6 +74,7 @@ export class HomeEstudiante implements OnInit {
   index: number = 0;
   index2: number = 0;
   index3: number = 0;
+  indexImage: number = 0;
   $idCasaLike!: number;
   idsInteractuados: number[] = [];
   noInfo: boolean = false;
@@ -67,7 +84,10 @@ export class HomeEstudiante implements OnInit {
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
   urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
   estadoAnimacion: string | null = null;
+  estadoAnimacionImagen: string | null = null;
   mostrandoCard: boolean = true;
+  imagenesInmueble: string[] = [];
+  imagenMostrar!: string;
 
   constructor(private imbService: InmuebleService) {}
 
@@ -155,6 +175,14 @@ export class HomeEstudiante implements OnInit {
       console.log('No quedan más casas por mostrar');
       this.noInfo = true;
     }
+    this.imagenesInmueble.push(
+      this.inmuebles.imagen_principal,
+      this.inmuebles.imagen1,
+      this.inmuebles.imagen2,
+      this.inmuebles.imagen3,
+      this.inmuebles.imagen4,
+    );
+    this.loadPhoto();
   }
 
   postSolicitud($id: number) {
@@ -214,5 +242,34 @@ export class HomeEstudiante implements OnInit {
         this.mostrandoCard = true; // 3. Creamos la tarjeta nueva (dispara :enter)
       }, 50);
     }, 1200);
+  }
+
+ 
+
+  loadPhoto(estado?: 'siguiente' | 'previa') {
+    this.imagenMostrar = this.imagenesInmueble[this.indexImage];
+    if (estado === 'siguiente') {
+      if (this.indexImage === 4) {
+        this.indexImage = 0;
+        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
+        console.log(this.indexImage);
+      } else {
+        this.indexImage++;
+        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
+        console.log(this.imagenMostrar);
+        console.log(this.indexImage);
+      }
+    } else if (estado === 'previa') {
+      if (this.indexImage === 0) {
+        this.indexImage = 4;
+        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
+        console.log(this.indexImage);
+      } else {
+        this.indexImage--;
+        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
+        console.log(this.indexImage);
+        console.log(this.imagenMostrar);
+      }
+    }
   }
 }
