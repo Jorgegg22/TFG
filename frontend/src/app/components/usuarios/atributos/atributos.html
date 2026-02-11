@@ -10,7 +10,7 @@
     <div class="attributes-grid">
 
 
-      <label class="attr-tag" *ngFor="let atr of atributos">
+      <label class="attr-tag" *ngFor="let atr of atributos" @popIn>
         <input type="checkbox" name="attr" [value]="atr.id" (change)="chooseAttr($event, atr.id)">
         <div class="tag-content">
       
@@ -23,11 +23,11 @@
       </label>
     </div>
 
-    <div class="action-area">
+    <div class="action-area" @popIn *ngIf="atributos">
       <button class="btn-modern" (click)="sendAtributos()" >Confirmar Atributos</button>
     </div>
     <i (click)="mostrarInfo()" class="fa-solid fa-info info" style="margin-top:25px;"></i>
-    <p class="selection-subtitle" *ngIf="textoInformativo">
+    <p class="selection-subtitle" *ngIf="textoInformativo" @popIn>
       <strong>Personaliza tu búsqueda.</strong> Los atributos que selecciones nos ayudarán a filtrar
       posibles compañeros que compartan tu estilo de vida, asegurando una convivencia armoniosa y
       una mejor experiencia en tu nuevo hogar.

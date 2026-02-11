@@ -9,11 +9,9 @@ export interface UserData {
   nombre: string;
   email: string;
   rol: 'estudiante' | 'propietario';
-  atributos_usuario: string; // Formato: "Nombre|icono;Nombre|icono"
+  atributos_usuario: string;
   created_at: string;
   token_expira: string;
-  
-  // Campos opcionales (vienen como null inicialmente)
   descripcion: string | null;
   foto_perfil: string | null;
   telefono: string | null;
@@ -21,8 +19,6 @@ export interface UserData {
   nombre_carrera: string | null;
   universidad_id: string | null;
   nombre_universidad: string | null;
-  
-  // Redes sociales
   link_instagram: string;
   link_spotify: string;
   link_x: string;

@@ -64,8 +64,8 @@ export class HomeEstudiante implements OnInit {
   loading: boolean = true;
   datosCargados: number = 0;
 
-  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
-  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
+  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
   estadoAnimacion: string | null = null;
   mostrandoCard: boolean = true;
 

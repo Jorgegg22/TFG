@@ -65,8 +65,8 @@ export class Login implements OnInit {
         } else if (respuesta.rol === 'propietario') {
           this.router.navigate(['/home-propietario']);
         } else {
-          window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
-          //window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
+          //window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
+          window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
         }
       },
     });

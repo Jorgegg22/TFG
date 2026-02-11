@@ -135,7 +135,8 @@ class UsuariosController extends ResourceController
             'telefono' => $userData->userPhone,
             'id_carrera' => $userData->userCareer,
             'descripcion' => $userData->userDescription,
-            'universidad_id' => $userData->userUni
+            'universidad_id' => $userData->userUni,
+            'foto_perfil' => $userData->userPhoto
         ];
 
         $usuarioModel->update($userId, $data);

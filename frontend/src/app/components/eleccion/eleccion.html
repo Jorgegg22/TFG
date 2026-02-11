@@ -6,7 +6,7 @@
     </p>
 
     <div class="card-grid">
-      <div class="user-card">
+      <div class="user-card" @enterLeft >
         <div class="card-accent"></div>
         <div class="card-content">
           <div class="icon-circle">
@@ -14,11 +14,11 @@
           </div>
           <h3>Propietario</h3>
           <p>Gestiona y publica alojamientos para estudiantes de forma sencilla.</p>
-          <button  (click)="ownerBtn()" class="btn-modern">Acceder</button>
+          <button  (click)="ownerBtn()" class="btn-modern" style="cursor: pointer;">Acceder</button>
         </div>
       </div>
 
-      <div class="user-card">
+      <div class="user-card" @enterRight >
         <div class="card-accent"></div>
         <div class="card-content">
           <div class="icon-circle">
@@ -26,7 +26,7 @@
           </div>
           <h3>Estudiante</h3>
           <p>Encuentra piso cerca de tu universidad,con la mejor compañia.</p>
-          <button  (click)="studenBtn()" class="btn-modern">Acceder</button>
+          <button  (click)="studenBtn()" class="btn-modern" style="cursor: pointer;">Acceder</button>
         </div>
       </div>
     </div>

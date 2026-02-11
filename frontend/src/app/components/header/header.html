@@ -8,7 +8,7 @@
     </ul>
     <div class="user-actions">
       <div class="profile-circle">
-        <img src="https://i.pravatar.cc/100" alt="User">
+        <img [src]="urlImagenes + this.perfil.foto_perfil" alt="User">
 
       </div>
               <i class="fa-solid fa-angle-up arrow-options" style="color: #ffffff;" (click)="showOptions()"  *ngIf="!options" ></i>

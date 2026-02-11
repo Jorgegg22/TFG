@@ -35,7 +35,7 @@
 .app-container::before {
   content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
   background-image: url('../../../../public/assets/img/fondo_univibe_logo.png');
-  background-size: 180px; background-repeat: repeat; background-position: center; opacity: 0.08; 
+  background-size: 480px; background-repeat: repeat; background-position: center; opacity: 0.08; 
 }
 
 .profile-container {
@@ -62,10 +62,31 @@
 }
 
 .profile-img {
-  width: 100px; height: 100px; border-radius: 50%;
-  border: 4px solid rgba(255,255,255,0.3); object-fit: cover;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* IMPORTANTE: Recorta la imagen para que no se salga del círculo */
+  display: flex; /* Centra la imagen si es pequeña */
+  justify-content: center;
+  align-items: center;
 }
+
+/* La imagen llena el contenedor */
+.profile-img img {
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Evita que la imagen se deforme */
+  display: block;
+}
+
+.perfil-p{
+  font-family: var(--primary-font);
+}
+
+
 
 .avatar-wrapper { position: relative; }
 
@@ -79,6 +100,17 @@
 
 .profile-intro h2 { font-family: var(--secondary-font); font-weight: 800; margin: 0; font-size: 1.8rem; }
 .profile-intro p { margin: 5px 0 0 0; opacity: 0.9; font-size: 1rem; }
+
+.p-description {
+  font-size: 0.8rem;      
+  color: rgba(255, 255, 255, 0.7); 
+  font-style: italic;   
+  margin-top: 8px;            
+  line-height: 1.3;
+
+}
+
+
 
 /* --- FORMULARIO GRID --- */
 .profile-form-grid {
@@ -198,7 +230,18 @@
   border: none;
   transition: all 0.1s linear;
 
+
 }
+
+  .complete-profile:disabled {
+  background-color: #d1d5db; /* Gris neutro */
+  color: #9ca3af; /* Texto en gris claro */
+  cursor: not-allowed; /* Cursor de prohibición */
+  opacity: 0.7;
+  transform: none; /* Evita cualquier escala de hover */
+  box-shadow: none; /* Elimina sombras si las hubiera */
+}
+
 .complete-profile:hover{
   padding: 10px;
   border-radius: 20px;

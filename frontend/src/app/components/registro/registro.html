@@ -38,7 +38,7 @@
           <input type="password" placeholder="Mínimo 8 caracteres" name="password" [(ngModel)]="userData.password"
             (input)="comprobacionPassword()">
           <mat-progress-bar mode="determinate" [value]="value" [ngClass]="estadoPassword"
-            style="margin-top: 10px;margin-left: 10px;">
+            style="margin-top: 10px;margin-left: 5px;border-radius: 20px;">
           </mat-progress-bar>
           <div *ngIf="estadoPassword!== ''">
             <p class="password-state">

@@ -3,20 +3,34 @@ import { Atributo } from '../../../common/atributos-interface';
 import { AtributoService } from '../../../services/atributos-service';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
-import { flush } from '@angular/core/testing';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'app-atributos',
   standalone: false,
   templateUrl: './atributos.html',
   styleUrls: ['./atributos.css'],
+  animations: [
+    trigger('popIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.5)' }),
+        animate('0.4s cubic-bezier(.8,-0.6,0.2,1.5)', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+    style({ opacity: 1, transform: 'scale(1)' }),
+    animate('0.4s ease-in', 
+      style({ opacity: 0, transform: 'scale(0.5)' })
+    ),
+  ]),
+    ]),
+  ],
 })
 export class Atributos implements OnInit {
   atributos: Atributo[] = [];
 
-  data: {  atributosSelected: string[] } = {
-
-    atributosSelected: []
+  data: { atributosSelected: string[] } = {
+    atributosSelected: [],
   };
 
   textoInformativo: boolean = false;
@@ -34,14 +48,13 @@ export class Atributos implements OnInit {
     } else {
       this.loadAtributos();
     }
-
   }
 
   loadAtributos() {
     this.atrService.getAtributos().subscribe({
       next: (respuesta) => {
         this.atributos = respuesta;
-        console.log(this.atributos);  
+        console.log(this.atributos);
       },
       error: (err) => console.error('Error', err),
     });
@@ -50,7 +63,7 @@ export class Atributos implements OnInit {
   sendAtributos() {
     this.atrService.sendAtributos(this.data).subscribe({
       next: (respuesta) => {
-        this.router.navigate(["/registro-perfil"])
+        this.router.navigate(['/registro-perfil']);
       },
       error: (err) => console.error('Error', err),
     });

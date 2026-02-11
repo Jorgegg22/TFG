@@ -9,14 +9,12 @@ import { Solicitud } from '../common/pisoDetalle-interface';
   providedIn: 'root',
 })
 export class UsuarioService {
-  private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
-  //private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
+  //private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
+  private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
 
   constructor(private http: HttpClient) {}
 
-  getUsuarios(): Observable<Usuario> {
-    return this.http.get<Usuario>(this.URI);
-  }
+  
 
   getUsuarioByToken(): Observable<Usuario> {
     const sesionStr = localStorage.getItem('sesion');

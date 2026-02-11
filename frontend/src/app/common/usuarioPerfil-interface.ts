@@ -13,6 +13,7 @@ export interface UsuarioPerfil {
   universidad_id: string;
   nombre_universidad: string;
   atributos_usuario:string;
+  foto_perfil:string;
 }
 
 export interface DataPerfil {

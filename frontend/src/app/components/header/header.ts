@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../services/usuarios-service';
+import { UsuarioPerfil,InfoPerfil } from '../../common/usuarioPerfil-interface';
+import { Perfil } from '../usuarios/perfil/perfil';
+
 
 @Component({
   selector: 'app-header',
@@ -11,18 +15,37 @@ import { Router } from '@angular/router';
 export class Header implements OnInit {
   userId!: string | null;
   options: boolean = false;
+  info!:InfoPerfil
+  perfil!:UsuarioPerfil;
 
-   constructor(private authService:AuthService,
-    private router:Router
+  urlImagenes = 'http://localhost:8080/uploads/perfiles/';
+
+   constructor(
+    private authService:AuthService,
+    private userService:UsuarioService,
+    private router:Router,
+
    ){}
 
   ngOnInit(): void {
-    /* const datosSesion = localStorage.getItem('sesion');
+    this.loadPerfil()
+  }
 
-    if (datosSesion) {
-      const sesionObj = JSON.parse(datosSesion);
-      this.userId = sesionObj.id;
-    } */
+  loadPerfil(){
+    this.userService.getPerfilUsuario().subscribe({
+      next:(respuesta) =>{
+        console.log(respuesta);
+        this.info = respuesta;
+        this.perfil = this.info.data.perfil
+        if(this.perfil.foto_perfil === "avatar_default.png"){
+          this.urlImagenes = './assets/img/'
+        }
+
+    
+
+        
+      }
+    })
   }
 
   showOptions() {
