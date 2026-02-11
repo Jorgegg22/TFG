@@ -1,6 +1,7 @@
 import { Component, effect } from '@angular/core';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
@@ -8,6 +9,15 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   standalone: false,
   templateUrl: './registro.html',
   styleUrl: './registro.css',
+  animations: [
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-120px)' }),
+        animate('0.8s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      // Salida
+    ]),
+  ],
 })
 export class Registro {
   userData: { name: string; email: string; password: string; password_repeat: string } = {
@@ -34,8 +44,6 @@ export class Registro {
     private authService: AuthService,
     private router: Router,
   ) {}
-
-  
 
   comprobacionEmail() {
     //Comprobaciones datos
@@ -89,8 +97,8 @@ export class Registro {
         this.estadoPasswordRepeat = 2; // No coinciden
         this.repeatValido = false;
       }
-    }else{
-      this.estadoPasswordRepeat = 0
+    } else {
+      this.estadoPasswordRepeat = 0;
     }
 
     this.permitirBtnRegistro();
