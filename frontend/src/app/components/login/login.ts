@@ -1,12 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.html',
   styleUrl: './login.css',
+  animations: [
+   
+
+
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-120px)' }), 
+        animate('0.8s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), 
+      ]),
+      // Salida
+    ]),
+    
+  ],
 })
 export class Login implements OnInit {
   userData: { email: string; password: string } = {
@@ -15,6 +29,7 @@ export class Login implements OnInit {
   };
 
   sessionData!: { nombre: string; token: string };
+  permitirIniciarSesion: boolean = false
 
   constructor(
     private authService: AuthService,
@@ -24,6 +39,17 @@ export class Login implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('sesion')
   }
+
+
+  permitirBtnIniciarSesion(){
+    const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(this.userData.password.length !== 0 && emailRegex.test(this.userData.email)){
+      this.permitirIniciarSesion = true;
+    }else{
+      this.permitirIniciarSesion = false;
+    }
+  }
+
 
   login() {
     this.authService.checkUser(this.userData).subscribe({
@@ -39,8 +65,8 @@ export class Login implements OnInit {
         } else if (respuesta.rol === 'propietario') {
           this.router.navigate(['/home-propietario']);
         } else {
-          //window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
-          window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
+          window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
+          //window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
         }
       },
     });

@@ -183,9 +183,133 @@ a { color: var(--primary); font-weight: 600; text-decoration: none; }
   transition: transform 0.2s ease;
 }
 
+.password-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
+}
+
+.password-requisitos {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.password-requisitos li {
+  font-size: 0.8rem;
+  color: #5f6368; /* Gris suave tipo Google */
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.password-requisitos li::before {
+  content: "○"; /* Círculo vacío por defecto */
+  color: #000000;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.2em;
+  margin-right: 4px;
+}
+
+::ng-deep .Debil {
+  color: #f44336 !important;
+}
+::ng-deep .Intermedia {
+  color: #ff9800 !important;
+}
+::ng-deep .Fuerte {
+  color: #4caf50 !important;
+}
+
+.coincide, .no-coincide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Estilo para cuando coinciden (Verde) */
+.coincide {
+  color: #1e4620;
+  background-color: #edf7ed;
+  border: 1px solid #c3e6cb;
+}
+
+.coincide::before {
+  content: "✔";
+  font-weight: bold;
+}
+
+/* Estilo para cuando NO coinciden (Rojo) */
+.no-coincide {
+  color: #611a15;
+  background-color: #fdeded;
+  border: 1px solid #f5c6cb;
+}
+
+.btn-primary:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: scale(1); /* Evita efectos de hover si está deshabilitado */
+}
+
+/* Opcional: Si quieres que cambie según el contenido */
+.password-state:contains('Segura') {
+  color: #188038;
+  background-color: #e6f4ea;
+}
+
+.password-state:contains('Débil') {
+  color: #d93025;
+  background-color: #fce8e6;
+}
+
 .btn-primary:hover {
   transform: translateY(-2px);
   background: #1a1a1a;
+}
+.p-email {
+  
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 0.45rem;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  font-family: var(--primary-font);
+  margin-left: 5px;
+  font-style: italic;
+}
+
+.p-email-valid {
+  
+  color: #008000;
+  font-size: 0.85rem;
+  margin-top: 0.45rem;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  font-family: var(--primary-font);
+  margin-left: 5px;
+  font-style: italic;
 }
 
 .auth-footer { text-align: center; margin-top: 24px; font-size: 0.9rem; color: #64748b; }

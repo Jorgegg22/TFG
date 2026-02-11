@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
  // Rutas
 import { App } from './app';
 import { Home } from './components/home/home';
@@ -57,7 +58,8 @@ import { Header } from './components/header/header';
     FormsModule,
     CommonModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

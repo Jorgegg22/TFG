@@ -6,24 +6,24 @@
       </div>
     </a>
 
-    <div class="login-form-content">
+    <div class="login-form-content" @enterInfo>
       <h1>Bienvenido</h1>
       <p class="subtitle">Nos encanta tenerte de vuelta.</p>
 
       <form>
         <div class="input-group">
           <label>Email</label>
-          <input type="email" placeholder="Enter your email"  name="email" [(ngModel)]="userData.email" >
+          <input type="email" placeholder="Enter your email"  name="email" [(ngModel)]="userData.email" (change)="permitirBtnIniciarSesion()" >
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="••••••••" name="password" [(ngModel)]="userData.password">
+          <input type="password" placeholder="••••••••" name="password" [(ngModel)]="userData.password" (change)="permitirBtnIniciarSesion()">
         </div>
 
 
 
-        <button type="submit" class="btn-login" (click)="login()" >Iniciar Sesión</button>
+        <button type="submit" class="btn-login"   [disabled]="!permitirIniciarSesion" (click)="login()" >Iniciar Sesión</button>
       </form>
 
       <p class="signup-prompt">

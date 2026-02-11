@@ -2,12 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuarios-service';
 import { Solicitud, Data, Inmueble } from '../../../common/solicitudes-interface';
 import { isIterable } from 'rxjs/internal/util/isIterable';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-solicitudes',
   standalone: false,
   templateUrl: './solicitudes.html',
   styleUrl: './solicitudes.css',
+  animations: [
+    
+
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
+      ]),
+      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+     
+    ]),
+  ],
 })
 export class Solicitudes implements OnInit {
   userData: { userId: string | null } = {

@@ -13,7 +13,7 @@
     </div>
   </nav>
 
-  <div class="hero-content">
+  <div class="hero-content" @enterText>
     <h1 class="main-title">Encuentra tu sitio,<br>comparte la vibra.</h1>
     <p class="main-subtitle">La plataforma para gestionar tus pisos y conocer a tus futuros compañeros.</p>
     <button class="btn-explore">Explorar pisos</button>
@@ -22,21 +22,21 @@
 <section class="floating-steps-section">
   <div class="cards-container">
     
-    <div class="step-card">
+    <div class="step-card" @enterInfo>
       <div class="icon-bubble"><i class="fa-solid fa-mobile"></i></div>
       <h3>Regístrate</h3>
       <p>Crea tu perfil en segundos. Sin papeleos, solo lo importante.</p>
       <span class="step-number">01</span>
     </div>
 
-    <div class="step-card">
+    <div class="step-card" @enterInfo>
       <div class="icon-bubble"><i class="fa-solid fa-magnifying-glass"></i></div>
       <h3>Explora</h3>
       <p>Los pisos perfectos para como tu eres. Explora hasta encontrarlo.</p>
       <span class="step-number">02</span>
     </div>
 
-    <div class="step-card">
+    <div class="step-card" @enterInfo>
       <div class="icon-bubble"><i class="fa-solid fa-user-group"></i></div>
       <h3>Conecta</h3>
       <p>Encuentra nuevas amistades con las que compartir piso.</p>
@@ -52,7 +52,7 @@
   </div>
 
   <div class="features-grid">
-    <div class="feature-item">
+    <div class="feature-item" >
       <div class="icon-wrapper">
         <i class="fa-regular fa-heart  fa-xl"></i>
       </div>
