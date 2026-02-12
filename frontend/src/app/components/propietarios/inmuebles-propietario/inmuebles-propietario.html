@@ -26,7 +26,7 @@
         <ng-container *ngIf="!loading" >
           
           <div class="column-grid-scroll" *ngIf="allInmuebles.length > 0; else elseBlock">
-            <article class="house-card-modern" *ngFor="let inm of inmuebles" >
+            <article class="house-card-modern" *ngFor="let inm of inmuebles" @enterInfo >
               <div class="card-image-box">
                 <img [src]="urlImagenes + inm.imagen_principal" alt="Piso" />
            

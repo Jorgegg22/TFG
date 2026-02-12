@@ -23,6 +23,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         animate('0.3s ease-out', style({ opacity: 0, transform: 'translate(-50%, -20px)' })),
       ]),
     ]),
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      
+    ]),
   ],
 })
 export class Header implements OnInit {

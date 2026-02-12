@@ -5,6 +5,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { AuthService } from '../../../services/auth';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header-propietario',
   standalone: false,
@@ -24,6 +25,13 @@ import { Router } from '@angular/router';
       animate('200ms ease-in', style({ opacity: 0, transform: 'translateY(-10px)' })),
     ]),
   ]),
+  trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      
+    ]),
 ],
 })
 export class HeaderPropietario {

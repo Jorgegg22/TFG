@@ -3,6 +3,7 @@ import { PropietarioService } from '../../../services/propietarios-service';
 import { Router } from '@angular/router';
 import { SolicitudesPropietarioResponse,SolicitudesHoy } from '../../../common/solicitudesPropietario-interface';
 import { ListaInmuebles } from '../../../common/inmuebles-interface';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 
@@ -11,6 +12,39 @@ import { ListaInmuebles } from '../../../common/inmuebles-interface';
   standalone: false,
   templateUrl: './home-propietario.html',
   styleUrl: './home-propietario.css',
+  animations: [
+    
+
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      
+    ]),
+    trigger('imageAnimation', [
+      // ACTUA DEPENDIENDO DEL INDEX QUE SE LE ASOCIA EN @IMAGEANIMATION
+      //IZQUIERDA -> CENTRO
+
+      //cubic-bezier( n1 => tiempo que tarda en hacer el movimiento,n2 => velocidad (de entrada) , n3 => tiempo,n4 => velocidad (de llegada) )
+      transition(':increment', [
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate(
+          '500ms cubic-bezier(0.35, 1, 0.25, 1)',
+          style({ transform: 'translateX(0)', opacity: 1 }),
+        ),
+      ]),
+
+      //DERECHA -> CENTRO
+      transition(':decrement', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate(
+          '500ms cubic-bezier(0.35, 1, 0.25, 1)',
+          style({ transform: 'translateX(0)', opacity: 1 }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HomePropietario implements OnInit {
 

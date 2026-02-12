@@ -1,11 +1,11 @@
 <section class="owner-home">
   <app-header-propietario></app-header-propietario>
 
-  <div class="dashboard-container">
+  <div class="dashboard-container" @enterInfo>
     <div *ngIf="loading" class="loader"></div>
     <div class="top-dashboard-grid" *ngIf="!loading">
       <div class="kpi-card">
-        <div class="kpi-content">
+        <div class="kpi-content" @enterInfo>
           <span class="kpi-number">{{ totalSolicitudes }}</span>
           <span class="kpi-label">SOLICITUDES DE HOY</span>
           <button class="btn-kpi-action">Ver todas</button>
@@ -13,10 +13,10 @@
         <div class="kpi-bg-icon"><i class="fa-solid fa-house"></i></div>
       </div>
 
-      <div class="activity-card">
+      <div class="activity-card" @enterInfo>
         <h3>Actividad Reciente</h3>
 
-        <div class="activity-list">
+        <div class="activity-list" @enterInfo>
           <div class="activity-item" *ngFor="let sol of solictudesHoy">
             <div class="img-wrapper">
               <img [src]="urlImagenes + sol.imagen_principal" alt="Piso" class="activity-img" />
@@ -54,13 +54,13 @@
     </div>
   </div>
 
-  <div class="bottom-section-full">
+  <div class="bottom-section-full" *ngIf="inmuebles" @enterInfo>
     <div class="section-header-row">
       <h2>Mis Inmuebles</h2>
       <button class="btn-add-new"><i class="fa-solid fa-plus"></i> Nuevo</button>
     </div>
 
-    <div class="properties-scroll-row" *ngIf="inmuebles">
+    <div class="properties-scroll-row" *ngIf="inmuebles" [@imageAnimation]="currentPage" @enterInfo>
       <button class="nav-arrow left" [disabled]="currentPage === 1"  (click)="prevPage()">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
