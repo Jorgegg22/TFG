@@ -13,7 +13,7 @@
       </div>
               <i class="fa-solid fa-angle-up arrow-options" style="color: #ffffff;" (click)="showOptions()"  *ngIf="!options" ></i>
               <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff;" (click)="showOptions()"  *ngIf="options" ></i>
-      <div class="options" *ngIf="options">
+      <div class="options" *ngIf="options" @enterLogut>
         <p (click)="logout()" style="cursor: pointer;" >Cerrar Sesion</p>
 
       </div>

@@ -63,8 +63,7 @@ export class Registro {
   comprobacionPassword() {
     const regexNormal: RegExp = /^[A-Za-z\d]{6,}$/;
     const regexMedio: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    const regexFuerte: RegExp =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regexFuerte: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (regexFuerte.test(this.userData.password)) {
       this.value = 100;

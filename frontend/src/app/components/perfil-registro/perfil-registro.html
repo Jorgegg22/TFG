@@ -6,28 +6,24 @@
           <div class="avatar-wrapper">
             <div class="profile-img">
               <!-- COMPRUEBA SI LA FOTO CONTIENE LOS DATOS REALES DE LA FOTO,SI NO IMAGEN PREDETERMINADA -->
-              <img [src]="userData.userPhoto.includes('data:') ? userData.userPhoto : './assets/img/avatar_default.png'" />
+              <img
+                [src]="userData.userPhoto.includes('data:') ? userData.userPhoto : './assets/img/avatar_default.png'" />
             </div>
 
-            <input
-              type="file"
-              #fileInput
-              style="display: none"
-              accept="image/*"
-              (change)="nombreFoto($event)"
-            />
+            <input type="file" #fileInput style="display: none" accept="image/*" (change)="nombreFoto($event)" />
 
             <button type="button" class="btn-edit-photo" (click)="fileInput.click()">
               <i class="fa-solid fa-camera"></i>
             </button>
 
-        
+
           </div>
           <div class="profile-intro">
             <h2>{{ userName }}</h2>
             <p class="perfil-p">Completa tu perfil para empezar</p>
-            <p class="p-description">Te recomendamos que subas una foto. A menos que seas Batman y quieras proteger tu identidad...</p>
-            
+            <p class="p-description">Te recomendamos que subas una foto. A menos que seas Batman y quieras proteger tu
+              identidad...</p>
+
           </div>
         </div>
 
@@ -44,28 +40,50 @@
 
           <div class="input-group">
             <label>Teléfono</label>
-            <input type="text" placeholder="600 000 000" [(ngModel)]="userData.userPhone"  (change)="validacionTelefono()"  />
+            <input type="text" placeholder="600 000 000" [(ngModel)]="userData.userPhone"
+              (ngModelChange)="validacionTelefono()" />
+            <div *ngIf="userData.userPhone.length >= 1">
+              <p  class="phone-valid" *ngIf="telefonoValido;else elsePhone">Télefono valido</p>
+              <ng-template #elsePhone>
+                <p class="phone-noValid">Télefono no válido</p>
+              </ng-template>
+            </div>
           </div>
 
           <div class="input-group">
             <label>Grado / Carrera</label>
-            <select class="select-uni" [(ngModel)]="userData.userCareer" (change)="validacionCarrera()">
+            <select class="select-uni" [(ngModel)]="userData.userCareer" (ngModelChange)="validacionCarrera()">
               <option value="" disabled selected>Selecciona tu carrera</option>
               <option *ngFor="let car of carreras" [value]="car.id">{{ car.nombre }}</option>
             </select>
+
           </div>
 
           <div class="input-group full-width">
-            <label>Descripción (Máx 200 caracteres)</label>
-            <textarea (change)="validacionDescripcion()"
+            <div class="info-description">
+              <label>Descripción (Máx 200 caracteres)</label>
+              <div *ngIf="userData.userDescription.length > 1" class="info-description-text">
+                <p *ngIf="userData.userDescription.length < 10;">
+                  Algo mas puedes poner de ti,anímate.Si no no puedes completar tu perfil
+                </p>
+                <p *ngIf="userData.userDescription.length >= 10 && userData.userDescription.length <= 200">
+                  Así perfecto
+                </p>
+                <p *ngIf="userData.userDescription.length > 200">
+                  Escribe un poco menos
+                </p>
+              </div>
+            </div>
+
+            <textarea (input)="validacionDescripcion()"
               placeholder="Cuéntanos un poco sobre ti... (hobbies, manías, qué buscas)"
-              [(ngModel)]="userData.userDescription"
-            ></textarea>
+              [(ngModel)]="userData.userDescription"></textarea>
+
           </div>
 
           <div class="input-group">
             <label>Universidad</label>
-            <select class="select-uni" [(ngModel)]="userData.userUni" (change)="validacionUniversidad()">
+            <select class="select-uni" [(ngModel)]="userData.userUni" (ngModelChange)="validacionUniversidad()">
               <option value="" disabled selected>Selecciona tu universidad</option>
               <option *ngFor="let uni of unis" [value]="uni.id">
                 {{ uni.siglas }} - {{ uni.nombre }}

@@ -184,7 +184,7 @@ export class PerfilRegistro implements OnInit {
 
   validacionDescripcion() {
     const longitudDescripcion = this.userData.userDescription.trim().length;
-    if (longitudDescripcion > 10 && longitudDescripcion <= 200) {
+    if (longitudDescripcion >= 10 && longitudDescripcion < 200) {
       this.descripcionValido = true;
     } else {
       this.descripcionValido = false;

@@ -86,7 +86,30 @@
   font-family: var(--primary-font);
 }
 
+.info-description{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
+.info-description-text{
+  font-size: 0.7rem; font-weight: 700; color: var(--text-gray);
+  text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--primary-font);font-style: italic;
+    
+
+}
+
+.phone-valid{
+  font-family: var(--primary-font);
+  font-style: italic;
+  color: #01c501;
+}
+
+.phone-noValid{
+  font-family: var(--primary-font);
+  font-style: italic;
+  color: red;
+}
 
 .avatar-wrapper { position: relative; }
 

@@ -138,3 +138,4 @@ in SYSTEMPATH/Router/Router.php on line 741.
  5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
  7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-02-12 11:20:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

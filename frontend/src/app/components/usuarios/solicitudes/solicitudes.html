@@ -25,6 +25,21 @@
       <section class="main-card solicitudes-card full-screen-layout">
         <div *ngIf="loading" class="loader"></div>
         <ng-container *ngIf="!loading">
+          <select [(ngModel)]="valorEstado" (change)="filterEstado()">
+            <option  selected="selected" value="todos">Todos</option>
+            <option value="interesado">Interesado</option>
+            <option value="aceptado">Aceptado</option>
+            <option value="rechazado">Rechazado</option>
+          </select>
+          <div *ngIf="inmuebles.length === 0" class="div-info-estado">
+            <p *ngIf="valorEstado === 'aceptado'">
+              Se paciente,en algún momento te aceptaran.
+            </p>
+            <p *ngIf="valorEstado === 'rechazado'">
+              Has tenido suerte,de momento no te han rechazado en ningun piso.
+
+            </p>
+          </div>
           <div class="column-grid-scroll" *ngIf="!noInfo; else elseBlock">
             <article class="house-card-modern" *ngFor="let inm of inmuebles" [@enterInfo]>
               <div class="card-image-box">
@@ -54,7 +69,7 @@
               </div>
             </article>
           </div>
-          <div class="pagination" *ngIf="!noInfo">
+          <div class="pagination" *ngIf="mostratPaginacion">
             <button class="pag-btn prev" [disabled]="currentPage === 1" (click)="prevPage()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
