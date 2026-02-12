@@ -28,7 +28,7 @@ export class Login implements OnInit {
     password: '',
   };
 
-  sessionData!: { nombre: string; token: string };
+  sessionData!: { nombre: string; token: string ,rol: string};
   permitirIniciarSesion: boolean = false
 
   constructor(
@@ -52,12 +52,14 @@ export class Login implements OnInit {
 
 
   login() {
+    
     this.authService.checkUser(this.userData).subscribe({
       next: (respuesta) => {
         console.log(respuesta);
         this.sessionData = {
           nombre: respuesta.nombre,
           token: respuesta.token,
+          rol: respuesta.rol
         };
         localStorage.setItem('sesion', JSON.stringify(this.sessionData));
         if (respuesta.rol === 'estudiante') {
