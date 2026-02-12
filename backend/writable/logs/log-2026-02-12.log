@@ -139,3 +139,356 @@ in SYSTEMPATH/Router/Router.php on line 741.
  6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
  7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
 DEBUG - 2026-02-12 11:20:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-02-12 15:36:45 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaAleatoria]
+in APPPATH/Controllers/InmueblesController.php on line 63.
+ 1 APPPATH/Controllers/InmueblesController.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 63)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesListaAleatoria()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 15:36:45 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaUni]
+in APPPATH/Controllers/InmueblesController.php on line 45.
+ 1 APPPATH/Controllers/InmueblesController.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 45)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 15:36:45 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-12 16:16:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 16:36:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 16:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-02-12 17:14:46 --> mysqli_sql_exception: Unknown column 'sol.created_at' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT COUNT(so...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(so...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(so...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(so...', Array, false)
+#4 /var/www/html/app/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+#7 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#8 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-02-12 17:14:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'field list'
+[Method: GET, Route: api/propietarios/solicitudes]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.created_at) = :DATE(sol.created_at):', [...], false)
+ 2 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 17:14:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.created_at) = :DATE(sol.created_at):', [...], false)
+ 4 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 17:14:46 --> [Caused by] mysqli_sql_exception: Unknown column 'sol.created_at' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`created_at` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.created_at) = :DATE(sol.created_at):', [...], false)
+ 5 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-12 17:15:43 --> mysqli_sql_exception: Unknown column 'sol.created_at' in 'where clause' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT COUNT(so...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(so...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(so...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(so...', Array, false)
+#4 /var/www/html/app/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+#7 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#8 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-02-12 17:15:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'where clause'
+[Method: GET, Route: api/propietarios/solicitudes]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.created_at) = :DATE(sol.created_at):', [...], false)
+ 2 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 17:15:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sol.created_at' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.created_at) = :DATE(sol.created_at):', [...], false)
+ 4 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 17:15:43 --> [Caused by] mysqli_sql_exception: Unknown column 'sol.created_at' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.created_at) = \'2026-02-12\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.created_at) = :DATE(sol.created_at):', [...], false)
+ 5 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-12 17:16:04 --> mysqli_sql_exception: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'univibe_db.sol.id'; this is incompatible with sql_mode=only_full_group_by in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT COUNT(so...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(so...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(so...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(so...', Array, false)
+#4 /var/www/html/app/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+#7 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#8 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-02-12 17:16:04 --> CodeIgniter\Database\Exceptions\DatabaseException: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'univibe_db.sol.id'; this is incompatible with sql_mode=only_full_group_by
+[Method: GET, Route: api/propietarios/solicitudes]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.fecha_solicitud) = :DATE(sol.fecha_solicitud):', [...], false)
+ 2 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 17:16:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'univibe_db.sol.id'; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.fecha_solicitud) = \'2026-02-12\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.fecha_solicitud) = \'2026-02-12\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.fecha_solicitud) = :DATE(sol.fecha_solicitud):', [...], false)
+ 4 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 17:16:04 --> [Caused by] mysqli_sql_exception: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'univibe_db.sol.id'; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.fecha_solicitud) = \'2026-02-12\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.fecha_solicitud) = \'2026-02-12\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = \'7\'
+AND DATE(sol.fecha_solicitud) = \'2026-02-12\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(sol.id) AS total_solicitudes, `sol`.`id` AS `solicitud_id`, `sol`.`fecha_solicitud` AS `fecha_solicitud`, `inm`.`id` AS `inmueble_id`, `inm`.`titulo`, `inm`.`precio`, `inm`.`direccion`, `inm`.`imagen_principal`, `usu`.`id` AS `estudiante_id`, `usu`.`nombre` AS `nombre_estudiante`, `usu`.`email`, `usu`.`telefono`
+FROM `solicitudes` AS `sol`
+JOIN `inmuebles` AS `inm` ON `inm`.`id` = `sol`.`inmueble_id`
+JOIN `usuarios` AS `usu` ON `usu`.`id` = `sol`.`estudiante_id`
+WHERE `inm`.`propietario_id` = :inm.propietario_id:
+AND DATE(sol.fecha_solicitud) = :DATE(sol.fecha_solicitud):', [...], false)
+ 5 APPPATH/Models/UsuariosModel.php(96): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/UsuariosController.php(176): App\Models\UsuariosModel->getSolicitudesPropietario('7')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->solicitudesUsuario()
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-12 19:16:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-02-12 19:17:08 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaUni]
+in APPPATH/Controllers/InmueblesController.php on line 45.
+ 1 APPPATH/Controllers/InmueblesController.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 45)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesFiltradoUniversidad()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 19:17:08 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/lista]
+in APPPATH/Controllers/InmueblesController.php on line 24.
+ 1 APPPATH/Controllers/InmueblesController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 24)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesLista()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-12 19:17:08 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: api/inmuebles/listaAleatoria]
+in APPPATH/Controllers/InmueblesController.php on line 63.
+ 1 APPPATH/Controllers/InmueblesController.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', '/var/www/html/app/Controllers/InmueblesController.php', 63)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmueblesListaAleatoria()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-12 19:19:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 19:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 19:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 19:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 19:20:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 19:20:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-12 19:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

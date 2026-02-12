@@ -64,6 +64,45 @@ class UsuariosModel extends Model
         return $this->findAll();
     }
 
+    public function getSolicitudesPropietario($id)
+    {
+        $total = $this->db->table('solicitudes AS sol')
+            ->join('inmuebles AS inm', 'inm.id = sol.inmueble_id')
+            ->where('inm.propietario_id', $id)
+            ->where('DATE(sol.fecha_solicitud)', date('Y-m-d'))
+            ->countAllResults();
+        $lista = $this->db->table('solicitudes AS sol')
+            ->select('
+        sol.id AS solicitud_id,
+        sol.fecha_solicitud,
+
+        inm.id AS inmueble_id,
+        inm.titulo,
+        inm.precio,
+        inm.direccion,
+        inm.imagen_principal,
+
+        usu.id AS estudiante_id,
+        usu.nombre AS nombre_estudiante,
+        usu.email,
+        usu.telefono
+    ')
+            ->join('inmuebles AS inm', 'inm.id = sol.inmueble_id')
+            ->join('usuarios AS usu', 'usu.id = sol.estudiante_id')
+            ->where('inm.propietario_id', $id)
+            ->where('DATE(sol.fecha_solicitud)', date('Y-m-d'))
+            ->get()
+            ->getResultArray();
+
+        return [
+            'total_solicitudes' => $total,
+            'solicitudes' => $lista
+        ];
+
+
+
+    }
+
 
 
 }

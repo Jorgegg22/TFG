@@ -25,6 +25,7 @@ import { PerfilPropietario } from './components/propietarios/perfil-propietario/
 import { HomePropietario } from './components/propietarios/home-propietario/home-propietario';
 import { VistaInmueblePropietario } from './components/propietarios/vista-inmueble-propietario/vista-inmueble-propietario';
 import { Header } from './components/header/header';
+import { HeaderPropietario } from './components/propietarios/header-propietario/header-propietario';
 
 
 
@@ -47,7 +48,8 @@ import { Header } from './components/header/header';
     PerfilPropietario,
     HomePropietario,
     VistaInmueblePropietario,
-    Header
+    Header,
+    HeaderPropietario
 
    
 

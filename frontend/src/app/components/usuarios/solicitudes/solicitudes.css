@@ -356,11 +356,9 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-
 /* =========================================
    PAGINACIÓN
    ========================================= */
-
 
 .pagination {
   display: flex;
@@ -369,11 +367,11 @@
   gap: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Afecta tanto a enlaces (a) como a botones (button) */
-.pagination a, 
+.pagination a,
 .pagination button {
   text-decoration: none;
   color: #333;
@@ -387,14 +385,14 @@
   gap: 5px;
   font-size: 14px;
   font-weight: 500;
-  
+
   /* Reset específico para botones */
   cursor: pointer;
   font-family: inherit; /* Para que el botón herede la fuente */
 }
 
 /* Efecto Hover */
-.pagination a:hover:not(.active), 
+.pagination a:hover:not(.active),
 .pagination button:hover:not(:disabled) {
   background-color: #f0f0f0;
   border-color: #bbb;
@@ -423,7 +421,7 @@
   color: #777;
   padding: 0 5px;
   font-weight: bold;
-} 
+}
 
 .solicitudes-empty {
   padding: 60px 20px;
@@ -462,29 +460,92 @@
   box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
 }
 
-
-.sad-img{
+.sad-img {
   width: 250px;
 }
 
 .div-info-estado {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  background-color: #fff;
-  border: 1px solid var(--primary);
-  border-left: 6px solid var(--primary);
-  border-radius: 6px;
-  color: var(--primary);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  margin-bottom: 100px;
+  /* Posicionamiento y Centrado */
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 
+  /* Caja y Espaciado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* Espacio entre icono y texto */
+  padding: 2rem 3rem;
+  width: 90%;
+  max-width: 400px;
+
+  /* Estilo Visual */
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px -5px rgba(0, 0, 0, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Sombra doble suave */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
+
+  /* Texto */
+  text-align: center;
+  color: #374151; /* Gris oscuro suave, mejor que negro puro */
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.custom-select {
+  /* Reseteo base para quitar el estilo feo del navegador */
+  appearance: none;
+  -webkit-appearance: none;
+  margin-left: 13px;
+  margin-bottom: 10px;
+
+  /* Dimensiones y Texto */
+  padding: 0.6rem 2.5rem 0.6rem 1rem; /* Espacio extra a la derecha para la flecha */
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: #1d2127;
+  background-color: #fff;
+
+  /* Bordes y Sombras */
+  border: 1px solid #e5e7eb;
+  border-radius: 8px; /* Bordes redondeados modernos */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+
+  /* Flecha Personalizada (SVG encoded) */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  font-family: var(--primary-font);
+}
+
+/* Estado Hover */
+.custom-select:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+/* Estado Focus (Cuando haces clic) */
+.custom-select:focus {
+  border-color: var(--primary); /* Usa tu color morado */
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); /* Anillo suave del color primario (ajusta el RGBA si quieres) */
+}
+
+/* Opcional: Si quieres un icono dentro */
+.div-info-estado i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
 }
 
 .div-info-estado p {
@@ -492,6 +553,9 @@
   font-weight: 600;
   font-size: 1.1rem;
   line-height: 1.5;
+  font-family: var(--secondary-font);
+  color: var(--primary);
+  font-style: italic;
 }
 .gradient-text {
   /* Tamaño y grosor impactante */
@@ -503,12 +567,12 @@
   background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+
   /* Ajustes finos */
   margin-bottom: 15px;
   letter-spacing: -1.5px; /* Hace que se vea más moderno */
   display: inline-block;
-  
+
   /* Animación suave al aparecer */
   animation: slideUp 0.6s ease-out;
 }
@@ -524,8 +588,8 @@
   top: 48%;
 }
 .loader::before,
-.loader::after {    
-  content: "";
+.loader::after {
+  content: '';
   grid-area: 1/1;
   border: 8px solid;
   border-radius: 50%;
@@ -537,6 +601,8 @@
   border-color: #0000 #0000 var(--primary) var(--primary);
   animation-direction: reverse;
 }
-@keyframes l14{ 
-  100%{transform: rotate(1turn)}
+@keyframes l14 {
+  100% {
+    transform: rotate(1turn);
+  }
 }

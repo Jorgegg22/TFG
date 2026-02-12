@@ -19,3 +19,5 @@ export interface Inmueble {
   banios: number;
   n_personas: number;
 }
+
+export type ListaInmuebles = Inmueble[];

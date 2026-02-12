@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { InmuebleService } from '../../services/inmuebles-service';
 import { ActivatedRoute } from '@angular/router';
 import { InmuebleDetalle, Solicitud, Match } from '../../common/pisoDetalle-interface';
-import { NavigationService } from '../../services/navigation-service';
-import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { count } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vista-piso',
@@ -21,6 +19,20 @@ import { count } from 'rxjs';
         animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })),
       ]),
     ]),
+
+    trigger('modalAnimation', [
+      // 1. Entrada: Aparece y crece un poco (efecto Pop)
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.8)' }), // Empieza transparente y al 80% de tamaño
+        animate('300ms ease-out', style({ opacity: 1, transform: 'scale(1)' })), // Termina visible y tamaño normal
+      ]),
+
+      // 2. Salida: Desaparece y se encoge (efecto Receder)
+      transition(':leave', [
+        style({ opacity: 1, transform: 'scale(1)' }), // (Opcional) Estado inicial explícito
+        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.8)' })), // Se va a transparente y pequeño
+      ]),
+    ]),
   ],
 })
 export class VistaPiso implements OnInit {
@@ -33,35 +45,21 @@ export class VistaPiso implements OnInit {
   loading: boolean = true;
   sesionNombre!: string;
   huecosDisponibles!: number;
-  imgSrc!:string;
-  mostrarModal:boolean = false
+  imgSrc!: string;
+  mostrarModal: boolean = false;
 
-  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
-  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
+  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {
-    const sesionData = localStorage.getItem('sesion');
-    if (sesionData) {
-      const data = JSON.parse(sesionData);
-      this.sesionNombre = data;
-    }
-    const prevPage = this.navigationService.previousUrl;
-
-    if (prevPage !== this.router.url) {
-      this.previousUrl = prevPage;
-    } else {
-      this.previousUrl = '/solicitudes';
-    }
-
-    console.log('Previous URL:', this.previousUrl);
+    
     this.loadInmueble();
   }
 
   constructor(
     private inmService: InmuebleService,
     private activatedRoute: ActivatedRoute,
-    private navigationService: NavigationService,
-    private router: Router,
+    private location: Location
   ) {}
 
   loadInmueble() {
@@ -89,17 +87,19 @@ export class VistaPiso implements OnInit {
     });
   }
 
-  onClickImagen(event:PointerEvent) {
-;
-    var target = event.target as any
+  onClickImagen(event: PointerEvent) {
+    var target = event.target as any;
     var srcAttr = target.attributes.src;
     this.imgSrc = srcAttr.nodeValue;
-    this.mostrarModal = true
+    this.mostrarModal = true;
   }
 
-  cerrarModal(){
-    console.log("cerrando");
-    this.mostrarModal = false
-    
+  cerrarModal() {
+    console.log('cerrando');
+    this.mostrarModal = false;
+  }
+
+  volver(){
+    this.location.back()
   }
 }

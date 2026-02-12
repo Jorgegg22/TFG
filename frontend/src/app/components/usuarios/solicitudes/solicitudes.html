@@ -25,28 +25,27 @@
       <section class="main-card solicitudes-card full-screen-layout">
         <div *ngIf="loading" class="loader"></div>
         <ng-container *ngIf="!loading">
-          <select [(ngModel)]="valorEstado" (change)="filterEstado()">
-            <option  selected="selected" value="todos">Todos</option>
+          <select [(ngModel)]="valorEstado" (change)="filterEstado()" class="custom-select">
+            <option value="todos">Todos</option>
             <option value="interesado">Interesado</option>
             <option value="aceptado">Aceptado</option>
             <option value="rechazado">Rechazado</option>
           </select>
           <div *ngIf="inmuebles.length === 0" class="div-info-estado">
-            <p *ngIf="valorEstado === 'aceptado'">
-              Se paciente,en algún momento te aceptaran.
-            </p>
-            <p *ngIf="valorEstado === 'rechazado'">
-              Has tenido suerte,de momento no te han rechazado en ningun piso.
+            <i class="fa-regular fa-clock" *ngIf="valorEstado === 'aceptado'"></i>
+            <i class="fa-regular fa-face-smile-wink" *ngIf="valorEstado === 'rechazado'"></i>
 
-            </p>
+            <div>
+              <p *ngIf="valorEstado === 'aceptado'">Paciencia, aún están revisando tu perfil.</p>
+              <p *ngIf="valorEstado === 'rechazado'">
+                ¡Buenas noticias! De momento, cero rechazos.
+              </p>
+            </div>
           </div>
           <div class="column-grid-scroll" *ngIf="!noInfo; else elseBlock">
             <article class="house-card-modern" *ngFor="let inm of inmuebles" [@enterInfo]>
               <div class="card-image-box">
-                <img
-                  [src]="urlImagenes + inm.imagen_principal"
-                  alt="Piso"
-                />
+                <img [src]="urlImagenes + inm.imagen_principal" alt="Piso" />
                 <div class="card-tag">{{ inm.estado_solicitud }}</div>
               </div>
               <div class="card-body">

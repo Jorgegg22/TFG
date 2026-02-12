@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Usuario } from '../common/usuarios-interface';
 import { InfoPerfil } from '../common/usuarioPerfil-interface';
 import { Solicitud } from '../common/pisoDetalle-interface';
+import { SolicitudResponse } from '../common/solicitudes-interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
-  //private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
+  //private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
+  private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
 
   constructor(private http: HttpClient) {}
 
@@ -40,7 +41,7 @@ export class UsuarioService {
     return this.http.post(`${this.URI}guardarDatos`, userdata,httpOptions);
   }
 
-  getSolicitudesUsuario(): Observable<any> {
+  getSolicitudesUsuario(): Observable<SolicitudResponse> {
     const sesionStr = localStorage.getItem('sesion');
     const sesionObj = JSON.parse(sesionStr || '{}');
 
@@ -50,7 +51,7 @@ export class UsuarioService {
       }),
     };
 
-    return this.http.get<any>(`${this.URI}solicitudes`, httpOptions);
+    return this.http.get<SolicitudResponse>(`${this.URI}solicitudes`, httpOptions);
   }
 
   getPerfilUsuario(userId?: string): Observable<InfoPerfil> {

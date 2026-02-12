@@ -1,4 +1,4 @@
-export interface Solicitud {
+export interface SolicitudResponse {
     status: string;
     mensaje: string;
     data: Data;

@@ -1,29 +1,7 @@
 <div class="wrapper-solicitudes">
-  
-  <nav class="nav-modern">
-    <div class="nav-content">
-      <div class="brand">
-        <div class="logo-univibe-serif" routerLink="/home-estudiante">U</div>
-      </div>
-      <ul class="menu">
-        <li><a routerLink="/home-propietario">Inicio</a></li>
-        <li><a routerLink="/inmuebles-propietario">Mis Inmuebles</a></li>
-        <li><a routerLink="/publicar" class="active-link">Publicar</a></li>
-        <li><a routerLink="/perfil-propietario">Perfil</a></li>
-      </ul>
-      <div class="user-actions">
-        <i class="fa-solid fa-bell"></i>
-        <i class="fa-solid fa-power-off"></i>
-        <div class="profile-circle">
-          <img src="https://i.pravatar.cc/100" alt="User" />
-        </div>
-      </div>
-    </div>
-  </nav>
-
+  <app-header-propietario></app-header-propietario>
   <main class="app-container no-scroll">
     <div class="solicitudes-wrapper">
-      
       <div class="header-gestion">
         <div class="section-title-modern">
           <h2>Publicar Inmueble</h2>
@@ -35,117 +13,111 @@
           </div>
           <div class="info-text">
             <p>
-              ¡Crea el anuncio perfecto! Rellena los datos con detalle y sube fotos luminosas. 
-              Cuanta más información des, más fácil será hacer <strong>match</strong> con el inquilino ideal.
+              ¡Crea el anuncio perfecto! Rellena los datos con detalle y sube fotos luminosas.
+              Cuanta más información des, más fácil será hacer <strong>match</strong> con el
+              inquilino ideal.
             </p>
           </div>
         </div>
       </div>
 
       <section class="main-card solicitudes-card full-screen-layout">
-        
         <form class="publish-form-grid">
-  
-  <div class="form-left-column">
-    
-    <h3 class="subsection-title">Información Básica</h3>
-    
-    <div class="input-row">
-      <div class="input-group">
-        <label>Título del anuncio</label>
-        <input type="text" placeholder="Ej. Piso luminoso en zona universitaria">
-      </div>
-    </div>
+          <div class="form-left-column">
+            <h3 class="subsection-title">Información Básica</h3>
 
-    <div class="input-row two-cols">
-      <div class="input-group">
-        <label>Precio (€/mes)</label>
-        <input type="number" placeholder="Ej. 450">
-      </div>
-      <div class="input-group">
-        <label>Capacidad</label>
-        <input type="number" placeholder="Nº Pers." min="1">
-      </div>
-    </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>Título del anuncio</label>
+                <input type="text" placeholder="Ej. Piso luminoso en zona universitaria" />
+              </div>
+            </div>
 
-    <div class="input-group">
-      <label>Descripción</label>
-      <textarea placeholder="Cuenta qué hace especial a tu piso (habitaciones amplias, buen ambiente, etc.)..."></textarea>
-    </div>
+            <div class="input-row two-cols">
+              <div class="input-group">
+                <label>Precio (€/mes)</label>
+                <input type="number" placeholder="Ej. 450" />
+              </div>
+              <div class="input-group">
+                <label>Capacidad</label>
+                <input type="number" placeholder="Nº Pers." min="1" />
+              </div>
+            </div>
 
-    <h3 class="subsection-title mt-4">Ubicación y Normas</h3>
-    
-    <div class="input-group">
-      <label>Universidad de referencia</label>
-      <select>
-        <option value="" disabled selected>Selecciona la universidad más cercana</option>
-        <option>Universidad de Granada (UGR)</option>
-        <option>VLC - UPV</option>
-        <option>Universidad de Sevilla</option>
-        <option>Complutense de Madrid</option>
-        <option>Otra</option>
-      </select>
-    </div>
+            <div class="input-group">
+              <label>Descripción</label>
+              <textarea
+                placeholder="Cuenta qué hace especial a tu piso (habitaciones amplias, buen ambiente, etc.)..."
+              ></textarea>
+            </div>
 
-    <div class="input-row">
-      <div class="input-group">
-        <label>Dirección exacta</label>
-        <input type="text" placeholder="Calle, número, ciudad...">
-      </div>
-    </div>
+            <h3 class="subsection-title mt-4">Ubicación y Normas</h3>
 
-    <div class="input-group">
-      <label>Reglas de la casa</label>
-      <div class="multiple-select-wrapper">
-        <select multiple class="custom-multi-select">
-            <option value="1">🚫 Prohibido fumar</option>
-            <option value="2">🐶 No se admiten mascotas</option>
-            <option value="3">🎉 Prohibido hacer fiestas</option>
-            <option value="4">🎓 Solo estudiantes</option>
-            <option value="5">🚺 Solo chicas</option>
-            <option value="6">🚹 Solo chicos</option>
-            <option value="7">🧹 Limpieza semanal incluida</option>
-            <option value="8">🤫 Silencio a partir de las 23h</option>
-            <option value="9">👫 Parejas bienvenidas</option>
-            <option value="10">🏳️‍🌈 LGBT Friendly</option>
-        </select>
-        <span class="helper-text">
-            <i class="fa-solid fa-circle-info"></i> Mantén pulsado <strong>Ctrl</strong> (o <strong>Cmd</strong> en Mac) para seleccionar varias reglas.
-        </span>
-      </div>
-    </div>
+            <div class="input-group">
+              <label>Universidad de referencia</label>
+              <select>
+                <option value="" disabled selected>Selecciona la universidad más cercana</option>
+                <option>Universidad de Granada (UGR)</option>
+                <option>VLC - UPV</option>
+                <option>Universidad de Sevilla</option>
+                <option>Complutense de Madrid</option>
+                <option>Otra</option>
+              </select>
+            </div>
 
-  </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>Dirección exacta</label>
+                <input type="text" placeholder="Calle, número, ciudad..." />
+              </div>
+            </div>
 
-  <div class="form-right-column">
-    
-    <h3 class="subsection-title">Galería de Fotos</h3>
-    
-    <div class="upload-main-area">
-      <div class="upload-placeholder">
-        <i class="fa-solid fa-cloud-arrow-up"></i>
-        <span>Subir foto principal</span>
-      </div>
-    </div>
+            <div class="input-group">
+              <label>Reglas de la casa</label>
+              <div class="multiple-select-wrapper">
+                <select multiple class="custom-multi-select">
+                  <option value="1">🚫 Prohibido fumar</option>
+                  <option value="2">🐶 No se admiten mascotas</option>
+                  <option value="3">🎉 Prohibido hacer fiestas</option>
+                  <option value="4">🎓 Solo estudiantes</option>
+                  <option value="5">🚺 Solo chicas</option>
+                  <option value="6">🚹 Solo chicos</option>
+                  <option value="7">🧹 Limpieza semanal incluida</option>
+                  <option value="8">🤫 Silencio a partir de las 23h</option>
+                  <option value="9">👫 Parejas bienvenidas</option>
+                  <option value="10">🏳️‍🌈 LGBT Friendly</option>
+                </select>
+                <span class="helper-text">
+                  <i class="fa-solid fa-circle-info"></i> Mantén pulsado <strong>Ctrl</strong> (o
+                  <strong>Cmd</strong> en Mac) para seleccionar varias reglas.
+                </span>
+              </div>
+            </div>
+          </div>
 
-    <div class="upload-grid-mini">
-      <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
-      <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
-      <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
-      
-    </div>
+          <div class="form-right-column">
+            <h3 class="subsection-title">Galería de Fotos</h3>
 
-    <div class="form-actions">
-      <button type="button" class="btn-cancel">Cancelar</button>
-      <button type="submit" class="btn-publish">Publicar Anuncio</button>
-    </div>
+            <div class="upload-main-area">
+              <div class="upload-placeholder">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span>Subir foto principal</span>
+              </div>
+            </div>
 
-  </div>
+            <div class="upload-grid-mini">
+              <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
+              <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
+              <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
+            </div>
 
-</form>
-
+            <div class="form-actions">
+              <button type="button" class="btn-cancel">Cancelar</button>
+              <button type="submit" class="btn-publish">Publicar Anuncio</button>
+            </div>
+          </div>
+        </form>
       </section>
-
     </div>
   </main>
 </div>

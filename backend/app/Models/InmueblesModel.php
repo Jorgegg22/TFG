@@ -204,4 +204,10 @@ class InmueblesModel extends Model
 
 
     }
+
+    public function getInmueblesPropietario($id){
+        return $this->select('inmuebles.*')
+            ->where('inmuebles.propietario_id', $id)
+            ->findAll();
+    }
 }

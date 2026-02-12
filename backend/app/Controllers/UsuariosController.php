@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\InmueblesModel;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\UsuariosModel;
 use App\Models\AtributosModel;
@@ -121,7 +122,7 @@ class UsuariosController extends ResourceController
         $token = $this->request->getHeaderLine('X-API-TOKEN');
         $userData = $this->request->getJson();
         $usuarioModel = new UsuariosModel();
-       
+
         if (!$userData) {
             return $this->failNotFound('No se ha recibido informacion');
         }
@@ -164,11 +165,18 @@ class UsuariosController extends ResourceController
 
 
         $userId = $sesionActiva['id'];
+        $rol = $sesionActiva['rol'];
 
         if (!$userId) {
             return $this->failUnauthorized('No hay id');
         }
-        $solicitudesInmuebles = $model->getSolicitudesUsuario($userId);
+
+        if ($rol === "estudiante") {
+            $solicitudesInmuebles = $model->getSolicitudesUsuario($userId);
+        } else if ($rol === "propietario") {
+            $solicitudesInmuebles = $model->getSolicitudesPropietario($userId);
+        }
+
 
         $data = [
             'inmuebles' => $solicitudesInmuebles
@@ -232,6 +240,39 @@ class UsuariosController extends ResourceController
             'data' => ['perfil' => $userProfile]
         ]);
     }
+
+
+    public function getInmueblesPropietario()
+    {
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
+        $model = new UsuariosModel();
+        $inmuebleModel = new InmueblesModel();
+
+
+
+        $sesionActiva = $model->where('token', $token)
+            ->first();
+
+
+
+        if (!$sesionActiva) {
+            return $this->failUnauthorized('Debes estar logueado para ver perfiles');
+        }
+
+        $id = $sesionActiva['id'];
+
+        $inmueblesPropietario = $inmuebleModel->getInmueblesPropietario($id);
+
+        return $this->respond(
+            $inmueblesPropietario
+        );
+
+
+
+
+    }
+
+
 
 
 

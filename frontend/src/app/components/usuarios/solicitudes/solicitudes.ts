@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuarios-service';
-import { Solicitud, Data, Inmueble } from '../../../common/solicitudes-interface';
+import { SolicitudResponse, Data, Inmueble } from '../../../common/solicitudes-interface';
 import { isIterable } from 'rxjs/internal/util/isIterable';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -24,7 +24,7 @@ export class Solicitudes implements OnInit {
     userId: null,
   };
 
-  info!: Solicitud;
+  info!: SolicitudResponse;
   allInmuebles: Inmueble[] = [];
   inmuebles: Inmueble[] = [];
 
@@ -35,10 +35,12 @@ export class Solicitudes implements OnInit {
   finalSlice!: number;
   noInfo: boolean = false;
   loading: boolean = true;
-  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
-  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
-  valorEstado: string = '';
-  mostratPaginacion:boolean = false
+
+  valorEstado: string = 'todos';
+  mostratPaginacion: boolean = false;
+
+  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {
     this.loadSolicitudes();
@@ -56,7 +58,7 @@ export class Solicitudes implements OnInit {
           this.noInfo = true;
         } else {
           this.noInfo = false;
-          this.mostratPaginacion = true
+          this.mostratPaginacion = true;
           this.inmuebles = this.info.data.inmuebles;
           this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
           console.log(this.inmuebles);
@@ -94,23 +96,19 @@ export class Solicitudes implements OnInit {
   }
 
   filterEstado() {
-  if (this.valorEstado === 'todos') {
-    this.inmuebles = this.allInmuebles;
-    if(this.inmuebles.length === 0){
-      this.noInfo = true
-      this.mostratPaginacion = false
+    if (this.valorEstado === 'todos') {
+      this.inmuebles = this.allInmuebles;
+    } else {
+      this.inmuebles = this.allInmuebles.filter((inm) => inm.estado_solicitud === this.valorEstado);
+    }
 
+    if(this.inmuebles.length === 0){
+      this.mostratPaginacion = false;
+    }else{
+      this.mostratPaginacion = true;
+      this.currentPage = 1; 
+    this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
+    this.pagination()
     }
-    this.mostratPaginacion = true
-  } else {
-    this.inmuebles = this.allInmuebles.filter((inm) => inm.estado_solicitud === this.valorEstado);
-    if(this.valorEstado === 'interesado'){
-      if(this.inmuebles.length === 0){
-        this.noInfo = true;
-        this.mostratPaginacion = false
-      }
-    }
-    this.mostratPaginacion = true
   }
-}
 }

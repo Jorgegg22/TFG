@@ -34,7 +34,7 @@ $routes->post('api/auth/login', [AuthController::class, 'checkUser']);
 $routes->get('api/auth/logout', [AuthController::class, 'logout']);
 
 
-// USUARIOS RUTAS
+// ESTUDIANTES RUTAS
 $routes->get('api/usuarios', [UsuariosController::class, 'index']);
 $routes->get('api/usuarios/usuario', [UsuariosController::class, 'getUsuarioByToken']);
 $routes->post('api/usuarios/guardarDatos', [UsuariosController::class, 'complete']);
@@ -44,7 +44,9 @@ $routes->get('api/usuarios/solicitudes', [UsuariosController::class, 'solicitude
 $routes->get('api/usuarios/perfil', [UsuariosController::class, 'getPerfilUsuario']); // Para el perfil propio
 $routes->get('api/usuarios/perfil/(:num)', [UsuariosController::class, 'getPerfilUsuario/$1']);
 
-
+//PROPIETARIOS RUTAS
+$routes->get('api/propietarios/solicitudes', [UsuariosController::class, 'solicitudesUsuario']);
+$routes->get('api/propietarios/inmuebles', [UsuariosController::class, 'getInmueblesPropietario']);
 
 //UNIVERSIDADES RUTAS    
 $routes->get('api/universidades', [UniversidadesController::class, 'universidadesLista']);
