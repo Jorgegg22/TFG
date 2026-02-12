@@ -37,6 +37,8 @@ export class Solicitudes implements OnInit {
   finalSlice!: number;
   noInfo: boolean = false;
   loading:boolean = true
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {
     this.loadSolicitudes();

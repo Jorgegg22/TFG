@@ -1,0 +1,140 @@
+ERROR - 2026-02-12 09:01:41 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution in /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#2 /var/www/html/univibe/backend/system/Database/BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect()
+#3 /var/www/html/univibe/backend/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/html/univibe/backend/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/html/univibe/backend/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#6 /var/www/html/univibe/backend/system/BaseModel.php(715): CodeIgniter\Model->doFirst()
+#7 /var/www/html/univibe/backend/app/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+#8 /var/www/html/univibe/backend/system/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+#9 /var/www/html/univibe/backend/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#10 /var/www/html/univibe/backend/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#11 /var/www/html/univibe/backend/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/univibe/backend/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /var/www/html/univibe/backend/public/index.php(63): CodeIgniter\Boot::bootWeb()
+#14 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution in /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /var/www/html/univibe/backend/system/Database/BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /var/www/html/univibe/backend/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 /var/www/html/univibe/backend/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /var/www/html/univibe/backend/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/univibe/backend/system/BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 /var/www/html/univibe/backend/app/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+#7 /var/www/html/univibe/backend/system/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+#8 /var/www/html/univibe/backend/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#9 /var/www/html/univibe/backend/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#10 /var/www/html/univibe/backend/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 /var/www/html/univibe/backend/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /var/www/html/univibe/backend/public/index.php(63): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution in /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php:246
+Stack trace:
+#0 /var/www/html/univibe/backend/system/Database/BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /var/www/html/univibe/backend/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 /var/www/html/univibe/backend/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /var/www/html/univibe/backend/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 /var/www/html/univibe/backend/system/BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 /var/www/html/univibe/backend/app/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+#6 /var/www/html/univibe/backend/system/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+#7 /var/www/html/univibe/backend/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/html/univibe/backend/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/html/univibe/backend/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/univibe/backend/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/html/univibe/backend/public/index.php(63): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-02-12 09:01:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution
+[Method: POST, Route: api/auth/login]
+in SYSTEMPATH/Database/BaseConnection.php on line 465.
+ 1 SYSTEMPATH/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-02-12 09:01:44 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution in /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#2 /var/www/html/univibe/backend/system/Database/BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect()
+#3 /var/www/html/univibe/backend/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/html/univibe/backend/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/html/univibe/backend/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#6 /var/www/html/univibe/backend/system/BaseModel.php(715): CodeIgniter\Model->doFirst()
+#7 /var/www/html/univibe/backend/app/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+#8 /var/www/html/univibe/backend/system/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+#9 /var/www/html/univibe/backend/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#10 /var/www/html/univibe/backend/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#11 /var/www/html/univibe/backend/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/univibe/backend/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /var/www/html/univibe/backend/public/index.php(63): CodeIgniter\Boot::bootWeb()
+#14 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution in /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /var/www/html/univibe/backend/system/Database/BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /var/www/html/univibe/backend/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 /var/www/html/univibe/backend/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /var/www/html/univibe/backend/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/univibe/backend/system/BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 /var/www/html/univibe/backend/app/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+#7 /var/www/html/univibe/backend/system/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+#8 /var/www/html/univibe/backend/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#9 /var/www/html/univibe/backend/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#10 /var/www/html/univibe/backend/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 /var/www/html/univibe/backend/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /var/www/html/univibe/backend/public/index.php(63): CodeIgniter\Boot::bootWeb()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution in /var/www/html/univibe/backend/system/Database/MySQLi/Connection.php:246
+Stack trace:
+#0 /var/www/html/univibe/backend/system/Database/BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /var/www/html/univibe/backend/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 /var/www/html/univibe/backend/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /var/www/html/univibe/backend/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 /var/www/html/univibe/backend/system/BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 /var/www/html/univibe/backend/app/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+#6 /var/www/html/univibe/backend/system/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+#7 /var/www/html/univibe/backend/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/html/univibe/backend/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/html/univibe/backend/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/univibe/backend/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/html/univibe/backend/public/index.php(63): CodeIgniter\Boot::bootWeb()
+#12 {main}
+CRITICAL - 2026-02-12 09:01:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for db failed: Temporary failure in name resolution
+[Method: POST, Route: api/auth/login]
+in SYSTEMPATH/Database/BaseConnection.php on line 465.
+ 1 SYSTEMPATH/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/AuthController.php(106): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->checkUser()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-02-12 10:27:18 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "[object Object]"
+[Method: GET, Route: uploads/inmuebles_fotos/%5Bobject%20Object%5D]
+in SYSTEMPATH/Router/Router.php on line 741.
+ 1 SYSTEMPATH/Router/Router.php(207): CodeIgniter\Router\Router->checkDisallowedChars()
+ 2 SYSTEMPATH/CodeIgniter.php(832): CodeIgniter\Router\Router->handle()
+ 3 SYSTEMPATH/CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb()

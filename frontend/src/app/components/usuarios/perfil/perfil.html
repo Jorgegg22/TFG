@@ -3,8 +3,8 @@
     <div *ngIf="loading" class="loader"></div>
 
     <ng-container *ngIf="!loading">
-      <div class="profile-container" *ngIf="perfil">
-        <div class="profile-main-card">
+      <div class="profile-container" *ngIf="perfil" >
+        <div class="profile-main-card"  @enterAnimation>
           <div class="profile-header">
             <div class="avatar-wrapper">
               <img
@@ -143,7 +143,7 @@
             <p>Volver</p>
           </button>
         </div>
-        <aside class="profile-sidebar-card">
+        <aside class="profile-sidebar-card" @enterSideBar>
           <div class="sidebar-header">
             <h3>Vibe & Estilo de Vida</h3>
             <span class="counter">{{ atributosUsuario.length }}</span>

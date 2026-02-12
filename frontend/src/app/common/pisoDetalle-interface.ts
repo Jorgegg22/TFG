@@ -4,7 +4,11 @@ export interface InmuebleDetalle {
     descripcion: string;
     direccion: string;
     precio: string;
-    imagen_principal: null | string;
+    imagen_principal: string;
+    imagen1: string;
+    imagen2: string;
+    imagen3:string;
+    imagen4:string
     propietario_id: string;
     created_at: string;
     universidad_id: string;
@@ -16,6 +20,7 @@ export interface InmuebleDetalle {
     nombre_universidad: string;
     solicitudes: Solicitud[];
     matches: Match[];
+
 }
 
 export interface Solicitud {

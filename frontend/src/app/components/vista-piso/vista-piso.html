@@ -2,16 +2,14 @@
   <div class="scroll-container">
     <div class="loader" *ngIf="loading"></div>
     <ng-container *ngIf="!loading">
-      <main class="property-sheet" >
+      <main class="property-sheet" @enterAnimation>
         <header class="sheet-header">
           <button class="btn-back-circle" routerLink="/solicitudes-estudiante">
             <i class="fa-solid fa-arrow-left"></i>
           </button>
           <div class="header-info">
             <h1>{{ info.titulo }}</h1>
-            <span class="location-badge"
-              ><i class="fa-solid fa-location-dot"></i> {{ info.direccion }}</span
-            >
+            <span class="location-badge"><i class="fa-solid fa-location-dot"></i> {{ info.direccion }}</span>
           </div>
           <div class="header-actions" *ngIf="edit">
             <button class="btn-icon-action edit"><i class="fa-solid fa-pen"></i></button>
@@ -21,30 +19,26 @@
 
         <section class="hero-gallery">
           <div class="main-img">
-            <img
-              src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
-              alt="Salón"
-            />
+            <img [src]="urlImagenes + info.imagen_principal" alt="Salón" (click)="onClickImagen($event)" />
           </div>
           <div class="sub-imgs">
-            <img
-              src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400"
-              alt="Detalle 1"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400"
-              alt="Detalle 2"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400"
-              alt="Detalle 3"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400"
-              alt="Detalle 4"
-            />
+            <img [src]="urlImagenes + info.imagen1" alt="Detalle 1" (click)="onClickImagen($event)" />
+            <img [src]="urlImagenes + info.imagen2" alt="Detalle 2" (click)="onClickImagen($event)" />
+            <img [src]="urlImagenes + info.imagen3" alt="Detalle 3"  (click)="onClickImagen($event)"/>
+            <img [src]="urlImagenes + info.imagen4" alt="Detalle 4"  (click)="onClickImagen($event)"/>
           </div>
         </section>
+        <div class="uv-viewer-backdrop" *ngIf="mostrarModal">
+
+          <button class="uv-viewer-close" (click)="cerrarModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div class="uv-viewer-stage" >
+            <img [src]="imgSrc" class="uv-viewer-img" alt="Vista detallada">
+          </div>
+
+        </div>
 
         <div class="content-layout">
           <aside class="details-column">
@@ -79,20 +73,13 @@
                 </div>
 
                 <div class="info-block">
-                  <h3>Compañeros de piso actuales</h3>
+                  <h3>Compañeros de piso actuales - {{huecosDisponibles}} huecos disponibles</h3>
                   <div class="tenants-list">
-                    <div
-                      class="tenant-item"
-                      *ngFor="let mt of matches"
-                      [routerLink]="'/perfil/' + mt.estudiante_id"
-                    >
+                    <div class="tenant-item" *ngFor="let mt of matches" [routerLink]="'/perfil/' + mt.estudiante_id">
                       <img src="https://i.pravatar.cc/150?img=33" alt="Inquilino" />
                       <span class="tenant-name">Inquilino</span>
                     </div>
-                    <div class="tenant-item empty">
-                      <div class="empty-circle"><i class="fa-solid fa-plus"></i></div>
-                      <span class="tenant-name">Libre</span>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -127,7 +114,7 @@
             </div>
           </aside>
         </div>
-      </main></ng-container
-    >
+      </main>
+    </ng-container>
   </div>
 </div>

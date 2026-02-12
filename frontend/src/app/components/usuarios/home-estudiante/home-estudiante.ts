@@ -53,14 +53,20 @@ import { Inmueble } from '../../../common/inmuebles-interface';
 
       //cubic-bezier( n1 => tiempo que tarda en hacer el movimiento,n2 => velocidad (de entrada) , n3 => tiempo,n4 => velocidad (de llegada) )
       transition(':increment', [
-        style({ transform: 'translateX(-100%)', opacity: 0 }), 
-        animate('500ms cubic-bezier(0.35, 1, 0.25, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate(
+          '500ms cubic-bezier(0.35, 1, 0.25, 1)',
+          style({ transform: 'translateX(0)', opacity: 1 }),
+        ),
       ]),
 
       //DERECHA -> CENTRO
       transition(':decrement', [
-        style({ transform: 'translateX(100%)', opacity: 0 }), 
-        animate('500ms cubic-bezier(0.35, 1, 0.25, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate(
+          '500ms cubic-bezier(0.35, 1, 0.25, 1)',
+          style({ transform: 'translateX(0)', opacity: 1 }),
+        ),
       ]),
     ]),
   ],
@@ -81,13 +87,15 @@ export class HomeEstudiante implements OnInit {
   loading: boolean = true;
   datosCargados: number = 0;
 
-  //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
-  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
   estadoAnimacion: string | null = null;
   estadoAnimacionImagen: string | null = null;
   mostrandoCard: boolean = true;
   imagenesInmueble: string[] = [];
   imagenMostrar!: string;
+  buttonImageDisabledPrev: boolean = true;
+  buttonImageDisabledNext: boolean = false;
 
   constructor(private imbService: InmuebleService) {}
 
@@ -175,13 +183,7 @@ export class HomeEstudiante implements OnInit {
       console.log('No quedan más casas por mostrar');
       this.noInfo = true;
     }
-    this.imagenesInmueble.push(
-      this.inmuebles.imagen_principal,
-      this.inmuebles.imagen1,
-      this.inmuebles.imagen2,
-      this.inmuebles.imagen3,
-      this.inmuebles.imagen4,
-    );
+
     this.loadPhoto();
   }
 
@@ -244,32 +246,37 @@ export class HomeEstudiante implements OnInit {
     }, 1200);
   }
 
- 
-
   loadPhoto(estado?: 'siguiente' | 'previa') {
+    this.imagenesInmueble = [
+      this.inmuebles.imagen_principal,
+      this.inmuebles.imagen1,
+      this.inmuebles.imagen2,
+      this.inmuebles.imagen3,
+      this.inmuebles.imagen4,
+    ];
+    console.log('imagenes inmueble');
+
+    console.log(this.imagenesInmueble);
     this.imagenMostrar = this.imagenesInmueble[this.indexImage];
     if (estado === 'siguiente') {
-      if (this.indexImage === 4) {
-        this.indexImage = 0;
-        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
-        console.log(this.indexImage);
-      } else {
-        this.indexImage++;
-        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
-        console.log(this.imagenMostrar);
-        console.log(this.indexImage);
-      }
+      this.indexImage++;
     } else if (estado === 'previa') {
-      if (this.indexImage === 0) {
-        this.indexImage = 4;
-        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
-        console.log(this.indexImage);
-      } else {
-        this.indexImage--;
-        this.imagenMostrar = this.imagenesInmueble[this.indexImage];
-        console.log(this.indexImage);
-        console.log(this.imagenMostrar);
-      }
+      this.indexImage--;
+    }
+    this.imagenMostrar = this.imagenesInmueble[this.indexImage];
+    console.log(this.indexImage);
+    console.log(this.imagenMostrar);
+
+    if (this.indexImage === 0) {
+      this.buttonImageDisabledPrev = true;
+    } else {
+      this.buttonImageDisabledPrev = false;
+    }
+
+    if (this.indexImage === 4) {
+      this.buttonImageDisabledNext = true;
+    } else {
+      this.buttonImageDisabledNext = false;
     }
   }
 }

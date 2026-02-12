@@ -98,14 +98,68 @@
 .delete:hover { background: var(--danger); color: white; }
 
 /* HERO GALLERY */
+/* CONTENEDOR PRINCIPAL */
 .hero-gallery {
-  display: flex;
-  gap: 5px;
+  display: flex; /* Mantenemos tu estructura */
+  gap: 5px;     /* Un poco más de aire (antes 5px) */
   height: 610px;
   margin-bottom: 40px;
   justify-content: center;
+  
+  /* MEJORA VISUAL CLAVE: */
+  border-radius: 24px; /* Redondeamos TODO el bloque */
+  overflow: hidden;    /* Recorta las imágenes que tocan las esquinas */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+  background-color: #f1f5f9; /* Fondo de carga mientras llegan las fotos */
 }
 
+/* LA IMAGEN PRINCIPAL (IZQUIERDA) */
+.main-img {
+  flex: 1.6; /* Ocupa un poco más de espacio proporcional */
+  position: relative;
+  overflow: hidden; /* Necesario para el zoom */
+}
+
+/* EL CONTENEDOR DE LAS 4 FOTOS (DERECHA) */
+.sub-imgs {
+  flex: 1; /* Ocupa el resto */
+  /* Tu grid interno se mantiene, solo asegúrate de que ocupe todo */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px; /* Mismo gap que el padre */
+}
+
+/* ESTILO COMÚN PARA TODAS LAS IMÁGENES */
+.main-img img,
+.sub-imgs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0; /* Quitamos bordes individuales, el padre manda */
+  cursor: pointer;
+  
+  /* Transiciones suaves */
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.4s ease;
+}
+
+/* --- INTERACTIVIDAD PREMIUM --- */
+
+/* 1. Al entrar en la galería, oscurece un poco TODAS las fotos */
+.hero-gallery:hover .main-img img,
+.hero-gallery:hover .sub-imgs img {
+  filter: brightness(0.9);
+}
+
+/* 2. Pero la foto que estás tocando recupera su brillo y hace zoom */
+.hero-gallery .main-img img:hover,
+.hero-gallery .sub-imgs img:hover {
+  filter: brightness(1.05); /* Un poco más brillante que el original */
+  transform: scale(1.06);   /* Zoom sutil */
+  z-index: 2; /* Asegura que quede por encima si se sale */
+}
 
 
 
@@ -247,166 +301,216 @@
 
 .tenant-name { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);font-family: var(--font-body); }
 
-/* CANDIDATES COLUMN */
+/* --- LAYOUT PRINCIPAL --- */
 .candidates-column {
   position: sticky;
-  top: 20px;
+  top: 30px; /* Un poco más de margen superior */
   width: 1000px;
   margin-left: 250px;
+  z-index: 10;
 }
 
+/* --- PANEL ESTILO CRISTAL/GRADIENTE --- */
 .likes-panel {
-  background: #0056b3;
-  border-radius: 24px;
-  padding: 30px;
+  /* Gradiente moderno y profundo */
+  background: var(--primary);
+  border-radius: 32px; /* Bordes más redondeados (Tendencia actual) */
+  padding: 35px;
   color: white;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  
+  /* Sombra "Glow" (Resplandor) en lugar de sombra negra dura */
+  box-shadow: 0 20px 50px -10px rgba(0, 86, 179, 0.5);
+  
   min-height: 700px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Decoración de fondo sutil (Círculo de luz) */
+.likes-panel::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* --- HEADER --- */
 .panel-header {
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 2;
 }
 
 .panel-header h3 {
   margin: 0;
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 800; /* Letra más gruesa y moderna */
   font-family: var(--font-heading);
+  letter-spacing: -0.5px;
 }
 
 .panel-header p {
-  margin: 5px 0 0;
-  opacity: 0.8;
-  font-size: 0.9rem;
-    font-family: var(--font-heading);
+  margin: 6px 0 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-weight: 500;
 }
 
-/* GRID DE 6 CARTAS (2 columnas) */
+/* --- GRID DE CANDIDATOS --- */
 .candidates-scroll {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  max-height: 650px;
+  /* MEJORA: Grid flexible. Se adapta al ancho en lugar de forzar 2 columnas */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px; /* Más espacio entre cartas */
+  max-height: 600px;
   overflow-y: auto;
-  padding-right: 8px;
+  padding: 10px 5px; /* Padding para que no se corten las sombras */
+  
+  /* Scrollbar moderna (Firefox) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
 }
 
-.candidates-scroll::-webkit-scrollbar {
-  width: 5px;
-}
-
+/* Scrollbar moderna (Chrome/Safari) */
+.candidates-scroll::-webkit-scrollbar { width: 6px; }
+.candidates-scroll::-webkit-scrollbar-track { background: transparent; }
 .candidates-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
 }
 
-/* ESTILO DE CARTA INDIVIDUAL */
+/* --- CARTA DE CANDIDATO --- */
 .candidate-row {
-  background: white;
-  border-radius: 18px;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.96); /* Casi blanco sólido */
+  backdrop-filter: blur(8px);
+  border-radius: 24px; /* Muy redondeado */
+  padding: 20px 15px;
+  
   display: flex;
-  flex-direction: column; /* Diseño vertical tipo carta */
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 140px;
-  height: 210px;
+  gap: 15px;
+  
+  /* Dimensiones */
+  width: 100%; /* Ocupa el espacio de la celda del grid */
+  height: auto; /* Altura flexible */
+  min-height: 230px;
+  
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto rebote suave */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .candidate-row:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px); /* Sube más al hacer hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
 
+/* AVATAR */
 .candidate-avatar {
-  width: 70px;
-  height: 70px;
+  width: 80px; height: 80px; /* Un poco más grande */
   cursor: pointer;
+  position: relative;
 }
 
 .candidate-avatar img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #eef6ff;
+  border: 4px solid white; /* Borde blanco grueso */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
+.candidate-row:hover .candidate-avatar img {
+  transform: scale(1.05);
+}
+
+/* INFO */
 .candidate-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  width: 100%;
 }
 
 .candidate-info .name {
-  color: #1a202c;
+  color: #1e293b; /* Slate Dark */
   font-weight: 700;
-  font-size: 1rem;
-  display: block;
-  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-family: var(--font-heading);
+  
+  /* Truncar nombres muy largos */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.candidate-info .sub {
-  color: #2ecc71;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* ACCIONES EN LA PARTE INFERIOR DE LA CARTA */
+/* BOTONES DE ACCIÓN */
 .candidate-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: auto; /* Empuja los botones al final */
 }
 
 .action-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 42px; height: 42px;
+  border-radius: 14px; /* Más cuadrado (Squircle) */
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .action-btn.accept {
-  background: #0056b3;
+  background: #0065ff;
   color: white;
+  box-shadow: 0 4px 12px rgba(0, 101, 255, 0.25);
 }
 
 .action-btn.accept:hover {
-  background: #004494;
-  transform: scale(1.1);
+  background: #0050cc;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 101, 255, 0.35);
 }
 
 .action-btn.reject {
-  background: #f1f2f6;
-  color: #718096;
+  background: #f1f5f9;
+  color: #94a3b8;
 }
 
 .action-btn.reject:hover {
-  background: #ff4757;
-  color: white;
+  background: #fee2e2;
+  color: #ef4444;
+  transform: translateY(-3px);
 }
 
+/* ESTADO VACÍO (NO LIKES) */
 .no-likes {
-  grid-column: 1 / span 2;
-  text-align: center;
-  padding: 40px;
-  opacity: 0.7;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  gap: 15px;
 }
+
+.no-likes i { font-size: 2.5rem; opacity: 0.6; }
+.no-likes p { font-size: 1rem; font-weight: 500; }
 
 /* HTML: <div class="loader"></div> */
 .loader {

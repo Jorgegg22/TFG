@@ -4,29 +4,46 @@ import { ActivatedRoute } from '@angular/router';
 import { InmuebleDetalle, Solicitud, Match } from '../../common/pisoDetalle-interface';
 import { NavigationService } from '../../services/navigation-service';
 import { Router } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'app-vista-piso',
   standalone: false,
   templateUrl: './vista-piso.html',
   styleUrl: './vista-piso.css',
+  animations: [
+    trigger('enterAnimation', [
+      // Animaciones Like/Dislike
+      // (* significa estado
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('0.3s ease-in', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+    ]),
+  ],
 })
 export class VistaPiso implements OnInit {
   idInmueble!: string;
   info!: InmuebleDetalle;
   solicitudes: Solicitud[] = [];
   matches: Match[] = [];
-  previousUrl!:string | null;
-  edit:boolean = false;
-  loading:boolean = true
-  sesionNombre!:string;
-  
+  previousUrl!: string | null;
+  edit: boolean = false;
+  loading: boolean = true;
+  sesionNombre!: string;
+  huecosDisponibles!: number;
+  imgSrc!:string;
+  mostrarModal:boolean = false
+
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {
-    const sesionData = localStorage.getItem("sesion");
-    if(sesionData){
+    const sesionData = localStorage.getItem('sesion');
+    if (sesionData) {
       const data = JSON.parse(sesionData);
-      this.sesionNombre = data
+      this.sesionNombre = data;
     }
     const prevPage = this.navigationService.previousUrl;
 
@@ -44,7 +61,7 @@ export class VistaPiso implements OnInit {
     private inmService: InmuebleService,
     private activatedRoute: ActivatedRoute,
     private navigationService: NavigationService,
-    private router:Router
+    private router: Router,
   ) {}
 
   loadInmueble() {
@@ -59,13 +76,30 @@ export class VistaPiso implements OnInit {
         console.log(this.solicitudes);
         console.log(this.matches);
 
-        if(this.info.nombre_propietario === this.sesionNombre){
-          this.edit = true
+        if (this.info.nombre_propietario === this.sesionNombre) {
+          this.edit = true;
         }
+        console.log(this.info.n_personas);
+        let numeroMatches = this.matches.length;
+        console.log(numeroMatches);
+        this.huecosDisponibles = parseInt(this.info.n_personas) - numeroMatches;
 
-        this.loading = false
-
+        this.loading = false;
       },
     });
+  }
+
+  onClickImagen(event:PointerEvent) {
+;
+    var target = event.target as any
+    var srcAttr = target.attributes.src;
+    this.imgSrc = srcAttr.nodeValue;
+    this.mostrarModal = true
+  }
+
+  cerrarModal(){
+    console.log("cerrando");
+    this.mostrarModal = false
+    
   }
 }

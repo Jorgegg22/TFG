@@ -6,24 +6,20 @@
 
     <ng-container *ngIf="!loading">
       <div class="layout-grid" *ngIf="!noInfo; else elseBlock">
-        <section
-          class="main-card image-area"
-          [@swipeAnimacion]="estadoAnimacion"
-          *ngIf="mostrandoCard"
-        >
+        <section class="main-card image-area" [@swipeAnimacion]="estadoAnimacion" *ngIf="mostrandoCard">
           <div class="price-tag">{{ inmuebles.precio }} €</div>
 
           <div class="image-wrapper">
-            <img
-              [src]="urlImagenes + imagenMostrar"
-              alt="Piso moderno"
-              [@imageAnimation]="indexImage"
-            />
+            <img [src]="urlImagenes + imagenMostrar" alt="Piso moderno" [@imageAnimation]="indexImage" />
+            <div class="carousel-indicators">
+              <span [class]="'indicator'" *ngFor="let item of imagenesInmueble; let i = index"  [class.active] = "indexImage === i" ></span>
 
-            <button class="nav-arrow left" (click)="loadPhoto('previa')">
+            </div>
+
+            <button class="nav-arrow left" (click)="loadPhoto('previa')" [disabled]="buttonImageDisabledPrev">
               <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button class="nav-arrow right" (click)="loadPhoto('siguiente')">
+            <button class="nav-arrow right" (click)="loadPhoto('siguiente')" [disabled]="buttonImageDisabledNext">
               <i class="fa-solid fa-chevron-right"></i>
             </button>
 
@@ -38,7 +34,7 @@
             <div *ngIf="inmuebles">
               <span class="owner-label" [routerLink]="'/perfil/' + inmuebles.propietario_id">{{
                 inmuebles.nombre_propietario
-              }}</span>
+                }}</span>
             </div>
           </div>
         </section>
@@ -48,9 +44,7 @@
             <h1>{{ inmuebles.titulo }}</h1>
             <div class="title-divider"></div>
           </div>
-          <span class="category-badge" style="margin-top: 20px" [@enterInfo]="estadoAnimacion"
-            >Características</span
-          >
+          <span class="category-badge" style="margin-top: 20px" [@enterInfo]="estadoAnimacion">Características</span>
           <div class="quick-stats" [@enterInfo]="estadoAnimacion">
             <div class="stat-item">
               <i class="fa-solid fa-bed"></i>
