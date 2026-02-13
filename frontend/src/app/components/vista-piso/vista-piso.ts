@@ -44,6 +44,7 @@ export class VistaPiso implements OnInit {
   edit: boolean = false;
   loading: boolean = true;
   sesionNombre!: string;
+  sesionNombreItem!: any;
   huecosDisponibles!: number;
   imgSrc!: string;
   mostrarModal: boolean = false;
@@ -52,14 +53,13 @@ export class VistaPiso implements OnInit {
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {
-    
     this.loadInmueble();
   }
 
   constructor(
     private inmService: InmuebleService,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
   ) {}
 
   loadInmueble() {
@@ -73,10 +73,16 @@ export class VistaPiso implements OnInit {
         console.log(this.info);
         console.log(this.solicitudes);
         console.log(this.matches);
+        console.log(this.info.nombre_propietario);
+        const sesionStr = localStorage.getItem('sesion');
+        const sesionObj = JSON.parse(sesionStr || '{}');
+        this.sesionNombre = sesionObj.nombre;
+        console.log(this.sesionNombre);
 
         if (this.info.nombre_propietario === this.sesionNombre) {
           this.edit = true;
         }
+
         console.log(this.info.n_personas);
         let numeroMatches = this.matches.length;
         console.log(numeroMatches);
@@ -99,7 +105,7 @@ export class VistaPiso implements OnInit {
     this.mostrarModal = false;
   }
 
-  volver(){
-    this.location.back()
+  volver() {
+    this.location.back();
   }
 }

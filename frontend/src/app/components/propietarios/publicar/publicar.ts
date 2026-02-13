@@ -4,14 +4,31 @@ import { UniversidadService } from '../../../services/universidades';
 
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-
 import { Universidad } from '../../../common/universidades-interface';
-import { flatMap } from 'rxjs';
+
 @Component({
   selector: 'app-publicar',
   standalone: false,
   templateUrl: './publicar.html',
   styleUrl: './publicar.css',
+  animations: [
+    trigger('enterInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
+      ]),
+      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+    ]),
+    trigger('enterExtraInfo', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-20px)' }), // Aparece desde abajo
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
+      ]),
+      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+    ]),
+
+    
+  ],
 })
 export class Publicar implements OnInit {
   inmData: {
@@ -71,7 +88,9 @@ export class Publicar implements OnInit {
   postInmueble() {
     this.propService.postInmueble(this.inmData).subscribe({
       next: (respuesta) => {
-        console.log(respuesta);
+        this.router.navigate(['/inmuebles-propietario'],{
+          queryParams: {añadido:'true'}
+        })
       },
     });
   }

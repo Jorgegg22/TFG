@@ -125,25 +125,48 @@ class InmueblesController extends ResourceController
 
 
     public function postInmueble(){
-        $data = $this->request->getJSON();
+    $data = $this->request->getJSON();
 
-        $token = $this->request->getHeaderLine('X-API-TOKEN');
-        $usuarioModel = new UsuariosModel();
+    $token = $this->request->getHeaderLine('X-API-TOKEN');
+    $usuarioModel = new UsuariosModel();
+    $inmueblesModel = new InmueblesModel();
 
-        if (!$token) {
-            return $this->respond("No hay token");
-        }
-
-        $usuarioSesion = $usuarioModel->where('token', $token)
-            ->first();
-
-        if (!$usuarioSesion) {
-            return $this->respond("No hay sesion");
-        }
-        ;
-
-        $idUsuario = $usuarioSesion['id'];
+    if(!$data){
+        return $this->respond("No hay datos");
     }
+    
+    if (!$token) {
+        return $this->respond("No hay token");
+    }
+
+    $usuarioSesion = $usuarioModel->where('token', $token)->first();
+
+    if (!$usuarioSesion) {
+        return $this->respond("No hay sesion");
+    }
+
+    $idUsuario = $usuarioSesion['id'];
+
+    $nuevoInmueble = [
+        'titulo'         => $data->titulo,
+        'descripcion'    => $data->desc,
+        'direccion'      => $data->direccion,
+        'precio'         => $data->precio,
+        'propietario_id' => $idUsuario,
+        'universidad_id' => $data->universidad_id,
+        'metros'         => $data->metros,
+        'habitaciones'   => $data->habitaciones,
+        'banios'         => $data->banios,
+        'n_personas'     => $data->n_personas,
+
+    ];
+
+    if ($inmueblesModel->insert($nuevoInmueble)) {
+        return $this->respond(["mensaje" => "Inmueble creado con éxito"], 201);
+    } else {
+        return $this->respond(["mensaje" => "Error al insertar"], 500);
+    }
+}
 
 
 

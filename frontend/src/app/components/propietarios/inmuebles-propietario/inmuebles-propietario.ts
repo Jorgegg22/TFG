@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ListaInmuebles } from '../../../common/inmuebles-interface';
 import { PropietarioService } from '../../../services/propietarios-service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router'; // Importar esto
 @Component({
   selector: 'app-inmuebles-propietario',
   standalone: false,
   templateUrl: './inmuebles-propietario.html',
   styleUrl: './inmuebles-propietario.css',
-   animations: [
+  animations: [
     trigger('enterInfo', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
@@ -15,12 +16,22 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       ]),
       // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
     ]),
-     trigger('enterExtraInfo', [
+    trigger('enterExtraInfo', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(-20px)' }), // Aparece desde abajo
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
       ]),
       // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+    ]),
+
+    trigger('enterPost', [
+      // Entrada desde la izquierda
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(100%)' }),
+        animate('0.5s ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
+      ]),
+      // Salida con FadeOut (desvanecimiento)
+      transition(':leave', [animate('0.4s ease-in', style({ opacity: 0 }))]),
     ]),
   ],
 })
@@ -38,10 +49,21 @@ export class InmueblesPropietario implements OnInit {
   loading: boolean = true;
   info: boolean = false;
 
-  constructor(private propService: PropietarioService) {}
+  exitoPost: boolean = false;
+
+  constructor(
+    private propService: PropietarioService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.loadInmuebles();
+
+    this.route.queryParams.subscribe((params) => {
+      if (params['añadido'] === 'true') {
+        this.exitoPost = true;
+      }
+    });
   }
 
   loadInmuebles() {
@@ -74,8 +96,7 @@ export class InmueblesPropietario implements OnInit {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.pagination();
-      console.log("next");
-      
+      console.log('next');
     }
   }
 

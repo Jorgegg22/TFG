@@ -2,7 +2,7 @@
   <app-header-propietario></app-header-propietario>
   <main class="app-container no-scroll">
     <div class="solicitudes-wrapper">
-      <div class="header-gestion">
+      <div class="header-gestion" @enterExtraInfo>
         <div class="section-title-modern">
           <h2>Publicar Inmueble</h2>
         </div>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <section class="main-card solicitudes-card full-screen-layout">
+      <section class="main-card solicitudes-card full-screen-layout" @enterInfo>
         <div class="publish-form-grid">
           <div class="form-left-column">
             <h3 class="subsection-title">Información Básica</h3>
