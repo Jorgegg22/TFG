@@ -29,51 +29,93 @@
             <div class="input-row">
               <div class="input-group">
                 <label>Título del anuncio</label>
-                <input type="text" placeholder="Ej. Piso luminoso en zona universitaria" [(ngModel)]="inmData.titulo"(input)="validarTitulo()" />
-                <span *ngIf="!tituloValido" class="error-msg">El título es demasiado corto (mínimo 5 caracteres).</span>
+                <input
+                  type="text"
+                  placeholder="Ej. Piso luminoso en zona universitaria"
+                  [(ngModel)]="inmData.titulo"
+                  (input)="validarTitulo()"
+                />
+                <span *ngIf="!tituloValido && inmData.titulo.length > 0 " class="error-msg"
+                  >El título es demasiado corto (mínimo 5 caracteres).</span
+                >
               </div>
             </div>
 
             <div class="input-row two-cols">
               <div class="input-group">
                 <label>Precio (€/mes)</label>
-                <input type="number" placeholder="Ej. 450" [(ngModel)]="inmData.precio"  (input)="validarPrecio()" />
-                <span *ngIf="!precioValido" class="error-msg">El precio debe ser mayor a 0.</span>
+                <input
+                  type="number"
+                  placeholder="Ej. 450"
+                  [(ngModel)]="inmData.precio"
+                  (input)="validarPrecio()"
+                />
+                <span *ngIf="!precioValido && inmData.precio !== null" class="error-msg">El precio debe ser mayor a 0.</span>
               </div>
               <div class="input-group">
                 <label>Capacidad</label>
-                <input type="number" placeholder="Nº Pers." min="1" [(ngModel)]="inmData.n_personas"  (input)="validarCapacidad()"/>
-                <span *ngIf="!personasValido" class="error-msg">La capacidad debe ser de al menos 1 persona.</span>
+                <input
+                  type="number"
+                  placeholder="Nº Pers."
+                  min="1"
+                  [(ngModel)]="inmData.n_personas"
+                  (input)="validarCapacidad()"
+                />
+                <span *ngIf="!personasValido && inmData.n_personas !== null" class="error-msg"
+                  >La capacidad debe ser de al menos 1 persona.</span
+                >
               </div>
-
             </div>
             <div class="input-row two-cols">
               <div class="input-group">
                 <label>Habitaciones</label>
-                <input type="number" placeholder="Ej. 4" [(ngModel)]="inmData.habitaciones" (input)="validarHabitaciones()"  />
-                <span *ngIf="!habitacionesValido" class="error-msg">Indique el número de habitaciones.</span>
+                <input
+                  type="number"
+                  placeholder="Ej. 4"
+                  [(ngModel)]="inmData.habitaciones"
+                  (input)="validarHabitaciones()"
+                />
+                <span *ngIf="!habitacionesValido && inmData.habitaciones !== null" class="error-msg"
+                  >Indique el número de habitaciones.</span
+                >
               </div>
               <div class="input-group">
                 <label>Numero de baños</label>
-                <input type="number" placeholder="Nº baños." min="1" [(ngModel)]="inmData.banios" (input)="validarBanios()"  />
-                <span *ngIf="!baniosValido" class="error-msg">Indique el número de baños.</span>
+                <input
+                  type="number"
+                  placeholder="Nº baños."
+                  min="1"
+                  [(ngModel)]="inmData.banios"
+                  (input)="validarBanios()"
+                />
+                <span *ngIf="!baniosValido && inmData.banios !== null" class="error-msg">Indique el número de baños.</span>
               </div>
-
             </div>
             <div class="input-row two-cols">
               <div class="input-group">
                 <label>Metros²</label>
-                <input type="number" placeholder="Ej. 90" [(ngModel)]="inmData.metros" (input)="validarMetros()" />
-                <span *ngIf="!metrosValido" class="error-msg">Los metros cuadrados deben ser mayores a 0.</span>
+                <input
+                  type="number"
+                  placeholder="Ej. 90"
+                  [(ngModel)]="inmData.metros"
+                  (input)="validarMetros()"
+                />
+                <span *ngIf="!metrosValido && inmData.metros !== null " class="error-msg"
+                  >Los metros cuadrados deben ser mayores a 0.</span
+                >
               </div>
-
             </div>
 
             <div class="input-group">
               <label>Descripción</label>
-              <textarea placeholder="Cuenta qué hace especial a tu piso (habitaciones amplias, buen ambiente, etc.)..."
-                [(ngModel)]="inmData.desc" (input)="validarDescripcion()"></textarea>
-              <span *ngIf="!descValido" class="error-msg">La descripción debe tener al menos 20 caracteres.</span>
+              <textarea
+                placeholder="Cuenta qué hace especial a tu piso (habitaciones amplias, buen ambiente, etc.)..."
+                [(ngModel)]="inmData.desc"
+                (input)="validarDescripcion()"
+              ></textarea>
+              <span *ngIf="!descValido && inmData.desc.length > 0" class="error-msg"
+                >La descripción debe tener al menos 20 caracteres.</span
+              >
             </div>
 
             <h3 class="subsection-title mt-4">Ubicación</h3>
@@ -82,56 +124,110 @@
               <label>Universidad de referencia</label>
               <select [(ngModel)]="inmData.universidad_id" (change)="validarUniversidad()">
                 <option value="" disabled selected>Selecciona la universidad más cercana</option>
-                <option *ngFor="let uni of universidades" value="{{uni.id}}">{{uni.nombre}} ({{uni.ciudad}})</option>
-
+                <option *ngFor="let uni of universidades" value="{{ uni.id }}">
+                  {{ uni.nombre }} ({{ uni.ciudad }})
+                </option>
               </select>
-              <span *ngIf="!universidadValido" class="error-msg">Debe seleccionar una universidad.</span>
+              <span *ngIf="!universidadValido && inmData.universidad_id !== ''" class="error-msg"
+                >Debe seleccionar una universidad.</span
+              >
             </div>
 
             <div class="input-row">
               <div class="input-group">
                 <label>Dirección exacta</label>
-                <input type="text" placeholder="Calle, número, ciudad..." [(ngModel)]="inmData.direccion"  (input)="validarDireccion()"/>
-                <span *ngIf="!direccionValido" class="error-msg">La dirección debe tener al menos 10 caracteres.</span>
+                <input
+                  type="text"
+                  placeholder="Calle, número, ciudad..."
+                  [(ngModel)]="inmData.direccion"
+                  (input)="validarDireccion()"
+                />
+                <span *ngIf="!direccionValido && inmData.direccion.length > 0" class="error-msg"
+                  >La dirección debe tener al menos 10 caracteres.</span
+                >
               </div>
             </div>
-
-
           </div>
 
           <div class="form-right-column">
-            <h3 class="subsection-title">Galería de Fotos</h3>
+            <h3 class="subsection-title">Galería de Fotos - (Fotos Obligatorias)</h3>
 
-            <label class="upload-placeholder">
-              <input type="file" style="display: none;">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-              <span>Subir foto principal</span>
+            <label
+              class="upload-placeholder"
+              [style.background-image]="
+                inmData.imagen_principal ? 'url(' + inmData.imagen_principal + ')' : 'none'
+              "
+              [class.has-image]="inmData.imagen_principal"
+            >
+              <input
+                type="file"
+                accept="image/*"
+                style="display: none"
+                (change)="validarImagenPrincipal($event)"
+              />
+
+              <ng-container *ngIf="!inmData.imagen_principal">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span>Subir foto principal</span>
+              </ng-container>
             </label>
             <div class="upload-grid-mini">
-              <label class="upload-box-mini">
-                <input type="file" accept="image/*">
+              <label
+                class="upload-box-mini"
+                [style.background-image]="
+                  inmData.imagen1 ? 'url(' + inmData.imagen1 + ')' : 'none'
+                "
+                 [class.has-image]="inmData.imagen1"
+              >
+                <input type="file" accept="image/*" (change)="validarImagenUno($event)" />
                 <i class="fa-solid fa-plus"></i>
               </label>
 
-              <label class="upload-box-mini">
-                <input type="file" accept="image/*">
+              <label
+                class="upload-box-mini"
+                [style.background-image]="
+                  inmData.imagen2 ? 'url(' + inmData.imagen2 + ')' : 'none'
+                  
+                "
+                [class.has-image]="inmData.imagen2"
+              >
+                <input type="file" accept="image/*" (change)="validarImagenDos($event)" />
                 <i class="fa-solid fa-plus"></i>
               </label>
 
-              <label class="upload-box-mini">
-                <input type="file" accept="image/*">
+              <label
+                class="upload-box-mini"
+                [style.background-image]="
+                  inmData.imagen3 ? 'url(' + inmData.imagen3 + ')' : 'none'
+                "
+                [class.has-image]="inmData.imagen3"
+              >
+                <input type="file" accept="image/*" (change)="validarImagenTres($event)" />
                 <i class="fa-solid fa-plus"></i>
               </label>
 
-              <label class="upload-box-mini">
-                <input type="file" accept="image/*">
+              <label
+                class="upload-box-mini"
+                [style.background-image]="
+                  inmData.imagen4 ? 'url(' + inmData.imagen4 + ')' : 'none'
+                "
+                [class.has-image]="inmData.imagen4"
+              >
+                <input type="file" accept="image/*" (change)="validarImagenCuatro($event)" />
                 <i class="fa-solid fa-plus"></i>
               </label>
             </div>
 
             <div class="form-actions">
               <button type="button" class="btn-cancel" (click)="limpiar()">Limpiar</button>
-              <button type="submit" class="btn-publish" [disabled]="!permitirBtnPost"  (click)="postInmueble()">Publicar Anuncio</button>
+              <button
+                type="submit"
+                class="btn-publish"
+                [disabled]="!permitirBtnPost"
+                (click)="postInmueble()"
+              >
+                Publicar Anuncio
+              </button>
             </div>
           </div>
         </div>

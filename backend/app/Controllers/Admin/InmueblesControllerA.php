@@ -136,7 +136,7 @@ class InmueblesControllerA extends BaseController
         ];
 
 
-        //Imagen principal
+       
         $rutaCarpeta = FCPATH . 'uploads/inmuebles_fotos';
 
         if (!is_dir($rutaCarpeta)) {
@@ -148,7 +148,6 @@ class InmueblesControllerA extends BaseController
         foreach ($camposImagenes as $campo) {
             $img = $this->request->getFile($campo);
 
-            // IMPORTANTE: Verificar isValid() antes de hacer nada
             if ($img && $img->isValid() && !$img->hasMoved()) {
 
                 // 1. Borrar imagen vieja si existe (Solo en edición)

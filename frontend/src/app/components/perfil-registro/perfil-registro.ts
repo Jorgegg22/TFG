@@ -3,11 +3,10 @@ import { UniversidadService } from '../../services/universidades';
 import { Universidad } from '../../common/universidades-interface';
 import { Carrera } from '../../common/carreras-interface';
 import { UsuarioService } from '../../services/usuarios-service';
-import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../../common/usuarios-interface';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { flatMap } from 'rxjs';
+
 
 @Component({
   selector: 'app-perfil-registro',

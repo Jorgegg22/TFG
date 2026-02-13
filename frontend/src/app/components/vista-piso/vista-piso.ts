@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { InmuebleService } from '../../services/inmuebles-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InmuebleDetalle, Solicitud, Match } from '../../common/pisoDetalle-interface';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Location } from '@angular/common';
-
+import { PropietarioService } from '../../services/propietarios-service';
 @Component({
   selector: 'app-vista-piso',
   standalone: false,
@@ -48,6 +48,7 @@ export class VistaPiso implements OnInit {
   huecosDisponibles!: number;
   imgSrc!: string;
   mostrarModal: boolean = false;
+  mostrarConfirmarBorrado:boolean = false
 
   urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
@@ -58,8 +59,10 @@ export class VistaPiso implements OnInit {
 
   constructor(
     private inmService: InmuebleService,
+    private propService: PropietarioService,
     private activatedRoute: ActivatedRoute,
     private location: Location,
+    private router:Router
   ) {}
 
   loadInmueble() {
@@ -107,5 +110,20 @@ export class VistaPiso implements OnInit {
 
   volver() {
     this.location.back();
+  }
+
+  confirmar(){
+    this.mostrarConfirmarBorrado = true
+  }
+
+
+  eliminarPiso(){
+    this.propService.deleteInmueble(this.idInmueble).subscribe({
+      next:(respuesta) => {
+        this.router.navigate(['/inmuebles-propietario'],{
+          queryParams: {eliminado:'true'}
+        })
+      }
+    })
   }
 }

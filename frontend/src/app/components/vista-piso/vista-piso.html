@@ -15,9 +15,25 @@
           </div>
           <div class="header-actions" *ngIf="edit">
             <button class="btn-icon-action edit"><i class="fa-solid fa-pen"></i></button>
-            <button class="btn-icon-action delete"><i class="fa-solid fa-trash"></i></button>
+            <button class="btn-icon-action delete" (click)="confirmar()"><i class="fa-solid fa-trash"></i></button>
           </div>
         </header>
+        <div class="confirm-modal-backdrop" *ngIf="mostrarConfirmarBorrado" @modalAnimation>
+          <div class="confirm-modal-card">
+            <div class="confirm-modal-icon">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h2>¿Estás seguro?</h2>
+            <p>Esta acción eliminará la propiedad permanentemente y no se puede deshacer.</p>
+
+            <div class="confirm-modal-actions">
+              <button class="btn-cancel" (click)="mostrarConfirmarBorrado = false">Cancelar</button>
+              <button class="btn-confirm-delete" (click)="eliminarPiso()">
+                Eliminar Propiedad
+              </button>
+            </div>
+          </div>
+        </div>
 
         <section class="hero-gallery">
           <div class="main-img">
@@ -62,7 +78,7 @@
 
         <div class="content-layout">
           <aside class="details-column">
-            <div class="features-row" >
+            <div class="features-row">
               <div class="feature-badge">
                 <i class="fa-solid fa-bed"></i> <span> {{ info.habitaciones }} Hab</span>
               </div>

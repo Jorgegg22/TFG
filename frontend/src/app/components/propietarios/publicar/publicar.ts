@@ -26,8 +26,6 @@ import { Universidad } from '../../../common/universidades-interface';
       ]),
       // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
     ]),
-
-    
   ],
 })
 export class Publicar implements OnInit {
@@ -63,14 +61,20 @@ export class Publicar implements OnInit {
     universidad_id: '',
   };
   universidades: Universidad[] = [];
-  capacidadValido: boolean = true;
-  tituloValido: boolean = true;
-  descValido: boolean = true;
-  direccionValido: boolean = true;
-  precioValido: boolean = true;
-  metrosValido: boolean = true;
-  habitacionesValido: boolean = true;
-  baniosValido: boolean = true;
+  capacidadValido: boolean = false;
+  tituloValido: boolean = false;
+  descValido: boolean = false;
+  direccionValido: boolean = false;
+  precioValido: boolean = false;
+  metrosValido: boolean = false;
+  habitacionesValido: boolean = false;
+  baniosValido: boolean = false;
+  imagen_principalValido: boolean = false;
+  imagen1Valido: boolean = false;
+  imagen2Valido: boolean = false;
+  imagen3Valido: boolean = false;
+  imagen4Valido: boolean = false;
+
   personasValido: boolean = true; // Asegúrate de usar esta o capacidadValido consistentemente
   universidadValido: boolean = true;
   permitirBtnPost: boolean = false;
@@ -88,9 +92,9 @@ export class Publicar implements OnInit {
   postInmueble() {
     this.propService.postInmueble(this.inmData).subscribe({
       next: (respuesta) => {
-        this.router.navigate(['/inmuebles-propietario'],{
-          queryParams: {añadido:'true'}
-        })
+        this.router.navigate(['/inmuebles-propietario'], {
+          queryParams: { añadido: 'true' },
+        });
       },
     });
   }
@@ -107,35 +111,30 @@ export class Publicar implements OnInit {
   validarTitulo() {
     if (!this.inmData.titulo || this.inmData.titulo.trim().length < 5) {
       this.tituloValido = false;
-    }else{
+    } else {
       this.tituloValido = true;
     }
 
-    this.permitirPost()
-
-    
+    this.permitirPost();
   }
 
   validarPrecio() {
     if (this.inmData.precio === null || this.inmData.precio <= 0) {
       this.precioValido = false;
-    }else{
+    } else {
       this.precioValido = true;
     }
 
-    this.permitirPost()
-    
+    this.permitirPost();
   }
 
   validarCapacidad() {
     if (this.inmData.n_personas === null || this.inmData.n_personas < 1) {
       this.capacidadValido = false;
-    }else{
-       this.capacidadValido = true;
+    } else {
+      this.capacidadValido = true;
     }
-    this.permitirPost()
-
-   
+    this.permitirPost();
   }
 
   validarHabitaciones() {
@@ -195,6 +194,98 @@ export class Publicar implements OnInit {
     this.permitirPost();
   }
 
+  validarImagenPrincipal(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imagen_principalValido = true;
+      // TRADUCTOR DE IMAGENES PARA MANDAR EL CONTENIDO DE LA IMAGEN
+      const reader = new FileReader();
+
+      // ESPERA A QUE TERMINE READASDATAURL,PARA APLICARLE EL RESULTADO EN STRING A USERDATA
+      reader.onload = () => {
+        this.inmData.imagen_principal = reader.result as string;
+        this.permitirPost();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.imagen_principalValido = false;
+      this.permitirPost();
+    }
+  }
+
+  validarImagenUno(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imagen1Valido = true;
+      // TRADUCTOR DE IMAGENES PARA MANDAR EL CONTENIDO DE LA IMAGEN
+      const reader = new FileReader();
+
+      // ESPERA A QUE TERMINE READASDATAURL,PARA APLICARLE EL RESULTADO EN STRING A USERDATA
+      reader.onload = () => {
+        this.inmData.imagen1 = reader.result as string;
+        this.permitirPost();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.imagen1Valido = false;
+      this.permitirPost();
+    }
+  }
+  validarImagenDos(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imagen2Valido = true;
+      // TRADUCTOR DE IMAGENES PARA MANDAR EL CONTENIDO DE LA IMAGEN
+      const reader = new FileReader();
+
+      // ESPERA A QUE TERMINE READASDATAURL,PARA APLICARLE EL RESULTADO EN STRING A USERDATA
+      reader.onload = () => {
+        this.inmData.imagen2 = reader.result as string;
+        this.permitirPost();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.imagen2Valido = false;
+      this.permitirPost();
+    }
+  }
+  validarImagenTres(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imagen3Valido = true;
+      // TRADUCTOR DE IMAGENES PARA MANDAR EL CONTENIDO DE LA IMAGEN
+      const reader = new FileReader();
+
+      // ESPERA A QUE TERMINE READASDATAURL,PARA APLICARLE EL RESULTADO EN STRING A USERDATA
+      reader.onload = () => {
+        this.inmData.imagen3 = reader.result as string;
+        this.permitirPost();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.imagen3Valido = false;
+      this.permitirPost();
+    }
+  }
+  validarImagenCuatro(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imagen4Valido = true;
+      // TRADUCTOR DE IMAGENES PARA MANDAR EL CONTENIDO DE LA IMAGEN
+      const reader = new FileReader();
+
+      // ESPERA A QUE TERMINE READASDATAURL,PARA APLICARLE EL RESULTADO EN STRING A USERDATA
+      reader.onload = () => {
+        this.inmData.imagen4 = reader.result as string;
+        this.permitirPost();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.imagen4Valido = false;
+      this.permitirPost();
+    }
+  }
+
   permitirPost() {
     if (
       this.direccionValido &&
@@ -205,7 +296,12 @@ export class Publicar implements OnInit {
       this.habitacionesValido &&
       this.capacidadValido &&
       this.precioValido &&
-      this.tituloValido
+      this.tituloValido &&
+      this.imagen1Valido &&
+      this.imagen2Valido &&
+      this.imagen3Valido &&
+      this.imagen4Valido &&
+      this.imagen_principalValido
     ) {
       this.permitirBtnPost = true;
     } else {
@@ -214,34 +310,34 @@ export class Publicar implements OnInit {
   }
 
   limpiar() {
-  this.inmData = {
-    titulo: '',
-    desc: '',
-    direccion: '',
-    precio: null,
-    imagen_principal: '',
-    imagen1: '',
-    imagen2: '',
-    imagen3: '',
-    imagen4: '',
-    metros: null,
-    habitaciones: null,
-    banios: null,
-    n_personas: null,
-    universidad_id: '',
-  };
+    this.inmData = {
+      titulo: '',
+      desc: '',
+      direccion: '',
+      precio: null,
+      imagen_principal: '',
+      imagen1: '',
+      imagen2: '',
+      imagen3: '',
+      imagen4: '',
+      metros: null,
+      habitaciones: null,
+      banios: null,
+      n_personas: null,
+      universidad_id: '',
+    };
 
-  this.capacidadValido = true;
-  this.tituloValido = true;
-  this.descValido = true;
-  this.direccionValido = true;
-  this.precioValido = true;
-  this.metrosValido = true;
-  this.habitacionesValido = true;
-  this.baniosValido = true;
-  this.personasValido = true;
-  this.universidadValido = true;
-  
-  this.permitirBtnPost = false;
-}
+    this.capacidadValido = true;
+    this.tituloValido = true;
+    this.descValido = true;
+    this.direccionValido = true;
+    this.precioValido = true;
+    this.metrosValido = true;
+    this.habitacionesValido = true;
+    this.baniosValido = true;
+    this.personasValido = true;
+    this.universidadValido = true;
+
+    this.permitirBtnPost = false;
+  }
 }

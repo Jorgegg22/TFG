@@ -10,8 +10,8 @@ import { ListaInmuebles } from '../common/inmuebles-interface';
   providedIn: 'root',
 })
 export class PropietarioService {
-  private URI: string = 'http://localhost/univibe/backend/public/index.php/api/propietarios/'; // XAMPP
-  //private URI: string = 'http://localhost:8080/api/propietarios/'; //DOCKER
+  //private URI: string = 'http://localhost/univibe/backend/public/index.php/api/propietarios/'; // XAMPP
+  private URI: string = 'http://localhost:8080/api/propietarios/'; //DOCKER
 
   constructor(private http: HttpClient) {}
 
@@ -96,6 +96,10 @@ export class PropietarioService {
       }),
     };
 
-    return this.http.post<any>(`${this.URI}publicar`, inmData,httpOptions);
+    return this.http.post<any>(`${this.URI}publicar`, inmData, httpOptions);
+  }
+
+  deleteInmueble(id: string): Observable<any> {
+    return this.http.post<any>(`${this.URI}eliminar`, { id });
   }
 }

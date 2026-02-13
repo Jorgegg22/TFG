@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListaInmuebles } from '../../../common/inmuebles-interface';
 import { PropietarioService } from '../../../services/propietarios-service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { ActivatedRoute } from '@angular/router'; // Importar esto
+import { ActivatedRoute, Router } from '@angular/router'; // Importar esto
 @Component({
   selector: 'app-inmuebles-propietario',
   standalone: false,
@@ -50,10 +50,12 @@ export class InmueblesPropietario implements OnInit {
   info: boolean = false;
 
   exitoPost: boolean = false;
+  exitoDelete: boolean = false;
 
   constructor(
     private propService: PropietarioService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +64,27 @@ export class InmueblesPropietario implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (params['añadido'] === 'true') {
         this.exitoPost = true;
+        this.limpiarUrl();
+        setTimeout(() => {
+          this.exitoPost = false;
+        }, 6000);
+      } else if (params['eliminado'] === 'true') {
+        this.exitoDelete = true;
+        this.limpiarUrl();
+        setTimeout(() => {
+          this.exitoDelete = false;
+        }, 6000);
       }
+    });
+  }
+
+  limpiarUrl() {
+    // [] accede a la ruta actual
+    this.router.navigate([], {
+      //Pagina actual
+      relativeTo: this.route,
+      //Parametros a null para los mensajes
+      queryParams: { añadido: null, eliminado: null },
     });
   }
 
