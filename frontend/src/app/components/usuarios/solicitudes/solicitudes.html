@@ -31,7 +31,7 @@
             <option value="aceptado">Aceptado</option>
             <option value="rechazado">Rechazado</option>
           </select>
-          <div *ngIf="inmuebles.length === 0" class="div-info-estado">
+          <div *ngIf="inmuebles.length === 0 && !noInfo" class="div-info-estado">
             <i class="fa-regular fa-clock" *ngIf="valorEstado === 'aceptado'"></i>
             <i class="fa-regular fa-face-smile-wink" *ngIf="valorEstado === 'rechazado'"></i>
 

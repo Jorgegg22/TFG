@@ -87,8 +87,8 @@ export class HomeEstudiante implements OnInit {
   loading: boolean = true;
   datosCargados: number = 0;
 
-  urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
-  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
+  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
   estadoAnimacion: string | null = null;
   estadoAnimacionImagen: string | null = null;
   mostrandoCard: boolean = true;
@@ -183,7 +183,7 @@ export class HomeEstudiante implements OnInit {
       console.log('No quedan más casas por mostrar');
       this.noInfo = true;
     }
-
+    this.indexImage = 0;
     this.loadPhoto();
   }
 
