@@ -47,6 +47,7 @@ $routes->get('api/usuarios/perfil/(:num)', [UsuariosController::class, 'getPerfi
 //PROPIETARIOS RUTAS
 $routes->get('api/propietarios/solicitudes', [UsuariosController::class, 'solicitudesUsuario']);
 $routes->get('api/propietarios/inmuebles', [UsuariosController::class, 'getInmueblesPropietario']);
+$routes->post('api/propietarios/publicar', [InmueblesController::class, 'postInmueble']);
 
 //UNIVERSIDADES RUTAS    
 $routes->get('api/universidades', [UniversidadesController::class, 'universidadesLista']);

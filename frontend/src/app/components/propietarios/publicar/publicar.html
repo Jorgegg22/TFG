@@ -22,101 +22,119 @@
       </div>
 
       <section class="main-card solicitudes-card full-screen-layout">
-        <form class="publish-form-grid">
+        <div class="publish-form-grid">
           <div class="form-left-column">
             <h3 class="subsection-title">Información Básica</h3>
 
             <div class="input-row">
               <div class="input-group">
                 <label>Título del anuncio</label>
-                <input type="text" placeholder="Ej. Piso luminoso en zona universitaria" />
+                <input type="text" placeholder="Ej. Piso luminoso en zona universitaria" [(ngModel)]="inmData.titulo"(input)="validarTitulo()" />
+                <span *ngIf="!tituloValido" class="error-msg">El título es demasiado corto (mínimo 5 caracteres).</span>
               </div>
             </div>
 
             <div class="input-row two-cols">
               <div class="input-group">
                 <label>Precio (€/mes)</label>
-                <input type="number" placeholder="Ej. 450" />
+                <input type="number" placeholder="Ej. 450" [(ngModel)]="inmData.precio"  (input)="validarPrecio()" />
+                <span *ngIf="!precioValido" class="error-msg">El precio debe ser mayor a 0.</span>
               </div>
               <div class="input-group">
                 <label>Capacidad</label>
-                <input type="number" placeholder="Nº Pers." min="1" />
+                <input type="number" placeholder="Nº Pers." min="1" [(ngModel)]="inmData.n_personas"  (input)="validarCapacidad()"/>
+                <span *ngIf="!personasValido" class="error-msg">La capacidad debe ser de al menos 1 persona.</span>
               </div>
+
+            </div>
+            <div class="input-row two-cols">
+              <div class="input-group">
+                <label>Habitaciones</label>
+                <input type="number" placeholder="Ej. 4" [(ngModel)]="inmData.habitaciones" (input)="validarHabitaciones()"  />
+                <span *ngIf="!habitacionesValido" class="error-msg">Indique el número de habitaciones.</span>
+              </div>
+              <div class="input-group">
+                <label>Numero de baños</label>
+                <input type="number" placeholder="Nº baños." min="1" [(ngModel)]="inmData.banios" (input)="validarBanios()"  />
+                <span *ngIf="!baniosValido" class="error-msg">Indique el número de baños.</span>
+              </div>
+
+            </div>
+            <div class="input-row two-cols">
+              <div class="input-group">
+                <label>Metros²</label>
+                <input type="number" placeholder="Ej. 90" [(ngModel)]="inmData.metros" (input)="validarMetros()" />
+                <span *ngIf="!metrosValido" class="error-msg">Los metros cuadrados deben ser mayores a 0.</span>
+              </div>
+
             </div>
 
             <div class="input-group">
               <label>Descripción</label>
-              <textarea
-                placeholder="Cuenta qué hace especial a tu piso (habitaciones amplias, buen ambiente, etc.)..."
-              ></textarea>
+              <textarea placeholder="Cuenta qué hace especial a tu piso (habitaciones amplias, buen ambiente, etc.)..."
+                [(ngModel)]="inmData.desc" (input)="validarDescripcion()"></textarea>
+              <span *ngIf="!descValido" class="error-msg">La descripción debe tener al menos 20 caracteres.</span>
             </div>
 
-            <h3 class="subsection-title mt-4">Ubicación y Normas</h3>
+            <h3 class="subsection-title mt-4">Ubicación</h3>
 
             <div class="input-group">
               <label>Universidad de referencia</label>
-              <select>
+              <select [(ngModel)]="inmData.universidad_id" (change)="validarUniversidad()">
                 <option value="" disabled selected>Selecciona la universidad más cercana</option>
-                <option>Universidad de Granada (UGR)</option>
-                <option>VLC - UPV</option>
-                <option>Universidad de Sevilla</option>
-                <option>Complutense de Madrid</option>
-                <option>Otra</option>
+                <option *ngFor="let uni of universidades" value="{{uni.id}}">{{uni.nombre}} ({{uni.ciudad}})</option>
+
               </select>
+              <span *ngIf="!universidadValido" class="error-msg">Debe seleccionar una universidad.</span>
             </div>
 
             <div class="input-row">
               <div class="input-group">
                 <label>Dirección exacta</label>
-                <input type="text" placeholder="Calle, número, ciudad..." />
+                <input type="text" placeholder="Calle, número, ciudad..." [(ngModel)]="inmData.direccion"  (input)="validarDireccion()"/>
+                <span *ngIf="!direccionValido" class="error-msg">La dirección debe tener al menos 10 caracteres.</span>
               </div>
             </div>
 
-            <div class="input-group">
-              <label>Reglas de la casa</label>
-              <div class="multiple-select-wrapper">
-                <select multiple class="custom-multi-select">
-                  <option value="1">🚫 Prohibido fumar</option>
-                  <option value="2">🐶 No se admiten mascotas</option>
-                  <option value="3">🎉 Prohibido hacer fiestas</option>
-                  <option value="4">🎓 Solo estudiantes</option>
-                  <option value="5">🚺 Solo chicas</option>
-                  <option value="6">🚹 Solo chicos</option>
-                  <option value="7">🧹 Limpieza semanal incluida</option>
-                  <option value="8">🤫 Silencio a partir de las 23h</option>
-                  <option value="9">👫 Parejas bienvenidas</option>
-                  <option value="10">🏳️‍🌈 LGBT Friendly</option>
-                </select>
-                <span class="helper-text">
-                  <i class="fa-solid fa-circle-info"></i> Mantén pulsado <strong>Ctrl</strong> (o
-                  <strong>Cmd</strong> en Mac) para seleccionar varias reglas.
-                </span>
-              </div>
-            </div>
+
           </div>
 
           <div class="form-right-column">
             <h3 class="subsection-title">Galería de Fotos</h3>
 
-            <div class="upload-main-area">
-              <div class="upload-placeholder">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                <span>Subir foto principal</span>
-              </div>
-            </div>
-
+            <label class="upload-placeholder">
+              <input type="file" style="display: none;">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <span>Subir foto principal</span>
+            </label>
             <div class="upload-grid-mini">
-              <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
-              <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
-              <div class="upload-box-mini"><i class="fa-solid fa-plus"></i></div>
+              <label class="upload-box-mini">
+                <input type="file" accept="image/*">
+                <i class="fa-solid fa-plus"></i>
+              </label>
+
+              <label class="upload-box-mini">
+                <input type="file" accept="image/*">
+                <i class="fa-solid fa-plus"></i>
+              </label>
+
+              <label class="upload-box-mini">
+                <input type="file" accept="image/*">
+                <i class="fa-solid fa-plus"></i>
+              </label>
+
+              <label class="upload-box-mini">
+                <input type="file" accept="image/*">
+                <i class="fa-solid fa-plus"></i>
+              </label>
             </div>
 
             <div class="form-actions">
-              <button type="button" class="btn-cancel">Cancelar</button>
-              <button type="submit" class="btn-publish">Publicar Anuncio</button>
+              <button type="button" class="btn-cancel" (click)="limpiar()">Limpiar</button>
+              <button type="submit" class="btn-publish" [disabled]="!permitirBtnPost"  (click)="postInmueble()">Publicar Anuncio</button>
             </div>
           </div>
-        </form>
+        </div>
       </section>
     </div>
   </main>

@@ -10,8 +10,8 @@ import { SolicitudResponse } from '../common/solicitudes-interface';
   providedIn: 'root',
 })
 export class UsuarioService {
-  //private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
-  private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
+  private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
+  //private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
 
   constructor(private http: HttpClient) {}
 

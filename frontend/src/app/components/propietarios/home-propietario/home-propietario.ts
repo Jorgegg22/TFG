@@ -52,7 +52,9 @@ export class HomePropietario implements OnInit {
   info!:SolicitudesPropietarioResponse;
   totalSolicitudes!:number
   solictudesHoy!:SolicitudesHoy[]
-  urlImagenes:string = "http://localhost:8080/uploads/inmuebles_fotos/"
+
+  //urlImagenes:string = "http://localhost:8080/uploads/inmuebles_fotos/"
+  urlImagenes: string = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
   inmueblesAll!:ListaInmuebles
   inmuebles!:ListaInmuebles
   currentPage:number = 1;

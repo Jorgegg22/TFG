@@ -124,6 +124,28 @@ class InmueblesController extends ResourceController
     }
 
 
+    public function postInmueble(){
+        $data = $this->request->getJSON();
+
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
+        $usuarioModel = new UsuariosModel();
+
+        if (!$token) {
+            return $this->respond("No hay token");
+        }
+
+        $usuarioSesion = $usuarioModel->where('token', $token)
+            ->first();
+
+        if (!$usuarioSesion) {
+            return $this->respond("No hay sesion");
+        }
+        ;
+
+        $idUsuario = $usuarioSesion['id'];
+    }
+
+
 
 
 }

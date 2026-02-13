@@ -410,7 +410,10 @@ html {
   color: #999;
   font-style: italic;
   font-size: 0.9rem;
+  font-family: var(--primary-font);
 }
+
+
 
 /* =========================================
    SECCIÓN INFERIOR (MIS INMUEBLES - FULL WIDTH)
