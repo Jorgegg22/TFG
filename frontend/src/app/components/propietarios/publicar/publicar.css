@@ -216,7 +216,7 @@
 
 .publish-form-grid {
   display: grid;
-  grid-template-columns: 1fr 400px; /* Izquierda flexible, Derecha fija para fotos */
+  grid-template-columns: 1fr 400px; 
   gap: 50px;
   max-width: 1400px;
   margin: 0 auto;
@@ -326,17 +326,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Centra contenido verticalmente */
+  justify-content: center; 
   gap: 10px;
   color: #94a3b8;
   width: 100%;
-  height: 250px; /* Ajusta la altura a tu diseño */
+  height: 250px; 
   border: 2px dashed #cbd5e1;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  /* Configuración para la imagen de fondo */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -349,12 +347,10 @@
   border-color: #94a3b8;
 }
 
-/* Estilo cuando ya tiene imagen */
 .upload-placeholder.has-image {
-  border: 2px solid #3b82f6; /* Borde azul para resaltar que hay contenido */
+  border: 2px solid #3b82f6; 
 }
 
-/* Opcional: un overlay oscuro cuando pasas el ratón sobre la imagen ya subida */
 .upload-placeholder.has-image:hover::after {
   content: 'Cambiar imagen';
   position: absolute;
@@ -380,7 +376,6 @@
   font-family: var(--primary-font);
 }
 
-/* Grid de fotos pequeñas */
 .upload-grid-mini {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -388,20 +383,21 @@
 }
 
 .upload-box-mini {
-  width: 100px; /* Ajusta a tu tamaño */
-  height: 100px;
+  width: 100%; 
+  aspect-ratio: 1 / 1;
   border: 2px dashed #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover; /* Esto hace que la imagen cubra todo el box */
-  background-position: center; /* Centra la foto */
+  background-size: cover; 
+  background-position: center; 
   background-repeat: no-repeat;
   cursor: pointer;
   transition: all 0.3s ease;
+  border-radius: 4px;
 }
 .upload-box-mini.has-image {
-  border: 2px solid #3b82f6; /* Cambia el borde si ya hay imagen */
+  border: 2px solid #3b82f6; 
 }
 
 .upload-box-mini i {
@@ -414,18 +410,19 @@
   color: var(--primary);
 }
 
+.upload-box-mini input[type='file'] {
+  display: none;
+}
+
 /* =========================================
    ESTILOS PARA SELECT MÚLTIPLE (REGLAS)
    ========================================= */
 
-/* Estilo específico para el select multiple */
 .input-group select[multiple] {
-  height: 180px; /* Altura suficiente para ver varias opciones */
+  height: 180px; 
   padding: 10px;
   overflow-y: auto;
-  background-image: none; /* Quitamos la flecha del select normal */
-
-  /* Personalización del scrollbar (Chrome/Safari/Edge) */
+  background-image: none; 
   scrollbar-width: thin;
   scrollbar-color: var(--primary) #f1f1f1;
 }
@@ -438,7 +435,6 @@
   border-radius: 4px;
 }
 
-/* Estilo de las opciones individuales */
 .input-group select[multiple] option {
   padding: 10px 15px;
   margin-bottom: 5px;
@@ -451,19 +447,16 @@
     color 0.2s;
 }
 
-/* Hover en las opciones */
 .input-group select[multiple] option:hover {
   background-color: #eef2f6;
 }
 
-/* Opción SELECCIONADA (Importante) */
 .input-group select[multiple] option:checked {
   background: var(--primary) !important;
   color: white;
   box-shadow: 0 2px 5px rgba(0, 86, 179, 0.2);
 }
 
-/* Texto de ayuda pequeño debajo */
 .helper-text {
   display: block;
   margin-top: 8px;
@@ -481,7 +474,7 @@
    ========================================= */
 
 .form-actions {
-  margin-top: auto; /* Empuja los botones al final */
+  margin-top: auto; 
   display: flex;
   gap: 15px;
   padding-top: 20px;
@@ -524,59 +517,6 @@
   color: #334155;
 }
 
-.upload-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.upload-placeholder:hover {
-  background-color: #f8f9fa;
-  border-color: var(--primary);
-}
-
-.upload-placeholder i {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: var(--primary);
-}
-
-.upload-placeholder span {
-  font-family: sans-serif;
-  color: #333;
-}
-
-.upload-box-mini {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1;
-  border: 2px dashed #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.upload-box-mini:hover {
-  background-color: #f8f9fa;
-  border-color: var(--primary);
-}
-
-.upload-box-mini input[type='file'] {
-  display: none;
-}
-
-.upload-box-mini i {
-  color: var(--primary);
-  font-size: 1.2rem;
-}
-
 .error-msg {
   color: #dc3545;
   font-size: 0.8rem;
@@ -594,13 +534,64 @@
   opacity: 0.7;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+/* =========================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================= */
+
+/* Tablets y pantallas medianas (menos de 1024px) */
+@media (max-width: 1024px) {
   .publish-form-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Columna única */
+    gap: 30px;
   }
 
   .form-right-column {
-    order: -1; /* Pone las fotos primero en móvil, opcional */
+    order: -1; /* Mueve las fotos al principio para que sea lo primero que se edita */
+  }
+
+  .upload-main-area, .upload-placeholder {
+    height: 300px; /* Un poco más alto en tablet para facilitar el toque */
+  }
+}
+
+/* Móviles (menos de 768px) */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .main-card {
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .header-gestion {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 10px;
+    gap: 15px;
+  }
+
+  .section-title-modern {
+    width: 100%;
+    text-align: center;
+  }
+
+  .input-row {
+    flex-direction: column; /* Inputs en columna */
+    gap: 15px;
+  }
+
+  .upload-grid-mini {
+    gap: 5px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse; /* Botón cancelar abajo */
+  }
+
+  .btn-publish, .btn-cancel {
+    width: 100%;
+    padding: 18px; /* Botones más grandes para dedos */
   }
 }

@@ -1,12 +1,16 @@
-import { NgModule, provideBrowserGlobalErrorListeners ,provideZoneChangeDetection } from '@angular/core';
+import {
+  NgModule,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing-module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
- // Rutas
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+// Rutas
 import { App } from './app';
 import { Home } from './components/home/home';
 import { Footer } from './components/footer/footer';
@@ -26,8 +30,7 @@ import { HomePropietario } from './components/propietarios/home-propietario/home
 import { VistaInmueblePropietario } from './components/propietarios/vista-inmueble-propietario/vista-inmueble-propietario';
 import { Header } from './components/header/header';
 import { HeaderPropietario } from './components/propietarios/header-propietario/header-propietario';
-
-
+import { Error } from './components/error/error';
 
 @NgModule({
   declarations: [
@@ -49,10 +52,8 @@ import { HeaderPropietario } from './components/propietarios/header-propietario/
     HomePropietario,
     VistaInmueblePropietario,
     Header,
-    HeaderPropietario
-
-   
-
+    HeaderPropietario,
+    Error,
   ],
   imports: [
     BrowserModule,
@@ -61,12 +62,9 @@ import { HeaderPropietario } from './components/propietarios/header-propietario/
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection()
-  ],
-  bootstrap: [App]
+  providers: [provideBrowserGlobalErrorListeners(), provideZoneChangeDetection()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}

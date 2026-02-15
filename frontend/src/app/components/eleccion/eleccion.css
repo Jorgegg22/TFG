@@ -9,9 +9,6 @@
   --secondary-font: 'Montserrat', sans-serif;
 }
 
-
-
-
 .user-selection {
   background-color: var(--white); /* Fondo blanco puro */
   padding: 80px 20px;
@@ -39,8 +36,6 @@
   opacity: 0.06; /* Opacidad muy baja para que sea sutil */
   pointer-events: none;
 }
-
-
 
 .selection-title {
   font-family: var(--secondary-font);
@@ -153,9 +148,77 @@
   color: var(--primary);
 }
 
-/* Ajuste móvil */
+/* Ajuste móvil existente */
 @media (max-width: 480px) {
   .user-card {
     width: 100%;
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN ADDITIONS
+   ========================================= */
+
+@media (max-width: 992px) {
+  .user-selection {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: visible;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .card-grid {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .selection-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .selection-subtitle {
+    font-size: 1rem;
+    margin: -20px auto 40px auto;
+    padding: 0 15px;
+  }
+
+  .card-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .user-card {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .card-content {
+    padding: 40px 30px;
+  }
+  
+  .card-content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-selection {
+    padding: 40px 15px;
+  }
+
+  .selection-title {
+    font-size: 1.8rem;
+  }
+
+  .btn-modern {
+    width: 100%;
+    padding: 12px 20px;
   }
 }

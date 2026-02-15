@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { Usuario } from '../../common/usuarios-interface';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
-
 @Component({
   selector: 'app-perfil-registro',
   standalone: false,
@@ -134,7 +133,12 @@ export class PerfilRegistro implements OnInit {
       next: (respuesta) => {
         console.log('Va');
         console.log(respuesta);
-        this.router.navigate(['/home-estudiante']);
+        if(this.perfil.data.rol === "estudiante"){
+          this.router.navigate(['/home-estudiante']);
+        }else{
+          this.router.navigate(['/home-propietario']);
+        }
+        
       },
       error(err) {
         console.log('No va');
@@ -158,8 +162,6 @@ export class PerfilRegistro implements OnInit {
     } else {
       this.userData.userPhoto = 'avatar_default.png';
     }
-
-    
   }
 
   validacionTelefono() {
@@ -202,15 +204,16 @@ export class PerfilRegistro implements OnInit {
   }
 
   permitirBtnPostDatos() {
-    if (
-      this.universidadValido &&
-      this.descripcionValido &&
-      this.carreraValido &&
-      this.telefonoValido
-    ) {
-      this.permitirPostDatos = true;
-    } else {
-      this.permitirPostDatos = false;
+    const rol = this.perfil?.data?.rol;
+
+    if (rol === 'estudiante') {
+      this.permitirPostDatos =
+        this.universidadValido &&
+        this.descripcionValido &&
+        this.carreraValido &&
+        this.telefonoValido;
+    } else if (rol === 'propietario') {
+      this.permitirPostDatos = this.telefonoValido && this.descripcionValido;
     }
   }
 }

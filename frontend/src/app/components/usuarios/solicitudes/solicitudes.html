@@ -21,6 +21,50 @@
           </div>
         </div>
       </div>
+      <div class="toast-container" *ngIf="exitoDeleteSolicitud" [@enterPost]>
+        <div class="toast-card toast-danger">
+          <div class="toast-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              ></path>
+              <line x1="10" y1="11" x2="10" y2="17"></line>
+              <line x1="14" y1="11" x2="14" y2="17"></line>
+            </svg>
+          </div>
+          <div class="toast-content">
+            <span class="toast-title">¡Solicitud quitada!</span>
+            <p class="toast-message">Hemos actualizado tu panel correctamente.</p>
+          </div>
+          <button class="toast-close" (click)="exitoDeleteSolicitud = false">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
 
       <section class="main-card solicitudes-card full-screen-layout">
         <div *ngIf="loading" class="loader"></div>
@@ -40,6 +84,10 @@
               <p *ngIf="valorEstado === 'rechazado'">
                 ¡Buenas noticias! De momento, cero rechazos.
               </p>
+              <p *ngIf="valorEstado === 'interesado'">
+                Aún no has mostrado interés por ningún inmueble. ¿Empezamos la búsqueda?
+              </p>
+              
             </div>
           </div>
           <div class="column-grid-scroll" *ngIf="!noInfo; else elseBlock">
@@ -57,13 +105,22 @@
                   <span class="location"
                     ><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span
                   >
-                  <button
+                  <div class="card-options"><button
                     class="view-btn"
                     routerLink="/piso-detalle"
                     [routerLink]="'/piso-detalle/' + inm.inmueble_id"
                   >
                     <i class="fa-regular fa-eye"></i>
                   </button>
+                  <button
+                    class="delete-sol-btn"
+                    *ngIf="inm.estado_solicitud === 'rechazado'"
+                    (click)="quitarSolicitud(inm.solicitud_id)"
+                    title="Eliminar de mi lista"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button></div>
+                  
                 </div>
               </div>
             </article>

@@ -10,7 +10,7 @@
 }
 
 /* =========================================
-   ESTRUCTURA Y FONDO
+   ESTRUCTURA GENERAL
    ========================================= */
 
 .wrapper-solicitudes {
@@ -147,18 +147,12 @@
   width: 100%;
 }
 
-/* =========================================
-   CONTENEDOR DE CABECERA
-   ========================================= */
 .header-gestion {
   margin: 20px 40px 30px 40px;
   display: flex;
   gap: 15px;
 }
 
-/* =========================================
-   TÍTULO (MANTENIENDO TU ESTILO)
-   ========================================= */
 .section-title-modern {
   width: fit-content;
   background-color: var(--primary);
@@ -175,9 +169,6 @@
   font-size: 1.6rem;
 }
 
-/* =========================================
-   BLOQUE DE INFORMACIÓN SEPARADO
-   ========================================= */
 .info-alert-modern {
   display: flex;
   align-items: center;
@@ -213,7 +204,6 @@
   font-weight: 700;
 }
 
-/* Efecto hover sutil */
 .info-alert-modern:hover {
   background-color: #ffffff;
   transform: translateX(5px);
@@ -232,7 +222,7 @@
 
 .column-grid-scroll {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 25px;
   width: 100%;
   padding: 10px;
@@ -256,11 +246,10 @@
   box-shadow: 0 12px 24px rgba(0, 86, 179, 0.15);
 }
 
-/* Imagen cuadrada protagonista */
 .card-image-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.2 / 1; /* Cuadrado ligeramente apaisado */
+  aspect-ratio: 1.2 / 1; 
   overflow: hidden;
 }
 
@@ -289,7 +278,7 @@
 }
 
 /* =========================================
-   CONTENIDO Y DATOS
+   CONTENIDO DE TARJETA
    ========================================= */
 
 .card-body {
@@ -333,7 +322,7 @@
 }
 
 /* =========================================
-   BOTÓN DEL OJO
+   BOTONES
    ========================================= */
 
 .view-btn {
@@ -356,93 +345,36 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-/* =========================================
-   PAGINACIÓN
-   ========================================= */
-
-.pagination {
+.delete-sol-btn {
+  background-color: #fee2e2;
+  color: #ef4444;
+  border: none;
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* Afecta tanto a enlaces (a) como a botones (button) */
-.pagination a,
-.pagination button {
-  text-decoration: none;
-  color: #333;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: white;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  font-weight: 500;
-
-  /* Reset específico para botones */
   cursor: pointer;
-  font-family: inherit; /* Para que el botón herede la fuente */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
 }
 
-/* Efecto Hover */
-.pagination a:hover:not(.active),
-.pagination button:hover:not(:disabled) {
-  background-color: #f0f0f0;
-  border-color: #bbb;
-  transform: translateY(-1px);
+.delete-sol-btn:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-/* Página activa */
-.pagination .pag-number.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-  cursor: default;
-  pointer-events: none;
+.delete-sol-btn:active {
+  transform: scale(0.95);
 }
 
-/* Botones deshabilitados (si usas el atributo disabled en el HTML) */
-.pagination button:disabled {
-  color: #ccc;
-  border-color: #eee;
-  background-color: #f9f9f9;
-  cursor: not-allowed;
-  pointer-events: none;
+.delete-sol-btn:hover i {
+  animation: shake 0.5s infinite;
 }
 
-.pagination .pag-dots {
-  color: #777;
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-.solicitudes-empty {
-  padding: 60px 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: transparent; /* O el fondo que prefieras */
-  box-shadow: none;
-}
-
-.loading-state {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-  color: #64748b;
-  font-style: italic;
-}
-
-/* El botón que añadimos en el HTML */
 .btn-primary {
   margin-top: 25px;
   padding: 12px 24px;
@@ -460,88 +392,121 @@
   box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
 }
 
+/* =========================================
+   PAGINACIÓN
+   ========================================= */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pagination a,
+.pagination button {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit; 
+}
+
+.pagination a:hover:not(.active),
+.pagination button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+  transform: translateY(-1px);
+}
+
+.pagination .pag-number.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  cursor: default;
+  pointer-events: none;
+}
+
+.pagination button:disabled {
+  color: #ccc;
+  border-color: #eee;
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.pagination .pag-dots {
+  color: #777;
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+/* =========================================
+   MENSAJES VACÍO / LOADING
+   ========================================= */
+
+.solicitudes-empty {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent; 
+  box-shadow: none;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  color: #64748b;
+  font-style: italic;
+}
+
 .sad-img {
   width: 250px;
 }
 
 .div-info-estado {
-  /* Posicionamiento y Centrado */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-
-  /* Caja y Espaciado */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px; /* Espacio entre icono y texto */
+  gap: 12px; 
   padding: 2rem 3rem;
   width: 90%;
   max-width: 400px;
-
-  /* Estilo Visual */
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow:
     0 20px 40px -5px rgba(0, 0, 0, 0.1),
-    0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Sombra doble suave */
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
-
-  /* Texto */
+    0 10px 15px -3px rgba(0, 0, 0, 0.05); 
+  border: 1px solid rgba(0, 0, 0, 0.05); 
   text-align: center;
-  color: #374151; /* Gris oscuro suave, mejor que negro puro */
+  color: #374151; 
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 1.6;
 }
 
-.custom-select {
-  /* Reseteo base para quitar el estilo feo del navegador */
-  appearance: none;
-  -webkit-appearance: none;
-  margin-left: 13px;
-  margin-bottom: 10px;
-
-  /* Dimensiones y Texto */
-  padding: 0.6rem 2.5rem 0.6rem 1rem; /* Espacio extra a la derecha para la flecha */
-  font-size: 0.95rem;
-  font-family: inherit;
-  font-weight: 500;
-  color: #1d2127;
-  background-color: #fff;
-
-  /* Bordes y Sombras */
-  border: 1px solid #e5e7eb;
-  border-radius: 8px; /* Bordes redondeados modernos */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  outline: none;
-  transition: all 0.2s ease;
-
-  /* Flecha Personalizada (SVG encoded) */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  font-family: var(--primary-font);
-}
-
-/* Estado Hover */
-.custom-select:hover {
-  border-color: #d1d5db;
-  background-color: #f9fafb;
-}
-
-/* Estado Focus (Cuando haces clic) */
-.custom-select:focus {
-  border-color: var(--primary); /* Usa tu color morado */
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); /* Anillo suave del color primario (ajusta el RGBA si quieres) */
-}
-
-/* Opcional: Si quieres un icono dentro */
 .div-info-estado i {
   font-size: 2rem;
   color: var(--primary);
@@ -557,27 +522,131 @@
   color: var(--primary);
   font-style: italic;
 }
+
 .gradient-text {
-  /* Tamaño y grosor impactante */
   font-size: 48px;
   font-weight: 800;
-
   font-family: var(--secondary-font);
-  /* El truco del degradado en texto */
   background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* Ajustes finos */
   margin-bottom: 15px;
-  letter-spacing: -1.5px; /* Hace que se vea más moderno */
+  letter-spacing: -1.5px; 
   display: inline-block;
-
-  /* Animación suave al aparecer */
   animation: slideUp 0.6s ease-out;
 }
 
-/* HTML: <div class="loader"></div> */
+/* =========================================
+   ELEMENTOS DE FORMULARIO (SELECT)
+   ========================================= */
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  margin-left: 13px;
+  margin-bottom: 10px;
+  padding: 0.6rem 2.5rem 0.6rem 1rem; 
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: #1d2127;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  font-family: var(--primary-font);
+}
+
+.custom-select:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+.custom-select:focus {
+  border-color: var(--primary); 
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); 
+}
+
+.card-options{
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================================
+   TOAST Y LOADER
+   ========================================= */
+
+.toast-container {
+  position: fixed;
+  top: 113px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toast-card {
+  background: #ffffff;
+  border-left: 5px solid #2ecc71;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  min-width: 320px;
+  gap: 15px;
+}
+
+.toast-icon {
+  color: #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-content {
+  flex-grow: 1;
+}
+
+.toast-title {
+  display: block;
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1rem;
+  margin-bottom: 2px;
+  font-family: var(--primary-font);
+}
+
+.toast-message {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  font-family: var(--secondary-font);
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: #bdc3c7;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.toast-close:hover {
+  color: #e74c3c;
+}
+
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -604,5 +673,89 @@
 @keyframes l14 {
   100% {
     transform: rotate(1turn);
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================= */
+
+/* Tablets y Pantallas Medianas (menos de 1024px) */
+@media (max-width: 1024px) {
+  .column-grid-scroll {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+  
+  .header-gestion {
+    margin: 20px 20px; /* Reducir márgenes */
+    flex-direction: column; /* Apilar título e info */
+  }
+  
+  .info-alert-modern {
+    max-width: 100%;
+  }
+}
+
+/* Móviles (menos de 768px) */
+@media (max-width: 768px) {
+  .column-grid-scroll {
+    grid-template-columns: 1fr; /* 1 sola columna */
+    padding: 0; /* Quitar padding lateral del grid */
+  }
+
+  .main-card.solicitudes-card {
+    padding: 20px 15px; /* Reducir padding de la tarjeta principal */
+  }
+
+  .nav-content {
+    width: 95%;
+  }
+
+  .header-gestion {
+    margin: 15px;
+  }
+
+  .section-title-modern {
+    width: 100%; /* Título ocupa todo el ancho */
+    text-align: center;
+    padding: 15px;
+  }
+
+  .info-alert-modern {
+    padding: 15px;
+  }
+
+  .div-info-estado {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  
+  .no-info-container {
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+  }
+  
+  .info-text {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .gradient-text {
+    font-size: 36px; /* Texto gigante más pequeño en móvil */
+  }
+}
+
+/* Móviles muy pequeños (menos de 480px) */
+@media (max-width: 480px) {
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .card-options {
+    width: 100%;
+    justify-content: flex-end;
   }
 }

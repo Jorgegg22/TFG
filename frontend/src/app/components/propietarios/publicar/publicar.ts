@@ -75,7 +75,7 @@ export class Publicar implements OnInit {
   imagen3Valido: boolean = false;
   imagen4Valido: boolean = false;
 
-  personasValido: boolean = true; // Asegúrate de usar esta o capacidadValido consistentemente
+  personasValido: boolean = true; 
   universidadValido: boolean = true;
   permitirBtnPost: boolean = false;
 

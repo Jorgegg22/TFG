@@ -10,7 +10,7 @@
 }
 
 /* =========================================
-   ESTRUCTURA Y FONDO
+   ESTRUCTURA GENERAL
    ========================================= */
 
 .wrapper-solicitudes {
@@ -36,14 +36,105 @@
   height: 100%;
   z-index: -1;
   background-image: url('/assets/img/fondo_univibe_logo.png');
-  background-size: 480px;
+  background-size: 380px;
   background-repeat: repeat;
   background-position: center;
   opacity: 0.1;
   pointer-events: none;
 }
 
+/* =========================================
+   NAVBAR
+   ========================================= */
 
+.logo-univibe-serif {
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3;
+  border-radius: 14px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 37px;
+  line-height: 1;
+  padding-top: 4px;
+  user-select: none;
+}
+
+.logo-univibe-serif:hover {
+  cursor: pointer;
+}
+
+.nav-modern {
+  background: var(--primary);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+}
+
+.nav-content {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.menu {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: rgb(202, 202, 202);
+}
+
+.active-link {
+  border-bottom: 5px solid white;
+  padding-bottom: 22px;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary);
+}
+
+.profile-circle img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
 
 /* =========================================
    CONTENIDO SOLICITUDES
@@ -56,18 +147,12 @@
   width: 100%;
 }
 
-/* =========================================
-   CONTENEDOR DE CABECERA
-   ========================================= */
 .header-gestion {
   margin: 20px 40px 30px 40px;
   display: flex;
   gap: 15px;
 }
 
-/* =========================================
-   TÍTULO (MANTENIENDO TU ESTILO)
-   ========================================= */
 .section-title-modern {
   width: fit-content;
   background-color: var(--primary);
@@ -84,9 +169,6 @@
   font-size: 1.6rem;
 }
 
-/* =========================================
-   BLOQUE DE INFORMACIÓN SEPARADO
-   ========================================= */
 .info-alert-modern {
   display: flex;
   align-items: center;
@@ -122,7 +204,6 @@
   font-weight: 700;
 }
 
-/* Efecto hover sutil */
 .info-alert-modern:hover {
   background-color: #ffffff;
   transform: translateX(5px);
@@ -141,7 +222,7 @@
 
 .column-grid-scroll {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 25px;
   width: 100%;
   padding: 10px;
@@ -165,11 +246,10 @@
   box-shadow: 0 12px 24px rgba(0, 86, 179, 0.15);
 }
 
-/* Imagen cuadrada protagonista */
 .card-image-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.2 / 1; /* Cuadrado ligeramente apaisado */
+  aspect-ratio: 1.2 / 1; 
   overflow: hidden;
 }
 
@@ -198,7 +278,7 @@
 }
 
 /* =========================================
-   CONTENIDO Y DATOS
+   CONTENIDO DE TARJETA
    ========================================= */
 
 .card-body {
@@ -242,7 +322,7 @@
 }
 
 /* =========================================
-   BOTÓN DEL OJO
+   BOTONES
    ========================================= */
 
 .view-btn {
@@ -265,93 +345,36 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-/* =========================================
-   PAGINACIÓN
-   ========================================= */
-
-.pagination {
+.delete-sol-btn {
+  background-color: #fee2e2;
+  color: #ef4444;
+  border: none;
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* Afecta tanto a enlaces (a) como a botones (button) */
-.pagination a,
-.pagination button {
-  text-decoration: none;
-  color: #333;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: white;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  font-weight: 500;
-
-  /* Reset específico para botones */
   cursor: pointer;
-  font-family: inherit; /* Para que el botón herede la fuente */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
 }
 
-/* Efecto Hover */
-.pagination a:hover:not(.active),
-.pagination button:hover:not(:disabled) {
-  background-color: #f0f0f0;
-  border-color: #bbb;
-  transform: translateY(-1px);
+.delete-sol-btn:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-/* Página activa */
-.pagination .pag-number.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-  cursor: default;
-  pointer-events: none;
+.delete-sol-btn:active {
+  transform: scale(0.95);
 }
 
-/* Botones deshabilitados (si usas el atributo disabled en el HTML) */
-.pagination button:disabled {
-  color: #ccc;
-  border-color: #eee;
-  background-color: #f9f9f9;
-  cursor: not-allowed;
-  pointer-events: none;
+.delete-sol-btn:hover i {
+  animation: shake 0.5s infinite;
 }
 
-.pagination .pag-dots {
-  color: #777;
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-.solicitudes-empty {
-  padding: 60px 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: transparent; /* O el fondo que prefieras */
-  box-shadow: none;
-}
-
-.loading-state {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-  color: #64748b;
-  font-style: italic;
-}
-
-/* El botón que añadimos en el HTML */
 .btn-primary {
   margin-top: 25px;
   padding: 12px 24px;
@@ -369,34 +392,196 @@
   box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
 }
 
+/* =========================================
+   PAGINACIÓN
+   ========================================= */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pagination a,
+.pagination button {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit; 
+}
+
+.pagination a:hover:not(.active),
+.pagination button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+  transform: translateY(-1px);
+}
+
+.pagination .pag-number.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  cursor: default;
+  pointer-events: none;
+}
+
+.pagination button:disabled {
+  color: #ccc;
+  border-color: #eee;
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.pagination .pag-dots {
+  color: #777;
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+/* =========================================
+   MENSAJES VACÍO / LOADING
+   ========================================= */
+
+.solicitudes-empty {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent; 
+  box-shadow: none;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  color: #64748b;
+  font-style: italic;
+}
+
 .sad-img {
   width: 250px;
 }
 
-/* HTML: <div class="loader"></div> */
-.loader {
-  width: 50px;
-  aspect-ratio: 1;
-  display: grid;
-  animation: l14 4s infinite;
+.div-info-estado {
   position: absolute;
+  top: 50%;
   left: 50%;
-  top: 48%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; 
+  padding: 2rem 3rem;
+  width: 90%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px -5px rgba(0, 0, 0, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05); 
+  border: 1px solid rgba(0, 0, 0, 0.05); 
+  text-align: center;
+  color: #374151; 
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
-.loader::before,
-.loader::after {
-  content: '';
-  grid-area: 1/1;
-  border: 8px solid;
-  border-radius: 50%;
-  border-color: var(--accent) var(--accent) #0000 #0000;
-  mix-blend-mode: darken;
-  animation: l14 1s infinite linear;
+
+.div-info-estado i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
 }
-.loader::after {
-  border-color: #0000 #0000 var(--primary) var(--primary);
-  animation-direction: reverse;
+
+.div-info-estado p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: var(--secondary-font);
+  color: var(--primary);
+  font-style: italic;
 }
+
+.gradient-text {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: var(--secondary-font);
+  background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  letter-spacing: -1.5px; 
+  display: inline-block;
+  animation: slideUp 0.6s ease-out;
+}
+
+/* =========================================
+   ELEMENTOS DE FORMULARIO (SELECT)
+   ========================================= */
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  margin-left: 13px;
+  margin-bottom: 10px;
+  padding: 0.6rem 2.5rem 0.6rem 1rem; 
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: #1d2127;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  font-family: var(--primary-font);
+}
+
+.custom-select:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+.custom-select:focus {
+  border-color: var(--primary); 
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); 
+}
+
+.card-options{
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================================
+   TOAST Y LOADER
+   ========================================= */
 
 .toast-container {
   position: fixed;
@@ -461,8 +646,116 @@
 .toast-close:hover {
   color: #e74c3c;
 }
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  animation: l14 4s infinite;
+  position: absolute;
+  left: 50%;
+  top: 48%;
+}
+.loader::before,
+.loader::after {
+  content: '';
+  grid-area: 1/1;
+  border: 8px solid;
+  border-radius: 50%;
+  border-color: var(--accent) var(--accent) #0000 #0000;
+  mix-blend-mode: darken;
+  animation: l14 1s infinite linear;
+}
+.loader::after {
+  border-color: #0000 #0000 var(--primary) var(--primary);
+  animation-direction: reverse;
+}
 @keyframes l14 {
   100% {
     transform: rotate(1turn);
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================= */
+
+/* Tablets y Pantallas Medianas (menos de 1024px) */
+@media (max-width: 1024px) {
+  .column-grid-scroll {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+  
+  .header-gestion {
+    margin: 20px 20px; /* Reducir márgenes */
+    flex-direction: column; /* Apilar título e info */
+  }
+  
+  .info-alert-modern {
+    max-width: 100%;
+  }
+}
+
+/* Móviles (menos de 768px) */
+@media (max-width: 768px) {
+  .column-grid-scroll {
+    grid-template-columns: 1fr; /* 1 sola columna */
+    padding: 0; /* Quitar padding lateral del grid */
+  }
+
+  .main-card.solicitudes-card {
+    padding: 20px 15px; /* Reducir padding de la tarjeta principal */
+  }
+
+  .nav-content {
+    width: 95%;
+  }
+
+  .header-gestion {
+    margin: 15px;
+  }
+
+  .section-title-modern {
+    width: 100%; /* Título ocupa todo el ancho */
+    text-align: center;
+    padding: 15px;
+  }
+
+  .info-alert-modern {
+    padding: 15px;
+  }
+
+  .div-info-estado {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  
+  .no-info-container {
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+  }
+  
+  .info-text {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .gradient-text {
+    font-size: 36px; /* Texto gigante más pequeño en móvil */
+  }
+}
+
+/* Móviles muy pequeños (menos de 480px) */
+@media (max-width: 480px) {
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .card-options {
+    width: 100%;
+    justify-content: flex-end;
   }
 }

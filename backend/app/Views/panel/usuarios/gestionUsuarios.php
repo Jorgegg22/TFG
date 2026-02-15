@@ -1,56 +1,28 @@
 <div class="container-fluid">
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Gestión de Usuarios</h1>
-        <?php if (session()->getFlashdata('mensaje')): ?>
-        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert"
-            style="border-left: 5px solid #1cc88a !important;">
-            <div class="d-flex align-items-center">
-                <div class="mr-3">
-                    <i class="fas fa-check-circle fa-2x text-success"></i>
-                </div>
-                <div>
-                    <h5 class="alert-heading mb-1 font-weight-bold">¡Operación Exitosa!</h5>
-                    <p class="mb-0"><?= session()->getFlashdata('mensaje') ?></p>
-                </div>
+    <div class="card shadow mb-4 border-0">
+    <div class="card-header py-4 bg-white">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h6 class="m-0 font-weight-bold text-primary">Listado Usuarios - <?= count($usuarios) ?></h6>
             </div>
-        </div>
-        <?php endif; ?>
-        <a href="<?= base_url('admin/usuarios/crear') ?>"
-            class="btn btn-sm btn-primary shadow-sm px-3 py-2 rounded-pill">
-            <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Nuevo Registro
-        </a>
-
+            </div>
     </div>
 
-    <div class="card shadow mb-4 border-0">
-        <div class="card-header py-4 bg-white">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h6 class="m-0 font-weight-bold text-primary">Listado Usuarios - <?= count($usuarios) ?></h6>
-                </div>
+    <?php if (!empty($usuarios)): ?>
+        <?php
+        $num_registros = count($usuarios);
+        $registros = 10;
+        $paginaActual = $_REQUEST["num"] ?? 1;
 
-                <div class="col-md-6 d-flex justify-content-end mt-3 mt-md-0">
-                    <div class="filter-group d-flex align-items-center">
-                        <select class="form-control custom-select-modern mr-2" id="filterSelect">
-                            <option selected disabled>Filtrar por...</option>
-                            <option value="1">Dato 1</option>
-                            <option value="2">Dato 2</option>
-                        </select>
-                        <div class="input-group search-group">
-                            <input type="text" class="form-control search-input" placeholder="Buscar..."
-                                id="tableSearch">
-                            <div class="input-group-append">
-                                <span class="input-group-text bg-transparent border-left-0">
-                                    <i class="fas fa-search text-gray-400"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php if (!empty($usuarios)): ?>
+        $inicio = (($paginaActual - 1) * $registros);
+        $paginas = ceil($num_registros / $registros);
+        $usuarios_paginados = array_slice($usuarios, $inicio, $registros);
+        
+        
+        $params = $_GET;
+        ?>
+
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table mb-0" id="dataTable" width="100%" cellspacing="0">
@@ -64,54 +36,76 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($usuarios as $us): ?>
-                        <tr>
-                            <td><?= $us['id'] ?></td>
-                            <td><?= $us['nombre'] ?></td>
-                            <td><?= $us['email'] ?></td>
-                            <td><?= $us['rol'] ?></td>
-
-                            <td class="text-center">
-                                <?php if ($us['rol'] !== "admin"): ?>
-                                <a href="<?= base_url("admin/usuarios/editar/" . esc($us['id'])) ?>" class="btn btn-warning btn-circle btn-sm shadow-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="<?= base_url("admin/usuarios/borrar/" . esc($us['id'])) ?>"
-                                    class="btn btn-danger btn-circle btn-sm btn-borrar shadow-sm" data-id="1"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <?php else: ?>
-                                <p style="color:black;">Usuario protegido</p>
-                                <?php endif; ?>
-                            </td>
-
-                        </tr>
+                        <?php foreach ($usuarios_paginados as $us): ?>
+                            <tr>
+                                <td><?= $us['id'] ?></td>
+                                <td><?= esc($us['nombre']) ?></td>
+                                <td><?= esc($us['email']) ?></td>
+                                <td><span class="badge badge-light text-dark border"><?= strtoupper($us['rol']) ?></span></td>
+                                <td class="text-center">
+                                    <?php if ($us['rol'] !== "admin"): ?>
+                                        <a href="<?= base_url("admin/usuarios/editar/" . esc($us['id'])) ?>"
+                                            class="btn btn-warning btn-circle btn-sm shadow-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="<?= base_url("admin/usuarios/borrar/" . esc($us['id'])) ?>"
+                                            class="btn btn-danger btn-circle btn-sm shadow-sm"
+                                            onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="badge badge-info shadow-sm"><i class="fas fa-shield-alt"></i> Protegido</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
-
                     </tbody>
                 </table>
             </div>
         </div>
 
         <div class="card-footer bg-white py-3 border-top-0">
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Navegación de usuarios">
                 <ul class="pagination justify-content-end mb-0">
-                    <li class="page-item disabled">
-                        <a class="page-link shadow-none" href="#" tabindex="-1">Anterior</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item">
-                        <a class="page-link shadow-none" href="#">Siguiente</a>
-                    </li>
+                    
+                    <?php if ($paginaActual > 1): ?>
+                        <?php $params['num'] = $paginaActual - 1; ?>
+                        <li class="page-item">
+                            <a class="page-link shadow-none" href="<?= base_url('admin/usuarios') . '?' . http_build_query($params) ?>">Anterior</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="page-item disabled">
+                            <span class="page-link">Anterior</span>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <?php $params['num'] = $i; ?>
+                        <li class="page-item <?= ($i == $paginaActual) ? 'active' : '' ?>">
+                            <a class="page-link shadow-none" href="<?= base_url('admin/usuarios') . '?' . http_build_query($params) ?>"><?= $i ?></a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <?php if ($paginaActual < $paginas): ?>
+                        <?php $params['num'] = $paginaActual + 1; ?>
+                        <li class="page-item">
+                            <a class="page-link shadow-none" href="<?= base_url('admin/usuarios') . '?' . http_build_query($params) ?>">Siguiente</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="page-item disabled">
+                            <span class="page-link">Siguiente</span>
+                        </li>
+                    <?php endif; ?>
+
                 </ul>
             </nav>
         </div>
-        <?php else: ?>
-        <div></div>
-
-        <?php endif; ?>
-    </div>
+    <?php else: ?>
+        <div class="p-5 text-center">
+            <i class="fas fa-users-slash fa-3x text-gray-300 mb-3"></i>
+            <p class="text-gray-500">No se encontraron usuarios registrados.</p>
+        </div>
+    <?php endif; ?>
+</div>
 
 </div>

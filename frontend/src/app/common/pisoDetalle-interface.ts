@@ -32,6 +32,7 @@ export interface Solicitud {
     fecha_solicitud: string;
     fecha_respuesta: null | string;
     nombre_solicitante: string;
+    foto_perfil:string  
 }
 
 export interface Match {
@@ -39,5 +40,6 @@ export interface Match {
     estudiante_id: string;
     inmueble_id: string;
     created_at: string;
-    nombre_estudiante: string;  
+    nombre_estudiante: string;
+    foto_perfil:string  
 }

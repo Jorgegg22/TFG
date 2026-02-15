@@ -1,23 +1,68 @@
 <div class="property-view-wrapper">
   <div class="scroll-container">
     <div class="loader" *ngIf="loading"></div>
+
     <ng-container *ngIf="!loading">
       <main class="property-sheet" @enterAnimation>
         <header class="sheet-header">
           <button class="btn-back-circle" (click)="volver()">
             <i class="fa-solid fa-arrow-left"></i>
           </button>
+
           <div class="header-info">
-            <h1>{{ info.titulo }}</h1>
-            <span class="location-badge"
-              ><i class="fa-solid fa-location-dot"></i> {{ info.direccion }}</span
-            >
+            <h1 *ngIf="!isEditing">{{ infoBackUp.titulo }}</h1>
+            <div *ngIf="isEditing" style="display: flex; flex-direction: column; width: 100%">
+              <input
+                type="text"
+                [(ngModel)]="info.titulo"
+                (input)="validarTitulo()"
+                class="input-edit-title"
+              />
+              <span *ngIf="!tituloValido" class="error-msg"
+                >El título es demasiado corto (mínimo 5 caracteres).</span
+              >
+            </div>
+
+            <span class="location-badge" *ngIf="!isEditing">
+              <i class="fa-solid fa-location-dot"></i> {{ infoBackUp.direccion }}
+            </span>
+            <div class="location-edit-wrapper" *ngIf="isEditing">
+              <i class="fa-solid fa-location-dot" style="color: var(--primary)"></i>
+              <div style="display: flex; flex-direction: column; width: 100%">
+                <input
+                  type="text"
+                  [(ngModel)]="info.direccion"
+                  (input)="validarDireccion()"
+                  class="input-edit-address"
+                />
+                <span *ngIf="!direccionValido" class="error-msg"
+                  >La dirección debe tener al menos 10 caracteres.</span
+                >
+              </div>
+            </div>
           </div>
+
           <div class="header-actions" *ngIf="edit">
-            <button class="btn-icon-action edit"><i class="fa-solid fa-pen"></i></button>
-            <button class="btn-icon-action delete" (click)="confirmar()"><i class="fa-solid fa-trash"></i></button>
+            <ng-container *ngIf="!isEditing">
+              <button class="btn-icon-action edit" (click)="editar()">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button class="btn-icon-action delete" (click)="confirmar()">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </ng-container>
+
+            <ng-container *ngIf="isEditing">
+              <button class="btn-icon-action save" [disabled]="!permitirBtnPost"  (click)="guardarCambios()">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button class="btn-icon-action cancel" (click)="cancelarEdicion()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </ng-container>
           </div>
         </header>
+
         <div class="confirm-modal-backdrop" *ngIf="mostrarConfirmarBorrado" @modalAnimation>
           <div class="confirm-modal-card">
             <div class="confirm-modal-icon">
@@ -25,7 +70,6 @@
             </div>
             <h2>¿Estás seguro?</h2>
             <p>Esta acción eliminará la propiedad permanentemente y no se puede deshacer.</p>
-
             <div class="confirm-modal-actions">
               <button class="btn-cancel" (click)="mostrarConfirmarBorrado = false">Cancelar</button>
               <button class="btn-confirm-delete" (click)="eliminarPiso()">
@@ -35,42 +79,124 @@
           </div>
         </div>
 
+        <div class="match-feedback-backdrop" *ngIf="mostrarModalMatch" @modalAnimation>
+          <div class="match-card">
+            <div class="match-icon-circle"><i class="fa-solid fa-heart"></i></div>
+            <h2>¡Es un Match!</h2>
+            <p>
+              Has aceptado a <strong>{{ estudianteAceptadoNombre }}</strong> como compañero de piso.
+            </p>
+            <div class="match-avatar-preview">
+              <img [src]="urlImagenesPerfil + estudianteAceptadoFoto" alt="Nuevo compañero" />
+            </div>
+            <button class="btn-match-close" (click)="mostrarModalMatch = false">Genial</button>
+          </div>
+        </div>
+
+        <div class="reject-feedback-backdrop" *ngIf="mostrarModalRechazo" @modalAnimation>
+          <div class="reject-card">
+            <div class="reject-icon-circle"><i class="fa-solid fa-user-slash"></i></div>
+            <h2>Solicitud descartada</h2>
+            <p>
+              Has rechazado la solicitud de <strong>{{ estudianteAceptadoNombre }}</strong
+              >.
+            </p>
+            <div class="reject-avatar-preview">
+              <img [src]="urlImagenesPerfil + estudianteAceptadoFoto" alt="Usuario descartado" />
+            </div>
+            <button class="btn-reject-close" (click)="mostrarModalRechazo = false">
+              Entendido
+            </button>
+          </div>
+        </div>
+
         <section class="hero-gallery">
           <div class="main-img">
             <img
-              [src]="urlImagenes + info.imagen_principal"
+              *ngIf="!isEditing"
+              [src]="urlImagenes + infoBackUp.imagen_principal"
               alt="Salón"
               (click)="onClickImagen($event)"
             />
+            <label
+              *ngIf="isEditing"
+              class="img-edit-label main-edit"
+             [style.backgroundImage]="'url(' + (info.imagen_principal.includes('data:') ? info.imagen_principal : urlImagenes + info.imagen_principal) + ')'"
+            >
+              <input type="file" (change)="validarImagenPrincipal($event)" accept="image/*" />
+              <div class="edit-overlay">
+                <i class="fa-solid fa-camera"></i>
+                <span>Cambiar portada</span>
+              </div>
+            </label>
           </div>
           <div class="sub-imgs">
-            <img
-              [src]="urlImagenes + info.imagen1"
-              alt="Detalle 1"
-              (click)="onClickImagen($event)"
-            />
-            <img
-              [src]="urlImagenes + info.imagen2"
-              alt="Detalle 2"
-              (click)="onClickImagen($event)"
-            />
-            <img
-              [src]="urlImagenes + info.imagen3"
-              alt="Detalle 3"
-              (click)="onClickImagen($event)"
-            />
-            <img
-              [src]="urlImagenes + info.imagen4"
-              alt="Detalle 4"
-              (click)="onClickImagen($event)"
-            />
+            <ng-container>
+              <img
+                *ngIf="!isEditing"
+                [src]="urlImagenes + infoBackUp.imagen1"
+                (click)="onClickImagen($event)"
+              />
+              <label
+                *ngIf="isEditing"
+                class="img-edit-label sub-edit-1"
+                [style.backgroundImage]="'url(' + (info.imagen1.includes('data:') ? info.imagen1 : urlImagenes + info.imagen1) + ')'"
+              >
+                <input type="file" (change)="validarImagenUno($event)" accept="image/*" />
+                <div class="edit-overlay"><i class="fa-solid fa-pen"></i></div>
+              </label>
+            </ng-container>
+            <ng-container>
+              <img
+                *ngIf="!isEditing"
+                [src]="urlImagenes + infoBackUp.imagen2"
+                (click)="onClickImagen($event)"
+              />
+              <label
+                *ngIf="isEditing"
+                class="img-edit-label sub-edit-2"
+                [style.backgroundImage]="'url(' + (info.imagen2.includes('data:') ? info.imagen2 : urlImagenes + info.imagen2) + ')'"
+              >
+                <input type="file" (change)="validarImagenDos($event)" accept="image/*" />
+                <div class="edit-overlay"><i class="fa-solid fa-pen"></i></div>
+              </label>
+            </ng-container>
+            <ng-container>
+              <img
+                *ngIf="!isEditing"
+                [src]="   urlImagenes + infoBackUp.imagen3"
+                (click)="onClickImagen($event)"
+              />
+              <label
+                *ngIf="isEditing"
+                class="img-edit-label sub-edit-3"
+                [style.backgroundImage]="'url(' + (info.imagen3.includes('data:') ? info.imagen3 : urlImagenes + info.imagen3) + ')'">
+                <input type="file" (change)="validarImagenTres($event)"  accept="image/*" />
+                <div class="edit-overlay"><i class="fa-solid fa-pen"></i></div>
+              </label>
+            </ng-container>
+            <ng-container>
+              <img
+                *ngIf="!isEditing"
+                [src]="urlImagenes + infoBackUp.imagen4"
+                (click)="onClickImagen($event)"
+              />
+              <label
+                *ngIf="isEditing"
+                class="img-edit-label sub-edit-4"
+                [style.backgroundImage]="'url(' + (info.imagen4.includes('data:') ? info.imagen4 : urlImagenes + info.imagen4) + ')'"
+              >
+                <input type="file" (change)="validarImagenCuatro($event)" accept="image/*" />
+                <div class="edit-overlay"><i class="fa-solid fa-pen"></i></div>
+              </label>
+            </ng-container>
           </div>
         </section>
+
         <div class="uv-viewer-backdrop" *ngIf="mostrarModal" @modalAnimation>
           <button class="uv-viewer-close" (click)="cerrarModal()">
             <i class="fa-solid fa-xmark"></i>
           </button>
-
           <div class="uv-viewer-stage">
             <img [src]="imgSrc" class="uv-viewer-img" alt="Vista detallada" />
           </div>
@@ -80,74 +206,184 @@
           <aside class="details-column">
             <div class="features-row">
               <div class="feature-badge">
-                <i class="fa-solid fa-bed"></i> <span> {{ info.habitaciones }} Hab</span>
+                <i class="fa-solid fa-bed"></i>
+                <span *ngIf="!isEditing"> {{ infoBackUp.habitaciones }} Hab</span>
+                <div *ngIf="isEditing" style="display: flex; align-items: center">
+                  <input
+                    type="number"
+                    [(ngModel)]="info.habitaciones"
+                    (input)="validarHabitaciones()"
+                    class="input-edit-badge"
+                    min="1"
+                  />
+                  <i
+                    class="fa-solid fa-circle-exclamation"
+                    style="color: #ef4444; margin-left: 5px"
+                    *ngIf="!habitacionesValido"
+                  ></i>
+                </div>
               </div>
+
               <div class="feature-badge">
-                <i class="fa-solid fa-bath"></i> <span>{{ info.banios }} Baños</span>
+                <i class="fa-solid fa-bath"></i>
+                <span *ngIf="!isEditing">{{ infoBackUp.banios }} Baños</span>
+                <div *ngIf="isEditing" style="display: flex; align-items: center">
+                  <input
+                    type="number"
+                    [(ngModel)]="info.banios"
+                    (input)="validarBanios()"
+                    class="input-edit-badge"
+                    min="1"
+                  />
+                  <i
+                    class="fa-solid fa-circle-exclamation"
+                    style="color: #ef4444; margin-left: 5px"
+                    *ngIf="!baniosValido"
+                  ></i>
+                </div>
               </div>
+
               <div class="feature-badge">
-                <i class="fa-solid fa-ruler-combined"></i> <span>{{ info.metros }} m²</span>
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span *ngIf="!isEditing">{{ infoBackUp.metros }} m²</span>
+                <div *ngIf="isEditing" style="display: flex; align-items: center">
+                  <input
+                    type="number"
+                    [(ngModel)]="info.metros"
+                    (input)="validarMetros()"
+                    class="input-edit-badge"
+                    min="10"
+                  />
+                  <i
+                    class="fa-solid fa-circle-exclamation"
+                    style="color: #ef4444; margin-left: 5px"
+                    *ngIf="!metrosValido"
+                  ></i>
+                </div>
               </div>
+
               <div class="feature-badge">
-                <i class="fa-solid fa-person"></i> <span>{{ info.n_personas }}</span>
+                <i class="fa-solid fa-person"></i>
+                <span *ngIf="!isEditing">{{ infoBackUp.n_personas }}</span>
+                <div *ngIf="isEditing" style="display: flex; align-items: center">
+                  <input
+                    type="number"
+                    [(ngModel)]="info.n_personas"
+                    (input)="validarCapacidad()"
+                    class="input-edit-badge"
+                    min="1"
+                  />
+                  <i
+                    class="fa-solid fa-circle-exclamation"
+                    style="color: #ef4444; margin-left: 5px"
+                    *ngIf="!capacidadValido"
+                  ></i>
+                </div>
               </div>
-              <label class="owner-label">{{ info.nombre_propietario }} </label>
+              <div class="feature-badge owner-link">
+                <i class="fa-solid fa-house-chimney-user"></i>
+                <span [routerLink]="'/perfil/' + infoBackUp.propietario_id">{{
+                  infoBackUp.nombre_propietario
+                }}</span>
+              </div>
             </div>
 
             <div class="section-divider"></div>
+
             <div class="inm-content">
               <div class="inm-info">
                 <div class="info-block">
                   <h3>Cerca de:</h3>
-                  <div class="feature-badge highlight" style="width: 450px">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <span>{{ info.nombre_universidad }}</span>
+                  <div
+                    class="feature-badge highlight"
+                    style="width: 450px; flex-direction: column; align-items: flex-start"
+                  >
+                    <div style="display: flex; align-items: center; width: 100%">
+                      <i class="fa-solid fa-graduation-cap"></i>
+                      <span *ngIf="!isEditing">{{ infoBackUp.nombre_universidad }}</span>
+                      <select
+                        *ngIf="isEditing"
+                        [(ngModel)]="info.universidad_id"
+                        (change)="validarUniversidad()"
+                        class="input-edit-select"
+                      >
+                        <option [ngValue]="null" disabled>Selecciona una universidad</option>
+                        <option *ngFor="let uni of unis" [value]="uni.id">{{ uni.nombre }}</option>
+                      </select>
+                    </div>
+                    <span *ngIf="isEditing && !universidadValido" class="error-msg"
+                      >Debe seleccionar una universidad.</span
+                    >
                   </div>
-                </div>
-                <div class="info-block">
-                  <h3>Descripcion</h3>
-                  <p class="desc-text">{{ info.descripcion }}</p>
                 </div>
 
                 <div class="info-block">
-                  <h3>Compañeros de piso actuales - {{ huecosDisponibles }} huecos disponibles</h3>
+                  <h3>Descripcion</h3>
+                  <p class="desc-text" *ngIf="!isEditing">{{ infoBackUp.descripcion }}</p>
+                  <div *ngIf="isEditing" style="display: flex; flex-direction: column">
+                    <textarea
+                      [(ngModel)]="info.descripcion"
+                      (input)="validarDescripcion()"
+                      class="textarea-edit-desc"
+                    ></textarea>
+                    <span *ngIf="!descValido" class="error-msg"
+                      >La descripción debe tener al menos 20 caracteres.</span
+                    >
+                  </div>
+                </div>
+
+                <div class="info-block">
+                  <h3>Compañeros de piso actuales - {{ huecosDisponibles }} huecos</h3>
                   <div class="tenants-list">
                     <div
                       class="tenant-item"
                       *ngFor="let mt of matches"
                       [routerLink]="'/perfil/' + mt.estudiante_id"
                     >
-                      <img src="https://i.pravatar.cc/150?img=33" alt="Inquilino" />
-                      <span class="tenant-name">Inquilino</span>
+                      <img [src]="urlImagenesPerfil + mt.foto_perfil" alt="Inquilino" />
+                      <span class="tenant-name">{{ mt.nombre_estudiante }}</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <section class="candidates-column">
+
+              <section class="candidates-column" *ngIf="!isEditing">
                 <div class="likes-panel">
                   <div class="panel-header">
                     <h3>Interesados ({{ solicitudes.length }})</h3>
                     <p>Personas que han dado Like al piso</p>
                   </div>
-
                   <div class="candidates-scroll">
-                    <div class="candidate-row" *ngFor="let sol of solicitudes">
-                      <div class="candidate-avatar" [routerLink]="'/perfil/' + sol.estudiante_id">
-                        <img src="https://i.pravatar.cc/150?img=68" alt="User" />
-                      </div>
-                      <div class="candidate-info">
-                        <span class="name">{{ sol.nombre_solicitante }}</span>
-                      </div>
-                      <div class="candidate-actions" *ngIf="edit">
-                        <button class="action-btn reject"><i class="fa-solid fa-xmark"></i></button>
-                        <button class="action-btn accept"><i class="fa-solid fa-heart"></i></button>
-                      </div>
+                    <div class="no-likes" *ngIf="huecosDisponibles === 0">
+                      <i class="fa-solid fa-house-lock" style="color: #ef4444"></i>
+                      <p>¡El piso está completo!</p>
+                      <span
+                        style="font-size: 0.85rem; opacity: 0.7; font-family: var(--primary-font)"
+                        >No quedan habitaciones libres.</span
+                      >
                     </div>
-
-                    <div class="no-likes" *ngIf="solicitudes.length === 0">
-                      <i class="fa-regular fa-heart"></i>
-                      <p>Aún no tienes nuevos likes</p>
-                    </div>
+                    <ng-container *ngIf="huecosDisponibles > 0">
+                      <div class="candidate-row" *ngFor="let sol of solicitudes">
+                        <div class="candidate-avatar" [routerLink]="'/perfil/' + sol.estudiante_id">
+                          <img [src]="urlImagenesPerfil + sol.foto_perfil" alt="User" />
+                        </div>
+                        <div class="candidate-info">
+                          <span class="name">{{ sol.nombre_solicitante }}</span>
+                        </div>
+                        <div class="candidate-actions" *ngIf="edit">
+                          <button class="action-btn reject" (click)="eliminarSolicitud(sol)">
+                            <i class="fa-solid fa-xmark"></i>
+                          </button>
+                          <button class="action-btn accept" (click)="match(sol)">
+                            <i class="fa-solid fa-heart"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="no-likes" *ngIf="solicitudes.length === 0">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>Aún no hay nuevos likes</p>
+                      </div>
+                    </ng-container>
                   </div>
                 </div>
               </section>

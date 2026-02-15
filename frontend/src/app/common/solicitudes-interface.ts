@@ -26,6 +26,7 @@ export interface Inmueble {
     estudiante_id: string;
     inmueble_id: string;
     estado_solicitud: string;
+    solicitud_id:string;
     mensaje_presentacion: string;
     fecha_solicitud: string;
     fecha_respuesta: null | string; 

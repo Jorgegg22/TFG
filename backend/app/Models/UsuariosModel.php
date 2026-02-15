@@ -43,8 +43,6 @@ class UsuariosModel extends Model
 
     }
 
-
-
     public function getSolicitudesUsuario($id = null)
     {
         $sql = $this->select('
@@ -55,8 +53,7 @@ class UsuariosModel extends Model
         inm.precio,
         inm.direccion,
         inm.imagen_principal,
-        usuarios.nombre AS nombre_estudiante
-    ');
+        usuarios.nombre AS nombre_estudiante');
         $sql = $this->join('solicitudes AS sol', 'sol.estudiante_id = usuarios.id');
         $sql = $this->join('inmuebles AS inm', 'inm.id = sol.inmueble_id');
         $sql = $this->where('usuarios.id', $id);
@@ -70,11 +67,13 @@ class UsuariosModel extends Model
             ->join('inmuebles AS inm', 'inm.id = sol.inmueble_id')
             ->where('inm.propietario_id', $id)
             ->where('DATE(sol.fecha_solicitud)', date('Y-m-d'))
+            ->where('sol.estado', 'interesado')
             ->countAllResults();
         $lista = $this->db->table('solicitudes AS sol')
             ->select('
         sol.id AS solicitud_id,
         sol.fecha_solicitud,
+        sol.estado,
 
         inm.id AS inmueble_id,
         inm.titulo,
@@ -91,6 +90,7 @@ class UsuariosModel extends Model
             ->join('usuarios AS usu', 'usu.id = sol.estudiante_id')
             ->where('inm.propietario_id', $id)
             ->where('DATE(sol.fecha_solicitud)', date('Y-m-d'))
+            ->where('sol.estado', 'interesado')
             ->get()
             ->getResultArray();
 

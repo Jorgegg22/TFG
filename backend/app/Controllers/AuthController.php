@@ -37,16 +37,30 @@ class AuthController extends ResourceController
             return $this->fail('No se han recibido datos', 400);
         }
 
-        $usuarioModel = new UsuariosModel();
+        $regexFuerte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
 
-        $existe = $usuarioModel->where('email', $userData->email)->first();
-        if ($existe) {
-            return $this->fail('El email ya esta registrado', 409);
+        $rules = [
+            'name' => 'required|min_length[3]',
+            'email' => 'required|valid_email|is_unique[usuarios.email]',
+            'password' => "required|regex_match[$regexFuerte]"
+        ];
+
+        $messages = [
+            'password' => [
+                'regex_match' => 'La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.'
+            ],
+            'email' => [
+                'is_unique' => 'El email ya esta registrado'
+            ]
+        ];
+
+        if (!$this->validate($rules, $messages)) {
+            // Primer error
+            $error = current($this->validator->getErrors());
+            return $this->fail($error, 400);
         }
 
-
-
-
+        $usuarioModel = new UsuariosModel();
 
         $token = bin2hex(random_bytes(32));
 

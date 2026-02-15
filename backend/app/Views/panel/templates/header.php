@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link href="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 </head>
 
@@ -53,20 +53,6 @@
                 <a class="nav-link" href="<?= base_url('admin/inmuebles') ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Inmuebles</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/solicitudes') ?>">
-                    <i class="fas fa-fw fa-file-signature"></i>
-                    <span>Solicitudes</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/matches') ?>">
-                    <i class="fas fa-fw fa-handshake"></i>
-                    <span>Matches</span>
                 </a>
             </li>
 

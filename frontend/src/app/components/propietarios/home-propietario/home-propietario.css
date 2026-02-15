@@ -14,7 +14,7 @@
 }
 
 html {
-  overflow:hidden;
+  overflow: hidden;
 }
 
 /* =========================================
@@ -413,8 +413,6 @@ html {
   font-family: var(--primary-font);
 }
 
-
-
 /* =========================================
    SECCIÓN INFERIOR (MIS INMUEBLES - FULL WIDTH)
    ========================================= */
@@ -473,7 +471,6 @@ html {
 .properties-scroll-row {
   display: flex;
   gap: 20px;
- 
 
   max-width: 1600px;
   width: 100%;
@@ -497,7 +494,6 @@ html {
 
 /* Estilo de las Flechas */
 .nav-arrow {
-
   margin-top: 10px;
   transform: translateY(-50%);
   width: 40px;
@@ -505,7 +501,7 @@ html {
   border-radius: 50%;
   background: var(--primary);
   border: 1px solid #eee;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 10;
   cursor: pointer;
   display: flex;
@@ -629,6 +625,74 @@ html {
   }
 }
 
+.empty-state-horizontal {
+  display: flex;
+  justify-content: center; /* Centra el wrapper en el eje X */
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  margin: 15px 0;
+  background: #ffffff;
+  border: 2px dashed #cbd5e0;
+  border-radius: 16px;
+  max-height: 110px; /* Altura reducida para evitar scroll */
+  box-sizing: border-box;
+}
+
+.empty-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Espacio constante entre elementos */
+}
+
+.empty-icon {
+  font-size: 1.8rem;
+  color: var(--primary);
+  background: var(--info-bg);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.empty-text {
+  text-align: left;
+}
+
+.empty-text h3 {
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 700;
+}
+
+.empty-text p {
+  font-family: var(--primary-font);
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin: 2px 0 0 0;
+  line-height: 1.2;
+}
+
+
+
+/* Responsivo rápido */
+@media (max-width: 768px) {
+  .empty-state-horizontal {
+    flex-direction: column;
+    max-height: none;
+    gap: 15px;
+    padding: 20px;
+  }
+  .empty-text {
+    text-align: center;
+    margin: 0;
+  }
+}
 
 /* Responsive */
 @media (max-width: 900px) {

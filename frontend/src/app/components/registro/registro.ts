@@ -27,6 +27,9 @@ export class Registro {
     password_repeat: '',
   };
   value: number = 0;
+  mostrarPassword: boolean = false;
+  errorMensaje!: string;
+
   //Control validez campos
   emailNoValido!: boolean;
   passwordValido: boolean = false;
@@ -61,9 +64,10 @@ export class Registro {
   }
 
   comprobacionPassword() {
-    const regexNormal: RegExp = /^[A-Za-z\d]{6,}$/;
-    const regexMedio: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    const regexFuerte: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regexNormal = /^.{6,}$/;
+    const regexMedio = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+    // Al menos: 1 Mayúscula, 1 Minúscula, 1 Número y 1 Símbolo especial. Mínimo 8 caracteres.
+    const regexFuerte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
     if (regexFuerte.test(this.userData.password)) {
       this.value = 100;
@@ -105,7 +109,7 @@ export class Registro {
 
   comprobacionCondiciones(valor: boolean) {
     this.condicionValido = valor;
-    this.permitirBtnRegistro(); // Recuerda llamar a tu validador general
+    this.permitirBtnRegistro(); 
   }
 
   permitirBtnRegistro() {
@@ -135,7 +139,21 @@ export class Registro {
 
           this.router.navigate(['/eleccion']);
         },
+        error: (err) => {
+          console.error(err);
+          this.errorMensaje =
+            err.error.messages?.error || err.error.message || 'Error al iniciar sesión';
+          this.userData.password = '';
+          this.userData.password_repeat = '';
+          this.estadoPasswordRepeat = 0;
+          this.value = 0;
+          this.estadoPassword = '';
+        },
       });
     }
+  }
+
+  togglePassword() {
+    this.mostrarPassword = !this.mostrarPassword;
   }
 }

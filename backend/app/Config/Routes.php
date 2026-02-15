@@ -43,12 +43,20 @@ $routes->post('api/atributos/send', [UsuariosController::class, 'setAtributos'])
 $routes->get('api/usuarios/solicitudes', [UsuariosController::class, 'solicitudesUsuario']);
 $routes->get('api/usuarios/perfil', [UsuariosController::class, 'getPerfilUsuario']); // Para el perfil propio
 $routes->get('api/usuarios/perfil/(:num)', [UsuariosController::class, 'getPerfilUsuario/$1']);
+$routes->post('api/usuarios/eliminar', [UsuariosController::class, 'eliminarSolicitud']);
+$routes->post('api/usuarios/notificaciones', [UsuariosController::class, 'getUltimasNotificaciones']);
+
+// RUTAS COMPARTIDAS
+$routes->post('api/usuarios/actualizarPerfil', [UsuariosController::class, 'updatePerfil']);
 
 //PROPIETARIOS RUTAS
 $routes->get('api/propietarios/solicitudes', [UsuariosController::class, 'solicitudesUsuario']);
+$routes->get('api/propietarios/inmuebles/(:num)', [UsuariosController::class, 'getInmueblesPropietario']);
 $routes->get('api/propietarios/inmuebles', [UsuariosController::class, 'getInmueblesPropietario']);
 $routes->post('api/propietarios/publicar', [InmueblesController::class, 'postInmueble']);
 $routes->post('api/propietarios/eliminar', [InmueblesController::class, 'eliminarInmueble']);
+$routes->post('api/propietarios/match', [UsuariosController::class, 'crearMatch']);
+$routes->post('api/propietarios/rechazar', [UsuariosController::class, 'rechazarSolicitud']);
 
 //UNIVERSIDADES RUTAS    
 $routes->get('api/universidades', [UniversidadesController::class, 'universidadesLista']);
@@ -60,6 +68,7 @@ $routes->get('api/inmuebles/listaUni', [InmueblesController::class, 'inmueblesFi
 $routes->get('api/inmuebles/listaAleatoria', [InmueblesController::class, 'inmueblesListaAleatoria']);
 $routes->get('api/inmuebles/inmuebleDetalle/(:num)', [InmueblesController::class, 'inmuebleDetalle']);
 $routes->post('api/inmuebles/postSolicitud', [InmueblesController::class, 'postSolicitud']);
+$routes->post('api/inmuebles/actualizarInmueble', [InmueblesController::class, 'updateInmueble']);
 
 
 

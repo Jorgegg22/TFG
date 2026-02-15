@@ -8,7 +8,6 @@
         <div class="kpi-content" @enterInfo>
           <span class="kpi-number">{{ totalSolicitudes }}</span>
           <span class="kpi-label">SOLICITUDES DE HOY</span>
-          <button class="btn-kpi-action">Ver todas</button>
         </div>
         <div class="kpi-bg-icon"><i class="fa-solid fa-house"></i></div>
       </div>
@@ -33,10 +32,10 @@
             </div>
 
             <div class="activity-actions">
-              <button class="btn-icon accept" title="Aceptar">
+              <button class="btn-icon accept" (click)="match(sol)" title="Aceptar">
                 <i class="fa-solid fa-check"></i>
               </button>
-              <button class="btn-icon reject" title="Rechazar">
+              <button class="btn-icon reject" (click)="eliminarSolicitud(sol)" title="Rechazar">
                 <i class="fa-solid fa-xmark"></i>
               </button>
 
@@ -57,23 +56,43 @@
   <div class="bottom-section-full" *ngIf="inmuebles" @enterInfo>
     <div class="section-header-row">
       <h2>Mis Inmuebles</h2>
-      <button class="btn-add-new"><i class="fa-solid fa-plus"></i> Nuevo</button>
+      <button class="btn-add-new" routerLink="/publicar">
+        <i class="fa-solid fa-plus"></i> Nuevo
+      </button>
+    </div>
+    <div *ngIf="inmuebles.length === 0" class="empty-state-horizontal">
+      <div class="empty-content-wrapper">
+        <div class="empty-icon">
+          <i class="fa-solid fa-house-chimney-medical"></i>
+        </div>
+        <div class="empty-text">
+          <h3>Tu catálogo está vacío</h3>
+          <p>Publica tu primer inmueble y empieza a recibir solicitudes hoy mismo.</p>
+        </div>
+      </div>
     </div>
 
     <div class="properties-scroll-row" *ngIf="inmuebles" [@imageAnimation]="currentPage" @enterInfo>
-      <button class="nav-arrow left" [disabled]="currentPage === 1"  (click)="prevPage()">
+      <button class="nav-arrow left" [disabled]="currentPage === 1" (click)="prevPage()">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <article class="property-card-mini" *ngFor="let inm of inmuebles" [routerLink]="'/piso-detalle/' + inm.id">
-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Piso" />
+      <article
+        class="property-card-mini"
+        *ngFor="let inm of inmuebles"
+        [routerLink]="'/piso-detalle/' + inm.id"
+      >
+        <img [src]="urlImagenes + inm.imagen_principal" alt="Piso" />
         <div class="prop-info">
-          <h4>Piso Centro</h4>
+          <h4>{{ inm.titulo }}</h4>
           <span class="status-badge active">Publicado</span>
         </div>
       </article>
 
-   
-      <button class="nav-arrow right"  [disabled]="currentPage === totalPages" (click)="nextPage()">
+      <button
+        class="nav-arrow right"
+        [disabled]="currentPage === totalPages || totalPages === 0"
+        (click)="nextPage()"
+      >
         <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>

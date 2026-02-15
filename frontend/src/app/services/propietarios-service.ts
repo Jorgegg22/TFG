@@ -52,7 +52,7 @@ export class PropietarioService {
     return this.http.get<SolicitudesPropietarioResponse>(`${this.URI}solicitudes`, httpOptions);
   }
 
-  getInmueblesPropietario(): Observable<ListaInmuebles> {
+  getInmueblesPropietario(id?: string): Observable<ListaInmuebles> {
     const sesionStr = localStorage.getItem('sesion');
     const sesionObj = JSON.parse(sesionStr || '{}');
 
@@ -61,7 +61,11 @@ export class PropietarioService {
         'X-API-TOKEN': String(sesionObj.token || ''),
       }),
     };
-    return this.http.get<ListaInmuebles>(`${this.URI}inmuebles`, httpOptions);
+    if (id) {
+      return this.http.get<ListaInmuebles>(`${this.URI}inmuebles/` + id, httpOptions);
+    } else {
+      return this.http.get<ListaInmuebles>(`${this.URI}inmuebles`, httpOptions);
+    }
   }
 
   getPerfilUsuario(userId?: string): Observable<InfoPerfil> {
@@ -101,5 +105,13 @@ export class PropietarioService {
 
   deleteInmueble(id: string): Observable<any> {
     return this.http.post<any>(`${this.URI}eliminar`, { id });
+  }
+
+  crearMatch(matchData: any): Observable<any> {
+    return this.http.post(`${this.URI}match`, matchData);
+  }
+
+  eliminarSolicitud(solData: any): Observable<any> {
+    return this.http.post(`${this.URI}rechazar`, solData);
   }
 }

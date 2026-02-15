@@ -1,6 +1,5 @@
 <div class="auth-container">
   <div class="auth-left">
-
     <div class="brand-header">
       <div class="logo-univibe-serif" routerLink="/home">U</div>
     </div>
@@ -8,56 +7,84 @@
     <div class="auth-content" @enterInfo>
       <h1>Crea tu cuenta</h1>
       <p class="subtitle">Únete a la comunidad de estudiantes más exclusiva.</p>
+      <div *ngIf="errorMensaje" class="error-alert">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ errorMensaje }}
+      </div>
 
       <form>
         <div class="input-group">
           <label>Nombre completo</label>
-          <input type="text" placeholder="Ej. Alex García" name="nombre" [(ngModel)]="userData.name" (change)="permitirBtnRegistro()">
+          <input
+            type="text"
+            placeholder="Ej. Alex García"
+            name="nombre"
+            [(ngModel)]="userData.name"
+            (change)="permitirBtnRegistro()"
+          />
         </div>
 
         <div class="input-group">
           <label>Correo electrónico</label>
-          <input type="email" placeholder="tucorreo@universidad.edu" name="email" [(ngModel)]="userData.email"
-            (input)="comprobacionEmail()">
+          <input
+            type="email"
+            placeholder="tucorreo@universidad.edu"
+            name="email"
+            [(ngModel)]="userData.email"
+            (input)="comprobacionEmail()"
+          />
           <div *ngIf="userData.email.length >= 1">
-            <p class="p-email" *ngIf="emailNoValido; else ElseBlock">
-              Email no válido
-            </p>
+            <p class="p-email" *ngIf="emailNoValido; else ElseBlock">Email no válido</p>
 
             <ng-template #ElseBlock>
-              <p class="p-email-valid">
-                Email válido
-              </p>
+              <p class="p-email-valid">Email válido</p>
             </ng-template>
           </div>
-
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" placeholder="Mínimo 8 caracteres" name="password" [(ngModel)]="userData.password"
-            (input)="comprobacionPassword()">
-          <mat-progress-bar mode="determinate" [value]="value" [ngClass]="estadoPassword"
-            style="margin-top: 10px;margin-left: 5px;border-radius: 20px;">
+          <div class="password-wrapper">
+            <input
+              [type]="mostrarPassword ? 'text' : 'password'"
+              placeholder="Mínimo 8 caracteres"
+              name="password"
+              [(ngModel)]="userData.password"
+              (input)="comprobacionPassword()"
+              class="input-password"
+            />
+
+            <button type="button" class="btn-toggle-eye" (click)="togglePassword()">
+              <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <mat-progress-bar
+            mode="determinate"
+            [value]="value"
+            [ngClass]="estadoPassword"
+            style="margin-top: 10px; margin-left: 5px; border-radius: 20px"
+          >
           </mat-progress-bar>
-          <div *ngIf="estadoPassword!== ''">
-            <p class="password-state">
-              Fuerza contraseña: {{ estadoPassword }}
-            </p>
+          <div *ngIf="estadoPassword !== ''">
+            <p class="password-state">Fuerza contraseña: {{ estadoPassword }}</p>
 
             <ul class="password-requisitos">
               <li>Mínimo 8 caracteres</li>
-              <li>Una mayúscula y un número</li>
+              <li>Una mayúscula,un número y un caracter especial</li>
             </ul>
           </div>
-
         </div>
         <div class="input-group">
           <label>Repetir Contraseña</label>
-          <input type="password" placeholder="Mínimo 8 caracteres" name="password_repeat"
-            [(ngModel)]="userData.password_repeat" (input)="comprobacionPassword()">
+          <input
+            type="password"
+            placeholder="Mínimo 8 caracteres"
+            name="password_repeat"
+            [(ngModel)]="userData.password_repeat"
+            (input)="comprobacionPassword()"
+          />
           <div *ngIf="estadoPasswordRepeat !== 0">
-            <p class="coincide" *ngIf="estadoPasswordRepeat === 1;else elsePassword">
+            <p class="coincide" *ngIf="estadoPasswordRepeat === 1; else elsePassword">
               Las contaseñas coinciden
             </p>
             <ng-template #elsePassword>
@@ -67,20 +94,29 @@
         </div>
         <div class="terms-check">
           <label class="checkbox-container">
-            <input type="checkbox" (change)="comprobacionCondiciones($any($event.target).checked)">
+            <input
+              type="checkbox"
+              (change)="comprobacionCondiciones($any($event.target).checked)"
+            />
             <span class="checkmark"></span>
-            <span class="terms-text">Acepto los <a href="#">Términos</a> y la <a href="#">Política de
-                Privacidad</a>.</span>
+            <span class="terms-text"
+              >Acepto los <a href="#">Términos</a> y la
+              <a href="#">Política de Privacidad</a>.</span
+            >
           </label>
         </div>
 
-        <button type="submit" class="btn-primary" [disabled]="!permitirRegistro" (click)="registro()">Empezar
-          ahora</button>
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="!permitirRegistro"
+          (click)="registro()"
+        >
+          Empezar ahora
+        </button>
       </form>
 
-      <p class="auth-footer">
-        ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
-      </p>
+      <p class="auth-footer">¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
     </div>
   </div>
 

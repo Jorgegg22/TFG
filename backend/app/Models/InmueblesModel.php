@@ -170,7 +170,7 @@ class InmueblesModel extends Model
 
         $solicitudes = $db->table('solicitudes')
             ->select('solicitudes.*')
-            ->select('u_sol.nombre as nombre_solicitante')
+            ->select('u_sol.nombre as nombre_solicitante, u_sol.foto_perfil')
             ->join(
                 'usuarios as u_sol',
                 'u_sol.id = solicitudes.estudiante_id',
@@ -185,7 +185,7 @@ class InmueblesModel extends Model
 
         $matches = $db->table('matches')
             ->select('matches.*')
-            ->select('u_est.nombre as nombre_estudiante')
+            ->select('u_est.nombre as nombre_estudiante, u_est.foto_perfil')
             ->join(
                 'usuarios as u_est',
                 'u_est.id = matches.estudiante_id',
@@ -205,9 +205,11 @@ class InmueblesModel extends Model
 
     }
 
-    public function getInmueblesPropietario($id){
+    public function getInmueblesPropietario($id)
+    {
         return $this->select('inmuebles.*')
             ->where('inmuebles.propietario_id', $id)
+            ->orderBy('inmuebles.id', 'DESC') 
             ->findAll();
     }
 }

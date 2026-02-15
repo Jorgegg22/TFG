@@ -40,7 +40,7 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;     
-     
+      
 }
 
 .logo-link{
@@ -196,7 +196,7 @@ a {
   padding: 60px;
   background-image: 
     linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)),
-    url("../../../../public/assets/img/login-image.jpg");
+    url("../../../../public/assets/img/login-image.webp");
     
   /* Para que ocupe todo el contenedor sin deformarse */
   background-size: cover;
@@ -236,9 +236,80 @@ a {
   color: rgba(255, 255, 255, 0.9);
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.error-alert {
+  background-color: #fef2f2; /* Rojo muy suave */
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626; /* Línea roja intensa estilo Univibe */
+  color: #991b1b;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: var(--primary-font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ 
 }
+
+
 .signup-prompt { text-align: center; margin-top: 24px; font-size: 0.9rem; }
 .signup-prompt a { color: #0046ad; text-decoration: none; font-weight: 600; }
+
+
+/* =========================================
+   AÑADIDO: RESPONSIVE DESIGN
+   ========================================= */
+
+/* Tablets y Móviles (menos de 900px) */
+@media (max-width: 900px) {
+  
+  .login-container {
+
+    flex-direction: column; 
+    
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* Sección Izquierda (Formulario) en móvil */
+  .login-left {
+    width: 100%;
+    padding: 30px 20px; /* Reducimos padding lateral */
+    justify-content: center; /* Centramos el formulario verticalmente */
+    flex: none; /* Evitamos que intente crecer extrañamente */
+    min-height: 100vh; /* Aseguramos que ocupe la pantalla */
+  }
+
+  /* Sección Derecha (Imagen) en móvil */
+  /* La ocultamos para priorizar el login en pantallas pequeñas */
+  .login-right {
+    display: none; 
+  }
+
+  /* Ajustes de tipografía para pantallas pequeñas */
+  .login-form-content h1 {
+    font-size: 2rem; /* Título un poco más pequeño */
+  }
+
+  .login-form-content {
+    margin-top: 150px; /* Aseguramos que esté centrado por el flex del padre */
+  }
+}
+
+/* Móviles muy pequeños (menos de 400px) */
+@media (max-width: 400px) {
+  .login-left {
+    padding: 20px 15px;
+  }
+  
+  .login-form-content h1 {
+    font-size: 1.75rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+}

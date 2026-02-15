@@ -1,0 +1,510 @@
+ERROR - 2026-02-14 09:38:59 --> mysqli_sql_exception: Unknown column 'u_sol.foto_perfil' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `matches...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches...', Array, false)
+#4 /var/www/html/app/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+#7 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+#8 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-02-14 09:38:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_sol.foto_perfil' in 'field list'
+[Method: GET, Route: api/inmuebles/inmuebleDetalle/15]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 2 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 09:38:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_sol.foto_perfil' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 4 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 09:38:59 --> [Caused by] mysqli_sql_exception: Unknown column 'u_sol.foto_perfil' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 5 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-14 09:39:15 --> mysqli_sql_exception: Unknown column 'u_sol.foto_perfil' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `matches...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches...', Array, false)
+#4 /var/www/html/app/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+#7 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+#8 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-02-14 09:39:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_sol.foto_perfil' in 'field list'
+[Method: GET, Route: api/inmuebles/inmuebleDetalle/15]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 2 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 09:39:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_sol.foto_perfil' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 4 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 09:39:15 --> [Caused by] mysqli_sql_exception: Unknown column 'u_sol.foto_perfil' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 5 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-14 09:40:59 --> mysqli_sql_exception: Unknown column 'u_sol.foto_perfil' in 'field list' in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `matches...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches...', Array, false)
+#4 /var/www/html/app/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+#7 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+#8 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-02-14 09:40:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_sol.foto_perfil' in 'field list'
+[Method: GET, Route: api/inmuebles/inmuebleDetalle/15]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 2 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 09:40:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u_sol.foto_perfil' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 4 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 09:40:59 --> [Caused by] mysqli_sql_exception: Unknown column 'u_sol.foto_perfil' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = \'15\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `matches`.*, `u_est`.`nombre` as `nombre_estudiante`, `u_sol`.`foto_perfil`
+FROM `matches`
+LEFT JOIN `usuarios` as `u_est` ON `u_est`.`id` = `matches`.`estudiante_id`
+WHERE `matches`.`inmueble_id` = :matches.inmueble_id:', [...], false)
+ 5 APPPATH/Models/InmueblesModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/InmueblesController.php(79): App\Models\InmueblesModel->getInmuebleDetalle('15')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\InmueblesController->inmuebleDetalle('15')
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InmueblesController))
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-14 10:57:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-02-14 11:30:34 --> ErrorException: Undefined property: stdClass::$idSol
+[Method: POST, Route: api/usuarios/eliminar]
+in APPPATH/Controllers/UsuariosController.php on line 212.
+ 1 APPPATH/Controllers/UsuariosController.php(212): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$idSol', '/var/www/html/app/Controllers/UsuariosController.php', 212)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->eliminarSolicitud()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 11:30:46 --> ErrorException: Undefined property: stdClass::$idSol
+[Method: POST, Route: api/usuarios/eliminar]
+in APPPATH/Controllers/UsuariosController.php on line 212.
+ 1 APPPATH/Controllers/UsuariosController.php(212): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$idSol', '/var/www/html/app/Controllers/UsuariosController.php', 212)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->eliminarSolicitud()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:19:19 --> ParseError: syntax error, unexpected identifier "getNotificaciones", expecting "function" or "const"
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 365.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/UsuariosController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\UsuariosController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\UsuariosController')
+ 4 SYSTEMPATH/CodeIgniter.php(885): class_exists('\\App\\Controllers\\UsuariosController', true)
+ 5 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:21:28 --> ParseError: syntax error, unexpected identifier "getNotificaciones", expecting "function" or "const"
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 365.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/UsuariosController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\UsuariosController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\UsuariosController')
+ 4 SYSTEMPATH/CodeIgniter.php(885): class_exists('\\App\\Controllers\\UsuariosController', true)
+ 5 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:21:31 --> ParseError: syntax error, unexpected identifier "getNotificaciones", expecting "function" or "const"
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 365.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/UsuariosController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\UsuariosController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\UsuariosController')
+ 4 SYSTEMPATH/CodeIgniter.php(885): class_exists('\\App\\Controllers\\UsuariosController', true)
+ 5 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:21:36 --> ParseError: syntax error, unexpected identifier "getNotificaciones", expecting "function" or "const"
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 365.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/UsuariosController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\UsuariosController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\UsuariosController')
+ 4 SYSTEMPATH/CodeIgniter.php(885): class_exists('\\App\\Controllers\\UsuariosController', true)
+ 5 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:22:16 --> ParseError: syntax error, unexpected identifier "getNotificaciones", expecting "function" or "const"
+[Method: GET, Route: api/usuarios/perfil]
+in APPPATH/Controllers/UsuariosController.php on line 365.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/UsuariosController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\UsuariosController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\UsuariosController')
+ 4 SYSTEMPATH/CodeIgniter.php(885): class_exists('\\App\\Controllers\\UsuariosController', true)
+ 5 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:49:47 --> ArgumentCountError: Too few arguments to function App\Controllers\UsuariosController::getUltimasNotificaciones(), 0 passed in /var/www/html/system/CodeIgniter.php on line 933 and exactly 1 expected
+[Method: GET, Route: api/usuarios/notificaciones]
+in APPPATH/Controllers/UsuariosController.php on line 365.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->getUltimasNotificaciones()
+ 2 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 3 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:50:43 --> ErrorException: Attempt to read property "id" on null
+[Method: GET, Route: api/usuarios/notificaciones]
+in APPPATH/Controllers/UsuariosController.php on line 371.
+ 1 APPPATH/Controllers/UsuariosController.php(371): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', '/var/www/html/app/Controllers/UsuariosController.php', 371)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->getUltimasNotificaciones()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:52:10 --> ErrorException: Attempt to read property "id" on null
+[Method: GET, Route: api/usuarios/notificaciones]
+in APPPATH/Controllers/UsuariosController.php on line 371.
+ 1 APPPATH/Controllers/UsuariosController.php(371): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', '/var/www/html/app/Controllers/UsuariosController.php', 371)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->getUltimasNotificaciones()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:52:20 --> ErrorException: Attempt to read property "id" on null
+[Method: GET, Route: api/usuarios/notificaciones]
+in APPPATH/Controllers/UsuariosController.php on line 371.
+ 1 APPPATH/Controllers/UsuariosController.php(371): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', '/var/www/html/app/Controllers/UsuariosController.php', 371)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->getUltimasNotificaciones()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 12:52:23 --> ErrorException: Attempt to read property "id" on null
+[Method: GET, Route: api/usuarios/notificaciones]
+in APPPATH/Controllers/UsuariosController.php on line 371.
+ 1 APPPATH/Controllers/UsuariosController.php(371): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', '/var/www/html/app/Controllers/UsuariosController.php', 371)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->getUltimasNotificaciones()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-14 16:35:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-14 16:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-02-14 17:03:20 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL) in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('UPDATE `usuario...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `usuario...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `usuario...')
+#3 /var/www/html/system/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuario...', Array, false)
+#4 /var/www/html/system/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 /var/www/html/system/BaseModel.php(1010): CodeIgniter\Model->doUpdate(Array, Array)
+#6 /var/www/html/system/Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 /var/www/html/app/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', Array)
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-14 17:03:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL)
+[Method: POST, Route: api/usuarios/guardarDatos]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuarios` SET `telefono` = :telefono:, `id_carrera` = :id_carrera:, `descripcion` = :descripcion:, `universidad_id` = :universidad_id:, `foto_perfil` = :foto_perfil:
+WHERE `usuarios`.`id` IN :usuarios.id:', [...], false)
+ 2 SYSTEMPATH/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH/BaseModel.php(1010): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 17:03:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuarios` SET `telefono` = :telefono:, `id_carrera` = :id_carrera:, `descripcion` = :descripcion:, `universidad_id` = :universidad_id:, `foto_perfil` = :foto_perfil:
+WHERE `usuarios`.`id` IN :usuarios.id:', [...], false)
+ 4 SYSTEMPATH/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH/BaseModel.php(1010): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 17:03:20 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuarios` SET `telefono` = :telefono:, `id_carrera` = :id_carrera:, `descripcion` = :descripcion:, `universidad_id` = :universidad_id:, `foto_perfil` = :foto_perfil:
+WHERE `usuarios`.`id` IN :usuarios.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/BaseModel.php(1010): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-14 17:03:32 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL) in /var/www/html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(327): mysqli->query('UPDATE `usuario...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `usuario...')
+#2 /var/www/html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `usuario...')
+#3 /var/www/html/system/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuario...', Array, false)
+#4 /var/www/html/system/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 /var/www/html/system/BaseModel.php(1010): CodeIgniter\Model->doUpdate(Array, Array)
+#6 /var/www/html/system/Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 /var/www/html/app/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', Array)
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+#9 /var/www/html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+#10 /var/www/html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-02-14 17:03:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL)
+[Method: POST, Route: api/usuarios/guardarDatos]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuarios` SET `telefono` = :telefono:, `id_carrera` = :id_carrera:, `descripcion` = :descripcion:, `universidad_id` = :universidad_id:, `foto_perfil` = :foto_perfil:
+WHERE `usuarios`.`id` IN :usuarios.id:', [...], false)
+ 2 SYSTEMPATH/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH/BaseModel.php(1010): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 17:03:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuarios` SET `telefono` = :telefono:, `id_carrera` = :id_carrera:, `descripcion` = :descripcion:, `universidad_id` = :universidad_id:, `foto_perfil` = :foto_perfil:
+WHERE `usuarios`.`id` IN :usuarios.id:', [...], false)
+ 4 SYSTEMPATH/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH/BaseModel.php(1010): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-14 17:03:32 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`univibe_db`.`usuarios`, CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `usuarios` SET `telefono` = \'640812573\', `id_carrera` = \'\', `descripcion` = \'Hola me llamo Jorge ,soy propietario\', `universidad_id` = \'\', `foto_perfil` = \'avatar_default.png\'
+WHERE `usuarios`.`id` IN (\'26\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `usuarios` SET `telefono` = :telefono:, `id_carrera` = :id_carrera:, `descripcion` = :descripcion:, `universidad_id` = :universidad_id:, `foto_perfil` = :foto_perfil:
+WHERE `usuarios`.`id` IN :usuarios.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/BaseModel.php(1010): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH/Model.php(860): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH/Controllers/UsuariosController.php(145): CodeIgniter\Model->update('26', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UsuariosController->complete()
+10 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+11 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(63): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-14 17:26:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-14 18:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-14 18:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-14 19:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

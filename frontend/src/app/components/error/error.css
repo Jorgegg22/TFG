@@ -1,0 +1,171 @@
+:root {
+  --primary: #0056b3;
+  --primary-glow: rgba(0, 86, 179, 0.4);
+  --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.error-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%),
+    url('../../../../public/assets/img/hero-image.webp') no-repeat center center;
+  background-size: cover;
+  color: white;
+  overflow: hidden;
+}
+
+/* NAVEGACIÓN (Superpuesta) */
+.hero-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 8%;
+  z-index: 100;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-univibe-serif {
+  width: 45px;
+  height: 45px;
+  background-color: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 28px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.brand-text-nav {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+}
+
+/* BLOQUE CENTRAL */
+.error-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 20px;
+  animation: fadeInBlur 1.2s ease-out;
+}
+
+.error-code {
+  font-size: clamp(8rem, 25vw, 14rem);
+  font-weight: 900;
+  font-family: var(--primary-font);
+  line-height: 0.9;
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -10px;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+  animation: float 6s ease-in-out infinite;
+}
+
+.main-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  font-family: var(--primary-font);
+  margin: -20px 0 15px 0;
+  letter-spacing: -1px;
+}
+
+.main-subtitle {
+  font-size: 1.1rem;
+  font-family: var(--secondary-font);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 500px;
+  margin: 0 auto 35px auto;
+  line-height: 1.6;
+}
+
+/* ACCIONES */
+.error-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-explore {
+  background-color: var(--primary);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px var(--primary-glow);
+}
+
+.btn-explore:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px var(--primary-glow);
+  background-color: #004494;
+}
+
+.btn-text {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-text:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+/* DECORACIÓN Y ANIMACIONES */
+.bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url('../../../../public/assets/img/fondo_univibe_logo.png');
+  background-size: 450px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .error-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .btn-explore, .btn-text { width: 100%; }
+  .error-code { letter-spacing: -5px; }
+}

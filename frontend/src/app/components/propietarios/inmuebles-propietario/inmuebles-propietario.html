@@ -6,8 +6,17 @@
       <div class="toast-container" *ngIf="exitoPost && inmuebles" [@enterPost]>
         <div class="toast-card">
           <div class="toast-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
@@ -17,8 +26,17 @@
             <p class="toast-message">El inmueble se ha publicado correctamente.</p>
           </div>
           <button class="toast-close" (click)="exitoPost = false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -28,8 +46,17 @@
       <div class="toast-container" *ngIf="exitoDelete && inmuebles" [@enterPost]>
         <div class="toast-card">
           <div class="toast-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
@@ -39,8 +66,17 @@
             <p class="toast-message">El inmueble se ha eliminado correctamente.</p>
           </div>
           <button class="toast-close" (click)="exitoDelete = false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -58,24 +94,21 @@
           </div>
           <div class="info-text">
             <p>
-              ¡Tus inmuebles tienen fans! En este panel verás a los estudiantes que quieren vivir en tus pisos.
-              Echa un vistazo a sus perfiles y decide con quién hay <strong>match</strong> aceptando su solicitud.
+              ¡Tus inmuebles tienen fans! En este panel verás a los estudiantes que quieren vivir en
+              tus pisos. Echa un vistazo a sus perfiles y decide con quién hay
+              <strong>match</strong> aceptando su solicitud.
             </p>
           </div>
-
         </div>
-
       </div>
 
       <section class="main-card solicitudes-card full-screen-layout" @enterInfo>
         <div *ngIf="loading" class="loader"></div>
         <ng-container *ngIf="!loading">
-
           <div class="column-grid-scroll" *ngIf="allInmuebles.length > 0; else elseBlock">
             <article class="house-card-modern" *ngFor="let inm of inmuebles" @enterInfo>
               <div class="card-image-box">
                 <img [src]="urlImagenes + inm.imagen_principal" alt="Piso" />
-
               </div>
               <div class="card-body">
                 <div class="card-header-info">
@@ -83,8 +116,14 @@
                   <span class="precio">{{ inm.precio }}€</span>
                 </div>
                 <div class="card-footer">
-                  <span class="location"><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span>
-                  <button class="view-btn" routerLink="/piso-detalle" [routerLink]="'/piso-detalle/' + inm.id">
+                  <span class="location"
+                    ><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span
+                  >
+                  <button
+                    class="view-btn"
+                    routerLink="/piso-detalle"
+                    [routerLink]="'/piso-detalle/' + inm.id"
+                  >
                     <i class="fa-regular fa-eye"></i>
                   </button>
                 </div>
@@ -93,9 +132,17 @@
           </div>
           <div class="pagination" *ngIf="mostratPaginacion">
             <button class="pag-btn prev" [disabled]="currentPage === 1" (click)="prevPage()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                />
               </svg>
               Anterior
             </button>
@@ -104,21 +151,41 @@
               {{ currentPage }}
             </button>
             <div *ngIf="totalPages > 1" style="display: flex; gap: 5px">
-              <button class="pag-number" *ngIf="currentPage !== totalPages" (click)="goToPage(currentPage + 1)">
+              <button
+                class="pag-number"
+                *ngIf="currentPage !== totalPages"
+                (click)="goToPage(currentPage + 1)"
+              >
                 {{ currentPage + 1 }}
               </button>
               <span class="pag-dots">...</span>
 
-              <button class="pag-number" *ngIf="currentPage !== totalPages" (click)="goToPage(totalPages)">
+              <button
+                class="pag-number"
+                *ngIf="currentPage !== totalPages"
+                (click)="goToPage(totalPages)"
+              >
                 {{ totalPages }}
               </button>
             </div>
 
-            <button class="pag-btn next" [disabled]="currentPage === totalPages" (click)="nextPage()">
+            <button
+              class="pag-btn next"
+              [disabled]="currentPage === totalPages"
+              (click)="nextPage()"
+            >
               Siguiente
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
               </svg>
             </button>
           </div>
@@ -130,12 +197,14 @@
             <div class="info-text">
               <h2 class="gradient-text">¡Vaya!</h2>
               <p class="main-message">
-                Aún no has enviado ninguna solicitud. ¡No te quedes sin tu piso ideal!
+                ¡Anímate a publicar! Tu lista está vacía, pero tus futuros inquilinos te están
+                buscando.
               </p>
               <p class="sub-message">
-                Explora las casas disponibles y dale al corazón para que aparezcan aquí.
+                No pierdas ni un minuto más: publica tu inmueble ahora y empieza a recibir
+                solicitudes hoy mismo
               </p>
-              <button class="btn-primary" routerLink="/home-estudiante">Explorar pisos</button>
+ 
             </div>
           </div>
         </ng-template>

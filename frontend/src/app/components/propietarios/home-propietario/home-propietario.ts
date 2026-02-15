@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PropietarioService } from '../../../services/propietarios-service';
 import { Router } from '@angular/router';
-import { SolicitudesPropietarioResponse,SolicitudesHoy } from '../../../common/solicitudesPropietario-interface';
+import {
+  SolicitudesPropietarioResponse,
+  SolicitudesHoy,
+} from '../../../common/solicitudesPropietario-interface';
 import { ListaInmuebles } from '../../../common/inmuebles-interface';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-
-
+import { Match } from '../../../common/pisoDetalle-interface';
 
 @Component({
   selector: 'app-home-propietario',
@@ -13,8 +15,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   templateUrl: './home-propietario.html',
   styleUrl: './home-propietario.css',
   animations: [
-    
-
     trigger('enterInfo', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(20px)' }),
@@ -47,85 +47,95 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ],
 })
 export class HomePropietario implements OnInit {
+  info!: SolicitudesPropietarioResponse;
+  totalSolicitudes!: number;
+  solictudesHoy!: SolicitudesHoy[];
 
- 
-  info!:SolicitudesPropietarioResponse;
-  totalSolicitudes!:number
-  solictudesHoy!:SolicitudesHoy[]
-
-  //urlImagenes:string = "http://localhost:8080/uploads/inmuebles_fotos/"
-  urlImagenes: string = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
-  inmueblesAll!:ListaInmuebles
-  inmuebles!:ListaInmuebles
-  currentPage:number = 1;
-  totalPages!:number;
-  elementsPerPage:number = 6
-  initialSlice!:number
-  finalSlice!:number
+  urlImagenes: string = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes: string = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
+  inmueblesAll!: ListaInmuebles;
+  inmuebles!: ListaInmuebles;
+  currentPage: number = 1;
+  totalPages!: number;
+  elementsPerPage: number = 6;
+  initialSlice!: number;
+  finalSlice!: number;
   loading: boolean = true;
 
-  constructor(
-    private propService:PropietarioService,
- 
-    
-  ) {}
+  constructor(private propService: PropietarioService) {}
 
   ngOnInit(): void {
-    this.loadSolicitudes()
-    this.loadInmuebles()
-    
+    this.loadSolicitudes();
+    this.loadInmuebles();
   }
 
-
-  loadSolicitudes(){
+  loadSolicitudes() {
     this.propService.getSolicitudesPropietario().subscribe({
-        next:(respuesta) => {
-          console.log(respuesta);
-          this.info = respuesta
-          this.totalSolicitudes = this.info.data.inmuebles.total_solicitudes
-          this.solictudesHoy = this.info.data.inmuebles.solicitudes
-    
-          
-
-      }
-    
-    })
-    
+      next: (respuesta) => {
+        console.log(respuesta);
+        this.info = respuesta;
+        this.totalSolicitudes = this.info.data.inmuebles.total_solicitudes;
+        this.solictudesHoy = this.info.data.inmuebles.solicitudes;
+      },
+    });
   }
 
-  loadInmuebles(){
+  loadInmuebles() {
     this.propService.getInmueblesPropietario().subscribe({
-      next:(respuesta) =>{
+      next: (respuesta) => {
         console.log(respuesta);
         this.inmueblesAll = respuesta;
-        this.totalPages = Math.ceil(this.inmueblesAll.length / this.elementsPerPage )
+        this.totalPages = Math.ceil(this.inmueblesAll.length / this.elementsPerPage);
         console.log(this.totalPages);
         console.log(this.inmueblesAll.length);
         this.pagination();
-        this.loading = false
-        
-      }
-     })
+        this.loading = false;
+      },
+    });
   }
 
-
-  pagination(){
-    this.initialSlice = (this.elementsPerPage * this.currentPage) - this.elementsPerPage;
+  pagination() {
+    this.initialSlice = this.elementsPerPage * this.currentPage - this.elementsPerPage;
     this.finalSlice = this.initialSlice + this.elementsPerPage;
-    this.inmuebles = this.inmueblesAll.slice(this.initialSlice,this.finalSlice);
+    this.inmuebles = this.inmueblesAll.slice(this.initialSlice, this.finalSlice);
   }
 
-
-  nextPage(){
+  nextPage() {
     this.currentPage++;
     this.pagination();
   }
 
-  prevPage(){
+  prevPage() {
     this.currentPage--;
     this.pagination();
   }
 
+  match(sol: any) {
+    const data = {
+      solicitud_id: sol.solicitud_id,
+      estudiante_id: sol.estudiante_id,
+      inmueble_id: sol.inmueble_id,
+    };
 
+    this.propService.crearMatch(data).subscribe({
+      next: (respuesta) => {
+        this.solictudesHoy = this.solictudesHoy.filter((s) => s.solicitud_id !== sol.id);
+        this.loadSolicitudes();
+      },
+      error: (err) => console.error(err),
+    });
+  }
 
+  eliminarSolicitud(sol: any) {
+    const data = {
+      solicitud_id: sol.solicitud_id,
+    };
+
+    this.propService.eliminarSolicitud(data).subscribe({
+      next: (respuesta) => {
+        this.loadSolicitudes();
+      },
+      
+    });
+  }
 }

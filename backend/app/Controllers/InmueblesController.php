@@ -230,8 +230,11 @@ class InmueblesController extends ResourceController
 
         ];
 
-        foreach($imaganesInmueble as $img){
-            unlink($rutaCarpeta . $img);
+        foreach ($imaganesInmueble as $img) {
+            if (file_exists($rutaCarpeta . $img)) {
+                unlink($rutaCarpeta . $img);
+            }
+
         }
 
 
@@ -250,6 +253,74 @@ class InmueblesController extends ResourceController
         }
     }
 
+    public function updateInmueble()
+    {
+        $token = $this->request->getHeaderLine('X-API-TOKEN');
+        $usuariosModel = new UsuariosModel();
+        $inmueblesModel = new InmueblesModel();
+
+
+        $usuario = $usuariosModel->where('token', $token)->first();
+        if (!$usuario) {
+            return $this->failUnauthorized('Sesión no válida');
+        }
+
+        $inmData = $this->request->getJSON();
+
+
+        $inmuebleOriginal = $inmueblesModel->where('id', $inmData->id)->first();
+        if (!$inmuebleOriginal) {
+            return $this->failNotFound('Inmueble no encontrado');
+        }
+
+
+
+        $rutaCarpeta = FCPATH . "/uploads/inmuebles_fotos/";
+
+        $data = [
+            'titulo' => $inmData->titulo ?? $inmuebleOriginal['titulo'],
+            'direccion' => $inmData->direccion ?? $inmuebleOriginal['direccion'],
+            'precio' => $inmData->precio ?? $inmuebleOriginal['precio'],
+            'n_personas' => $inmData->n_personas ?? $inmuebleOriginal['n_personas'],
+            'habitaciones' => $inmData->habitaciones ?? $inmuebleOriginal['habitaciones'],
+            'banios' => $inmData->banios ?? $inmuebleOriginal['banios'],
+            'metros' => $inmData->metros ?? $inmuebleOriginal['metros'],
+            'descripcion' => $inmData->descripcion ?? $inmuebleOriginal['descripcion'],
+            'universidad_id' => $inmData->universidad_id ?? $inmuebleOriginal['universidad_id'],
+        ];
+
+
+        $camposImagenes = ['imagen_principal', 'imagen1', 'imagen2', 'imagen3', 'imagen4'];
+
+        foreach ($camposImagenes as $campo) {
+            if (!empty($inmData->$campo) && strpos($inmData->$campo, 'data:image') !== false) {
+
+
+                if (!empty($inmuebleOriginal[$campo]) && file_exists($rutaCarpeta . $inmuebleOriginal[$campo])) {
+                    unlink($rutaCarpeta . $inmuebleOriginal[$campo]);
+                }
+
+
+                $data[$campo] = $this->guardarImagen($inmData->$campo);
+            }
+        }
+
+
+      
+
+        if ($inmueblesModel->update($inmData->id, $data)) {
+
+            return $this->response->setJSON([
+                'status' => 200,
+                'message' => 'Inmueble actualizado correctamente'
+            ]);
+        }
+
+        return $this->response->setJSON(['status' => 500, 'error' => 'Error al actualizar'])->setStatusCode(500);
+
+
+
+    }
 
 
 }

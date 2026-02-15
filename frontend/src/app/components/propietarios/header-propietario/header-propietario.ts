@@ -41,6 +41,7 @@ export class HeaderPropietario {
   perfil!: UsuarioPerfil;
 
   urlImagenes = 'http://localhost:8080/uploads/perfiles/';
+  menuMovil:boolean = false
 
   constructor(
     private authService: AuthService,

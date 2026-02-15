@@ -83,7 +83,7 @@ export class HomeEstudiante implements OnInit {
   indexImage: number = 0;
   $idCasaLike!: number;
   idsInteractuados: number[] = [];
-  noInfo: boolean = false;
+  noInfo: boolean = true;
   loading: boolean = true;
   datosCargados: number = 0;
 
@@ -104,6 +104,7 @@ export class HomeEstudiante implements OnInit {
     this.getInmueblesFiltradoUni();
     this.getInmueblesAleatorios();
 
+    // ESPERA PARA QUE LOS ARRAYS ESTEN LLENOS Y HACER LOADINMUEBLES
     setTimeout(() => {
       this.loading = false;
       this.loadInmueble();
@@ -182,7 +183,9 @@ export class HomeEstudiante implements OnInit {
     } else {
       console.log('No quedan más casas por mostrar');
       this.noInfo = true;
+      return
     }
+    this.noInfo = false
     this.indexImage = 0;
     this.loadPhoto();
   }

@@ -5,6 +5,7 @@ import { Usuario } from '../common/usuarios-interface';
 import { InfoPerfil } from '../common/usuarioPerfil-interface';
 import { Solicitud } from '../common/pisoDetalle-interface';
 import { SolicitudResponse } from '../common/solicitudes-interface';
+import { Notificacion } from '../common/notificacion-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,6 @@ export class UsuarioService {
   private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
 
   constructor(private http: HttpClient) {}
-
-  
 
   getUsuarioByToken(): Observable<Usuario> {
     const sesionStr = localStorage.getItem('sesion');
@@ -38,7 +37,7 @@ export class UsuarioService {
         'X-API-TOKEN': String(sesionObj.token || ''),
       }),
     };
-    return this.http.post(`${this.URI}guardarDatos`, userdata,httpOptions);
+    return this.http.post(`${this.URI}guardarDatos`, userdata, httpOptions);
   }
 
   getSolicitudesUsuario(): Observable<SolicitudResponse> {
@@ -72,5 +71,25 @@ export class UsuarioService {
     } else {
       return this.http.get<InfoPerfil>(`${this.URI}perfil/` + userId, httpOptions);
     }
+  }
+
+  eliminarSolicitud(data: any): Observable<any> {
+    return this.http.post<any>(`${this.URI}eliminar`, data);
+  }
+
+  getNotifiaciones(userData: any): Observable<Notificacion[]> {
+    return this.http.post<Notificacion[]>(`${this.URI}notificaciones`, userData);
+  }
+
+  updatePerfil(userdata: any): Observable<any> {
+    const sesionStr = localStorage.getItem('sesion');
+    const sesionObj = JSON.parse(sesionStr || '{}');
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-API-TOKEN': String(sesionObj.token || ''),
+      }),
+    };
+    return this.http.post(`${this.URI}actualizarPerfil`, userdata, httpOptions);
   }
 }

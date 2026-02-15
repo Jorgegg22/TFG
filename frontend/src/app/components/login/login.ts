@@ -30,7 +30,8 @@ export class Login implements OnInit {
 
   sessionData!: { nombre: string; token: string ,rol: string};
   permitirIniciarSesion: boolean = false
-
+  errorMensaje!:string
+  
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -67,10 +68,15 @@ export class Login implements OnInit {
         } else if (respuesta.rol === 'propietario') {
           this.router.navigate(['/home-propietario']);
         } else {
-          window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
-          //window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
+          //window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
+          window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
         }
       },
+      error:(err) => {
+        console.error(err);
+        this.errorMensaje = err.error.messages?.error || err.error.message || 'Error al iniciar sesión';
+      }
+   
     });
   }
 }

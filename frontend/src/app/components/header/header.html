@@ -1,22 +1,84 @@
-<nav class="nav-modern" @enterInfo>
+<nav class="nav-modern" @enterInfo *ngIf="perfil">
   <div class="nav-content">
-    <div class="brand"><div class="logo-univibe-serif" routerLink="/home-estudiante">U</div></div>
-    <ul class="menu">
-      <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
-      <li><a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a></li>
-      <li><a routerLink="/mi-perfil" routerLinkActive="active-link">Perfil</a></li>
-    </ul>
-    <div class="user-actions">
-      <div class="profile-circle" *ngIf="perfil.foto_perfil">
-        <img   [src]="urlImagenes + perfil.foto_perfil" alt="User">
-
-      </div>
-              <i class="fa-solid fa-angle-up arrow-options" style="color: #ffffff;" (click)="showOptions()"  *ngIf="!options" ></i>
-              <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff;" (click)="showOptions()"  *ngIf="options" ></i>
-      <div class="options" *ngIf="options" @enterLogut>
-        <p (click)="logout()" style="cursor: pointer;" >Cerrar Sesion</p>
-
-      </div>
+    
+    <div class="brand">
+        <div class="logo-univibe-serif" routerLink="/home-estudiante">U</div>
     </div>
-  </div>
+    <!-- MENU MOVIL -->
+    <div class="hamburger-btn" (click)="menuMovil = !menuMovil">
+      <i class="fa-solid" [class.fa-bars]="!menuMovil" [class.fa-xmark]="menuMovil"></i>
+    </div>
+
+    <div class="nav-links-wrapper" [class.mobile-active]="menuMovil">
+      
+      <ul class="menu" (click)="menuMovil = false">
+        <li><a routerLink="/home-estudiante" routerLinkActive="active-link">Descubrir</a></li>
+        <li><a routerLink="/solicitudes-estudiante" routerLinkActive="active-link">Solicitudes</a></li>
+        <li><a routerLink="/mi-perfil" routerLinkActive="active-link">Perfil</a></li>
+      </ul>
+
+      <div class="user-actions">
+        
+        <div class="notif-wrapper" *ngIf="notificaciones">
+          <div class="notif-btn" (click)="toggleNotifs()">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notif-badge">{{numeroNotificaciones}}</span>
+          </div>
+
+          <div class="notif-panel" *ngIf="showNotifs" @panelAnimation>
+            <div class="notif-header">
+              <span>Notificaciones ({{numeroNotificaciones}})</span>
+            </div>
+            
+            <div class="notif-list">
+              <div class="notif-item" *ngFor="let noti of notificaciones">
+                <ng-container *ngIf="noti.estado === 'aceptado'; else elseRechazado">
+                  <div class="notif-icon accept">
+                    <i class="fa-solid fa-circle-check"></i>
+                  </div>
+                  <div class="notif-info">
+                    <p>
+                      Tu solicitud para <strong class="strong-link" [routerLink]="'/piso-detalle/' + noti.inmueble_id" (click)="menuMovil = false">{{ noti.nombre_inmueble }}</strong> ha sido
+                      <strong class="info-a">Aceptada</strong>.
+                    </p>
+                    <small>{{ noti.fecha_solicitud | date: 'dd/MM/yyyy HH:mm' }}</small>
+                  </div>
+                </ng-container>
+
+                <ng-template #elseRechazado>
+                  <div class="notif-icon reject">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </div>
+                  <div class="notif-info">
+                    <p>
+                      El propietario de <strong class="strong-link">{{ noti.nombre_inmueble }}</strong> ha
+                      <strong class="info-r">Rechazado</strong> tu solicitud.
+                    </p>
+                    <small>{{ noti.fecha_solicitud | date: 'dd/MM/yyyy HH:mm' }}</small>
+                  </div>
+                </ng-template>
+              </div>
+
+              <div class="notif-item" *ngIf="notificaciones.length === 0">
+                <p style="font-size: 0.85rem; color: #95a5a6; text-align: center; width: 100%">
+                  No tienes notificaciones nuevas.
+                </p>
+              </div>
+            </div>
+            <button class="btn-close-notif" (click)="showNotifs = false">Cerrar</button>
+          </div>
+        </div>
+
+        <div class="profile-circle" *ngIf="perfil">
+          <img [src]="urlImagenes + perfil?.foto_perfil" alt="User" />
+        </div>
+
+        <i class="fa-solid fa-angle-up arrow-options" style="color: #ffffff" (click)="showOptions()" *ngIf="!options"></i>
+        <i class="fa-solid fa-angle-down arrow-options" style="color: #ffffff" (click)="showOptions()" *ngIf="options"></i>
+        
+        <div class="options" *ngIf="options" @enterLogut>
+          <p (click)="logout()" style="cursor: pointer">Cerrar Sesion</p>
+        </div>
+
+      </div> </div> </div>
 </nav>

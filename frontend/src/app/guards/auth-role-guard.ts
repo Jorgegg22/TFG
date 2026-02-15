@@ -3,18 +3,21 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const authRoleGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  
 
-  const userRole = localStorage.getItem('role'); 
+  const sesionStr = localStorage.getItem('sesion');
+  //Convertimos en objeto sesionStr,para acceder al token
+  const sesionObj = JSON.parse(sesionStr || '{}');
+  const userRole = sesionObj.rol;
 
-  
-  const expectedRole = route.data['expectedRole'];
+  // Extraemos el array de roles que definiste en el routing
+  const expectedRoles = route.data['expectedRoles'] as Array<string>;
 
-  if (userRole === expectedRole) {
+  // Comprobamos si el rol del usuario existe y está incluido en los permitidos
+  if (userRole && expectedRoles.includes(userRole)) {
     return true;
   }
 
-  // Si no es el rol correcto, lo mandamos al login
+  // Si no tiene el rol necesario, al login
   router.navigate(['/login']);
   return false;
 };

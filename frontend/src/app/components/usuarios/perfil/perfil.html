@@ -3,24 +3,32 @@
     <div *ngIf="loading" class="loader"></div>
 
     <ng-container *ngIf="!loading">
-      <div class="profile-container" *ngIf="perfil" >
-        <div class="profile-main-card"  @enterAnimation>
+      <div class="profile-container" *ngIf="perfil">
+        <div class="profile-main-card" @enterAnimation>
           <div class="profile-header">
             <div class="avatar-wrapper">
               <img
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                [src]="perfil.foto_perfil.includes('data:') ?   perfil.foto_perfil : urlImagenesPerfil + perfilBackUp.foto_perfil "
                 alt="Foto de perfil"
                 class="profile-img"
               />
 
-              <button class="btn-edit-photo" *ngIf="isEditing">
+              <button class="btn-edit-photo" (click)="fileInput.click()" type="button">
                 <i class="fa-solid fa-camera"></i>
               </button>
+
+              <input
+                #fileInput
+                type="file"
+                style="display: none"
+                accept="image/*"
+                (change)="nombreFoto($event)"
+              />
             </div>
 
             <div class="profile-intro">
               <ng-container *ngIf="!isEditing">
-                <h2>{{ perfil.nombre }}</h2>
+                <h2>{{ perfilBackUp.nombre }}</h2>
 
                 <div class="profile-badges"></div>
               </ng-container>
@@ -31,7 +39,7 @@
               </ng-container>
             </div>
 
-            <button class="btn-edit-profile" (click)="toggleEdit()">
+            <button class="btn-edit-profile" (click)="toggleEdit()" *ngIf="perfilPropio">
               <i class="fa-solid" [class.fa-pen]="!isEditing" [class.fa-xmark]="isEditing"></i>
               {{ isEditing ? 'Cancelar' : 'Editar' }}
             </button>
@@ -40,119 +48,235 @@
           <div class="profile-info-grid">
             <div class="info-group">
               <label>Correo Electrónico</label>
+
               <div class="data-box" *ngIf="!isEditing">
                 <i class="fa-regular fa-envelope"></i>
-                <p>{{ perfil.email }}</p>
+                <p>{{ perfilBackUp.email }}</p>
               </div>
-              <input *ngIf="isEditing" type="email" class="input-modern" value="alex@univibe.com" />
+
+              <ng-container *ngIf="isEditing">
+                <input
+                  type="email"
+                  class="input-modern"
+                  [(ngModel)]="perfil.email"
+                  (input)="validacionEmail()"
+                />
+
+                <div
+                  class="validation-msg"
+                  *ngIf="nuevoEmail && perfil.email !== perfilBackUp.email"
+                >
+                  <p class="msg-valid" *ngIf="emailValido">
+                    <i class="fa-solid fa-check"></i> Nuevo email válido
+                  </p>
+
+                  <p class="msg-invalid" *ngIf="!emailValido">
+                    <i class="fa-solid fa-xmark"></i> Formato de correo no válido
+                  </p>
+                </div>
+              </ng-container>
             </div>
 
             <div class="info-group">
               <label>Teléfono</label>
               <div class="data-box" *ngIf="!isEditing">
                 <i class="fa-solid fa-phone"></i>
-                <p>{{ perfil.telefono }}</p>
+                <p>{{ perfilBackUp.telefono }}</p>
               </div>
-              <input *ngIf="isEditing" type="tel" class="input-modern" value="+34 600 123 456" />
+              <ng-container *ngIf="isEditing">
+                <input
+                  type="tel"
+                  class="input-modern"
+                  [(ngModel)]="perfil.telefono"
+                  (input)="validacionTelefono()"
+                  placeholder="600000000"
+                />
+                <div
+                  class="validation-msg"
+                  *ngIf="nuevoTelefono && perfil.telefono !== perfilBackUp.telefono"
+                >
+                  <p class="msg-valid" *ngIf="telefonoValido">
+                    <i class="fa-solid fa-check"></i> Teléfono válido
+                  </p>
+                  <p class="msg-invalid" *ngIf="!telefonoValido">
+                    <i class="fa-solid fa-xmark"></i> Debe empezar por 6 y tener 9 dígitos
+                  </p>
+                </div>
+              </ng-container>
             </div>
 
-            <div class="info-group">
-              <label>Universidad</label>
-              <div class="data-box highlight" *ngIf="!isEditing">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <p>{{ perfil.nombre_universidad }}</p>
+            <ng-container *ngIf="estudiante">
+              <div class="info-group">
+                <label>Universidad</label>
+                <div class="data-box highlight" *ngIf="!isEditing">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <p>{{ perfilBackUp.nombre_universidad }}</p>
+                </div>
+                <div class="select-wrapper" *ngIf="isEditing">
+                  <i class="fa-solid fa-graduation-cap input-icon"></i>
+                  <select
+                    class="input-modern with-icon"
+                    [(ngModel)]="perfil.universidad_id"
+                    (ngModelChange)="validacionUniversidad()"
+                  >
+                    <option [value]="null" disabled>Selecciona tu universidad</option>
+                    <option *ngFor="let uni of unis" [value]="uni.id">{{ uni.nombre }}</option>
+                  </select>
+                </div>
               </div>
-              <div class="select-wrapper" *ngIf="isEditing">
-                <i class="fa-solid fa-graduation-cap input-icon"></i>
-                <select class="input-modern with-icon">
-                  <option selected>Universidad de Granada (UGR)</option>
-                  <option>Universidad de Sevilla</option>
-                  <option>Complutense de Madrid</option>
-                </select>
-              </div>
-            </div>
 
-            <div class="info-group">
-              <label>Carrera / Grado</label>
-              <div class="data-box" *ngIf="!isEditing">
-                <i class="fa-solid fa-book"></i>
-                <p>{{ perfil.nombre_carrera }}</p>
+              <div class="info-group">
+                <label>Carrera</label>
+                <div class="data-box" *ngIf="!isEditing">
+                  <i class="fa-solid fa-book"></i>
+                  <p>{{ perfilBackUp.nombre_carrera }}</p>
+                </div>
+                <div class="select-wrapper" *ngIf="isEditing">
+                  <i class="fa-solid fa-book input-icon"></i>
+                  <select
+                    class="input-modern with-icon"
+                    [(ngModel)]="perfil.id_carrera"
+                    (ngModelChange)="validacionCarrera()"
+                  >
+                    <option [value]="null" disabled>Selecciona tu carrera</option>
+                    <option *ngFor="let carrera of carreras" [value]="carrera.id">
+                      {{ carrera.nombre }}
+                    </option>
+                  </select>
+                </div>
               </div>
-              <input
-                *ngIf="isEditing"
-                type="text"
-                class="input-modern"
-                value="Ingeniería Informática"
-              />
-            </div>
+            </ng-container>
+
             <div class="separator"></div>
+
             <div class="info-group full-width desc-info">
-              <label>Sobre Mí</label>
+              <div class="label-with-msg">
+                <label>Sobre Mí</label>
+                <div
+                  class="validation-msg inline"
+                  *ngIf="isEditing && perfil.descripcion.length > 0"
+                >
+                  <p class="msg-warn" *ngIf="perfil.descripcion.length < 10">
+                    ¡Cuéntanos un poco más!
+                  </p>
+                  <p
+                    class="msg-valid"
+                    *ngIf="perfil.descripcion.length >= 10 && perfil.descripcion.length <= 200"
+                  >
+                    Perfecto
+                  </p>
+                  <p class="msg-invalid" *ngIf="perfil.descripcion.length > 200">
+                    Demasiado largo (máx. 200)
+                  </p>
+                </div>
+              </div>
+
               <div class="info-group" *ngIf="!isEditing">
-                <p class="data-box">{{ perfil.descripcion }}</p>
+                <p class="data-box">{{ perfilBackUp.descripcion }}</p>
               </div>
 
               <div class="data-box bio-box" *ngIf="isEditing">
-                <input
-                  *ngIf="isEditing"
+                <textarea
                   class="input-modern bio-input"
-                  value="Me considero una persona tranquila pero sociable. Me gusta mantener las zonas comunes limpias y cocinar los fines de semana. Busco compañeros de piso con buen rollo."
-                />
-              </div>
-            </div>
-            <div class="social-section">
-              <label class="section-title">ENCUENTRAME</label>
-
-              <div class="social-bento-grid">
-                <a href="#" class="bento-item instagram">
-                  <div class="bento-icon">
-                    <i class="fa-brands fa-instagram"></i>
-                  </div>
-                  <div class="bento-info">
-                    <span class="bento-label">Instagram</span>
-                  </div>
-                </a>
-
-                <a href="#" class="bento-item spotify">
-                  <div class="bento-icon">
-                    <i class="fa-brands fa-spotify"></i>
-                  </div>
-                  <div class="bento-info">
-                    <span class="bento-label">Spotify</span>
-                  </div>
-                </a>
-
-                <a href="#" class="bento-item twitter">
-                  <div class="bento-icon">
-                    <i class="fa-brands fa-x-twitter"></i>
-                  </div>
-                  <div class="bento-info">
-                    <span class="bento-label">Twitter / X</span>
-                  </div>
-                </a>
+                  [(ngModel)]="perfil.descripcion"
+                  (input)="validacionDescripcion()"
+                  placeholder="Hobbies, qué buscas, manías..."
+                ></textarea>
               </div>
             </div>
           </div>
 
           <div *ngIf="isEditing">
-            <button class="btn-back" style="width: 230px; padding: 15px">Guardar Cambios</button>
+            <button
+              class="btn-back-editing"
+              style="width: 230px; padding: 15px"
+              [disabled]="!permitirPostDatos"
+              (click)="guardarCambios()"
+            >
+              Guardar Cambios
+            </button>
           </div>
 
-          <button class="btn-back" *ngIf="!isEditing" (click)="volver()" >
+          <button class="btn-back" *ngIf="!isEditing" (click)="volver()">
             <i class="fa-solid fa-arrow-left-long"></i>
             <p>Volver</p>
           </button>
         </div>
-        <aside class="profile-sidebar-card" @enterSideBar>
+        <aside class="profile-sidebar-card" *ngIf="estudiante" @enterSideBar>
           <div class="sidebar-header">
             <h3>Vibe & Estilo de Vida</h3>
             <span class="counter">{{ atributosUsuario.length }}</span>
           </div>
 
-          <div class="attributes-container" *ngIf="atributosUsuarioObject">
+          <div class="attributes-container">
             <span class="attribute-pill" *ngFor="let atr of atributosUsuarioObject">
               <i class="material-symbols-outlined">{{ atr.icono }}</i> {{ atr.nombre }}
             </span>
+          </div>
+        </aside>
+
+        <aside class="profile-sidebar-card" *ngIf="!estudiante" @enterSideBar>
+          <div class="sidebar-header">
+            <h3>Inmuebles de {{ perfil.nombre }}</h3>
+            <span class="counter"><i class="fa-solid fa-house"></i></span>
+          </div>
+
+          <div class="owner-preview-content">
+            <div class="icon-soft-circle">
+              <i
+                class="fa-solid"
+                [class.fa-house-laptop]="!infoInmuebles"
+                [class.fa-list-check]="infoInmuebles"
+              ></i>
+            </div>
+
+            <ng-container *ngIf="!infoInmuebles">
+              <p class="owner-text">El propietario no tiene inmuebles que alquilar.</p>
+
+              <div class="preview-mockup">
+                <div class="mock-line"></div>
+                <div class="mock-line short"></div>
+                <div class="mock-line"></div>
+              </div>
+            </ng-container>
+
+            <div class="scroll-container">
+              <div
+                class="property-mini-card"
+                *ngFor="let inm of allInmuebles"
+                [routerLink]="['/piso-detalle', inm.id]"
+              >
+                <div class="mini-img-wrapper">
+                  <img
+                    *ngIf="inm.imagen_principal"
+                    [src]="urlImagenesInmuebles + inm.imagen_principal"
+                    alt="Foto del inmueble"
+                  />
+                  <div *ngIf="!inm.imagen_principal" class="placeholder-img">
+                    <i class="fa-solid fa-house-chimney"></i>
+                  </div>
+                </div>
+
+                <div class="mini-info">
+                  <h4 title="{{ inm.titulo }}">{{ inm.titulo || 'Piso sin nombre' }}</h4>
+
+                  <div class="mini-meta">
+                    <span class="price">{{ inm.precio }}€ <small>/mes</small></span>
+                  </div>
+                </div>
+
+                <div class="action-arrow">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-add-mini" routerLink="/publicar" *ngIf="perfilPropio">
+              <div class="icon-plus">
+                <i class="fa-solid fa-plus"></i>
+              </div>
+              <span>Publicar nuevo inmueble</span>
+            </button>
           </div>
         </aside>
       </div></ng-container

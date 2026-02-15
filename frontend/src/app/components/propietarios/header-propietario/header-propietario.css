@@ -1,13 +1,16 @@
 :host {
   display: block;
   --primary: #0056b3;
+  --accent: #00d1b2;
+  --bg-light: #f5f7fa;
+  --text-main: #232829;
   --white: #ffffff;
   --primary-font: 'Plus Jakarta Sans', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
 }
 
 /* NAVBAR PRINCIPAL */
 .nav-modern {
-  /* Tu degradado original */
   background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%);
   height: 70px;
   display: flex;
@@ -47,6 +50,15 @@
   cursor: pointer;
 }
 
+/* --- ESTILO BASE PARA ESCRITORIO (Wrapper) --- */
+.nav-links-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 37%; /* Separación del logo original */
+}
+
 /* MENU LINKS */
 .menu {
   display: flex;
@@ -71,8 +83,8 @@
 }
 
 .active-link {
-  border-bottom: 4px solid white; /* Ajustado un poco para que se vea mejor */
-  padding-bottom: 23px; /* Para que el borde quede pegado al final del header */
+  border-bottom: 4px solid white;
+  padding-bottom: 23px;
   opacity: 1 !important;
 }
 
@@ -80,9 +92,9 @@
 .user-actions {
   display: flex;
   align-items: center;
-  gap: 15px; /* Un poco más de espacio */
+  gap: 15px;
   color: var(--white);
-  position: relative; /* IMPORTANTE para que el hijo se posicione respecto a esto */
+  position: relative;
 }
 
 .profile-circle img {
@@ -103,13 +115,13 @@
   transform: scale(1.2);
 }
 
-/* ESTILOS CORREGIDOS DEL MENÚ DESPLEGABLE */
+/* ESTILOS DEL MENÚ DESPLEGABLE (OPTIONS) */
 .options {
   background-color: #ffffff;
   position: absolute;
-  top: 100%; /* Empieza justo debajo del header */
-  right: 0; /* Alineado a la derecha */
-  margin-top: 15px; /* Separación vertical */
+  top: 100%; 
+  right: 0; 
+  margin-top: 15px; 
 
   width: 140px;
   border-radius: 12px;
@@ -119,16 +131,15 @@
   flex-direction: column;
   border: 1px solid #f0f0f0;
   z-index: 1001;
-
-  /* Nota: No ponemos transition aquí porque usas la animación de Angular */
+  color: #333; /* Color de texto base para opciones */
 }
 
-/* El triangulito (flecha) encima del menú */
+/* Flecha del menú desplegable */
 .options::before {
   content: '';
   position: absolute;
   top: -6px;
-  right: 20px; /* Alineado con la flecha del icono */
+  right: 20px; 
   width: 12px;
   height: 12px;
   background-color: white;
@@ -151,4 +162,109 @@
 .options p:hover {
   background-color: #fff5f5;
   color: #c0392b;
+}
+
+/* =========================================================================
+   AÑADIDO: MEDIA QUERIES PARA MENU HAMBURGUESA (RESPONSIVE)
+   ========================================================================= */
+
+/* 1. Botón hamburguesa oculto por defecto en PC */
+.hamburger-btn {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--white);
+  cursor: pointer;
+  order: 2; /* Para que quede a la derecha del logo */
+}
+
+/* 2. Reglas para Tablets y Móviles (menos de 992px) */
+@media (max-width: 992px) {
+  
+  /* Mostrar botón hamburguesa */
+  .hamburger-btn {
+    display: block;
+  }
+
+  /* El contenedor que envuelve menú y acciones se convierte en un panel desplegable */
+  .nav-links-wrapper {
+    position: absolute;
+    top: 70px; /* Justo debajo del navbar */
+    left: 0;
+    width: 100%;
+    margin-left: 0; /* Quitamos el margen de escritorio */
+    background: linear-gradient(135deg, #0056b3 0%, #3b82f6 100%); /* Mismo fondo */
+    
+    /* Configuración Flex vertical */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    gap: 25px;
+
+    /* Animación de entrada (oculto por defecto) */
+    transform: translateY(-150%); 
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none; /* No clickable cuando está cerrado */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Clase que activa la visibilidad (se añade con Angular) */
+  .nav-links-wrapper.mobile-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Ajustar lista del menú para que sea vertical */
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+  }
+  
+  /* Ajuste visual del enlace activo en móvil */
+  .active-link {
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+  }
+
+  /* Ajustar zona de usuario */
+  .user-actions {
+    width: 80%;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Separador visual */
+    flex-direction: column; /* Apilar elementos de usuario verticalmente */
+    gap: 15px;
+  }
+
+  /* Ajuste para el menú de cerrar sesión en móvil */
+  .options {
+    position: static; /* Ya no flota, se integra en el flujo */
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    border: none;
+  }
+  
+  /* Quitar la flechita del menú en móvil */
+  .options::before {
+    display: none;
+  }
+
+  .options p {
+    color: white; /* Texto blanco en móvil */
+  }
+  
+  .options p:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  
+  /* Ocultar flechas de dropdown en móvil si quieres que el menú esté siempre visible al abrir */
+  /* Opcional: .arrow-options { display: none; } */
 }

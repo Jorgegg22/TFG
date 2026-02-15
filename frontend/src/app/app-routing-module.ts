@@ -15,76 +15,105 @@ import { InmueblesPropietario } from './components/propietarios/inmuebles-propie
 import { Publicar } from './components/propietarios/publicar/publicar';
 import { PerfilPropietario } from './components/propietarios/perfil-propietario/perfil-propietario';
 import { VistaInmueblePropietario } from './components/propietarios/vista-inmueble-propietario/vista-inmueble-propietario';
+import { Error } from './components/error/error';
+
+import { authRoleGuard } from './guards/auth-role-guard';
 
 const routes: Routes = [
+  // RUTAS GENERALES
   {
     path: 'home',
-    component: Home
+    component: Home,
   },
   {
-    path:'',
-    component: Home
+    path: '',
+    component: Home,
   },
   {
-    path:'login',
-    component: Login
+    path: 'login',
+    component: Login,
   },
   {
-    path:'registro',
-    component: Registro
+    path: 'registro',
+    component: Registro,
   },
   {
-    path:'eleccion',
-    component: Eleccion 
+    path: 'eleccion',
+    component: Eleccion,
   },
   {
-    path:'registro-perfil',
-    component: PerfilRegistro
-  },{
-    path:'atributos',
-    component: Atributos
+    path: 'registro-perfil',
+    component: PerfilRegistro,
+  },
+  // RUTAS ESTUDIANTES
+  {
+    path: 'atributos',
+    component: Atributos,
   },
   {
-    path:'home-estudiante',
-    component: HomeEstudiante
-  },{
-    path:'solicitudes-estudiante',
-    component:Solicitudes
+    path: 'home-estudiante',
+    component: HomeEstudiante,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['estudiante'] },
+  },
+  {
+    path: 'solicitudes-estudiante',
+    component: Solicitudes,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['estudiante'] },
+  },
 
+  {
+    path: 'mi-perfil',
+    component: Perfil,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['estudiante', 'propietario'] },
+  },
+
+  {
+    path: 'perfil/:id',
+    component: Perfil,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['estudiante', 'propietario'] },
   },
   {
-     path: 'mi-perfil', 
-     component: Perfil 
+    path: 'piso-detalle/:id',
+    component: VistaPiso,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['estudiante', 'propietario'] },
   },
-  
   {
-    path:'perfil/:id',
-    component:Perfil
-  },{
-    path:'piso-detalle/:id',
-    component: VistaPiso
-  },{
-    path:'home-propietario',
-    component:HomePropietario
-  },{
-    path:'inmuebles-propietario',
-    component:InmueblesPropietario
-  },{
-    path:'publicar',
-    component:Publicar
-  },{
-    path:'perfil-propietario',
-    component:PerfilPropietario
-  },{
-    path:'vista-inmueble',
-    component:VistaInmueblePropietario
-  }
-
-
+    path: 'home-propietario',
+    component: HomePropietario,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['propietario'] },
+  },
+  {
+    path: 'inmuebles-propietario',
+    component: InmueblesPropietario,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['propietario'] },
+  },
+  {
+    path: 'publicar',
+    component: Publicar,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['propietario'] },
+  },
+  {
+    path: 'perfil-propietario',
+    component: PerfilPropietario,
+    canActivate: [authRoleGuard],
+    data: { expectedRoles: ['propietario'] },
+  },
+  {
+    path: '**',
+    component: Error,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

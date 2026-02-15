@@ -17,7 +17,10 @@
   --shadow-float: 0 4px 12px rgba(0, 86, 179, 0.15);
 }
 
-/* WRAPPER & SCROLL */
+/* =========================================
+   WRAPPER & SCROLL
+   ========================================= */
+
 .property-view-wrapper {
   height: 100vh;
   width: 100vw;
@@ -65,7 +68,10 @@
   justify-content: space-around;
 }
 
-/* HEADER */
+/* =========================================
+   HEADER
+   ========================================= */
+
 .sheet-header {
   display: flex;
   align-items: center;
@@ -150,69 +156,59 @@
   color: white;
 }
 
-/* HERO GALLERY */
-/* CONTENEDOR PRINCIPAL */
+/* =========================================
+   HERO GALLERY
+   ========================================= */
+
 .hero-gallery {
-  display: flex; /* Mantenemos tu estructura */
-  gap: 5px; /* Un poco más de aire (antes 5px) */
+  display: flex;
+  gap: 5px;
   height: 610px;
   margin-bottom: 40px;
   justify-content: center;
-
-  /* MEJORA VISUAL CLAVE: */
-  border-radius: 24px; /* Redondeamos TODO el bloque */
-  overflow: hidden; /* Recorta las imágenes que tocan las esquinas */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15); /* Sombra elegante */
-  background-color: #f1f5f9; /* Fondo de carga mientras llegan las fotos */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+  background-color: #f1f5f9;
 }
 
-/* LA IMAGEN PRINCIPAL (IZQUIERDA) */
 .main-img {
-  flex: 1.6; /* Ocupa un poco más de espacio proporcional */
+  flex: 1.6;
   position: relative;
-  overflow: hidden; /* Necesario para el zoom */
+  overflow: hidden;
 }
 
-/* EL CONTENEDOR DE LAS 4 FOTOS (DERECHA) */
 .sub-imgs {
-  flex: 1; /* Ocupa el resto */
-  /* Tu grid interno se mantiene, solo asegúrate de que ocupe todo */
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 12px; /* Mismo gap que el padre */
+  gap: 12px;
 }
 
-/* ESTILO COMÚN PARA TODAS LAS IMÁGENES */
 .main-img img,
 .sub-imgs img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 0; /* Quitamos bordes individuales, el padre manda */
+  border-radius: 0;
   cursor: pointer;
-
-  /* Transiciones suaves */
   transition:
     transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     filter 0.4s ease;
 }
 
-/* --- INTERACTIVIDAD PREMIUM --- */
-
-/* 1. Al entrar en la galería, oscurece un poco TODAS las fotos */
 .hero-gallery:hover .main-img img,
 .hero-gallery:hover .sub-imgs img {
   filter: brightness(0.9);
 }
 
-/* 2. Pero la foto que estás tocando recupera su brillo y hace zoom */
 .hero-gallery .main-img img:hover,
 .hero-gallery .sub-imgs img:hover {
-  filter: brightness(1.05); /* Un poco más brillante que el original */
-  transform: scale(1.06); /* Zoom sutil */
-  z-index: 2; /* Asegura que quede por encima si se sale */
+  filter: brightness(1.05);
+  transform: scale(1.06);
+  z-index: 2;
 }
 
 .main-img img {
@@ -269,7 +265,10 @@
   gap: 8px;
 }
 
-/* CONTENT LAYOUT */
+/* =========================================
+   CONTENT LAYOUT
+   ========================================= */
+
 .content-layout {
   display: grid;
   grid-template-columns: 1.8fr 400px;
@@ -279,8 +278,15 @@
   margin-left: 15px;
   margin-top: 50px;
 }
+.owner-link {
+  cursor: pointer;
+  transition: all 0.2s;
+}
 
-/* DETAILS COLUMN */
+.owner-link:hover {
+  background-color: rgba(42, 124, 230, 0.192);
+  transform: scale(1.05);
+}
 
 .inm-content {
   display: flex;
@@ -433,33 +439,30 @@
   font-family: var(--font-body);
 }
 
-/* --- LAYOUT PRINCIPAL --- */
+/* =========================================
+   CANDIDATES COLUMN & PANEL
+   ========================================= */
+
 .candidates-column {
   position: sticky;
-  top: 30px; /* Un poco más de margen superior */
+  top: 30px;
   width: 1000px;
   margin-left: 250px;
   z-index: 10;
 }
 
-/* --- PANEL ESTILO CRISTAL/GRADIENTE --- */
 .likes-panel {
-  /* Gradiente moderno y profundo */
   background: var(--primary);
-  border-radius: 32px; /* Bordes más redondeados (Tendencia actual) */
+  border-radius: 32px;
   padding: 35px;
   color: white;
-
-  /* Sombra "Glow" (Resplandor) en lugar de sombra negra dura */
   box-shadow: 0 20px 50px -10px rgba(0, 86, 179, 0.5);
-
   min-height: 700px;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Decoración de fondo sutil (Círculo de luz) */
 .likes-panel::before {
   content: '';
   position: absolute;
@@ -472,7 +475,6 @@
   pointer-events: none;
 }
 
-/* --- HEADER --- */
 .panel-header {
   margin-bottom: 30px;
   padding-bottom: 20px;
@@ -484,7 +486,7 @@
 .panel-header h3 {
   margin: 0;
   font-size: 1.8rem;
-  font-weight: 800; /* Letra más gruesa y moderna */
+  font-weight: 800;
   font-family: var(--font-heading);
   letter-spacing: -0.5px;
 }
@@ -497,22 +499,17 @@
   font-weight: 500;
 }
 
-/* --- GRID DE CANDIDATOS --- */
 .candidates-scroll {
   display: grid;
-  /* MEJORA: Grid flexible. Se adapta al ancho en lugar de forzar 2 columnas */
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px; /* Más espacio entre cartas */
+  gap: 20px;
   max-height: 600px;
   overflow-y: auto;
-  padding: 10px 5px; /* Padding para que no se corten las sombras */
-
-  /* Scrollbar moderna (Firefox) */
+  padding: 10px 5px;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
-/* Scrollbar moderna (Chrome/Safari) */
 .candidates-scroll::-webkit-scrollbar {
   width: 6px;
 }
@@ -524,39 +521,37 @@
   border-radius: 20px;
 }
 
-/* --- CARTA DE CANDIDATO --- */
-.candidate-row {
-  background: rgba(255, 255, 255, 0.96); /* Casi blanco sólido */
-  backdrop-filter: blur(8px);
-  border-radius: 24px; /* Muy redondeado */
-  padding: 20px 15px;
+/* =========================================
+   CANDIDATE CARD
+   ========================================= */
 
+.candidate-row {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: 20px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 15px;
-
-  /* Dimensiones */
-  width: 100%; /* Ocupa el espacio de la celda del grid */
-  height: auto; /* Altura flexible */
+  width: 100%;
+  height: auto;
   min-height: 230px;
-
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto rebote suave */
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .candidate-row:hover {
-  transform: translateY(-8px); /* Sube más al hacer hover */
+  transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   z-index: 5;
 }
 
-/* AVATAR */
 .candidate-avatar {
   width: 80px;
-  height: 80px; /* Un poco más grande */
+  height: 80px;
   cursor: pointer;
   position: relative;
 }
@@ -566,7 +561,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid white; /* Borde blanco grueso */
+  border: 4px solid white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -575,7 +570,6 @@
   transform: scale(1.05);
 }
 
-/* INFO */
 .candidate-info {
   display: flex;
   flex-direction: column;
@@ -584,30 +578,27 @@
 }
 
 .candidate-info .name {
-  color: #1e293b; /* Slate Dark */
+  color: #1e293b;
   font-weight: 700;
   font-size: 1.05rem;
   font-family: var(--font-heading);
-
-  /* Truncar nombres muy largos */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* BOTONES DE ACCIÓN */
 .candidate-actions {
   display: flex;
   gap: 12px;
   width: 100%;
   justify-content: center;
-  margin-top: auto; /* Empuja los botones al final */
+  margin-top: auto;
 }
 
 .action-btn {
   width: 42px;
   height: 42px;
-  border-radius: 14px; /* Más cuadrado (Squircle) */
+  border-radius: 14px;
   border: none;
   cursor: pointer;
   display: flex;
@@ -640,7 +631,6 @@
   transform: translateY(-3px);
 }
 
-/* ESTADO VACÍO (NO LIKES) */
 .no-likes {
   grid-column: 1 / -1;
   display: flex;
@@ -661,7 +651,10 @@
   font-weight: 500;
 }
 
-/* HTML: <div class="loader"></div> */
+/* =========================================
+   MODALES Y POPUPS
+   ========================================= */
+
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -687,25 +680,20 @@
 }
 
 .uv-viewer-backdrop {
-  position: fixed; /* Fijo para cubrir toda la ventana, incluso si haces scroll */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Negro al 90% de opacidad */
-  z-index: 9999; /* Muy alto para estar encima de todo (header, nav, etc.) */
-
-  /* Centrado perfecto del contenido */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* Animación de entrada suave */
   animation: fadeIn 0.3s ease-out;
-  backdrop-filter: blur(5px); /* Opcional: difumina ligeramente el fondo */
+  backdrop-filter: blur(5px);
 }
 
-/* 2. El escenario de la imagen */
 .uv-viewer-stage {
   position: relative;
   max-width: 90%;
@@ -715,44 +703,30 @@
   align-items: center;
 }
 
-/* 3. La Imagen */
 .uv-viewer-img {
   max-width: 105%;
   max-height: 90vh;
   object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-
   animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .owner-label {
-  /* Fondo: Un degradado sutil en lugar de color plano para dar volumen */
   background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
   color: var(--white);
   margin-left: auto;
-  /* Forma y Espaciado */
   padding: 10px 24px;
-  border-radius: 50px; /* Bordes totalmente redondos (Pill shape) son más modernos */
-
-  /* Posición */
-
-  /* Tipografía */
+  border-radius: 50px;
   font-family: var(--primary-font);
   font-weight: 600;
   font-size: 0.9rem;
-  letter-spacing: 0.5px; /* Un poco de aire entre letras es muy "premium" */
-  text-transform: uppercase; /* Opcional: le da autoridad */
-
-  /* Sombra inicial suave (Colored Shadow) */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-
-  /* Otros */
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil interno */
-  backdrop-filter: blur(4px); /* Por si acaso hay transparencia */
-
-  /* Transición suave tanto al entrar como al salir */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   z-index: 10;
   width: 270px;
@@ -760,32 +734,24 @@
 }
 
 .owner-label:hover {
-  /* Elevación más sutil (5px es mucho, 3px es elegante) */
   transform: translateY(-3px) scale(1.02);
-
-  /* El brillo se intensifica al pasar el mouse */
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
-
-  /* Opcional: Cambia ligeramente el brillo del fondo */
   filter: brightness(1.1);
 }
 
-/* 4. El Botón de Cerrar */
 .uv-viewer-close {
   position: absolute;
   top: 20px;
   right: 30px;
   background: transparent;
   border: none;
-  color: #fff; /* Blanco puro */
-  font-size: 2rem; /* Tamaño grande */
+  color: #fff;
+  font-size: 2rem;
   cursor: pointer;
   z-index: 10000;
   padding: 10px;
   border-radius: 50%;
   transition: all 0.2s ease;
-
-  /* Centrar el icono dentro del botón */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -793,11 +759,10 @@
   height: 50px;
 }
 
-/* Efecto Hover del botón */
 .uv-viewer-close:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco sutil */
-  transform: scale(1.1); /* Crece un poquito */
-  color: #ff4d4d; /* Opcional: Cambia a rojo al pasar el mouse */
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+  color: #ff4d4d;
 }
 
 @keyframes l14 {
@@ -805,7 +770,6 @@
     transform: rotate(1turn);
   }
 }
-
 
 .confirm-modal-backdrop {
   position: fixed;
@@ -829,7 +793,9 @@
   border-radius: 24px;
   padding: 32px;
   text-align: center;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   animation: modalPop 0.3s ease-out;
 }
 
@@ -915,30 +881,646 @@
   transform: scale(0.98);
 }
 
+.match-feedback-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
 
-/* RESPONSIVE */
+.match-card {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 2.5rem;
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.match-icon-circle {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -60px auto 1.5rem;
+  box-shadow: 0 10px 20px rgba(255, 75, 43, 0.4);
+  color: white;
+  font-size: 2rem;
+  animation: pulse 2s infinite;
+}
+
+.match-card h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.match-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-family: var(--primary-font);
+}
+
+.match-avatar-preview {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+}
+
+.match-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+}
+
+.btn-match-close {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #333;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.btn-match-close:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.reject-feedback-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.reject-card {
+  background: white;
+  width: 90%;
+  max-width: 380px;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.reject-icon-circle {
+  width: 70px;
+  height: 70px;
+  background: #f1f5f9;
+  color: #64748b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -55px auto 1rem;
+  font-size: 1.8rem;
+  border: 4px solid white;
+}
+
+.reject-card h2 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.reject-card p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-body);
+}
+
+.reject-avatar-preview {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e2e8f0;
+}
+
+.reject-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(80%);
+}
+
+.btn-reject-close {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: #64748b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-reject-close:hover {
+  background: #475569;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+  margin-left: 4px;
+  display: block;
+  font-family: var(--font-heading);
+} /* Asegura que ocupe su propia línea */
+/* =========================================
+   ESTILOS MODO EDICIÓN (PREMIUM)
+   ========================================= */
+
+/* 1. Input del Título (H1) - Estilo Bloque Moderno */
+.input-edit-title {
+  width: 100%;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+
+  /* Cambio clave: Fondo suave y bordes redondeados */
+  background-color: #f8fafc; /* Gris muy claro/azulado */
+  border: 1px solid transparent; /* Borde invisible para mantener estructura */
+  border-radius: 16px; /* Bordes muy redondeados */
+
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: fadeInInput 0.3s ease-out;
+}
+
+.input-edit-title:hover {
+  background-color: #f1f5f9; /* Un poco más oscuro al pasar el ratón */
+}
+
+.input-edit-title:focus {
+  background-color: #ffffff;
+  border-color: rgba(0, 86, 179, 0.15); /* Borde sutil azul al escribir */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Sombra suave de elevación */
+  transform: translateY(-2px);
+}
+
+/* 2. Input de Dirección - Estilo Cápsula */
+.location-edit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.input-edit-address {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+
+  /* Fondo sutil tintado con el color primario */
+  background-color: rgba(0, 86, 179, 0.04);
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  width: 100%;
+  max-width: 450px;
+  padding: 8px 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  animation: fadeInInput 0.3s ease-out;
+}
+
+.input-edit-address:hover {
+  background-color: rgba(0, 86, 179, 0.08);
+}
+
+.input-edit-address:focus {
+  background-color: #ffffff;
+  border-color: rgba(0, 86, 179, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 86, 179, 0.05);
+}
+
+/* 3. Inputs pequeños (Habitaciones, Baños, etc.) */
+.input-edit-badge {
+  width: 3.5rem;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+
+  padding: 4px;
+  margin-left: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+  animation: fadeInInput 0.3s ease-out;
+}
+
+.input-edit-badge:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+  transform: scale(1.05);
+}
+
+.input-edit-badge::-webkit-outer-spin-button,
+.input-edit-badge::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 4. Textarea para la Descripción */
+.textarea-edit-desc {
+  width: 100%;
+  min-height: 180px;
+  box-sizing: border-box;
+
+  padding: 20px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-main);
+
+  background-color: #f8fafc; /* Gris muy claro */
+  border: 1px solid transparent;
+  border-radius: 16px;
+
+  resize: vertical;
+  outline: none;
+  transition: all 0.3s ease;
+  animation: fadeInInput 0.3s ease-out;
+}
+
+.textarea-edit-desc:focus {
+  background-color: #ffffff;
+  border-color: rgba(0, 86, 179, 0.2);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* 5. Select Universidad */
+.input-edit-select {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+
+  width: 100%;
+  padding: 8px 12px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230056b3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 35px;
+}
+
+.input-edit-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.1);
+}
+
+/* 6. Botones de Acción */
+.btn-icon-action.save,
+.btn-icon-action.cancel {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 1.1rem;
+}
+
+.save {
+  background: #10b981;
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.save:hover {
+  background: #059669;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.cancel {
+  background: #fff;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+}
+
+.cancel:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* =========================================
+   ESTILOS EDICIÓN DE IMÁGENES
+   ========================================= */
+
+/* Estilo base para el Label que reemplaza a la img */
+.img-edit-label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+
+  /* Para que la imagen de fondo se vea igual que el img src */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden; /* Para que el overlay no se salga en las esquinas redondas */
+}
+
+/* Ocultar el input file nativo */
+.img-edit-label input[type='file'] {
+  display: none;
+}
+
+/* Capa oscura que aparece encima (Overlay) */
+.edit-overlay {
+  position: absolute;
+  inset: 0; /* Ocupa todo el espacio */
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo negro semitransparente */
+  backdrop-filter: blur(2px); /* Un poco de desenfoque */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  opacity: 0; /* Invisible por defecto */
+  transition: opacity 0.3s ease;
+}
+
+/* Icono y texto del overlay */
+.edit-overlay i {
+  color: white;
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.edit-overlay span {
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+.main-edit .edit-overlay {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.main-edit:hover .edit-overlay {
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+
+.img-edit-label:hover .edit-overlay {
+  opacity: 1;
+}
+
+
+
+.main-edit {
+  border-radius: 20px 0 0 20px;
+}
+
+.sub-edit-2 {
+  border-radius: 0 20px 0 0;
+}
+
+.sub-edit-4 {
+  border-radius: 0 0 20px 0;
+}
+
+.btn-icon-action.save:disabled {
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+  border-color: #e2e8f0;
+
+  box-shadow: none;
+  transform: none;
+  pointer-events: none;
+}
+
+.btn-icon-action.save:disabled:hover {
+  transform: scale(1);
+  background-color: #cbd5e1;
+}
+
+/* Ajustes Responsive para los bordes en Edición */
+@media (max-width: 992px) {
+  .main-edit {
+    border-radius: 16px; /* En tablet la principal es redonda entera */
+  }
+  .sub-edit-2,
+  .sub-edit-4 {
+    border-radius: 12px; /* Resetear bordes específicos */
+  }
+  .img-edit-label {
+    border-radius: 12px; /* Todas redondeadas en grid */
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================= */
+
 @media (max-width: 1200px) {
   .property-sheet {
-    padding: 40px;
+    padding: 30px;
   }
+
   .content-layout {
-    grid-template-columns: 1fr 350px;
-    gap: 30px;
+    grid-template-columns: 1fr; /* Columna única para el contenido */
+    gap: 40px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .hero-gallery {
+    height: 500px;
+  }
+
+  /* Ajuste CRÍTICO para el Panel Azul */
+  .candidates-column {
+    position: relative;
+    top: 0;
+    margin-left: 0;
+    width: 100%; /* Ahora ocupa el 100% */
+    margin-top: 30px;
+  }
+
+  .likes-panel {
+    min-height: auto;
+    padding: 25px;
   }
 }
 
 @media (max-width: 992px) {
-  .property-sheet {
-    padding: 30px 20px;
-  }
-  .content-layout {
-    grid-template-columns: 1fr;
-  }
   .hero-gallery {
-    grid-template-columns: 1fr;
     height: auto;
+    flex-direction: column;
   }
+
+  .main-img {
+    height: 400px;
+    border-radius: 0px;
+  }
+
+  .main-img img {
+    border-radius: 0px;
+  }
+
+  .sub-imgs {
+    height: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+  }
+
+  .sub-imgs img {
+    border-radius: 0px;
+    height: 100px;
+  }
+
+  .inm-content {
+    flex-direction: column;
+  }
+
   .candidates-column {
-    position: static;
+    position: relative;
+    top: 0;
+    margin-left: 0;
+    width: 100%; /* Ahora ocupa el 100% */
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .property-sheet {
+    width: 100%;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .scroll-container {
+    padding: 0;
+  }
+
+  .sheet-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .hero-gallery {
+    margin-bottom: 20px;
+  }
+
+  /* CORRECCIÓN: Mostrar TODAS las imágenes en grid en móvil */
+  .sub-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    gap: 10px;
+  }
+
+  .sub-img img {
+    border-radius: 0px;
+  }
+
+  .main-img {
+    height: 300px;
+    border-radius: 0px;
+  }
+
+  .rules-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .candidates-scroll {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  /* CORRECCIÓN: Nombre Propietario en móvil */
+  .owner-label {
+    width: 100px; /* Ocupa todo el ancho */
+    margin: 10px 0;
+    text-align: center;
+    position: static; /* Ya no flota */
+  }
+
+  .candidates-column {
+    position: relative;
+    top: 0;
+    margin-left: -10px;
+    width: 405px; /* Ahora ocupa el 100% */
+    margin-top: 30px;
   }
 }

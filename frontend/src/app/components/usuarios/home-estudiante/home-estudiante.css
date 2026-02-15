@@ -12,11 +12,11 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Evita doble scroll si la imagen es muy alta */
+  overflow: hidden; 
 }
 
 /* =========================================
-   1. NAVBAR (SIN CAMBIOS)
+   NAVBAR
    ========================================= */
 .nav-modern {
   background: var(--primary);
@@ -31,7 +31,7 @@ body {
 }
 
 .nav-content {
-  width: 95%; /* Un poco más ancho para alinear con el grid de abajo */
+  width: 95%; 
   max-width: 1800px;
   margin: 0 auto;
   display: flex;
@@ -57,11 +57,10 @@ body {
 .profile-circle img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--bg-body); }
 
 /* =========================================
-   2. ESTRUCTURA Y FONDO
+   ESTRUCTURA
    ========================================= */
 .app-container {
   width: 100%;
-  /* CAMBIO: Padding mínimo para que esté "pegado" pero respire 10px */
   padding: 15px; 
   box-sizing: border-box;
   position: relative;
@@ -78,16 +77,15 @@ body {
 }
 
 /* =========================================
-   3. LAYOUT GRID (PEGADO Y EXPANDIDO)
+   LAYOUT GRID
    ========================================= */
 
 .layout-grid {
   display: grid;
-  /* CAMBIO: La imagen toma todo el espacio disponible (1fr), Info fija o % */
   grid-template-columns: 1fr 380px; 
-  gap: 15px; /* Espacio reducido entre imagen e info */
+  gap: 15px; 
   width: 100%;
-  height: 100%; /* Ocupa toda la altura del container */
+  height: 100%; 
   margin: 0;
 }
 
@@ -98,11 +96,11 @@ body {
   overflow: hidden;
 }
 
-/* IZQUIERDA: IMAGEN (Expandida) */
+/* IMAGEN */
 .image-area {
   position: relative;
   width: 100%;
-  height: 100%; /* Fuerza a ocupar toda la altura disponible */
+  height: 100%; 
 }
 
 .image-wrapper {
@@ -114,45 +112,41 @@ body {
 .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Clave: recorta la imagen para llenar el espacio sin deformar */
+  object-fit: cover; 
   display: block;
 }
 
 .carousel-indicators {
   position: absolute;
-  bottom: 15px; /* Separación desde el techo de la foto */
+  bottom: 15px; 
   left: 30%;
   right: 0;
-  
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6px; /* Espacio entre cada línea */
-  
+  gap: 6px; 
   padding: 0 15px; 
   z-index: 25; 
   width: 45%;
   pointer-events: none; 
 }
 
-/* El estilo de la línea individual */
 .indicator {
   height: 5px; 
   flex: 1; 
-  background: rgba(255, 255, 255, 0.35); /* Blanco semitransparente inactivo */
-  border-radius: 4px; /* Bordes redondeados */
-  backdrop-filter: blur(2px); /* Pequeño desenfoque para mejorar contraste */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Sombra para verlas sobre fondos blancos */
+  background: rgba(255, 255, 255, 0.35); 
+  border-radius: 4px; 
+  backdrop-filter: blur(2px); 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3); 
   transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Estado activo (la foto actual) */
 .indicator.active {
-  background: #ffffff; /* Blanco puro */
-  box-shadow: 0 0 7px rgba(255, 255, 255, 0.452); /* Brillo */
+  background: #ffffff; 
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.452); 
 }
 
-/* DERECHA: INFO (Pegada a la derecha) */
+/* INFO */
 .info-area {
   width: 105%;
   height: 103.5%;
@@ -160,7 +154,6 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* Si el contenido es largo, permite scroll solo en la info */
   overflow-y: auto; 
   margin-left: 0px;
   border-radius: 0px;
@@ -177,7 +170,7 @@ body {
   height: 30px;
   border-radius: 50%;
   border: none;
-  background-color: var(--bg-light); /* o #f5f7fa */
+  background-color: var(--bg-light); 
   color: var(--primary);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   cursor: pointer;
@@ -196,28 +189,21 @@ body {
 }
 
 /* =========================================
-   4. ELEMENTOS INTERACTIVOS (FLOATING)
+   ELEMENTOS FLOTANTES
    ========================================= */
 
 .price-tag {
   position: absolute; top: 20px; left: 20px;
   background: #ffffff;
-
-  /* Redondeo completo tipo cápsula */
   border-radius: 50px;
   padding: 10px 24px;
-  
   font-family: var(--primary-font);
   font-weight: 800;
   font-style: italic;
   color: #181a1b;
-  letter-spacing: -0.5px; /* Un toque moderno al texto */
-  
-  /* Sombra elevada */
+  letter-spacing: -0.5px; 
   box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
   z-index: 10;
-  
-  /* Pequeña animación al pasar el ratón (opcional) */
   transition: transform 0.2s ease;
 }
 
@@ -226,80 +212,52 @@ body {
 }
 
 .owner-label {
-  /* Fondo: Un degradado sutil en lugar de color plano para dar volumen */
   background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%); 
   color: var(--white);
-  
-  /* Forma y Espaciado */
   padding: 10px 24px;
-  border-radius: 50px; /* Bordes totalmente redondos (Pill shape) son más modernos */
-  
-  /* Posición */
+  border-radius: 50px; 
   position: absolute; 
   bottom: 20px; 
   left: 20px;
-  
-  /* Tipografía */
   font-family: var(--primary-font);
   font-weight: 600;
   font-size: 0.9rem;
-  letter-spacing: 0.5px; /* Un poco de aire entre letras es muy "premium" */
-  text-transform: uppercase; /* Opcional: le da autoridad */
-  
-  /* Sombra inicial suave (Colored Shadow) */
+  letter-spacing: 0.5px; 
+  text-transform: uppercase; 
   box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); 
-  
-  /* Otros */
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil interno */
-  backdrop-filter: blur(4px); /* Por si acaso hay transparencia */
-  
-  /* Transición suave tanto al entrar como al salir */
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(4px); 
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   z-index: 10;
 }
 
 .owner-label:hover {
-  /* Elevación más sutil (5px es mucho, 3px es elegante) */
   transform: translateY(-3px) scale(1.02);
-  
-  /* El brillo se intensifica al pasar el mouse */
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
-  
-  /* Opcional: Cambia ligeramente el brillo del fondo */
   filter: brightness(1.1);
 }
+
 .nav-arrow {
-  /* Posicionamiento y Tamaño */
   position: absolute; 
   top: 50%; 
   transform: translateY(-50%);
   width: 48px; 
   height: 48px;
-  
-  /* Flexbox para centrar el icono perfectamente */
   display: flex; 
   justify-content: center; 
   align-items: center;
-  
-  /* ESTILO CRISTAL (Estado inicial) */
-  background: var(--primary); /* Transparente sutil */
-  backdrop-filter: blur(8px);          /* Desenfoque del fondo */
-  -webkit-backdrop-filter: blur(8px);  /* Soporte Safari */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Borde fino y nítido */
-  
-  /* Icono */
+  background: var(--primary); 
+  backdrop-filter: blur(8px);           
+  -webkit-backdrop-filter: blur(8px);   
+  border: 1px solid rgba(255, 255, 255, 0.4); 
   color: white;
   font-size: 1.1rem;
   border-radius: 50%;
-  
-  /* Comportamiento */
   cursor: pointer; 
   z-index: 20; 
-  
-  /* Transición suave y elástica */
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
 }
 .nav-arrow:disabled {
     opacity: 0.5;
@@ -331,7 +289,6 @@ body {
 .action-btn.dismiss:hover { background-color: #2f3542; color: white; }
 
 .user-actions{
-
   position:  relative;
   margin-right: 55px;
 }
@@ -349,8 +306,6 @@ body {
   font-size: 12px;
   width: 120px;
   box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.333);
-
-
 }
 
 .arrow-options{
@@ -367,14 +322,13 @@ body {
 }
 
 /* =========================================
-   5. DETALLES INFO
+   DETALLES INFO
    ========================================= */
 .modern-info {
   padding: 30px;
   background: #ffffff;
 }
 
-/* Fila de iconos rápidos */
 .quick-stats {
   margin-top: 20px;
   display: flex;
@@ -395,7 +349,7 @@ body {
 
 .stat-item i {
   font-size: 1.2rem;
-  color: #3b82f6; /* El azul de tu navbar */
+  color: #3b82f6; 
 }
 
 .stat-item span {
@@ -403,7 +357,6 @@ body {
   font-weight: 700;
 }
 
-/* Grid de detalles */
 .details-grid {
   display: flex;
   flex-direction: column;
@@ -450,7 +403,7 @@ body {
 }
 
 .alert-card {
-  background: #f0f9ff; /* Un azul muy clarito */
+  background: #f0f9ff; 
   border-radius: 14px;
   padding: 15px !important;
   border: 1px solid #e0f2fe;
@@ -465,7 +418,7 @@ body {
 
 .alert-content i {
   font-size: 1.4rem;
-  color: var(--primary); /* Azul informativo */
+  color: var(--primary); 
 }
 
 .alert-content h3 {
@@ -481,7 +434,6 @@ body {
   font-weight: 400 !important;
 }
 
-/* Estilo del título */
 .info-header h1 {
   font-size: 1.7rem;
   font-weight: 800;
@@ -496,28 +448,6 @@ body {
   border-radius: 10px;
   margin: 12px 0 20px 0;
 }
-
-
-
-.no-info-container {
-  max-width: 80%;
-  margin: 80px auto;
-  padding: 40px 30px;
-  text-align: center;
-  display: flex;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  justify-content: space-evenly;
-
-  border-radius: 22px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.327);
-  height: 80%;
-  animation: fadeIn 0.6s ease;
-  border: 3px solid  green;
-}
-
-
-
 
 .no-info-container {
   max-width: 900px;
@@ -566,7 +496,6 @@ body {
   margin-bottom: 12px;
   font-weight: 500;
   font-family: var(--secondary-font);
-
 }
 
 .sub-message {
@@ -578,8 +507,6 @@ body {
   font-weight: 500;
 }
 
-/* HTML: <div class="loader"></div> */
-/* HTML: <div class="loader"></div> */
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -607,27 +534,102 @@ body {
   100%{transform: rotate(1turn)}
 }
 
+/* =========================================
+   RESPONSIVE DESIGN (NUEVO)
+   ========================================= */
 
+@media (max-width: 1100px) {
+  /* En pantallas medianas y móviles, cambiamos a scroll vertical normal */
+  body {
+    overflow: auto; 
+  }
 
-@media (max-width: 850px) {
+  .app-container {
+    height: auto; 
+    padding: 20px;
+    overflow-y: visible;
+  }
+
+  .layout-grid {
+    grid-template-columns: 1fr; /* Una sola columna */
+    height: auto; 
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* La imagen ocupa un tamaño fijo arriba */
+  .image-area {
+    height: 500px;
+    width: 100%;
+    border-radius: 22px 22px 0 0;
+    overflow: hidden;
+  }
+
+  /* La info se coloca debajo */
+  .info-area {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: 30px;
+    border-radius: 0 0 22px 22px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Ajustes en el panel de info vacía */
   .no-info-container {
     flex-direction: column;
     text-align: center;
     padding: 40px 20px;
     gap: 30px;
     width: 90%;
+    margin: 40px auto;
   }
+
   .info-text {
     align-items: center;
     text-align: center;
   }
+
+  .sad-img {
+    width: 200px;
+  }
 }
 
+/* Ajustes para móviles pequeños */
+@media (max-width: 600px) {
+  .image-area {
+    height: 350px; 
+  }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .app-container { height: auto; padding: 20px; }
-  .layout-grid { grid-template-columns: 1fr; height: auto; gap: 30px; }
-  .image-area { height: 500px; }
-  .info-area { height: auto; }
+  .quick-stats {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .price-tag {
+    top: 15px; 
+    left: 15px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .owner-label {
+    bottom: 15px;
+    left: 15px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .quick-actions.floating {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .action-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
 }

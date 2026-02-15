@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { UsuarioService } from '../../../services/usuarios-service';
 import { SolicitudResponse, Data, Inmueble } from '../../../common/solicitudes-interface';
 import { isIterable } from 'rxjs/internal/util/isIterable';
@@ -15,9 +15,34 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
       ]),
-      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+      transition(':leave', [
+        animate(
+          '0.1s ease-in',
+          style({
+            opacity: 0,
+            transform: 'scale(0.8)', // Se encoge un poco
+            marginRight: '-20px', // Ayuda a que el hueco se cierre
+            filter: 'grayscale(1)', // Se pone gris mientras se va
+          }),
+        ),
+      ]),
+
+    ]),
+
+    trigger('enterPost', [
+      // Entrada desde la izquierda
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(100%)' }),
+        animate('0.5s ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
+      ]),
+      // Salida con FadeOut (desvanecimiento)
+      transition(':leave', [animate('0.4s ease-in', style({ opacity: 0 }))]),
     ]),
   ],
+})
+
+@Injectable({
+  providedIn: 'root'
 })
 export class Solicitudes implements OnInit {
   userData: { userId: string | null } = {
@@ -35,6 +60,7 @@ export class Solicitudes implements OnInit {
   finalSlice!: number;
   noInfo: boolean = false;
   loading: boolean = true;
+  exitoDeleteSolicitud: boolean = false;
 
   valorEstado: string = 'todos';
   mostratPaginacion: boolean = false;
@@ -54,13 +80,17 @@ export class Solicitudes implements OnInit {
         console.log(respuesta);
         this.info = respuesta;
         this.allInmuebles = this.info.data.inmuebles;
+        console.log(this.allInmuebles);
+
         if (this.allInmuebles.length === 0) {
           this.noInfo = true;
         } else {
           this.noInfo = false;
           this.mostratPaginacion = true;
-          this.inmuebles = this.info.data.inmuebles;
+          this.inmuebles = this.allInmuebles;
           this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
+          console.log('inmuebles');
+
           console.log(this.inmuebles);
           this.pagination();
         }
@@ -70,10 +100,14 @@ export class Solicitudes implements OnInit {
     });
   }
 
-  pagination() {
+  pagination(lista?: Inmueble[]) {
     this.initialSlice = this.currentPage * this.inmPerPage - this.inmPerPage;
     this.finalSlice = this.inmPerPage + this.initialSlice;
-    this.inmuebles = this.allInmuebles.slice(this.initialSlice, this.finalSlice);
+    if (lista) {
+      this.inmuebles = lista.slice(this.initialSlice, this.finalSlice);
+    } else {
+      this.inmuebles = this.allInmuebles.slice(this.initialSlice, this.finalSlice);
+    }
   }
 
   nextPage() {
@@ -102,13 +136,30 @@ export class Solicitudes implements OnInit {
       this.inmuebles = this.allInmuebles.filter((inm) => inm.estado_solicitud === this.valorEstado);
     }
 
-    if(this.inmuebles.length === 0){
+    if (this.inmuebles.length === 0) {
       this.mostratPaginacion = false;
-    }else{
+    } else {
       this.mostratPaginacion = true;
-      this.currentPage = 1; 
-    this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
-    this.pagination()
+      this.currentPage = 1;
+      this.totalPages = Math.ceil(this.inmuebles.length / this.inmPerPage);
+      this.pagination(this.inmuebles);
     }
+  }
+
+  quitarSolicitud(id: string) {
+    const data = {
+      idSol: id,
+    };
+    this.userService.eliminarSolicitud(data).subscribe({
+      next: (respuesta) => {
+        this.exitoDeleteSolicitud = true;
+        this.allInmuebles = this.allInmuebles.filter((inm) => inm.solicitud_id !== data.idSol);
+        this.filterEstado();
+        setTimeout(() => {
+          this.exitoDeleteSolicitud = false;
+        }, 6000);
+      },
+      error: (err) => console.error('Error en el servidor:', err),
+    });
   }
 }

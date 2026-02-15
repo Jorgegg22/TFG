@@ -136,7 +136,7 @@ class InmueblesControllerA extends BaseController
         ];
 
 
-       
+
         $rutaCarpeta = FCPATH . 'uploads/inmuebles_fotos';
 
         if (!is_dir($rutaCarpeta)) {
@@ -186,6 +186,27 @@ class InmueblesControllerA extends BaseController
     {
 
         $inmueblesModel = new InmueblesModel();
+
+        $inmuebleDatos = $inmueblesModel->find($id);
+
+        $rutaCarpeta = FCPATH . "/uploads/inmuebles_fotos/";
+        $imaganesInmueble = [
+            'imagen_principal' => $inmuebleDatos['imagen_principal'],
+            'imagen1' => $inmuebleDatos['imagen1'],
+            'imagen2' => $inmuebleDatos['imagen2'],
+            'imagen3' => $inmuebleDatos['imagen3'],
+            'imagen4' => $inmuebleDatos['imagen4'],
+
+        ];
+
+        foreach ($imaganesInmueble as $img) {
+            if (file_exists($rutaCarpeta . $img)) {
+                unlink($rutaCarpeta . $img);
+            }
+
+        }
+
+
         $inmueblesModel->delete($id);
 
 

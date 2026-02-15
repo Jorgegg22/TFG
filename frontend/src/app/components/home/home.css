@@ -40,7 +40,7 @@ a {
   /* Fondo con imagen y degradado oscuro */
   background: 
     linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 100%),
-    url('../../../../public/assets/img/hero-image.jpg') no-repeat center center;
+    url('../../../../public/assets/img/hero-image.webp') no-repeat center center;
   background-size: cover;
   overflow: hidden; /* Evita scrolls raros */
 }
