@@ -1,5 +1,3 @@
-
-
 <div class="admin-container">
     <header class="admin-header">
         <div class="header-content">
@@ -18,7 +16,7 @@
                 <span class="label">Usuarios Activos</span>
                 <?php if ($usuarios): ?>
                     <h2 class="value"><?= count($usuarios) ?></h2>
-                <?php endif;?>
+                <?php endif; ?>
             </div>
             <div class="stat-chart-mini">
                 <div class="mini-bar" style="height: 40%"></div>
@@ -54,42 +52,34 @@
     </section>
 
     <section class="management-section">
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="card shadow border-0" style="border-radius: 20px; background: #0056b3;">
-                    <div class="card-body p-4">
-                        <h5 class="text-white font-weight-bold mb-3">
-                            <i class="fas fa-user-search mr-2"></i> Buscar Usuarios
-                        </h5>
-                        <form class="d-flex shadow-sm" style="border-radius: 12px; overflow: hidden;">
-                            <input type="text" class="form-control border-0 p-3"
-                                placeholder="Introduce nombre del usuario..."
-                                style="border-radius: 12px 0 0 12px; height: 50px;">
-                            <button class="btn btn-dark px-4"
-                                style="border-radius: 0 12px 12px 0; background-color: #1a1a1a;">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="card shadow border-0" style="border-radius: 20px;">
                     <div class="card-header bg-white py-3">
                         <h6 class="m-0 font-weight-bold text-dark"><i class="fas fa-tasks mr-2 text-primary"></i>
-                            Gestión del Sistema</h6>
+                            Administrar Tablas</h6>
                     </div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-light btn-block text-left mb-2"
+                        <a href="<?= base_url('admin/universidades') ?>" class="btn btn-light btn-block text-left mb-2"
                             style="border-radius: 12px; padding: 12px;">
                             <i class="fas fa-university text-info mr-2"></i> Gestionar Universidades
                         </a>
-                        <a href="#" class="btn btn-light btn-block text-left mb-2"
+                        <a href="<?= base_url('admin/carreras') ?>" class="btn btn-light btn-block text-left mb-2"
                             style="border-radius: 12px; padding: 12px;">
                             <i class="fas fa-graduation-cap text-warning mr-2"></i> Listado de Carreras
+                        </a>
+                        <a href="<?= base_url('admin/usuarios') ?>" class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px;">
+                            <i class="fas fa-users text-success mr-2"></i> Administrar Usuarios
+                        </a>
+                        <a href="<?= base_url('admin/inmuebles') ?>" class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px;">
+                            <i class="fas fa-building text-danger mr-2"></i> Administrar Inmuebles
+                        </a>
+                        <a href="<?= base_url('admin/atributos') ?>" class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px;">
+                            <i class="fas fa-tags text-secondary mr-2"></i> Gestionar Atributos
                         </a>
                         <hr>
                         <div class="p-2">
@@ -108,18 +98,33 @@
                             Acciones de Creación</h6>
                     </div>
                     <div class="card-body">
-
-                        <a href="#" class="btn btn-light btn-block text-left mb-2"
-                            style="border-radius: 12px; padding: 12px; border-left: 4px solid #0056b3;">
+                        <a href="<?= base_url('admin/inmuebles/crear') ?>"
+                            class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px; border-left: 4px solid #007bff;">
                             <i class="fas fa-home text-primary mr-2"></i> Registrar Nuevo Inmueble
                         </a>
-                        <a href="#" class="btn btn-light btn-block text-left mb-2"
+                        <a href="<?= base_url('admin/usuarios/crear') ?>" class="btn btn-light btn-block text-left mb-2"
                             style="border-radius: 12px; padding: 12px; border-left: 4px solid #6f42c1;">
-                            <i class="fas fa-user-plus text-purple mr-2"></i> Crear Usuario
+                            <i class="fas fa-user-plus text-purple mr-2"></i> Crear Nuevo Usuario
+                        </a>
+                        <a href="<?= base_url('admin/universidades/crear') ?>"
+                            class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px; border-left: 4px solid #17a2b8;">
+                            <i class="fas fa-plus text-info mr-2"></i> Añadir Universidad
+                        </a>
+                        <a href="<?= base_url('admin/carreras/crear') ?>" class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px; border-left: 4px solid #ffc107;">
+                            <i class="fas fa-plus text-warning mr-2"></i> Añadir Carrera
+                        </a>
+                        <a href="<?= base_url('admin/atributos/crear') ?>"
+                            class="btn btn-light btn-block text-left mb-2"
+                            style="border-radius: 12px; padding: 12px; border-left: 4px solid #6c757d;">
+                            <i class="fas fa-plus text-secondary mr-2"></i> Nuevo Atributo
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </div>v>
+</div>
+</section>
 </div>

@@ -38,7 +38,7 @@ import { Inmueble } from '../../../common/inmuebles-interface';
       // Transiciones de los dos estados
       transition('* => derecha', [
         sequence([
-        
+          // 1. La explosión ocurre primero mientras la tarjeta sigue quieta
           query(
             '.particulas',
             [
