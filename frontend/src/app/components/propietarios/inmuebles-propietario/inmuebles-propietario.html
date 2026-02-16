@@ -1,7 +1,7 @@
 <div class="wrapper-solicitudes">
   <app-header-propietario></app-header-propietario>
 
-  <main class="app-container no-scroll">
+  <main class="app-container no-scroll" >
     <div class="solicitudes-wrapper">
       <div class="toast-container" *ngIf="exitoPost && inmuebles" [@enterPost]>
         <div class="toast-card">
@@ -193,7 +193,7 @@
 
         <ng-template #elseBlock>
           <div class="no-info-container solicitudes-empty">
-            <img src="/assets/img/sad-house.png" alt="Sin solicitudes" class="sad-img" />
+            <img src="../assets/img/sad-house.png" alt="Sin solicitudes" class="sad-img" />
             <div class="info-text">
               <h2 class="gradient-text">¡Vaya!</h2>
               <p class="main-message">

@@ -11,7 +11,8 @@ import { ListaInmuebles } from '../common/inmuebles-interface';
 })
 export class PropietarioService {
   //private URI: string = 'http://localhost/univibe/backend/public/index.php/api/propietarios/'; // XAMPP
-  private URI: string = 'http://localhost:8080/api/propietarios/'; //DOCKER
+  //private URI: string = 'http://localhost:8080/api/propietarios/'; //DOCKER
+  private URI: string = 'https://jorgegomez.com.es/univibe/backend/public/index.php/api/propietarios/';
 
   constructor(private http: HttpClient) {}
 

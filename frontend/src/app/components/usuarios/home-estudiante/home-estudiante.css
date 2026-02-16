@@ -498,6 +498,42 @@ body {
   font-family: var(--secondary-font);
 }
 
+.particulas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: -30px;
+  margin-left: -30px;
+  background-color: #ff0040;
+  transform: rotate(-45deg) scale(0); /* Inclinado para la forma y oculto */
+  filter: drop-shadow(0 0 15px rgba(255, 0, 64, 0.8));
+  opacity: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.particulas::before,
+.particulas::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #ff0040;
+  border-radius: 50%; /* Esto le da la redondez de arriba */
+}
+
+.particulas::before {
+  top: -30px;
+  left: 0;
+}
+
+.particulas::after {
+  top: 0;
+  left: 30px;
+}
+
 .sub-message {
   font-size: 15px;
   color: #94a3b8;

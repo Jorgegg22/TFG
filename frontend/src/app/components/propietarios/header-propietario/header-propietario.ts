@@ -39,8 +39,9 @@ export class HeaderPropietario {
   options: boolean = false;
   info!: InfoPerfil;
   perfil!: UsuarioPerfil;
-
-  urlImagenes = 'http://localhost:8080/uploads/perfiles/';
+  urlImagenes: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/perfiles/';
+  //urlImagenes = 'http://localhost:8080/uploads/perfiles/';
   menuMovil:boolean = false
 
   constructor(
@@ -70,11 +71,17 @@ export class HeaderPropietario {
     this.options = !this.options;
   }
 
-  logout() {
+   logout() {
+    localStorage.removeItem('sesion');
+
     this.authService.logout().subscribe({
-      next: (respuesta) => {
-        localStorage.removeItem('sesion');
-        this.router.navigate(['/login']);
+      complete: () => {
+
+        window.location.href = 'https://jorgegomez.com.es/univibe/';
+      },
+      error: () => {
+ 
+        window.location.href = 'https://jorgegomez.com.es/univibe/';
       },
     });
   }

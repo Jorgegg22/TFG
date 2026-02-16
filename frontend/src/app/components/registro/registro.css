@@ -399,7 +399,6 @@ a { color: var(--primary); font-weight: 600; text-decoration: none; }
   display: flex;
   align-items: center;
   gap: 10px;
-  /
 }
 
 .glass-card h2 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }

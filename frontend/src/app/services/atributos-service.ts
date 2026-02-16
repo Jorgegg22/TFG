@@ -8,7 +8,8 @@ import { Atributo } from '../common/atributos-interface';
 })
 export class AtributoService {
   //private URI: string = "http://localhost/univibe/backend/public/index.php/api/atributos";  //XAMPP
-  private URI: string = "http://localhost:8080/api/atributos"; //DOCKER
+  //private URI: string = "http://localhost:8080/api/atributos"; //DOCKER
+  private URI: string = 'https://jorgegomez.com.es/univibe/backend/public/index.php/api/atributos/';
   constructor(private http: HttpClient) {
    
   }
@@ -30,7 +31,7 @@ export class AtributoService {
         'X-API-TOKEN': String(token),
       }),
     };
-    return this.http.post(`${this.URI}/send`,atributosData,httpOptions)
+    return this.http.post(`${this.URI}send`,atributosData,httpOptions)
   }
 
 

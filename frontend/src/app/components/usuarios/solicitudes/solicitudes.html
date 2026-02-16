@@ -87,7 +87,6 @@
               <p *ngIf="valorEstado === 'interesado'">
                 Aún no has mostrado interés por ningún inmueble. ¿Empezamos la búsqueda?
               </p>
-              
             </div>
           </div>
           <div class="column-grid-scroll" *ngIf="!noInfo; else elseBlock">
@@ -105,22 +104,23 @@
                   <span class="location"
                     ><i class="fa-solid fa-location-dot"></i> {{ inm.direccion }}</span
                   >
-                  <div class="card-options"><button
-                    class="view-btn"
-                    routerLink="/piso-detalle"
-                    [routerLink]="'/piso-detalle/' + inm.inmueble_id"
-                  >
-                    <i class="fa-regular fa-eye"></i>
-                  </button>
-                  <button
-                    class="delete-sol-btn"
-                    *ngIf="inm.estado_solicitud === 'rechazado'"
-                    (click)="quitarSolicitud(inm.solicitud_id)"
-                    title="Eliminar de mi lista"
-                  >
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button></div>
-                  
+                  <div class="card-options">
+                    <button
+                      class="view-btn"
+                      routerLink="/piso-detalle"
+                      [routerLink]="'/piso-detalle/' + inm.inmueble_id"
+                    >
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                    <button
+                      class="delete-sol-btn"
+                      *ngIf="inm.estado_solicitud === 'rechazado'"
+                      (click)="quitarSolicitud(inm.solicitud_id)"
+                      title="Eliminar de mi lista"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </article>
@@ -188,7 +188,8 @@
 
         <ng-template #elseBlock>
           <div class="no-info-container solicitudes-empty">
-            <img src="/assets/img/sad-house.png" alt="Sin solicitudes" class="sad-img" />
+            <img src="assets/img/sad-house.png" alt="Sin resultados" class="sad-img" />
+
             <div class="info-text">
               <h2 class="gradient-text">¡Vaya!</h2>
               <p class="main-message">

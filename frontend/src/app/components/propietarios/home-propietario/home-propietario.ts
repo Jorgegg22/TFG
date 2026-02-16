@@ -20,7 +20,6 @@ import { Match } from '../../../common/pisoDetalle-interface';
         style({ opacity: 0, transform: 'translateY(20px)' }),
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
-      
     ]),
     trigger('imageAnimation', [
       // ACTUA DEPENDIENDO DEL INDEX QUE SE LE ASOCIA EN @IMAGEANIMATION
@@ -51,7 +50,9 @@ export class HomePropietario implements OnInit {
   totalSolicitudes!: number;
   solictudesHoy!: SolicitudesHoy[];
 
-  urlImagenes: string = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes: string = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
   //urlImagenes: string = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/'
   inmueblesAll!: ListaInmuebles;
   inmuebles!: ListaInmuebles;
@@ -135,7 +136,6 @@ export class HomePropietario implements OnInit {
       next: (respuesta) => {
         this.loadSolicitudes();
       },
-      
     });
   }
 }

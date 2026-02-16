@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /univibe/
+
+ 
+  RewriteRule ^backend/ - [L,NC]
+
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+SetEnv CI_ENVIRONMENT production

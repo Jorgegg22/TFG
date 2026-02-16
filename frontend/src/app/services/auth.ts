@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   //private URI: string = "http://localhost/univibe/backend/public/index.php/api/auth/";  // XAMPP
-  private URI: string = 'http://localhost:8080/api/auth/'; // DOCKER
+  //private URI: string = 'http://localhost:8080/api/auth/'; // DOCKER
+  private URI: string = 'https://jorgegomez.com.es/univibe/backend/public/index.php/api/auth/';
   constructor(private http: HttpClient) {}
 
   register(userData: any): Observable<any> {

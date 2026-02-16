@@ -150,34 +150,16 @@ class AuthController extends ResourceController
     public function logout()
     {
 
-        $token = $this->request->getServer('HTTP_X_API_TOKEN') ?? session()->get('token');
-        $usuarioModel = new UsuariosModel();
-
-
-
-        $usuario = $usuarioModel->where('token', $token)->first();
-
-
-
-        if ($usuario) {
-            $rol = $usuario['rol'];
-
-            $usuarioModel->update($usuario['id'], [
-                'token' => null
-            ]);
-
-
-            session()->destroy();
-
-
-            if ($rol === "admin") {
-                return redirect()->to('http://localhost:4200/login');
-            }
+        $token = session()->get('token');
+        if ($token) {
+            $usuarioModel = new UsuariosModel();
+            $usuarioModel->where('token', $token)->set(['token' => null])->update();
         }
 
-        $this->respond(['status' => 'success', 'mensaje' => 'Sesión cerrada en servidor']);
+        session()->destroy();
 
 
+        return redirect()->to('https://jorgegomez.com.es/univibe/');
     }
 
 

@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  group,
+  query,
+  sequence,
+} from '@angular/animations';
 import { InmuebleService } from '../../../services/inmuebles-service';
 import { Inmueble } from '../../../common/inmuebles-interface';
 
@@ -27,7 +36,35 @@ import { Inmueble } from '../../../common/inmuebles-interface';
         }),
       ),
       // Transiciones de los dos estados
-      transition('* => derecha', [animate('0.8s ease-out')]),
+      transition('* => derecha', [
+        sequence([
+        
+          query(
+            '.particulas',
+            [
+            
+              style({ transform: 'rotate(-45deg) scale(0.1)', opacity: 1 }),
+              animate(
+                '0.6s cubic-bezier(0.17, 0.89, 0.32, 1.49)',
+                style({
+                  transform: 'rotate(-45deg) scale(10)',
+                  opacity: 0,
+                }),
+              ),
+            ],
+            { optional: true },
+          ),
+
+          // 2. Justo después de la explosión, la tarjeta sale disparada
+          animate(
+            '0.5s ease-in',
+            style({
+              transform: 'translateX(200%) rotate(30deg)',
+              opacity: 0,
+            }),
+          ),
+        ]),
+      ]),
       transition('* => izquierda', [animate('0.8s ease-out')]),
 
       // * significa estado
@@ -88,7 +125,8 @@ export class HomeEstudiante implements OnInit {
   datosCargados: number = 0;
 
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
-  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes: string = 'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
   estadoAnimacion: string | null = null;
   estadoAnimacionImagen: string | null = null;
   mostrandoCard: boolean = true;
@@ -183,9 +221,9 @@ export class HomeEstudiante implements OnInit {
     } else {
       console.log('No quedan más casas por mostrar');
       this.noInfo = true;
-      return
+      return;
     }
-    this.noInfo = false
+    this.noInfo = false;
     this.indexImage = 0;
     this.loadPhoto();
   }
@@ -235,6 +273,7 @@ export class HomeEstudiante implements OnInit {
 
   iniciarAnimacion(direccion: 'izquierda' | 'derecha') {
     this.estadoAnimacion = direccion;
+    const tiempoAnimacionTotal = direccion === 'derecha' ? 1850 : 850;
     setTimeout(() => {
       this.mostrandoCard = false;
       if (direccion === 'derecha') {
@@ -246,7 +285,7 @@ export class HomeEstudiante implements OnInit {
         this.estadoAnimacion = null; // Reseteamos posición
         this.mostrandoCard = true; // 3. Creamos la tarjeta nueva (dispara :enter)
       }, 50);
-    }, 1200);
+    }, tiempoAnimacionTotal);
   }
 
   loadPhoto(estado?: 'siguiente' | 'previa') {

@@ -50,8 +50,12 @@ export class Perfil implements OnInit {
   allInmuebles: ListaInmuebles = [];
   inmuebles: ListaInmuebles = [];
   infoInmuebles: boolean = false;
-  urlImagenesInmuebles = 'http://localhost:8080/uploads/inmuebles_fotos/';
-  urlImagenesPerfil = 'http://localhost:8080/uploads/perfiles/';
+  urlImagenesInmuebles: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
+  //urlImagenesInmuebles = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenesPerfil: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/perfiles/';
+  //urlImagenesPerfil = 'http://localhost:8080/uploads/perfiles/';
   telefonoValido: boolean = true;
   carreraValido: boolean = true;
   universidadValido: boolean = true;

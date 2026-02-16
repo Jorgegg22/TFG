@@ -12,7 +12,8 @@ import { Notificacion } from '../common/notificacion-interface';
 })
 export class UsuarioService {
   //private URI: string = "http://localhost/univibe/backend/public/index.php/api/usuarios/";  // XAMPP
-  private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
+  //private URI: string = 'http://localhost:8080/api/usuarios/'; //DOCKER
+  private URI: string = 'https://jorgegomez.com.es/univibe/backend/public/index.php/api/usuarios/';
 
   constructor(private http: HttpClient) {}
 

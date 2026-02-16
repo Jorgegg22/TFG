@@ -41,7 +41,9 @@ export class InmueblesPropietario implements OnInit {
   totalPages!: number;
   elementsPerPage: number = 6;
   currentPage: number = 1;
-  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
   inmPerPage: number = 6;
   initialSlice!: number;
   finalSlice!: number;

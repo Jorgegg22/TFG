@@ -81,8 +81,12 @@ class Filters extends BaseFilters
             'cors',
         ],
         'after' => [
-            // 'honeypot',
-            // 'secureheaders',
+            'toolbar' => [
+                'except' => [
+                    'actualizarInmueble', // Tu ruta de guardado
+                    'api/*'              // Y cualquier otra ruta de datos
+                ]
+            ],
         ],
     ];
 

@@ -63,12 +63,12 @@ export class Header implements OnInit {
   options: boolean = false;
   info!: InfoPerfil;
   perfil!: UsuarioPerfil;
-
-  urlImagenes = 'http://localhost:8080/uploads/perfiles/';
+  urlImagenes: string = 'https://jorgegomez.com.es/univibe/backend/public/uploads/perfiles/';
+  //urlImagenes = 'http://localhost:8080/uploads/perfiles/';
   showNotifs: boolean = false;
   notificaciones: Notificacion[] = [];
-  numeroNotificaciones!:number
-  menuMovil:boolean = false
+  numeroNotificaciones!: number;
+  menuMovil: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -101,10 +101,16 @@ export class Header implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem('sesion');
+
     this.authService.logout().subscribe({
-      next: (respuesta) => {
-        localStorage.removeItem('sesion');
-        this.router.navigate(['/login']);
+      complete: () => {
+
+        window.location.href = 'https://jorgegomez.com.es/univibe/';
+      },
+      error: () => {
+ 
+        window.location.href = 'https://jorgegomez.com.es/univibe/';
       },
     });
   }
@@ -122,17 +128,15 @@ export class Header implements OnInit {
       next: (respuesta) => {
         this.notificaciones = respuesta;
         console.log('Notificaciones cargadas:', this.notificaciones);
-        this.numeroNotificaciones = this.notificaciones.length
+        this.numeroNotificaciones = this.notificaciones.length;
       },
     });
   }
-
 
   toggleMovil() {
     this.menuMovil = !this.menuMovil;
   }
 
-  
   closeMovilMenu() {
     this.menuMovil = false;
   }

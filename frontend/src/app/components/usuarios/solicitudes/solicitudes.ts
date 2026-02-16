@@ -65,7 +65,9 @@ export class Solicitudes implements OnInit {
   valorEstado: string = 'todos';
   mostratPaginacion: boolean = false;
 
-  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {

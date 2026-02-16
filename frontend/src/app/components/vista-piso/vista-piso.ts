@@ -68,10 +68,13 @@ export class VistaPiso implements OnInit {
   estudianteAceptadoFoto: string = '';
   isEditing: boolean = false;
 
-  urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
+  urlImagenes: string =
+    'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
-  urlImagenesPerfil = 'http://localhost:8080/uploads/perfiles/';
+  urlImagenesPerfil = 'https://jorgegomez.com.es/univibe/backend/public/uploads/perfiles/';
+  //urlImagenesPerfil = 'http://localhost:8080/uploads/perfiles/';
   mostrarModalRechazo: any;
   tituloValido: boolean = true;
   precioValido: boolean = true;

@@ -7,6 +7,7 @@
     <ng-container *ngIf="!loading">
       <div class="layout-grid" *ngIf="!noInfo; else elseBlock">
         <section class="main-card image-area" [@swipeAnimacion]="estadoAnimacion" *ngIf="mostrandoCard">
+          <div class="particulas"></div>
           <div class="price-tag">{{ inmuebles.precio }} €</div>
 
           <div class="image-wrapper">
@@ -99,7 +100,7 @@
 
       <ng-template #elseBlock>
         <div class="no-info-container" @swipeAnimacion>
-          <img src="/assets/img/sad-house.png" alt="Sin resultados" class="sad-img" />
+          <img src="assets/img/sad-house.png" alt="Sin resultados" class="sad-img" />
 
           <div class="info-text">
             <h2 class="gradient-text">Oops...</h2>
