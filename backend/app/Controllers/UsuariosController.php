@@ -456,8 +456,8 @@ class UsuariosController extends ResourceController
 
         if (!empty($userData->foto_perfil)) {
             $rutaCarpeta = FCPATH . "/uploads/perfiles/";
-            unlink( $rutaCarpeta . $usuario['foto_perfil']);
-            
+            unlink($rutaCarpeta . $usuario['foto_perfil']);
+
             if (strpos($userData->foto_perfil, 'data:image') !== false) {
                 $fotoFinal = $this->guardarImagen($userData->foto_perfil);
             }

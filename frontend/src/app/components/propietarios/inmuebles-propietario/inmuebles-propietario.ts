@@ -14,14 +14,14 @@ import { ActivatedRoute, Router } from '@angular/router'; // Importar esto
         style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
       ]),
-      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+     
     ]),
     trigger('enterExtraInfo', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(-20px)' }), // Aparece desde abajo
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
       ]),
-      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+    
     ]),
 
     trigger('enterPost', [
@@ -30,7 +30,7 @@ import { ActivatedRoute, Router } from '@angular/router'; // Importar esto
         style({ opacity: 0, transform: 'translateX(100%)' }),
         animate('0.5s ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
-      // Salida con FadeOut (desvanecimiento)
+
       transition(':leave', [animate('0.4s ease-in', style({ opacity: 0 }))]),
     ]),
   ],
@@ -81,11 +81,11 @@ export class InmueblesPropietario implements OnInit {
   }
 
   limpiarUrl() {
-    // [] accede a la ruta actual
+    // [] ACCEDE A LA RUTA ACTUAL
     this.router.navigate([], {
       //Pagina actual
       relativeTo: this.route,
-      //Parametros a null para los mensajes
+      // LIMPIA PARAMETROS
       queryParams: { añadido: null, eliminado: null },
     });
   }

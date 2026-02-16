@@ -17,14 +17,14 @@ import { Universidad } from '../../../common/universidades-interface';
         style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
       ]),
-      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+  
     ]),
     trigger('enterExtraInfo', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(-20px)' }), // Aparece desde abajo
         animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
       ]),
-      // Salida: Cuando la información vieja desaparece para dejar paso a la siguiente
+  
     ]),
   ],
 })

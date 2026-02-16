@@ -12,37 +12,34 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('enterInfo', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }), // Aparece desde abajo
-        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Con un poco de delay (0.2s)
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('0.5s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
       transition(':leave', [
         animate(
           '0.1s ease-in',
           style({
             opacity: 0,
-            transform: 'scale(0.8)', // Se encoge un poco
-            marginRight: '-20px', // Ayuda a que el hueco se cierre
-            filter: 'grayscale(1)', // Se pone gris mientras se va
+            transform: 'scale(0.8)',
+            marginRight: '-20px',
+            filter: 'grayscale(1)',
           }),
         ),
       ]),
-
     ]),
 
     trigger('enterPost', [
-      // Entrada desde la izquierda
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(100%)' }),
         animate('0.5s ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
-      // Salida con FadeOut (desvanecimiento)
+
       transition(':leave', [animate('0.4s ease-in', style({ opacity: 0 }))]),
     ]),
   ],
 })
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Solicitudes implements OnInit {
   userData: { userId: string | null } = {
@@ -66,8 +63,7 @@ export class Solicitudes implements OnInit {
   mostratPaginacion: boolean = false;
 
   //urlImagenes = 'http://localhost:8080/uploads/inmuebles_fotos/';
-  urlImagenes: string =
-    'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
+  urlImagenes: string = 'https://jorgegomez.com.es/univibe/backend/public/uploads/inmuebles_fotos/';
   //urlImagenes = 'http://localhost/univibe/backend/public/uploads/inmuebles_fotos/';
 
   ngOnInit(): void {

@@ -38,7 +38,7 @@ import { Inmueble } from '../../../common/inmuebles-interface';
       // Transiciones de los dos estados
       transition('* => derecha', [
         sequence([
-          // 1. La explosión ocurre primero mientras la tarjeta sigue quieta
+          // EXPLOSION CORAZON ROJA
           query(
             '.particulas',
             [
@@ -55,7 +55,7 @@ import { Inmueble } from '../../../common/inmuebles-interface';
             { optional: true },
           ),
 
-          // 2. Justo después de la explosión, la tarjeta sale disparada
+          // ANIMACION IZQUIERDA
           animate(
             '0.5s ease-in',
             style({
@@ -282,8 +282,8 @@ export class HomeEstudiante implements OnInit {
         this.nextHouseDislike();
       }
       setTimeout(() => {
-        this.estadoAnimacion = null; // Reseteamos posición
-        this.mostrandoCard = true; // 3. Creamos la tarjeta nueva (dispara :enter)
+        this.estadoAnimacion = null; // POSICION INICIAL
+        this.mostrandoCard = true; // MOSTRAR TARJETA CASA 
       }, 50);
     }, tiempoAnimacionTotal);
   }

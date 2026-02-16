@@ -9,17 +9,12 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   templateUrl: './login.html',
   styleUrl: './login.css',
   animations: [
-   
-
-
     trigger('enterInfo', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-120px)' }), 
-        animate('0.8s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), 
+        style({ opacity: 0, transform: 'translateX(-120px)' }),
+        animate('0.8s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
-      // Salida
     ]),
-    
   ],
 })
 export class Login implements OnInit {
@@ -28,39 +23,36 @@ export class Login implements OnInit {
     password: '',
   };
 
-  sessionData!: { nombre: string; token: string ,rol: string};
-  permitirIniciarSesion: boolean = false
-  errorMensaje!:string
-  
+  sessionData!: { nombre: string; token: string; rol: string };
+  permitirIniciarSesion: boolean = false;
+  errorMensaje!: string;
+
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
-    localStorage.removeItem('sesion')
+    localStorage.removeItem('sesion');
   }
 
-
-  permitirBtnIniciarSesion(){
+  permitirBtnIniciarSesion() {
     const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if(this.userData.password.length !== 0 && emailRegex.test(this.userData.email)){
+    if (this.userData.password.length !== 0 && emailRegex.test(this.userData.email)) {
       this.permitirIniciarSesion = true;
-    }else{
+    } else {
       this.permitirIniciarSesion = false;
     }
   }
 
-
   login() {
-    
     this.authService.checkUser(this.userData).subscribe({
       next: (respuesta) => {
         console.log(respuesta);
         this.sessionData = {
           nombre: respuesta.nombre,
           token: respuesta.token,
-          rol: respuesta.rol
+          rol: respuesta.rol,
         };
         localStorage.setItem('sesion', JSON.stringify(this.sessionData));
         if (respuesta.rol === 'estudiante') {
@@ -70,14 +62,14 @@ export class Login implements OnInit {
         } else {
           //window.location.href = `http://localhost/univibe/backend/public/admin/index?tkn=${respuesta.token} `;
           //window.location.href = `http://localhost:8080/admin/index?tkn=${respuesta.token}`; //DOCKER
-          window.location.href =`https://jorgegomez.com.es/univibe/backend/public/admin/index?tkn=${respuesta.token}`;
+          window.location.href = `https://jorgegomez.com.es/univibe/backend/public/admin/index?tkn=${respuesta.token}`;
         }
       },
-      error:(err) => {
+      error: (err) => {
         console.error(err);
-        this.errorMensaje = err.error.messages?.error || err.error.message || 'Error al iniciar sesión';
-      }
-   
+        this.errorMensaje =
+          err.error.messages?.error || err.error.message || 'Error al iniciar sesión';
+      },
     });
   }
 }

@@ -15,7 +15,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
         style({ opacity: 0, transform: 'translateX(-120px)' }),
         animate('0.8s 0.2s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
-      // Salida
+   
     ]),
   ],
 })
@@ -49,7 +49,7 @@ export class Registro {
   ) {}
 
   comprobacionEmail() {
-    //Comprobaciones datos
+   
     const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (emailRegex.test(this.userData.email.toLowerCase())) {
       console.log('El correo es válido');
