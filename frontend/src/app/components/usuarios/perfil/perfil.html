@@ -13,19 +13,20 @@
                 class="profile-img"
               />
 
-              <button class="btn-edit-photo" (click)="fileInput.click()" type="button">
-                <i class="fa-solid fa-camera"></i>
-              </button>
+             <ng-container *ngIf="isEditing">
+                <button class="btn-edit-photo" (click)="fileInput.click()" type="button">
+                  <i class="fa-solid fa-camera"></i>
+                </button>
 
-              <input
-                #fileInput
-                type="file"
-                style="display: none"
-                accept="image/*"
-                (change)="nombreFoto($event)"
-              />
+                <input
+                  #fileInput
+                  type="file"
+                  style="display: none"
+                  accept="image/*"
+                  (change)="nombreFoto($event)"
+                />
+              </ng-container>
             </div>
-
             <div class="profile-intro">
               <ng-container *ngIf="!isEditing">
                 <h2>{{ perfilBackUp.nombre }}</h2>
@@ -279,7 +280,7 @@
             </button>
           </div>
         </aside>
-      </div></ng-container
-    >
+      </div></ng-container>
+
   </div>
 </section>

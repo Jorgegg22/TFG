@@ -9,6 +9,7 @@ use App\Models\AtributosModel;
 use App\Models\AtributosUserModel;
 use App\Models\SolicitudesModel;
 use App\Models\MatchesModel;
+use App\Models\InmueblesAtributosModel;
 
 class UsuariosController extends ResourceController
 {
@@ -362,22 +363,35 @@ class UsuariosController extends ResourceController
 
         $solicitudesModel = new SolicitudesModel();
         $matchesModel = new MatchesModel();
+        $inmueblesAtributosModel = new InmueblesAtributosModel();
+        $userAtributosModel = new AtributosUserModel();
 
         $solicitudesModel->update($data->solicitud_id, [
             'estado' => 'aceptado'
         ]);
 
-        $matchesModel->insert([
-            'estudiante_id' => $data->estudiante_id,
-            'inmueble_id' => $data->inmueble_id,
-            'fecha_match' => date('Y-m-d H:i:s')
-        ]);
+
 
         $dataMatch = [
             'estudiante_id' => $data->estudiante_id,
             'inmueble_id' => $data->inmueble_id,
             'fecha_match' => date('Y-m-d H:i:s')
         ];
+
+        $misAtributos = $userAtributosModel->where('usuario_id', $data->estudiante_id)->findAll();
+
+        if ($misAtributos) {
+            foreach ($misAtributos as $atr) {
+                $db = \Config\Database::connect();
+                $builder = $db->table('inmueble_atributos');
+
+                $builder->insert([
+                    'inmueble_id' => $data->inmueble_id,
+                    'atributo_id' => is_array($atr) ? $atr['atributo_id'] : $atr->atributo_id
+                ]);
+            }
+        }
+
 
         $matchesModel->insert($dataMatch);
 

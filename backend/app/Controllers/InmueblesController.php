@@ -49,6 +49,7 @@ class InmueblesController extends ResourceController
 
         return $this->respond($inmueblesUni);
     }
+    
     public function inmueblesListaAleatoria()
     {
 
